@@ -1,0 +1,51 @@
+module Black_Cell // Fully Combinatorial Circuit, NOT be CLOCKED
+    (
+        input P_j_i,
+        input G_j_i,
+        input P_k_j_plus_1,
+        input G_k_j_plus_1,
+        output P_k_i,
+        output G_k_i
+    );
+
+    assign P_k_i = P_j_i & P_k_j_plus_1;
+    assign G_k_i = (G_j_i &P_k_j_plus_1) | G_k_j_plus_1;
+
+endmodule
+
+module Gray_Cell // Fully Combinatorial Circuit, NOT be CLOCKED
+    (
+        input G_j_i,
+        input P_k_j_plus_1,
+        input G_k_j_plus_1,
+        output G_k_i
+    );
+
+    assign G_k_i = (P_k_j_plus_1 & G_j_i) | G_k_j_plus_1;
+
+endmodule
+
+module Setup_Cell // Fully Combinatorial Circuit, NOT be CLOCKED
+    (
+        input A,
+        input B,
+        output G,
+        output P
+    );
+
+    assign G = A & B;
+    assign P = A ^ B;
+
+endmodule
+
+module Sum_Cell // Fully Combinatorial Circuit, NOT be CLOCKED
+    (
+        input P,
+        input C,
+        output S
+    );
+
+    assign S = P ^ C;
+
+endmodule
+

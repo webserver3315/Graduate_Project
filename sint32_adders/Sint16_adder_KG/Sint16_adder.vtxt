@@ -1,0 +1,65 @@
+`include "Black_Cell.v"
+
+module Sint16_adder_sample
+    (
+        input clk,
+        input rstn,
+        input [15:0] data_A,
+        input [15:0] data_B,
+        output [15:0] data_C,
+        output Cout
+    );
+
+    reg [16:0] data_OUT;
+
+    assign data_C = data_OUT[15:0];
+    assign Cout = data_OUT[16];
+
+
+
+    always @(posedge clk, negedge rstn) begin
+        if(!rstn) begin
+            data_OUT = 17'b0_0000_0000_0000_0000;
+        end
+        else begin
+            data_OUT = (data_A + data_B);
+        end
+    end
+
+endmodule
+
+module Sint8_adder
+    (
+        input clk,
+        input rstn,
+        input Cin,
+        input [7:0] data_A,
+        input [7:0] data_B,
+        output [7:0] data_C,
+        output Cout
+    );
+
+    wire G0, G1, G2, G3, G4, G5, G6, G7;
+    wire P0, P1, P2, P3, P4, P5, P6, P7;
+    wire [1:0] G1_2, G2_3, G3_4, G4_5, G5_6, G6_7;
+    wire [1:0] P1_2, P2_3, P3_4, P4_5, P5_6, P6_7;
+    wire [3:0] G0_C, G1_C, G2_C, G3_0, G4_1, G5_2, G6_3, G7_4;
+    wire [3:0] P3_0, P4_1, P5_2, P6_3, P7_4;
+
+    Gray_Cell 
+
+    reg [16:0] data_OUT;
+
+    assign data_C = data_OUT[15:0];
+    assign Cout = data_OUT[16];
+
+    always @(posedge clk, negedge rstn) begin
+        if(!rstn) begin
+            data_OUT = 17'b0_0000_0000_0000_0000;
+        end
+        else begin
+            data_OUT = (data_A + data_B);
+        end
+    end
+
+endmodule

@@ -1,0 +1,141 @@
+else if(tmp[46]) begin
+ret = 6'd46;
+end
+else if(tmp[45]) begin
+ret = 6'd45;
+end
+else if(tmp[44]) begin
+ret = 6'd44;
+end
+else if(tmp[43]) begin
+ret = 6'd43;
+end
+else if(tmp[42]) begin
+ret = 6'd42;
+end
+else if(tmp[41]) begin
+ret = 6'd41;
+end
+else if(tmp[40]) begin
+ret = 6'd40;
+end
+else if(tmp[39]) begin
+ret = 6'd39;
+end
+else if(tmp[38]) begin
+ret = 6'd38;
+end
+else if(tmp[37]) begin
+ret = 6'd37;
+end
+else if(tmp[36]) begin
+ret = 6'd36;
+end
+else if(tmp[35]) begin
+ret = 6'd35;
+end
+else if(tmp[34]) begin
+ret = 6'd34;
+end
+else if(tmp[33]) begin
+ret = 6'd33;
+end
+else if(tmp[32]) begin
+ret = 6'd32;
+end
+else if(tmp[31]) begin
+ret = 6'd31;
+end
+else if(tmp[30]) begin
+ret = 6'd30;
+end
+else if(tmp[29]) begin
+ret = 6'd29;
+end
+else if(tmp[28]) begin
+ret = 6'd28;
+end
+else if(tmp[27]) begin
+ret = 6'd27;
+end
+else if(tmp[26]) begin
+ret = 6'd26;
+end
+else if(tmp[25]) begin
+ret = 6'd25;
+end
+else if(tmp[24]) begin
+ret = 6'd24;
+end
+else if(tmp[23]) begin
+ret = 6'd23;
+end
+else if(tmp[22]) begin
+ret = 6'd22;
+end
+else if(tmp[21]) begin
+ret = 6'd21;
+end
+else if(tmp[20]) begin
+ret = 6'd20;
+end
+else if(tmp[19]) begin
+ret = 6'd19;
+end
+else if(tmp[18]) begin
+ret = 6'd18;
+end
+else if(tmp[17]) begin
+ret = 6'd17;
+end
+else if(tmp[16]) begin
+ret = 6'd16;
+end
+else if(tmp[15]) begin
+ret = 6'd15;
+end
+else if(tmp[14]) begin
+ret = 6'd14;
+end
+else if(tmp[13]) begin
+ret = 6'd13;
+end
+else if(tmp[12]) begin
+ret = 6'd12;
+end
+else if(tmp[11]) begin
+ret = 6'd11;
+end
+else if(tmp[10]) begin
+ret = 6'd10;
+end
+else if(tmp[9]) begin
+ret = 6'd9;
+end
+else if(tmp[8]) begin
+ret = 6'd8;
+end
+else if(tmp[7]) begin
+ret = 6'd7;
+end
+else if(tmp[6]) begin
+ret = 6'd6;
+end
+else if(tmp[5]) begin
+ret = 6'd5;
+end
+else if(tmp[4]) begin
+ret = 6'd4;
+end
+else if(tmp[3]) begin
+ret = 6'd3;
+end
+else if(tmp[2]) begin
+ret = 6'd2;
+end
+else if(tmp[1]) begin
+ret = 6'd1;
+end
+else if(tmp[0]) begin
+ret = 6'd0;
+end
