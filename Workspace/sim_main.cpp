@@ -60,6 +60,14 @@ int main(int argc, char** argv, char** env) {
 
     float32 aa, bb;
 
+    aa.total_int = 0x180115be; bb.total_int = 0x235ba861;
+    test_case(top, wave_fp, aa, bb, time);
+    time++;
+
+    aa.total = 0.5; bb.total = 0.4375;
+    test_case(top, wave_fp, aa, bb, time);
+    time++;
+
     aa.total_int = 0x643c9869; bb.total_int = 0x66334873;
     test_case(top, wave_fp, aa, bb, time);
     time++;
@@ -76,10 +84,6 @@ int main(int argc, char** argv, char** env) {
     test_case(top, wave_fp, aa, bb, time);
     time++;
 
-    aa.total = 0.5; bb.total = 0.4375;
-    test_case(top, wave_fp, aa, bb, time);
-    time++;
-
     aa.total = 0; bb.total = 0;
     test_case(top, wave_fp, aa, bb, time);
     time++;
@@ -88,7 +92,7 @@ int main(int argc, char** argv, char** env) {
     test_case(top, wave_fp, aa, bb, time);
     time++;
 
-    for(int i=0;i<1000;i++){
+    for(int i=0;i<100000 ;i++){
         aa.total_int = rand();
         bb.total_int = rand();
         test_case(top, wave_fp, aa, bb, time);

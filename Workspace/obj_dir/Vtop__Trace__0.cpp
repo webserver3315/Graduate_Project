@@ -27,20 +27,23 @@ void Vtop___024root__trace_chg_sub_0(Vtop___024root* vlSelf, VerilatedVcd::Buffe
         bufp->chgCData(oldp+0,(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA),8);
         bufp->chgCData(oldp+1,(vlSelf->FP32_Multiplier_Combinatorial__DOT__EB),8);
         bufp->chgSData(oldp+2,(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB),9);
-        bufp->chgSData(oldp+3,((0x1ffU & ((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB) 
-                                          - (IData)(0xfeU)))),9);
-        bufp->chgBit(oldp+4,(vlSelf->FP32_Multiplier_Combinatorial__DOT__E_LeftBig));
-        bufp->chgQData(oldp+5,(vlSelf->FP32_Multiplier_Combinatorial__DOT__M_48_Original),48);
-        bufp->chgCData(oldp+7,(vlSelf->FP32_Multiplier_Combinatorial__DOT__leading_1_position),8);
-        bufp->chgCData(oldp+8,((0xffU & ((IData)(0x2eU) 
+        bufp->chgBit(oldp+3,(vlSelf->FP32_Multiplier_Combinatorial__DOT__E_LeftBig));
+        bufp->chgQData(oldp+4,(vlSelf->FP32_Multiplier_Combinatorial__DOT__M_48_Original),48);
+        bufp->chgCData(oldp+6,(vlSelf->FP32_Multiplier_Combinatorial__DOT__leading_1_position),8);
+        bufp->chgCData(oldp+7,((0xffU & ((IData)(0x2eU) 
                                          - (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__leading_1_position)))),8);
-        bufp->chgSData(oldp+9,((0x1ffU & ((IData)(0x7fU) 
-                                          + ((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB) 
-                                             - (IData)(0xfeU))))),9);
-        bufp->chgSData(oldp+10,((0x1ffU & ((IData)(0x182U) 
-                                           - ((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB) 
-                                              - (IData)(0xfeU))))),9);
-        bufp->chgSData(oldp+11,(vlSelf->FP32_Multiplier_Combinatorial__DOT__Until_126_2),9);
+        bufp->chgCData(oldp+8,((0xffU & ((IData)(0x80U) 
+                                         + (0x1ffU 
+                                            & (- (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB)))))),8);
+        bufp->chgCData(oldp+9,(vlSelf->FP32_Multiplier_Combinatorial__DOT__Until_126_2),8);
+        bufp->chgBit(oldp+10,((1U & (((IData)(0x80U) 
+                                      + (- (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB))) 
+                                     >> 8U))));
+        bufp->chgBit(oldp+11,((1U & ((((IData)(1U) 
+                                       + (0xffU & ((IData)(0x2eU) 
+                                                   - (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__leading_1_position)))) 
+                                      - (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB)) 
+                                     >> 8U))));
         bufp->chgQData(oldp+12,((0xffffffffffffULL 
                                  & (vlSelf->FP32_Multiplier_Combinatorial__DOT__M_48_Original 
                                     >> 1U))),48);
@@ -54,7 +57,13 @@ void Vtop___024root__trace_chg_sub_0(Vtop___024root* vlSelf, VerilatedVcd::Buffe
                                             ((IData)(0x2eU) 
                                              - (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__leading_1_position)))))
                                   : 0ULL)),48);
-        bufp->chgQData(oldp+18,(((0x30U < (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__Until_126_2))
+        bufp->chgQData(oldp+18,((((~ (1U & ((((IData)(1U) 
+                                              + (0xffU 
+                                                 & ((IData)(0x2eU) 
+                                                    - (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__leading_1_position)))) 
+                                             - (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB)) 
+                                            >> 8U))) 
+                                  & (0x30U < (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__Until_126_2)))
                                   ? 0ULL : ((0x2fU 
                                              >= (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__Until_126_2))
                                              ? (0xffffffffffffULL 
@@ -73,74 +82,116 @@ void Vtop___024root__trace_chg_sub_0(Vtop___024root* vlSelf, VerilatedVcd::Buffe
                                                      : 0ULL) 
                                                    >> (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__Until_126_2)))
                                              : 0ULL))),48);
-        bufp->chgQData(oldp+20,(((0x2fU >= (0x1ffU 
-                                            & ((IData)(0x182U) 
-                                               - ((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB) 
-                                                  - (IData)(0xfeU)))))
+        bufp->chgQData(oldp+20,(((0x2fU >= (0xffU & 
+                                            ((IData)(0x80U) 
+                                             + (0x1ffU 
+                                                & (- (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB))))))
                                   ? (0xffffffffffffULL 
                                      & (vlSelf->FP32_Multiplier_Combinatorial__DOT__M_48_Original 
-                                        >> (0x1ffU 
-                                            & ((IData)(0x182U) 
-                                               - ((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB) 
-                                                  - (IData)(0xfeU))))))
+                                        >> (0xffU & 
+                                            ((IData)(0x80U) 
+                                             + (0x1ffU 
+                                                & (- (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB)))))))
                                   : 0ULL)),48);
-        bufp->chgSData(oldp+22,((0x1ffU & ((IData)(1U) 
-                                           + VL_EXTENDS_II(9,9, 
-                                                           (0x1ffU 
-                                                            & ((IData)(0x7fU) 
-                                                               + 
-                                                               ((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB) 
-                                                                - (IData)(0xfeU)))))))),9);
-        bufp->chgSData(oldp+23,((0x1ffU & (((IData)(0x7fU) 
-                                            + ((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB) 
-                                               - (IData)(0xfeU))) 
-                                           - VL_EXTENDS_II(9,8, 
-                                                           (0xffU 
-                                                            & ((IData)(0x2eU) 
-                                                               - (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__leading_1_position))))))),9);
-        bufp->chgQData(oldp+24,(vlSelf->FP32_Multiplier_Combinatorial__DOT__final_Man),48);
-        bufp->chgSData(oldp+26,(vlSelf->FP32_Multiplier_Combinatorial__DOT__final_Exp),9);
-        bufp->chgCData(oldp+27,(vlSelf->FP32_Multiplier_Combinatorial__DOT__DEBUG_FINAL_MAN),8);
-        bufp->chgCData(oldp+28,(vlSelf->FP32_Multiplier_Combinatorial__DOT__DEBUG_FINAL_EXP),8);
-        bufp->chgSData(oldp+29,((0x1ffU & ((IData)(0x7eU) 
-                                           + ((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB) 
-                                              - (IData)(0xfeU))))),9);
-        bufp->chgBit(oldp+30,((1U & (~ (1U & (((IData)(0x7eU) 
-                                               + ((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB) 
-                                                  - (IData)(0xfeU))) 
-                                              >> 8U))))));
-        bufp->chgBit(oldp+31,((1U & (((IData)(0x7eU) 
-                                      + ((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB) 
-                                         - (IData)(0xfeU))) 
+        bufp->chgCData(oldp+22,((0xffU & ((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB) 
+                                          - (IData)(0x7fU)))),8);
+        bufp->chgCData(oldp+23,((0xffU & ((IData)(1U) 
+                                          + ((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB) 
+                                             - (IData)(0x7fU))))),8);
+        bufp->chgCData(oldp+24,((0xffU & (((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB) 
+                                           - (IData)(0x7fU)) 
+                                          - ((IData)(0x2eU) 
+                                             - (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__leading_1_position))))),8);
+        bufp->chgQData(oldp+25,(vlSelf->FP32_Multiplier_Combinatorial__DOT__final_Man),48);
+        bufp->chgCData(oldp+27,(vlSelf->FP32_Multiplier_Combinatorial__DOT__final_Exp),8);
+        bufp->chgBit(oldp+28,((1U & ((0x80U < (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB))
+                                      ? ((0x2fU == (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__leading_1_position))
+                                          ? (1U & (
+                                                   ((IData)(1U) 
+                                                    + 
+                                                    ((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB) 
+                                                     - (IData)(0x7fU))) 
+                                                   >> 8U))
+                                          : ((0x2eU 
+                                              == (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__leading_1_position))
+                                              ? (1U 
+                                                 & (((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB) 
+                                                     - (IData)(0x7fU)) 
+                                                    >> 8U))
+                                              : (1U 
+                                                 & (((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB) 
+                                                     > 
+                                                     (0x1ffU 
+                                                      & ((IData)(0x80U) 
+                                                         + 
+                                                         (0xffU 
+                                                          & ((IData)(0x2eU) 
+                                                             - (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__leading_1_position)))))) 
+                                                    & ((((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB) 
+                                                         - (IData)(0x7fU)) 
+                                                        - 
+                                                        (0xffU 
+                                                         & ((IData)(0x2eU) 
+                                                            - (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__leading_1_position)))) 
+                                                       >> 8U)))))
+                                      : ((0x80U <= (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB)) 
+                                         & ((0x2fU 
+                                             == (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__leading_1_position))
+                                             ? (1U 
+                                                & (((IData)(1U) 
+                                                    + 
+                                                    ((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB) 
+                                                     - (IData)(0x7fU))) 
+                                                   >> 8U))
+                                             : (IData)(
+                                                       ((0x2eU 
+                                                         == (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__leading_1_position)) 
+                                                        & (((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB) 
+                                                            - (IData)(0x7fU)) 
+                                                           >> 8U)))))))));
+        bufp->chgBit(oldp+29,((1U & (((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB) 
+                                      - (IData)(0x7fU)) 
                                      >> 8U))));
-        bufp->chgBit(oldp+32,((0U == (0x1ffU & ((IData)(0x7eU) 
-                                                + ((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB) 
-                                                   - (IData)(0xfeU)))))));
-        bufp->chgQData(oldp+33,((0x3fffffffffffULL 
+        bufp->chgBit(oldp+30,((1U & (((IData)(1U) + 
+                                      ((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB) 
+                                       - (IData)(0x7fU))) 
+                                     >> 8U))));
+        bufp->chgBit(oldp+31,((1U & ((((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB) 
+                                       - (IData)(0x7fU)) 
+                                      - (0xffU & ((IData)(0x2eU) 
+                                                  - (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__leading_1_position)))) 
+                                     >> 8U))));
+        bufp->chgCData(oldp+32,(vlSelf->FP32_Multiplier_Combinatorial__DOT__DEBUG_FINAL_MAN),8);
+        bufp->chgCData(oldp+33,(vlSelf->FP32_Multiplier_Combinatorial__DOT__DEBUG_FINAL_EXP),8);
+        bufp->chgBit(oldp+34,((0x80U < (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB))));
+        bufp->chgBit(oldp+35,((0x80U > (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB))));
+        bufp->chgBit(oldp+36,((1U & (~ ((0x80U < (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB)) 
+                                        ^ (0x80U > (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB)))))));
+        bufp->chgQData(oldp+37,((0x3fffffffffffULL 
                                  & vlSelf->FP32_Multiplier_Combinatorial__DOT__final_Man)),48);
-        bufp->chgQData(oldp+35,((0x7fffffULL & (vlSelf->FP32_Multiplier_Combinatorial__DOT__final_Man 
+        bufp->chgQData(oldp+39,((0x7fffffULL & (vlSelf->FP32_Multiplier_Combinatorial__DOT__final_Man 
                                                 >> 0x17U))),48);
-        bufp->chgQData(oldp+37,((0xffffffffffffULL 
+        bufp->chgQData(oldp+41,((0xffffffffffffULL 
                                  & (1ULL + (0x7fffffULL 
                                             & (vlSelf->FP32_Multiplier_Combinatorial__DOT__final_Man 
                                                >> 0x17U))))),48);
-        bufp->chgQData(oldp+39,((0x7fffffffffffULL 
+        bufp->chgQData(oldp+43,((0x7fffffffffffULL 
                                  & ((1ULL + (0x7fffffULL 
                                              & (vlSelf->FP32_Multiplier_Combinatorial__DOT__final_Man 
                                                 >> 0x17U))) 
                                     >> 1U))),48);
-        bufp->chgBit(oldp+41,((1U & (IData)((0x7fffffULL 
+        bufp->chgBit(oldp+45,((1U & (IData)((0x7fffffULL 
                                              & (vlSelf->FP32_Multiplier_Combinatorial__DOT__final_Man 
                                                 >> 0x17U))))));
-        bufp->chgBit(oldp+42,((1U & (IData)((0xffffffULL 
+        bufp->chgBit(oldp+46,((1U & (IData)((0xffffffULL 
                                              & (vlSelf->FP32_Multiplier_Combinatorial__DOT__final_Man 
                                                 >> 0x16U))))));
-        bufp->chgBit(oldp+43,((0U != (0x3fffffU & (IData)(
+        bufp->chgBit(oldp+47,((0U != (0x3fffffU & (IData)(
                                                           (0x3fffffffffffULL 
                                                            & vlSelf->FP32_Multiplier_Combinatorial__DOT__final_Man))))));
-        bufp->chgSData(oldp+44,((0x1ffU & ((IData)(1U) 
+        bufp->chgSData(oldp+48,((0x1ffU & ((IData)(1U) 
                                            + (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__final_Exp)))),9);
-        bufp->chgIData(oldp+45,((0x7fffffU & ((((IData)(
+        bufp->chgIData(oldp+49,((0x7fffffU & ((((IData)(
                                                         (0xffffffULL 
                                                          & (vlSelf->FP32_Multiplier_Combinatorial__DOT__final_Man 
                                                             >> 0x16U))) 
@@ -189,7 +240,7 @@ void Vtop___024root__trace_chg_sub_0(Vtop___024root* vlSelf, VerilatedVcd::Buffe
                                                          (0x7fffffULL 
                                                           & (vlSelf->FP32_Multiplier_Combinatorial__DOT__final_Man 
                                                              >> 0x17U)))))),23);
-        bufp->chgCData(oldp+46,((0xffU & ((((IData)(
+        bufp->chgCData(oldp+50,((0xffU & ((((IData)(
                                                     (0xffffffULL 
                                                      & (vlSelf->FP32_Multiplier_Combinatorial__DOT__final_Man 
                                                         >> 0x16U))) 
@@ -222,30 +273,85 @@ void Vtop___024root__trace_chg_sub_0(Vtop___024root* vlSelf, VerilatedVcd::Buffe
                                                   + (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__final_Exp))
                                                : (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__final_Exp))
                                            : (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__final_Exp)))),8);
-        bufp->chgBit(oldp+47,(((0xfeU < (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__final_Exp))
+        bufp->chgBit(oldp+51,(((0xfeU < ((0x100U & 
+                                          (((0x80U 
+                                             < (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB))
+                                             ? ((0x2fU 
+                                                 == (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__leading_1_position))
+                                                 ? 
+                                                (1U 
+                                                 & (((IData)(1U) 
+                                                     + 
+                                                     ((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB) 
+                                                      - (IData)(0x7fU))) 
+                                                    >> 8U))
+                                                 : 
+                                                ((0x2eU 
+                                                  == (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__leading_1_position))
+                                                  ? 
+                                                 (1U 
+                                                  & (((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB) 
+                                                      - (IData)(0x7fU)) 
+                                                     >> 8U))
+                                                  : 
+                                                 (1U 
+                                                  & (((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB) 
+                                                      > 
+                                                      (0x1ffU 
+                                                       & ((IData)(0x80U) 
+                                                          + 
+                                                          (0xffU 
+                                                           & ((IData)(0x2eU) 
+                                                              - (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__leading_1_position)))))) 
+                                                     & ((((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB) 
+                                                          - (IData)(0x7fU)) 
+                                                         - 
+                                                         (0xffU 
+                                                          & ((IData)(0x2eU) 
+                                                             - (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__leading_1_position)))) 
+                                                        >> 8U)))))
+                                             : ((0x80U 
+                                                 <= (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB)) 
+                                                & ((0x2fU 
+                                                    == (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__leading_1_position))
+                                                    ? 
+                                                   (1U 
+                                                    & (((IData)(1U) 
+                                                        + 
+                                                        ((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB) 
+                                                         - (IData)(0x7fU))) 
+                                                       >> 8U))
+                                                    : (IData)(
+                                                              ((0x2eU 
+                                                                == (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__leading_1_position)) 
+                                                               & (((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA_plus_EB) 
+                                                                   - (IData)(0x7fU)) 
+                                                                  >> 8U)))))) 
+                                           << 8U)) 
+                                         | (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__final_Exp)))
                                 ? 1U : 0U)));
     }
-    bufp->chgIData(oldp+48,(vlSelf->alpha),32);
-    bufp->chgIData(oldp+49,(vlSelf->bravo),32);
-    bufp->chgIData(oldp+50,(vlSelf->delta),32);
-    bufp->chgCData(oldp+51,((0xffU & (vlSelf->alpha 
+    bufp->chgIData(oldp+52,(vlSelf->alpha),32);
+    bufp->chgIData(oldp+53,(vlSelf->bravo),32);
+    bufp->chgIData(oldp+54,(vlSelf->delta),32);
+    bufp->chgCData(oldp+55,((0xffU & (vlSelf->alpha 
                                       >> 0x17U))),8);
-    bufp->chgCData(oldp+52,((0xffU & (vlSelf->bravo 
+    bufp->chgCData(oldp+56,((0xffU & (vlSelf->bravo 
                                       >> 0x17U))),8);
-    bufp->chgCData(oldp+53,((0xffU & ((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__E_LeftBig)
+    bufp->chgCData(oldp+57,((0xffU & ((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__E_LeftBig)
                                        ? (vlSelf->alpha 
                                           >> 0x17U)
                                        : (vlSelf->bravo 
                                           >> 0x17U)))),8);
-    bufp->chgCData(oldp+54,((0xffU & ((vlSelf->alpha 
+    bufp->chgCData(oldp+58,((0xffU & ((vlSelf->alpha 
                                        >> 0x17U) - 
                                       (vlSelf->bravo 
                                        >> 0x17U)))),8);
-    bufp->chgCData(oldp+55,((0xffU & ((vlSelf->bravo 
+    bufp->chgCData(oldp+59,((0xffU & ((vlSelf->bravo 
                                        >> 0x17U) - 
                                       (vlSelf->alpha 
                                        >> 0x17U)))),8);
-    bufp->chgCData(oldp+56,((0xffU & (((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__E_LeftBig)
+    bufp->chgCData(oldp+60,((0xffU & (((IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__E_LeftBig)
                                         ? ((vlSelf->alpha 
                                             >> 0x17U) 
                                            - (vlSelf->bravo 
@@ -260,40 +366,40 @@ void Vtop___024root__trace_chg_sub_0(Vtop___024root* vlSelf, VerilatedVcd::Buffe
                                          ^ (0U == (0xffU 
                                                    & (vlSelf->bravo 
                                                       >> 0x17U))))))),8);
-    bufp->chgBit(oldp+57,((0U == (0xffU & (vlSelf->alpha 
+    bufp->chgBit(oldp+61,((0U == (0xffU & (vlSelf->alpha 
                                            >> 0x17U)))));
-    bufp->chgBit(oldp+58,((0U == (0xffU & (vlSelf->bravo 
+    bufp->chgBit(oldp+62,((0U == (0xffU & (vlSelf->bravo 
                                            >> 0x17U)))));
-    bufp->chgBit(oldp+59,((0xffU == (0xffU & (vlSelf->alpha 
+    bufp->chgBit(oldp+63,((0xffU == (0xffU & (vlSelf->alpha 
                                               >> 0x17U)))));
-    bufp->chgBit(oldp+60,((0xffU == (0xffU & (vlSelf->bravo 
+    bufp->chgBit(oldp+64,((0xffU == (0xffU & (vlSelf->bravo 
                                               >> 0x17U)))));
-    bufp->chgBit(oldp+61,(((0xffU & (vlSelf->alpha 
+    bufp->chgBit(oldp+65,(((0xffU & (vlSelf->alpha 
                                      >> 0x17U)) < (0xffU 
                                                    & (vlSelf->bravo 
                                                       >> 0x17U)))));
-    bufp->chgBit(oldp+62,((1U & (~ (((0xffU & (vlSelf->alpha 
+    bufp->chgBit(oldp+66,((1U & (~ (((0xffU & (vlSelf->alpha 
                                                >> 0x17U)) 
                                      < (0xffU & (vlSelf->bravo 
                                                  >> 0x17U))) 
                                     | (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__E_LeftBig))))));
-    bufp->chgBit(oldp+63,((vlSelf->alpha >> 0x1fU)));
-    bufp->chgBit(oldp+64,((vlSelf->bravo >> 0x1fU)));
-    bufp->chgBit(oldp+65,(((vlSelf->alpha ^ vlSelf->bravo) 
+    bufp->chgBit(oldp+67,((vlSelf->alpha >> 0x1fU)));
+    bufp->chgBit(oldp+68,((vlSelf->bravo >> 0x1fU)));
+    bufp->chgBit(oldp+69,(((vlSelf->alpha ^ vlSelf->bravo) 
                            >> 0x1fU)));
-    bufp->chgIData(oldp+66,((0x7fffffU & vlSelf->alpha)),23);
-    bufp->chgIData(oldp+67,((0x7fffffU & vlSelf->bravo)),23);
-    bufp->chgIData(oldp+68,((((0U != (0xffU & (vlSelf->alpha 
+    bufp->chgIData(oldp+70,((0x7fffffU & vlSelf->alpha)),23);
+    bufp->chgIData(oldp+71,((0x7fffffU & vlSelf->bravo)),23);
+    bufp->chgIData(oldp+72,((((0U != (0xffU & (vlSelf->alpha 
                                                >> 0x17U))) 
                               << 0x17U) | (0x7fffffU 
                                            & vlSelf->alpha))),24);
-    bufp->chgIData(oldp+69,((0x7fffffU & vlSelf->alpha)),24);
-    bufp->chgIData(oldp+70,((((0U != (0xffU & (vlSelf->bravo 
+    bufp->chgIData(oldp+73,((0x7fffffU & vlSelf->alpha)),24);
+    bufp->chgIData(oldp+74,((((0U != (0xffU & (vlSelf->bravo 
                                                >> 0x17U))) 
                               << 0x17U) | (0x7fffffU 
                                            & vlSelf->bravo))),24);
-    bufp->chgIData(oldp+71,((0x7fffffU & vlSelf->bravo)),24);
-    bufp->chgIData(oldp+72,(((IData)(((0U == (0x7f800000U 
+    bufp->chgIData(oldp+75,((0x7fffffU & vlSelf->bravo)),24);
+    bufp->chgIData(oldp+76,(((IData)(((0U == (0x7f800000U 
                                               & vlSelf->alpha)) 
                                       & (0U != (0x7fffffU 
                                                 & vlSelf->alpha))))
@@ -302,7 +408,7 @@ void Vtop___024root__trace_chg_sub_0(Vtop___024root* vlSelf, VerilatedVcd::Buffe
                                                    >> 0x17U))) 
                                   << 0x17U) | (0x7fffffU 
                                                & vlSelf->alpha)))),24);
-    bufp->chgIData(oldp+73,(((IData)(((0U == (0x7f800000U 
+    bufp->chgIData(oldp+77,(((IData)(((0U == (0x7f800000U 
                                               & vlSelf->bravo)) 
                                       & (0U != (0x7fffffU 
                                                 & vlSelf->bravo))))
@@ -311,15 +417,15 @@ void Vtop___024root__trace_chg_sub_0(Vtop___024root* vlSelf, VerilatedVcd::Buffe
                                                    >> 0x17U))) 
                                   << 0x17U) | (0x7fffffU 
                                                & vlSelf->bravo)))),24);
-    bufp->chgBit(oldp+74,(((0x7fffffU & vlSelf->alpha) 
+    bufp->chgBit(oldp+78,(((0x7fffffU & vlSelf->alpha) 
                            < (0x7fffffU & vlSelf->bravo))));
-    bufp->chgBit(oldp+75,(((0x7fffffU & vlSelf->alpha) 
+    bufp->chgBit(oldp+79,(((0x7fffffU & vlSelf->alpha) 
                            > (0x7fffffU & vlSelf->bravo))));
-    bufp->chgBit(oldp+76,(((0x7fffffU & vlSelf->alpha) 
+    bufp->chgBit(oldp+80,(((0x7fffffU & vlSelf->alpha) 
                            == (0x7fffffU & vlSelf->bravo))));
-    bufp->chgBit(oldp+77,((0U == (0x7fffffU & vlSelf->alpha))));
-    bufp->chgBit(oldp+78,((0U == (0x7fffffU & vlSelf->bravo))));
-    bufp->chgBit(oldp+79,((((0xffU == (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA)) 
+    bufp->chgBit(oldp+81,((0U == (0x7fffffU & vlSelf->alpha))));
+    bufp->chgBit(oldp+82,((0U == (0x7fffffU & vlSelf->bravo))));
+    bufp->chgBit(oldp+83,((((0xffU == (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EA)) 
                             & (0U != (0x7fffffU & vlSelf->alpha))) 
                            | ((0xffU == (IData)(vlSelf->FP32_Multiplier_Combinatorial__DOT__EB)) 
                               & (0U != (0x7fffffU & vlSelf->bravo))))));

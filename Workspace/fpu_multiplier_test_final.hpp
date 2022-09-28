@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
-#define VERBOSE
+#define VERBOSE 1
 #define RANDOM
 #define ULL unsigned long long
 #endif
@@ -362,7 +362,7 @@ int leading_1_detector_48bit(unsigned long long tmp){
 
 float32 my_multiplier(struct float32 alpha, struct float32 bravo)
 {
-    #ifdef VERBOSE
+    #if VERBOSE >= 2
     printf("alpha(0x%08llx %f) is ",(ULL)alpha.total_int, alpha.total); print_binary((ULL)alpha.total_int); printf("\n");
     printf("bravo(0x%08llx %f) is ",(ULL)bravo.total_int, bravo.total); print_binary((ULL)bravo.total_int); printf("\n");
     #endif
@@ -412,7 +412,7 @@ float32 my_multiplier(struct float32 alpha, struct float32 bravo)
     왜냐하면 어차피 denormalized number 의 E-127에서 E는 0이 아니라 1로 취급됨.
     */
 
-    #ifdef VERBOSE
+    #if VERBOSE >= 2
     printf(" \
     EA = %d \
     EA0 = %d \
@@ -446,7 +446,7 @@ float32 my_multiplier(struct float32 alpha, struct float32 bravo)
     int EA_plus_EB = EA + EB; // EA and EB is unsigined int
     int EA_plus_EB_minus_254 = EA_plus_EB - 254;
 
-    #ifdef VERBOSE
+    #if VERBOSE >= 2
     printf("ADD EXPONENT\n");
     printf("EA_plus_EB is %d\n",EA_plus_EB);
     printf("EA_plus_EB_minus_254 is %d\n",EA_plus_EB_minus_254);
@@ -476,7 +476,7 @@ float32 my_multiplier(struct float32 alpha, struct float32 bravo)
     Denorm1 = ((EA0&&(!MA0)) ? isDenorm2 : isDenorm1);
     Denorm2 = ((EB0&&(!MB0)) ? isDenorm4 : isDenorm3);
     
-    #ifdef VERBOSE
+    #if VERBOSE >= 2
     printf(" \
     M_LeftBig = %d \
     M_RightBig = %d \
@@ -485,7 +485,7 @@ float32 my_multiplier(struct float32 alpha, struct float32 bravo)
     , M_LeftBig, M_RightBig, M_Equal);
     #endif
 
-    #ifdef VERBOSE
+    #if VERBOSE >= 2
     printf("Denorm1(0x%x) is ",Denorm1); print_binary(Denorm1); printf("\n");
     printf("Denorm2(0x%x) is ",Denorm2); print_binary(Denorm2); printf("\n");
     #endif
@@ -495,7 +495,7 @@ float32 my_multiplier(struct float32 alpha, struct float32 bravo)
 
     int G, R, S;
     int leading_1_position = leading_1_detector_48bit(M_48_Original);
-    #ifdef VERBOSE
+    #if VERBOSE >= 2
     printf("M_48_Original == d1 * d2 = 0x%llx\n", M_48_Original);
     printf("leading_1_position %d\n", leading_1_position);
     #endif
@@ -506,9 +506,10 @@ float32 my_multiplier(struct float32 alpha, struct float32 bravo)
     int UDFL = 0;
     int OVFL = 0;
     long long Until_46th = 46 - leading_1_position;
-    long long Until_126 = -126 - E;
+    long long Until_126 = -126 - EA_plus_EB_minus_254;
     ULL Man1, Man2, Man3, Man4, Man5, final_Man;
     int Exp1, Exp2, Exp3, Exp4, Exp5, final_Exp;
+    int Until_126_2 = 99999999;
 
     Man1 = M_48_Original;
     Man2 = M_48_Original>>1;
@@ -517,7 +518,7 @@ float32 my_multiplier(struct float32 alpha, struct float32 bravo)
     Man4 = M_48_Original<<Until_46th;
     Man5 = M_48_Original<<Until_46th;
         // int Until_126_2 = leading_1_detector_48bit(Man5);
-        int Until_126_2 = -126 - (Exp - Until_46th);
+        Until_126_2 = -126 - (Exp - Until_46th);
         Man5 = Man5 >> Until_126_2;
         if(Until_126_2 > 48) Man5 = 0x00;
     
@@ -528,9 +529,10 @@ float32 my_multiplier(struct float32 alpha, struct float32 bravo)
     Exp4 = 1;
     Exp5 = Exp - Until_46th;
 
-    #ifdef VERBOSE
+    #if VERBOSE >= 2
     printf("Until_46th %d\n", Until_46th);
     printf("Until_126 %d\n", Until_126);
+    printf("Until_126_2 %d\n", Until_126_2);
     printf("E is %d\n",E);
     printf("Exp is %d\n",Exp);
     printf("Man1(0x%llx) is ", Man1); print_binary(Man1); printf("\n");
@@ -538,11 +540,11 @@ float32 my_multiplier(struct float32 alpha, struct float32 bravo)
     printf("Man3(0x%llx) is ", Man3); print_binary(Man3); printf("\n");
     printf("Man4(0x%llx) is ", Man4); print_binary(Man4); printf("\n");
     printf("Man5(0x%llx) is ", Man5); print_binary(Man5); printf("\n");
-    printf("Exp1 is %d\n",Exp1);
-    printf("Exp2 is %d\n",Exp2);
-    printf("Exp3 is %d\n",Exp3);
-    printf("Exp4 is %d\n",Exp4);
-    printf("Exp5 is %d\n",Exp5);
+    printf("Exp1(0x%x) is %d\n",Exp1,Exp1);
+    printf("Exp2(0x%x) is %d\n",Exp2,Exp2);
+    printf("Exp3(0x%x) is %d\n",Exp3,Exp3);
+    printf("Exp4(0x%x) is %d\n",Exp4,Exp4);
+    printf("Exp5(0x%x) is %d\n",Exp5,Exp5);
     #endif
     // Final_Man Setter
 
@@ -651,7 +653,7 @@ float32 my_multiplier(struct float32 alpha, struct float32 bravo)
 
 
 
-    #ifdef VERBOSE
+    #if VERBOSE >= 2
     printf("final_Man(0x%llx) is ", final_Man); print_binary(final_Man); printf("\n");
     printf("DEBUF_FINAL_MAN(0x%x)\n", DEBUG_FINAL_MAN);
     printf("DEBUF_FINAL_EXP(0x%x)\n", DEBUG_FINAL_EXP);
@@ -687,7 +689,7 @@ float32 my_multiplier(struct float32 alpha, struct float32 bravo)
     delta.mantissa = M_48;
 
 
-    #ifdef VERBOSE
+    #if VERBOSE >= 2
     printf("final M_48(0x%llx) is ",M_48); print_binary(M_48); printf("\n");
     printf("G: %d\n", G);
     printf("R: %d\n", R);
@@ -700,7 +702,7 @@ float32 my_multiplier(struct float32 alpha, struct float32 bravo)
     float32_printer(delta, "delta");
     #endif
 
-    #ifdef VERBOSE
+    #if VERBOSE >= 2
     printf("delta.total(%f) : 0b", delta.total); print_binary(delta.total_int); printf("\n");
     printf("charlie.total(%f) : 0b", charlie.total); print_binary(charlie.total_int); printf("\n");
     printf("charlie vs delta : %f vs %f\n", charlie.total, delta.total);

@@ -16,11 +16,14 @@ VL_MODULE(Vtop___024root) {
     CData/*7:0*/ FP32_Multiplier_Combinatorial__DOT__EB;
     CData/*0:0*/ FP32_Multiplier_Combinatorial__DOT__E_LeftBig;
     CData/*7:0*/ FP32_Multiplier_Combinatorial__DOT__leading_1_position;
+    CData/*7:0*/ FP32_Multiplier_Combinatorial__DOT__Until_126_2;
+    CData/*7:0*/ FP32_Multiplier_Combinatorial__DOT__final_Exp;
     CData/*7:0*/ FP32_Multiplier_Combinatorial__DOT__DEBUG_FINAL_MAN;
     CData/*7:0*/ FP32_Multiplier_Combinatorial__DOT__DEBUG_FINAL_EXP;
     SData/*8:0*/ FP32_Multiplier_Combinatorial__DOT__EA_plus_EB;
-    SData/*8:0*/ FP32_Multiplier_Combinatorial__DOT__Until_126_2;
-    SData/*8:0*/ FP32_Multiplier_Combinatorial__DOT__final_Exp;
+    SData/*8:0*/ FP32_Multiplier_Combinatorial__DOT__EA_plus_EB_minus_254;
+    SData/*8:0*/ FP32_Multiplier_Combinatorial__DOT__E;
+    SData/*8:0*/ FP32_Multiplier_Combinatorial__DOT__Exp;
     VL_IN(alpha,31,0);
     VL_IN(bravo,31,0);
     VL_OUT(delta,31,0);
