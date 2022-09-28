@@ -12,59 +12,22 @@
 #include "Vtop.h"
 #include "verilated_vcd_c.h"
 
-#include <stdio.h>
-#include <time.h>
-#include <stdlib.h>
-#define RANDOM
-// #define VERBOSE
-#define ULL unsigned long long
-
-struct float32{ // 1 8 23
-    union{
-        struct{
-            unsigned int mantissa : 23;
-            unsigned short exponent : 8;
-            unsigned short sign : 1;
-        };
-        float total;
-        int total_int;
-    };
-};
-
-/* When first call, put depth := 1
- * 
-*/
-void print_binary_rec(unsigned long long foo, unsigned long long depth)
-{
-    int ret;
-    if(foo) {
-        print_binary_rec((unsigned long long)foo>>1, depth+1);
-        if(depth%4) printf("%llu",foo&1);
-        else printf("_%llu",foo&1);
-    }
-}
-
-void print_binary(unsigned long long foo)
-{
-    // printf("foo = %d %f\n", foo.total_int, foo.total);
-    if(foo == 0)
-        printf("0");
-    else
-        print_binary_rec(foo,1);
-}
+#include "fpu_multiplier_test_final.hpp"
 
 void test_case(Vtop* top, VerilatedVcdC* wave_fp, float32 alpha, float32 bravo, int time){
-    float32 delta, charlie;
+    float32 delta, charlie, delta_sim;
     top->alpha = alpha.total_int;
     top->bravo = bravo.total_int;
     top->eval();
     delta.total_int = top->delta;
+    delta_sim = my_multiplier(alpha, bravo);
     charlie.total = alpha.total * bravo.total;
     wave_fp->dump(time);
-    printf("alpha(0x%08llx %f) is ",(ULL)alpha.total_int, alpha.total); print_binary((ULL)alpha.total_int); printf("\n");
-    printf("bravo(0x%08llx %f) is ",(ULL)bravo.total_int, bravo.total); print_binary((ULL)bravo.total_int); printf("\n");
-    printf("delta(0x%08llx %f) is ",(ULL)delta.total_int, delta.total); print_binary((ULL)delta.total_int); printf("\n");
-    printf("charlie(0x%08llx %f) is ",(ULL)charlie.total_int, charlie.total); print_binary((ULL)charlie.total_int); printf("\n");
+    printf("Input:Alpha\t\t(0x%08llx %f) is ",(ULL)alpha.total_int, alpha.total); print_binary((ULL)alpha.total_int); printf("\n");
+    printf("Input:Bravo\t\t(0x%08llx %f) is ",(ULL)bravo.total_int, bravo.total); print_binary((ULL)bravo.total_int); printf("\n");
+    printf("Result:Verilog\t(0x%08llx %f) is ",(ULL)delta.total_int, delta.total); print_binary((ULL)delta.total_int); printf("\n");
+    printf("Result:CPP_Sim\t(0x%08llx %f) is ",(ULL)delta_sim.total_int, delta_sim.total); print_binary((ULL)delta_sim.total_int); printf("\n");
+    printf("Wanted_Result\t(0x%08llx %f) is ",(ULL)charlie.total_int, charlie.total); print_binary((ULL)charlie.total_int); printf("\n");
     if(delta.total_int != charlie.total_int){
         printf("%d: ERROR\n", time);
     }else{
@@ -96,6 +59,14 @@ int main(int argc, char** argv, char** env) {
     wave_fp->open("./top.vcd");
 
     float32 aa, bb;
+
+    aa.total_int = 0x643c9869; bb.total_int = 0x66334873;
+    test_case(top, wave_fp, aa, bb, time);
+    time++;
+
+    aa.total_int = 0x6b8b4567; bb.total_int = 0x327b23c6;
+    test_case(top, wave_fp, aa, bb, time);
+    time++;
 
     aa.total = 0.5; bb.total = 0.75;
     test_case(top, wave_fp, aa, bb, time);

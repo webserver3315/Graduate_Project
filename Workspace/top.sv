@@ -1,3 +1,5 @@
+`define DEBUG
+
 module leading_1_detector_48bit
     (
         input wire  [47:0]  tmp,
@@ -195,7 +197,7 @@ module FP32_Multiplier_Combinatorial
     assign EB = EB_Original + {7'd0, EB0};
 
     assign EA_plus_EB = EA + EB; // 9Bit 해야 안전하지 않아? 맞겠지?
-    assign EA_plus_EB_minus_254 = EA_plus_EB - 8'd254;
+    assign EA_plus_EB_minus_254 = EA_plus_EB - 9'd254;
 
     /********************** Get Sign ************************/
     wire SA, SB, final_sign;
@@ -241,7 +243,7 @@ module FP32_Multiplier_Combinatorial
     assign Until_46th = 8'd46 - leading_1_position;
     assign Until_126 = -9'd126 - E;
 
-    wire        [47:0]  Man1, Man2, Man3, Man4, Man5_tmp, Man5;
+    wire        [47:0]  Man1, Man2, Man3, Man4, Man5_tmp, Man5, Man3_tmp;
     wire signed [8:0]   Exp1, Exp2, Exp3, Exp4, Exp5;
     reg         [47:0]  final_Man;
     reg         [8:0]   final_Exp;
@@ -249,7 +251,12 @@ module FP32_Multiplier_Combinatorial
     assign Man1 = M_48_Original;
 
     assign Man2 = M_48_Original>>1;
-    assign Man3 = M_48_Original>>Until_126;
+    assign Man3_tmp = M_48_Original>>Until_126; // Until 126, Until 46은 모두 음수가 가능한 수다!!!
+    /*
+        Man3 = M_48_Original>>Until_126;
+        if(Until_126 > 48) Man3 = 0x00;
+    */
+    assign Man3 = (Until_126[8] ? M_48_Original : Man3_tmp);
         // if(Until_126 > 48) Man3 = 0x00;
     assign Man4 = M_48_Original<<Until_46th;
     assign Man5_tmp = M_48_Original<<Until_46th;
@@ -263,96 +270,169 @@ module FP32_Multiplier_Combinatorial
     assign Exp4 = 1;
     assign Exp5 = Exp - Until_46th;
 
-
+    `ifdef DEBUG
+    reg [7:0]   DEBUG_FINAL_MAN = 8'd0;
+    reg [7:0]   DEBUG_FINAL_EXP = 8'd0;
+    `endif
+    reg [8:0]   DEBUG_E_plus_126      =   E + 9'd126; 
+    reg         DEBUG_ELB       =   ~DEBUG_E_plus_126[8]; // E > -126
+    reg         DEBUG_ERB       =   DEBUG_E_plus_126[8]; // E < -126
+    reg         DEBUG_EEQ       =   (DEBUG_E_plus_126 == 0); // E == -126, ELB ^ EEQ 해도 됨.
     // ******************************************** final_Man Setter *****************************/
     always_comb begin
-        if(E > -9'd126) begin
+        if(DEBUG_ELB) begin
             if(leading_1_position == 8'd47) begin // a
                 final_Man = Man2;
+                `ifdef DEBUG
+                DEBUG_FINAL_MAN = 8'd1;
+                `endif
             end
             else if(leading_1_position == 8'd46) begin // b
                 final_Man = Man1;
+                `ifdef DEBUG
+                DEBUG_FINAL_MAN = 8'd2;
+                `endif
             end 
             else begin // c
                 if(E - Until_46th < -9'd126) begin // c-e-i
                     final_Man = Man5;
+                    `ifdef DEBUG
+                    DEBUG_FINAL_MAN = 8'd3;
+                    `endif
                 end
                 else begin // c-b or c-h
                     final_Man = Man4; 
+                    `ifdef DEBUG
+                    DEBUG_FINAL_MAN = 8'd4;
+                    `endif
                 end
             end
         end
-        else if(E < -9'd126) begin
+        else if(DEBUG_ERB) begin
             if(leading_1_position == 8'd47) begin // d
                 final_Man = Man3;
+                `ifdef DEBUG
+                DEBUG_FINAL_MAN = 8'd5;
+                `endif
             end
             else if(leading_1_position == 8'd46) begin // e
                 final_Man = Man3;
+                `ifdef DEBUG
+                DEBUG_FINAL_MAN = 8'd6;
+                `endif
             end
             else begin // f
                 final_Man = Man3;
+                `ifdef DEBUG
+                DEBUG_FINAL_MAN = 8'd7;
+                `endif
             end
         end
         else begin// Equal
             if(leading_1_position == 8'd47) begin // g
                 final_Man = Man2;
+                `ifdef DEBUG
+                DEBUG_FINAL_MAN = 8'd8;
+                `endif
             end
             else if(leading_1_position == 8'd46) begin // h
-                    final_Man = Man1;
+                final_Man = Man1;
+                `ifdef DEBUG
+                DEBUG_FINAL_MAN = 8'd9;
+                `endif
             end
             else begin // i
-                    final_Man = Man1;
+                final_Man = Man1;
+                `ifdef DEBUG
+                DEBUG_FINAL_MAN = 8'hA;
+                `endif
             end
         end
     end
 
     // ******************************************** final_Exp Setter *****************************/
     always_comb begin
-        if(E > -9'd126) begin
+        if(DEBUG_ELB) begin
             if(leading_1_position == 8'd47) begin // a
                 final_Exp = Exp2;
+                `ifdef DEBUG
+                DEBUG_FINAL_EXP = 8'd1;
+                `endif
             end
             else if(leading_1_position == 8'd46) begin // b
                 final_Exp = Exp1;
+                `ifdef DEBUG
+                DEBUG_FINAL_EXP = 8'd2;
+                `endif
             end
             else begin // c
                 if(E-Until_46th > -9'd126) begin // c-b
                     final_Exp = Exp5;
+                    `ifdef DEBUG
+                    DEBUG_FINAL_EXP = 8'd3;
+                    `endif
                 end
                 else if(E-Until_46th == -9'd126) begin // c-h
                     final_Exp = Exp4;
+                    `ifdef DEBUG
+                    DEBUG_FINAL_EXP = 8'd4;
+                    `endif
                 end
                 else begin // c-e-i
                     final_Exp = Exp3;
+                    `ifdef DEBUG
+                    DEBUG_FINAL_EXP = 8'd5;
+                    `endif
                 end
             end
         end
-        else if(E < -9'd126) begin
+        else if(DEBUG_ERB) begin
             if(leading_1_position == 8'd47) begin // d
                 if(Until_126 == 1) begin // d-h
                     final_Exp = Exp4;
+                    `ifdef DEBUG
+                    DEBUG_FINAL_EXP = 8'd6;
+                    `endif
                 end
                 else begin // d-i
                     final_Exp = Exp3;
+                    `ifdef DEBUG
+                    DEBUG_FINAL_EXP = 8'd7;
+                    `endif
                 end
                 
             end
             else if(leading_1_position == 8'd46) begin // e
                 final_Exp = Exp3;
+                `ifdef DEBUG
+                DEBUG_FINAL_EXP = 8'd8;
+                `endif
             end
             else begin // f
                 final_Exp = Exp3;
+                `ifdef DEBUG
+                DEBUG_FINAL_EXP = 8'd9;
+                `endif
             end
         end
         else begin// Equal
             if(leading_1_position == 8'd47) begin // g
                 final_Exp = Exp2;
+                `ifdef DEBUG
+                DEBUG_FINAL_EXP = 8'hA;
+                `endif
             end
             else if(leading_1_position == 8'd46) begin // h
                 final_Exp = Exp1;
+                `ifdef DEBUG
+                DEBUG_FINAL_EXP = 8'hB;
+                `endif
             end
             else begin // i
                 final_Exp = Exp3;
+                `ifdef DEBUG
+                DEBUG_FINAL_EXP = 8'hC;
+                `endif
             end
         end
     end
@@ -375,6 +455,10 @@ module FP32_Multiplier_Combinatorial
     reg     [22:0]  delta_mantissa;
     reg     [7:0]   delta_exp;
 
+    wire            NAN, OVFL;
+    assign  NAN     = ((EA == 8'hFF && MA != 0) || (EB == 8'hFF && MB != 0)) ? 1'b1 : 1'b0;
+    assign OVFL     = (final_Exp > 9'd254) ? 1 : 0;
+
     always_comb begin
         if((R & S) | (G & R & (~S))) begin
             if(M_48_46th_Hidden_RSh23_plus_1[23]) begin
@@ -392,9 +476,6 @@ module FP32_Multiplier_Combinatorial
         end
     end
 
-    wire            NAN, OVFL;
-    assign  NAN     = ((EA == 8'hFF && MA != 0) || (EB == 8'hFF && MB != 0)) ? 1'b1 : 1'b0;
-    assign  OVFL    = (delta_exp > 254) ? 1'b1 : 1'b0;
 
     always_comb begin
         delta[31] = final_sign;

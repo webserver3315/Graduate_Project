@@ -367,6 +367,7 @@ RENORM:
     int lefted_frac_truncated = lefted_frac & 0x007FFFFF;
     int lefted_frac_righted = lefted_frac >> 1;
     int lefted_frac_righted_truncated = lefted_frac_righted & 0x007FFFFF;
+    
     #ifdef VERBOSE
     printf("adder_output: "); print_binary(adder_output); printf("\n");
     printf("mantissa_24th: "); print_binary(mantissa_24th); printf("\n");
