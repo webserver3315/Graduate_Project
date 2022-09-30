@@ -12,26 +12,26 @@
 #include "Vtop.h"
 #include "verilated_vcd_c.h"
 
-#include "fpu_multiplier_test_final.hpp"
+#include "fpu_adder_test_final.hpp"
 
-void test_case(Vtop* top, VerilatedVcdC* wave_fp, float32 alpha, float32 bravo, int time){
+void test_case(Vtop* top, VerilatedVcdC* wave_fp, float32 alpha, float32 bravo, int kazu){
     float32 delta, charlie, delta_sim;
     top->alpha = alpha.total_int;
     top->bravo = bravo.total_int;
     top->eval();
     delta.total_int = top->delta;
-    delta_sim = my_multiplier(alpha, bravo);
-    charlie.total = alpha.total * bravo.total;
-    wave_fp->dump(time);
+    delta_sim = my_adder(alpha, bravo);
+    charlie.total = alpha.total + bravo.total;
+    wave_fp->dump(kazu);
     printf("Input:Alpha\t\t(0x%08llx %f) is ",(ULL)alpha.total_int, alpha.total); print_binary((ULL)alpha.total_int); printf("\n");
     printf("Input:Bravo\t\t(0x%08llx %f) is ",(ULL)bravo.total_int, bravo.total); print_binary((ULL)bravo.total_int); printf("\n");
     printf("Result:Verilog\t(0x%08llx %f) is ",(ULL)delta.total_int, delta.total); print_binary((ULL)delta.total_int); printf("\n");
     printf("Result:CPP_Sim\t(0x%08llx %f) is ",(ULL)delta_sim.total_int, delta_sim.total); print_binary((ULL)delta_sim.total_int); printf("\n");
     printf("Wanted_Result\t(0x%08llx %f) is ",(ULL)charlie.total_int, charlie.total); print_binary((ULL)charlie.total_int); printf("\n");
     if(delta.total_int != charlie.total_int){
-        printf("%d: ERROR\n", time);
+        printf("%d: ERROR\n", kazu);
     }else{
-        printf("%d: SAME\n", time);
+        printf("%d: SAME\n", kazu);
     }
     printf("\n");
 }
@@ -53,51 +53,54 @@ int main(int argc, char** argv, char** env) {
     Verilated::traceEverOn(true);
     VerilatedVcdC* wave_fp = new VerilatedVcdC;
 
-    int time = 0;
+    int kazu = 0;
     top->trace(wave_fp, 999);
     printf("waveform file name is top.vcd\n");
     wave_fp->open("./top.vcd");
 
     float32 aa, bb;
 
-    aa.total_int = 0x180115be; bb.total_int = 0x235ba861;
-    test_case(top, wave_fp, aa, bb, time);
-    time++;
-
     aa.total = 0.5; bb.total = 0.4375;
-    test_case(top, wave_fp, aa, bb, time);
-    time++;
+    test_case(top, wave_fp, aa, bb, kazu); kazu++;
 
-    aa.total_int = 0x643c9869; bb.total_int = 0x66334873;
-    test_case(top, wave_fp, aa, bb, time);
-    time++;
-
-    aa.total_int = 0x6b8b4567; bb.total_int = 0x327b23c6;
-    test_case(top, wave_fp, aa, bb, time);
-    time++;
-
+    aa.total = 0.5; bb.total = -0.4375;
+    test_case(top, wave_fp, aa, bb, kazu); kazu++;
     aa.total = 0.5; bb.total = 0.75;
-    test_case(top, wave_fp, aa, bb, time);
-    time++;
-
-    aa.total = 0; bb.total = 0;
-    test_case(top, wave_fp, aa, bb, time);
-    time++;
-
-    aa.total = 0; bb.total = 0;
-    test_case(top, wave_fp, aa, bb, time);
-    time++;
-
+    test_case(top, wave_fp, aa, bb, kazu); kazu++;
     aa.total = -0.5; bb.total = 0.75;
-    test_case(top, wave_fp, aa, bb, time);
-    time++;
+    test_case(top, wave_fp, aa, bb, kazu); kazu++;
+    aa.total = -0.5; bb.total = -0.75;
+    test_case(top, wave_fp, aa, bb, kazu); kazu++;
+    // cc.total = aa.total + bb.total;
+    
+    aa.total_int = 551542477; bb.total_int = 1881522032;
+    test_case(top, wave_fp, aa, bb, kazu); kazu++;
+    
+    aa.total_int = 1656830887; bb.total_int = 1386443347;
+    test_case(top, wave_fp, aa, bb, kazu); kazu++;
 
-    for(int i=0;i<100000 ;i++){
+    // 예시: https://stackoverflow.com/questions/51661257/binary-floating-point-addition-algorithm
+    aa.total_int = 0b00001000111100110110010010011100; 
+    bb.total_int = 0b00000000000011000111111010000100; 
+    test_case(top, wave_fp, aa, bb, kazu); kazu++;
+    
+    aa.total_int = 1352740975; bb.total_int = 1207161653;
+    test_case(top, wave_fp, aa, bb, kazu); kazu++;
+    
+    aa.total_int = 1173666029; bb.total_int = 1167651708;
+    test_case(top, wave_fp, aa, bb, kazu); kazu++;
+
+    aa.total_int = 977394179; bb.total_int = 961550550;
+    test_case(top, wave_fp, aa, bb, kazu); kazu++;
+
+    #ifdef RANDOM
+    srand(time(NULL));
+    for(int i=0;i<1000;i++){
         aa.total_int = rand();
         bb.total_int = rand();
-        test_case(top, wave_fp, aa, bb, time);
-        time++;
+        test_case(top, wave_fp, aa, bb, kazu); kazu++;
     }
+    #endif
 
     // Final model cleanup
     top->final();

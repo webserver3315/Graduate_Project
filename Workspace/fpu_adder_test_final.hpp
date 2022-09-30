@@ -1,20 +1,15 @@
+#ifndef BASICS
+
+#define BASICS
 #include <stdio.h>
 #include <time.h>
-#include <stdlib.h>
-// #define VERBOSE
+#include <cstdlib>
+
+#define VERBOSE 1
 #define RANDOM
+#define ULL unsigned long long
 
-struct float16{ // 1 5 10
-    union{
-        struct{
-            unsigned short sign : 1;
-            unsigned short exponent : 5;
-            unsigned short mantissa : 10;
-        };
-        unsigned short total;
-    };
-};
-
+#endif
 struct float32{ // 1 8 23
     union{
         struct{
@@ -146,9 +141,9 @@ void edge_setting(){
 }
 int leading_1_detector(int tmp)
 {
-    if(tmp & 1<<23){
+    if(tmp & 1<<23){ // tmp[23]
         return 0;   
-    }else if(tmp & 1<<22){
+    }else if(tmp & 1<<22){ // tmp[22]
         return 1;
     }else if(tmp & 1<<21){
         return 2;
@@ -164,42 +159,43 @@ int leading_1_detector(int tmp)
         return 7;
     }else if(tmp & 0b00000000000000001000000000000000){
         return 8;
-    }else if(tmp & 0b00000000000000000100000000000000){
+    }else if(tmp & 1<<14){
         return 9;
-    }else if(tmp & 0b00000000000000000010000000000000){
+    }else if(tmp & 1<<13){
         return 10;
-    }else if(tmp & 0b00000000000000000001000000000000){
+    }else if(tmp & 1<<12){
         return 11;
-    }else if(tmp & 0b00000000000000000000100000000000){
+    }else if(tmp & 1<<11){
         return 12;
-    }else if(tmp & 0b00000000000000000000010000000000){
+    }else if(tmp & 1<<10){
         return 13;
-    }else if(tmp & 0b00000000000000000000001000000000){
+    }else if(tmp & 1<<9){
         return 14;
-    }else if(tmp & 0b00000000000000000000000100000000){
+    }else if(tmp & 1<<8){
         return 15;
-    }else if(tmp & 0b00000000000000000000000010000000){
+    }else if(tmp & 1<<7){
         return 16;
-    }else if(tmp & 0b00000000000000000000000001000000){
+    }else if(tmp & 1<<6){
         return 17;
-    }else if(tmp & 0b00000000000000000000000000100000){
+    }else if(tmp & 1<<5){
         return 18;
-    }else if(tmp & 0b00000000000000000000000000010000){
+    }else if(tmp & 1<<4){
         return 19;
-    }else if(tmp & 0b00000000000000000000000000001000){
+    }else if(tmp & 1<<3){
         return 20;
-    }else if(tmp & 0b00000000000000000000000000000100){
+    }else if(tmp & 1<<2){ // tmp[2]
         return 21;
-    }else if(tmp & 0b00000000000000000000000000000010){
+    }else if(tmp & 1<<1){ // tmp[1]
         return 22;
-    }else if(tmp & 0b00000000000000000000000000000001){
+    }else if(tmp & 1<<0){ // tmp[0]
         return 23;
     }else{
         return 0;
     }
     
 }
-int my_adder(struct float32 alpha, struct float32 bravo)
+
+float32 my_adder(struct float32 alpha, struct float32 bravo)
 {
     struct float32 charlie, delta; // charlie: Correct answer
     charlie.total = alpha.total + bravo.total;
@@ -246,7 +242,7 @@ int my_adder(struct float32 alpha, struct float32 bravo)
     왜냐하면 어차피 denormalized number 의 E-127에서 E는 0이 아니라 1로 취급됨.
     */
 
-    #ifdef VERBOSE
+    #if VERBOSE >= 2
     printf(" \
     EA = %d \
     EA0 = %d \
@@ -271,7 +267,7 @@ int my_adder(struct float32 alpha, struct float32 bravo)
     Larger_E, Right_Shift);
     #endif
     
-    /*********************** Add Mantissa ******************************/
+    /*********************** Setting Up Mantissa ******************************/
     int MA, MB, isDenorm1, isDenorm2, isDenorm3, isDenorm4;
     int Denorm1, Denorm2;
     int M_RightBig, M_LeftBig, M_Equal, MA0, MB0;
@@ -290,7 +286,7 @@ int my_adder(struct float32 alpha, struct float32 bravo)
     Denorm1 = ((EA0&&(!MA0)) ? isDenorm2 : isDenorm1);
     Denorm2 = ((EB0&&(!MB0)) ? isDenorm4 : isDenorm3);
     
-    #ifdef VERBOSE
+    #if VERBOSE >= 2
     printf(" \
     M_LeftBig = %d \
     M_RightBig = %d \
@@ -299,11 +295,12 @@ int my_adder(struct float32 alpha, struct float32 bravo)
     , M_LeftBig, M_RightBig, M_Equal);
     #endif
 
-    #ifdef VERBOSE
+    #if VERBOSE >= 2
     print_binary(Denorm1); printf("\n");
     print_binary(Denorm2); printf("\n");
     #endif
 
+    /*********************** Add Mantissa ******************************/
     int small_E_Mantissa, large_E_Mantissa;
     if(E_LeftBig || (E_Equal && M_LeftBig)){
         small_E_Mantissa = Denorm2;
@@ -335,7 +332,7 @@ int my_adder(struct float32 alpha, struct float32 bravo)
     unsigned int small_E_Mantissa4 = ((SA ^ SB) ? ((~small_E_Mantissa3) & 0x00FFFFFF) : small_E_Mantissa3);
     unsigned int added_Mantissa = (unsigned)(SA ^ SB) + (unsigned)small_E_Mantissa4 + (unsigned)large_E_Mantissa;
     
-    #ifdef VERBOSE
+    #if VERBOSE >= 2
     printf("large_E_Mantissa: "); print_binary(large_E_Mantissa); printf("\n");
     printf("small_E_Mantissa: "); print_binary(small_E_Mantissa); printf("\n");
     printf("small_E_Mantissa2: "); print_binary(small_E_Mantissa2); printf("\n");
@@ -351,7 +348,6 @@ int my_adder(struct float32 alpha, struct float32 bravo)
     printf("added_Mantissa: "); print_binary(added_Mantissa); printf("\n");
     #endif
 
-RENORM:
     /***************************************** Renormalization *****************************************/
     int mantissa_24th, mantissa_23rd, mantissa_22nd, frac, leading_1_position, adder_output;
     adder_output = added_Mantissa & (int)(0x01FFFFFF);
@@ -368,7 +364,7 @@ RENORM:
     int lefted_frac_righted = lefted_frac >> 1;
     int lefted_frac_righted_truncated = lefted_frac_righted & 0x007FFFFF;
     
-    #ifdef VERBOSE
+    #if VERBOSE >= 2
     printf("adder_output: "); print_binary(adder_output); printf("\n");
     printf("mantissa_24th: "); print_binary(mantissa_24th); printf("\n");
     printf("mantissa_23rd: "); print_binary(mantissa_23rd); printf("\n");
@@ -404,7 +400,7 @@ RENORM:
         S = R || S;
         R = frac & 0b01;
         final_mantissa = righted_frac;
-        #ifdef VERBOSE
+        #if VERBOSE >= 2
         printf("final_mantissa: "); print_binary(final_mantissa); printf("\n");
         #endif
     }else if((SA==SB) && mantissa_23rd){ // 24번 없고, 23번만 살아있으면 frac 그대로
@@ -419,7 +415,7 @@ RENORM:
     }
 
     unsigned int G = ((final_mantissa & 0b01) == 0 ? 0 : 1);
-    #ifdef VERBOSE
+    #if VERBOSE >= 2
     printf("G: %d\n", G);
     printf("R: %d\n", R);
     printf("S: %d\n", S);
@@ -432,73 +428,13 @@ RENORM:
     delta.exponent = final_exponent;
     delta.mantissa = final_mantissa;
     
-    printf("delta.total(%f) : 0b", delta.total); print_binary(delta.total_int); printf("\n");
-    printf("charlie.total(%f) : 0b", charlie.total); print_binary(charlie.total_int); printf("\n");
-    printf("charlie vs delta : %f vs %f\n", charlie.total, delta.total);
-    if(charlie.total == delta.total) printf("SAME\n");
-    else printf("ERROR!!!\n");
-    printf("*********************** %f + %f END*********************\n", alpha.total, bravo.total);
-}
-
-int main()
-{
-    printf("Hello World\n");
-    
-    // float32_printer(cc, "cc");
-    struct float32 aa, bb, cc;
-    
-    aa.total = 0.5; bb.total = 0.4375;
-    my_adder(aa, bb);
-    aa.total = 0.5; bb.total = -0.4375;
-    my_adder(aa, bb);
-    aa.total = 0.5; bb.total = 0.75;
-    my_adder(aa, bb);
-    aa.total = -0.5; bb.total = 0.75;
-    my_adder(aa, bb);
-    aa.total = -0.5; bb.total = -0.75;
-    my_adder(aa, bb);
-    // cc.total = aa.total + bb.total;
-    
-    aa.total_int = 551542477; bb.total_int = 1881522032;
-    my_adder(aa, bb);
-    
-    aa.total_int = 1656830887; bb.total_int = 1386443347;
-    my_adder(aa, bb);
-
-    // 예시: https://stackoverflow.com/questions/51661257/binary-floating-point-addition-algorithm
-    aa.total_int = 0b00001000111100110110010010011100; 
-    bb.total_int = 0b00000000000011000111111010000100; 
-    float32_printer(aa, "aa");
-    float32_printer(bb, "bb");
-    my_adder(aa, bb);
-    
-    aa.total_int = 1352740975; bb.total_int = 1207161653;
-    float32_printer(aa, "aa");
-    float32_printer(bb, "bb");
-    my_adder(aa, bb);
-    
-    aa.total_int = 1173666029; bb.total_int = 1167651708;
-    float32_printer(aa, "aa");
-    float32_printer(bb, "bb");
-    my_adder(aa, bb);
-
-    aa.total_int = 977394179; bb.total_int = 961550550;
-    float32_printer(aa, "aa");
-    float32_printer(bb, "bb");
-    my_adder(aa, bb);
-
-    #ifdef RANDOM
-    srand(time(NULL));
-    for(int i=0;i<100000;i++){
-        aa.total_int = rand();
-        bb.total_int = rand();
-        printf("aa.total_int: %d\n",aa.total_int);
-        printf("bb.total_int: %d\n",bb.total_int);
-        float32_printer(aa, "aa");
-        float32_printer(bb, "bb");
-        my_adder(aa, bb);
-    }
+    #if VERBOSE >= 2
+        printf("delta.total(%f) : 0b", delta.total); print_binary(delta.total_int); printf("\n");
+        printf("charlie.total(%f) : 0b", charlie.total); print_binary(charlie.total_int); printf("\n");
+        printf("charlie vs delta : %f vs %f\n", charlie.total, delta.total);
+        if(charlie.total == delta.total) printf("SAME\n");
+        else printf("ERROR!!!\n");
     #endif
-    
-    return 0;
+    printf("*********************** %f + %f END*********************\n", alpha.total, bravo.total);
+    return delta;
 }

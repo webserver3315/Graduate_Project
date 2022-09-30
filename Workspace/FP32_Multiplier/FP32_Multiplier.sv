@@ -169,6 +169,7 @@ module FP32_Multiplier_Combinatorial
         1 Bit | 8 Bit | 23 Bit
     */
 
+    /**************** Get Larger Exponent ***************/
     // 기본적으로, EA 및 EB는 unsigned 취급.
     wire [7:0]   EA_Original, EB_Original, EA, EB, Larger_E;
     wire [7:0]   EA_minus_EB, EB_minus_EA, Right_Shift; // Minus Doesn't make OVFL

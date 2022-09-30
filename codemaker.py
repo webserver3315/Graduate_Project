@@ -14,9 +14,16 @@ import sys
 # for i in range(3,8,1):
 #     print("P%d_%d, " % (i,i-3), end='')
 
-for i in range(46, -1, -1):
+# for i in range(46, -1, -1):
+#     print("else if(tmp[%d]) begin" % i, end='')
+#     print("")
+#     print("ret = 6'd%d;" % i, end='')
+#     print("")
+#     print("end")
+
+for i in range(23, -1, -1):
     print("else if(tmp[%d]) begin" % i, end='')
     print("")
-    print("ret = 6'd%d;" % i, end='')
+    print("\tret = 8'd%d;" % (23 - i), end='')
     print("")
     print("end")
