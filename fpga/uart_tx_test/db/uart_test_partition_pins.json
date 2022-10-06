@@ -1,0 +1,17 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "tx_output",
+					"strict" : false
+				},
+				{
+					"name" : "tx_clk",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

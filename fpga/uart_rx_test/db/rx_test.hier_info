@@ -1,0 +1,21 @@
+|uart_rx
+clk => rx_index[0].CLK
+clk => rx_index[1].CLK
+clk => rx_index[2].CLK
+clk => clk_count[0].CLK
+clk => clk_count[1].CLK
+clk => clk_count[2].CLK
+clk => clk_count[3].CLK
+clk => clk_count[4].CLK
+clk => clk_count[5].CLK
+clk => clk_count[6].CLK
+clk => clk_count[7].CLK
+clk => clk_count[8].CLK
+clk => rx_loopback~reg0.CLK
+clk => rx_state~5.DATAIN
+rx_input_data => Selector0.IN5
+rx_input_data => Selector10.IN7
+rx_input_data => Selector11.IN0
+rx_loopback << rx_loopback~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+

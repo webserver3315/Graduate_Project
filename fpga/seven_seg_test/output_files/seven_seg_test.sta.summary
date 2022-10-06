@@ -1,0 +1,257 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'rstn'
+Slack : -11.815
+TNS   : -60.744
+
+Type  : Slow 1200mV 85C Model Setup 'clk'
+Slack : -11.309
+TNS   : -199.575
+
+Type  : Slow 1200mV 85C Model Setup 'make_edge_sensitive:btn2_edge_maker|aPressed'
+Slack : -11.159
+TNS   : -44.455
+
+Type  : Slow 1200mV 85C Model Setup 'make_edge_sensitive:btn4_edge_maker|aPressed'
+Slack : -7.318
+TNS   : -14.635
+
+Type  : Slow 1200mV 85C Model Setup 'clock_divider:clk_div|clk_out'
+Slack : 0.114
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'clock_divider:clk_div|clk_out'
+Slack : 0.497
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'clk'
+Slack : 0.501
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'rstn'
+Slack : 1.855
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'make_edge_sensitive:btn2_edge_maker|aPressed'
+Slack : 2.401
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'make_edge_sensitive:btn4_edge_maker|aPressed'
+Slack : 2.778
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Recovery 'rstn'
+Slack : -3.267
+TNS   : -15.600
+
+Type  : Slow 1200mV 85C Model Recovery 'make_edge_sensitive:btn4_edge_maker|aPressed'
+Slack : -2.033
+TNS   : -4.066
+
+Type  : Slow 1200mV 85C Model Recovery 'make_edge_sensitive:btn2_edge_maker|aPressed'
+Slack : -1.973
+TNS   : -7.870
+
+Type  : Slow 1200mV 85C Model Removal 'make_edge_sensitive:btn2_edge_maker|aPressed'
+Slack : 0.814
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Removal 'make_edge_sensitive:btn4_edge_maker|aPressed'
+Slack : 0.864
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Removal 'rstn'
+Slack : 1.533
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -80.324
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'rstn'
+Slack : -3.000
+TNS   : -3.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'make_edge_sensitive:btn2_edge_maker|aPressed'
+Slack : -1.487
+TNS   : -5.948
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'make_edge_sensitive:btn4_edge_maker|aPressed'
+Slack : -1.487
+TNS   : -2.974
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clock_divider:clk_div|clk_out'
+Slack : -1.487
+TNS   : -1.487
+
+Type  : Slow 1200mV 0C Model Setup 'rstn'
+Slack : -11.169
+TNS   : -57.624
+
+Type  : Slow 1200mV 0C Model Setup 'clk'
+Slack : -10.746
+TNS   : -182.971
+
+Type  : Slow 1200mV 0C Model Setup 'make_edge_sensitive:btn2_edge_maker|aPressed'
+Slack : -10.589
+TNS   : -42.225
+
+Type  : Slow 1200mV 0C Model Setup 'make_edge_sensitive:btn4_edge_maker|aPressed'
+Slack : -6.932
+TNS   : -13.863
+
+Type  : Slow 1200mV 0C Model Setup 'clock_divider:clk_div|clk_out'
+Slack : 0.208
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'clock_divider:clk_div|clk_out'
+Slack : 0.445
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'clk'
+Slack : 0.471
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'rstn'
+Slack : 1.640
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'make_edge_sensitive:btn2_edge_maker|aPressed'
+Slack : 2.248
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'make_edge_sensitive:btn4_edge_maker|aPressed'
+Slack : 2.614
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Recovery 'rstn'
+Slack : -3.314
+TNS   : -15.767
+
+Type  : Slow 1200mV 0C Model Recovery 'make_edge_sensitive:btn2_edge_maker|aPressed'
+Slack : -1.851
+TNS   : -7.380
+
+Type  : Slow 1200mV 0C Model Recovery 'make_edge_sensitive:btn4_edge_maker|aPressed'
+Slack : -1.848
+TNS   : -3.696
+
+Type  : Slow 1200mV 0C Model Removal 'make_edge_sensitive:btn2_edge_maker|aPressed'
+Slack : 0.872
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Removal 'make_edge_sensitive:btn4_edge_maker|aPressed'
+Slack : 0.921
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Removal 'rstn'
+Slack : 1.363
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -80.324
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'rstn'
+Slack : -3.000
+TNS   : -3.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'make_edge_sensitive:btn2_edge_maker|aPressed'
+Slack : -1.487
+TNS   : -5.948
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'make_edge_sensitive:btn4_edge_maker|aPressed'
+Slack : -1.487
+TNS   : -2.974
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clock_divider:clk_div|clk_out'
+Slack : -1.487
+TNS   : -1.487
+
+Type  : Fast 1200mV 0C Model Setup 'clk'
+Slack : -4.945
+TNS   : -69.188
+
+Type  : Fast 1200mV 0C Model Setup 'make_edge_sensitive:btn2_edge_maker|aPressed'
+Slack : -4.510
+TNS   : -17.992
+
+Type  : Fast 1200mV 0C Model Setup 'rstn'
+Slack : -4.482
+TNS   : -22.503
+
+Type  : Fast 1200mV 0C Model Setup 'make_edge_sensitive:btn4_edge_maker|aPressed'
+Slack : -2.961
+TNS   : -5.922
+
+Type  : Fast 1200mV 0C Model Setup 'clock_divider:clk_div|clk_out'
+Slack : 0.626
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'clk'
+Slack : 0.193
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'clock_divider:clk_div|clk_out'
+Slack : 0.208
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'rstn'
+Slack : 0.737
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'make_edge_sensitive:btn2_edge_maker|aPressed'
+Slack : 1.289
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'make_edge_sensitive:btn4_edge_maker|aPressed'
+Slack : 1.497
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Recovery 'rstn'
+Slack : -0.952
+TNS   : -4.180
+
+Type  : Fast 1200mV 0C Model Recovery 'make_edge_sensitive:btn4_edge_maker|aPressed'
+Slack : -0.611
+TNS   : -1.222
+
+Type  : Fast 1200mV 0C Model Recovery 'make_edge_sensitive:btn2_edge_maker|aPressed'
+Slack : -0.571
+TNS   : -2.270
+
+Type  : Fast 1200mV 0C Model Removal 'rstn'
+Slack : 0.487
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'make_edge_sensitive:btn2_edge_maker|aPressed'
+Slack : 0.566
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'make_edge_sensitive:btn4_edge_maker|aPressed'
+Slack : 0.596
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -58.297
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'rstn'
+Slack : -3.000
+TNS   : -3.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'make_edge_sensitive:btn2_edge_maker|aPressed'
+Slack : -1.000
+TNS   : -4.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'make_edge_sensitive:btn4_edge_maker|aPressed'
+Slack : -1.000
+TNS   : -2.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clock_divider:clk_div|clk_out'
+Slack : -1.000
+TNS   : -1.000
+
+------------------------------------------------------------

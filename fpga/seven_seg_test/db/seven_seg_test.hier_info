@@ -1,0 +1,94 @@
+|seven_seg_test
+clk => clk.IN5
+rstn => next_pos[1].IN1
+rstn => next_count[3].IN1
+rstn => next_count[0].ACLR
+rstn => next_count[1].ACLR
+rstn => next_count[2].ACLR
+rstn => next_count[3].ACLR
+rstn => next_pos[0].ACLR
+rstn => next_pos[1].ACLR
+btn1 => btn1.IN1
+btn2 => btn2.IN1
+btn3 => btn3.IN1
+btn4 => btn4.IN1
+seg[0] << seg[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[1] << seg[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[2] << seg[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[3] << seg[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[4] << seg[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[5] << seg[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[6] << seg[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[7] << seg[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dig[0] << dig[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dig[1] << dig[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dig[2] << dig[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dig[3] << dig[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+led1 << led1~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|seven_seg_test|clock_divider:clk_div
+clk_arg => clk_out~reg0.CLK
+clk_arg => cnt[0].CLK
+clk_arg => cnt[1].CLK
+clk_arg => cnt[2].CLK
+clk_arg => cnt[3].CLK
+clk_arg => cnt[4].CLK
+clk_arg => cnt[5].CLK
+clk_arg => cnt[6].CLK
+clk_arg => cnt[7].CLK
+clk_arg => cnt[8].CLK
+clk_arg => cnt[9].CLK
+clk_arg => cnt[10].CLK
+clk_arg => cnt[11].CLK
+clk_arg => cnt[12].CLK
+clk_arg => cnt[13].CLK
+clk_arg => cnt[14].CLK
+clk_arg => cnt[15].CLK
+clk_arg => cnt[16].CLK
+clk_arg => cnt[17].CLK
+clk_arg => cnt[18].CLK
+clk_arg => cnt[19].CLK
+clk_arg => cnt[20].CLK
+clk_arg => cnt[21].CLK
+clk_arg => cnt[22].CLK
+clk_arg => cnt[23].CLK
+clk_arg => cnt[24].CLK
+clk_arg => cnt[25].CLK
+clk_arg => cnt[26].CLK
+clk_arg => cnt[27].CLK
+clk_arg => cnt[28].CLK
+clk_arg => cnt[29].CLK
+clk_arg => cnt[30].CLK
+clk_arg => cnt[31].CLK
+clk_out <= clk_out~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|seven_seg_test|make_edge_sensitive:btn1_edge_maker
+clk => aPressed~reg0.CLK
+clk => aPrev[0].CLK
+button_in => aPrev[0].DATAIN
+aPressed <= aPressed~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|seven_seg_test|make_edge_sensitive:btn2_edge_maker
+clk => aPressed~reg0.CLK
+clk => aPrev[0].CLK
+button_in => aPrev[0].DATAIN
+aPressed <= aPressed~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|seven_seg_test|make_edge_sensitive:btn3_edge_maker
+clk => aPressed~reg0.CLK
+clk => aPrev[0].CLK
+button_in => aPrev[0].DATAIN
+aPressed <= aPressed~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|seven_seg_test|make_edge_sensitive:btn4_edge_maker
+clk => aPressed~reg0.CLK
+clk => aPrev[0].CLK
+button_in => aPrev[0].DATAIN
+aPressed <= aPressed~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
