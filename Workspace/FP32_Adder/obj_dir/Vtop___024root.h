@@ -24,6 +24,8 @@ class Vtop___024root final : public VerilatedModule {
     CData/*0:0*/ FP32_Adder_Combinatorial__DOT__R;
     CData/*0:0*/ FP32_Adder_Combinatorial__DOT__S;
     CData/*7:0*/ FP32_Adder_Combinatorial__DOT__final_exponent;
+    CData/*7:0*/ FP32_Adder_Combinatorial__DOT__DEBUG_FINAL_MAN;
+    CData/*7:0*/ FP32_Adder_Combinatorial__DOT__DEBUG_FINAL_EXP;
     SData/*8:0*/ FP32_Adder_Combinatorial__DOT__EA_plus_EB;
     SData/*8:0*/ FP32_Adder_Combinatorial__DOT__EA_plus_EB_minus_254;
     VL_IN(alpha,31,0);

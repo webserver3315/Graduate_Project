@@ -1,5 +1,5 @@
 Analysis & Synthesis report for fp32_mac
-Thu Oct 06 00:34:47 2022
+Fri Oct 07 14:51:13 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -10,7 +10,14 @@ Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
-  5. Analysis & Synthesis Messages
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. General Register Statistics
+  9. Port Connectivity Checks: "FP32_Adder_Combinatorial:My_Adder"
+ 10. Post-Synthesis Netlist Statistics for Top Partition
+ 11. Elapsed Time Per Partition
+ 12. Analysis & Synthesis Messages
 
 
 
@@ -37,107 +44,107 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Thu Oct 06 00:34:46 2022           ;
+; Analysis & Synthesis Status        ; Successful - Fri Oct 07 14:51:13 2022       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; fp32_mac                                    ;
-; Top-level Entity Name              ; fp32_mac                                    ;
+; Top-level Entity Name              ; FP32_MAC_Combinatorial                      ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; N/A until Partition Merge                   ;
-;     Total combinational functions  ; N/A until Partition Merge                   ;
-;     Dedicated logic registers      ; N/A until Partition Merge                   ;
-; Total registers                    ; N/A until Partition Merge                   ;
-; Total pins                         ; N/A until Partition Merge                   ;
-; Total virtual pins                 ; N/A until Partition Merge                   ;
-; Total memory bits                  ; N/A until Partition Merge                   ;
-; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                   ;
-; Total PLLs                         ; N/A until Partition Merge                   ;
+; Total logic elements               ; 0                                           ;
+;     Total combinational functions  ; 0                                           ;
+;     Dedicated logic registers      ; 0                                           ;
+; Total registers                    ; 0                                           ;
+; Total pins                         ; 4                                           ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
 +------------------------------------+---------------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Settings                                                                              ;
-+------------------------------------------------------------------+--------------------+--------------------+
-; Option                                                           ; Setting            ; Default Value      ;
-+------------------------------------------------------------------+--------------------+--------------------+
-; Device                                                           ; EP4CE6E22C8        ;                    ;
-; Top-level entity name                                            ; fp32_mac           ; fp32_mac           ;
-; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
-; Use smart compilation                                            ; Off                ; Off                ;
-; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
-; Enable compact report table                                      ; Off                ; Off                ;
-; Restructure Multiplexers                                         ; Auto               ; Auto               ;
-; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
-; Preserve fewer node names                                        ; On                 ; On                 ;
-; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
-; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
-; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
-; State Machine Processing                                         ; Auto               ; Auto               ;
-; Safe State Machine                                               ; Off                ; Off                ;
-; Extract Verilog State Machines                                   ; On                 ; On                 ;
-; Extract VHDL State Machines                                      ; On                 ; On                 ;
-; Ignore Verilog initial constructs                                ; Off                ; Off                ;
-; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
-; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
-; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
-; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
-; Parallel Synthesis                                               ; On                 ; On                 ;
-; DSP Block Balancing                                              ; Auto               ; Auto               ;
-; NOT Gate Push-Back                                               ; On                 ; On                 ;
-; Power-Up Don't Care                                              ; On                 ; On                 ;
-; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
-; Remove Duplicate Registers                                       ; On                 ; On                 ;
-; Ignore CARRY Buffers                                             ; Off                ; Off                ;
-; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
-; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
-; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
-; Ignore LCELL Buffers                                             ; Off                ; Off                ;
-; Ignore SOFT Buffers                                              ; On                 ; On                 ;
-; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
-; Optimization Technique                                           ; Balanced           ; Balanced           ;
-; Carry Chain Length                                               ; 70                 ; 70                 ;
-; Auto Carry Chains                                                ; On                 ; On                 ;
-; Auto Open-Drain Pins                                             ; On                 ; On                 ;
-; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
-; Auto ROM Replacement                                             ; On                 ; On                 ;
-; Auto RAM Replacement                                             ; On                 ; On                 ;
-; Auto DSP Block Replacement                                       ; On                 ; On                 ;
-; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
-; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
-; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
-; Strict RAM Replacement                                           ; Off                ; Off                ;
-; Allow Synchronous Control Signals                                ; On                 ; On                 ;
-; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
-; Auto RAM Block Balancing                                         ; On                 ; On                 ;
-; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
-; Auto Resource Sharing                                            ; Off                ; Off                ;
-; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
-; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
-; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
-; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
-; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
-; Timing-Driven Synthesis                                          ; On                 ; On                 ;
-; Report Parameter Settings                                        ; On                 ; On                 ;
-; Report Source Assignments                                        ; On                 ; On                 ;
-; Report Connectivity Checks                                       ; On                 ; On                 ;
-; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
-; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
-; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
-; HDL message level                                                ; Level2             ; Level2             ;
-; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
-; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
-; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
-; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
-; Clock MUX Protection                                             ; On                 ; On                 ;
-; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
-; Block Design Naming                                              ; Auto               ; Auto               ;
-; SDC constraint protection                                        ; Off                ; Off                ;
-; Synthesis Effort                                                 ; Auto               ; Auto               ;
-; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
-; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
-; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
-; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
-; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
-+------------------------------------------------------------------+--------------------+--------------------+
++----------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                  ;
++------------------------------------------------------------------+------------------------+--------------------+
+; Option                                                           ; Setting                ; Default Value      ;
++------------------------------------------------------------------+------------------------+--------------------+
+; Device                                                           ; EP4CE6E22C8            ;                    ;
+; Top-level entity name                                            ; FP32_MAC_Combinatorial ; fp32_mac           ;
+; Family name                                                      ; Cyclone IV E           ; Cyclone V          ;
+; Use smart compilation                                            ; Off                    ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                     ; On                 ;
+; Enable compact report table                                      ; Off                    ; Off                ;
+; Restructure Multiplexers                                         ; Auto                   ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                    ; Off                ;
+; Preserve fewer node names                                        ; On                     ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable                 ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001           ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993              ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto                   ; Auto               ;
+; Safe State Machine                                               ; Off                    ; Off                ;
+; Extract Verilog State Machines                                   ; On                     ; On                 ;
+; Extract VHDL State Machines                                      ; On                     ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                    ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000                   ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                    ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                     ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                     ; On                 ;
+; Parallel Synthesis                                               ; On                     ; On                 ;
+; DSP Block Balancing                                              ; Auto                   ; Auto               ;
+; NOT Gate Push-Back                                               ; On                     ; On                 ;
+; Power-Up Don't Care                                              ; On                     ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                    ; Off                ;
+; Remove Duplicate Registers                                       ; On                     ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                    ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                    ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                    ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                    ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                    ; Off                ;
+; Ignore SOFT Buffers                                              ; On                     ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                    ; Off                ;
+; Optimization Technique                                           ; Balanced               ; Balanced           ;
+; Carry Chain Length                                               ; 70                     ; 70                 ;
+; Auto Carry Chains                                                ; On                     ; On                 ;
+; Auto Open-Drain Pins                                             ; On                     ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                    ; Off                ;
+; Auto ROM Replacement                                             ; On                     ; On                 ;
+; Auto RAM Replacement                                             ; On                     ; On                 ;
+; Auto DSP Block Replacement                                       ; On                     ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto                   ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto                   ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                     ; On                 ;
+; Strict RAM Replacement                                           ; Off                    ; Off                ;
+; Allow Synchronous Control Signals                                ; On                     ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                    ; Off                ;
+; Auto RAM Block Balancing                                         ; On                     ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                    ; Off                ;
+; Auto Resource Sharing                                            ; Off                    ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                    ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                    ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                    ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                     ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                    ; Off                ;
+; Timing-Driven Synthesis                                          ; On                     ; On                 ;
+; Report Parameter Settings                                        ; On                     ; On                 ;
+; Report Source Assignments                                        ; On                     ; On                 ;
+; Report Connectivity Checks                                       ; On                     ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                    ; Off                ;
+; Synchronization Register Chain Length                            ; 2                      ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation     ; Normal compilation ;
+; HDL message level                                                ; Level2                 ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                    ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000                   ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000                   ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                    ; 100                ;
+; Clock MUX Protection                                             ; On                     ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                    ; Off                ;
+; Block Design Naming                                              ; Auto                   ; Auto               ;
+; SDC constraint protection                                        ; Off                    ; Off                ;
+; Synthesis Effort                                                 ; Auto                   ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                     ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                    ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium                 ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto                   ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                     ; On                 ;
++------------------------------------------------------------------+------------------------+--------------------+
 
 
 +------------------------------------------+
@@ -156,24 +163,161 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 
 
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                     ;
++--------------------------------------------------------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path                                               ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                   ; Library ;
++--------------------------------------------------------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------+---------+
+; //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv ; yes             ; User SystemVerilog HDL File  ; //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv ;         ;
++--------------------------------------------------------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------+---------+
+
+
++------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                ;
++---------------------------------------------+--------------+
+; Resource                                    ; Usage        ;
++---------------------------------------------+--------------+
+;                                             ;              ;
+; Total combinational functions               ; 0            ;
+; Logic element usage by number of LUT inputs ;              ;
+;     -- 4 input functions                    ; 0            ;
+;     -- 3 input functions                    ; 0            ;
+;     -- <=2 input functions                  ; 0            ;
+;                                             ;              ;
+; Logic elements by mode                      ;              ;
+;     -- normal mode                          ; 0            ;
+;     -- arithmetic mode                      ; 0            ;
+;                                             ;              ;
+; Total registers                             ; 0            ;
+;     -- Dedicated logic registers            ; 0            ;
+;     -- I/O registers                        ; 0            ;
+;                                             ;              ;
+; I/O pins                                    ; 4            ;
+;                                             ;              ;
+; Embedded Multiplier 9-bit elements          ; 0            ;
+;                                             ;              ;
+; Maximum fan-out node                        ; alpha_serial ;
+; Maximum fan-out                             ; 1            ;
+; Total fan-out                               ; 4            ;
+; Average fan-out                             ; 0.50         ;
++---------------------------------------------+--------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                     ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------+------------------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name     ; Entity Name            ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------+------------------------+--------------+
+; |FP32_MAC_Combinatorial    ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 4    ; 0            ; |FP32_MAC_Combinatorial ; FP32_MAC_Combinatorial ; work         ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------+------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "FP32_Adder_Combinatorial:My_Adder"                                                   ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                             ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; delta ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 4                           ;
+; cycloneiii_lcell_comb ; 1                           ;
+;     normal            ; 1                           ;
+;         0 data inputs ; 1                           ;
+;                       ;                             ;
+; Max LUT depth         ; 0.00                        ;
+; Average LUT depth     ; 0.00                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Thu Oct 06 00:34:40 2022
+    Info: Processing started: Fri Oct 07 14:51:05 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off fp32_mac -c fp32_mac
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
-Info (12021): Found 2 design units, including 2 entities, in source file fp32_mac.sv
-    Info (12023): Found entity 1: leading_1_detector_23bit File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 3
-    Info (12023): Found entity 2: FP32_Adder_Combinatorial File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 87
-Error (12007): Top-level design entity "fp32_mac" is undefined
-Error: Quartus Prime Analysis & Synthesis was unsuccessful. 1 error, 1 warning
-    Error: Peak virtual memory: 4705 megabytes
-    Error: Processing ended: Thu Oct 06 00:34:47 2022
-    Error: Elapsed time: 00:00:07
-    Error: Total CPU time (on all processors): 00:00:14
+Info (12021): Found 5 design units, including 5 entities, in source file fp32_mac.sv
+    Info (12023): Found entity 1: leading_1_detector_48bit File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 5
+    Info (12023): Found entity 2: FP32_Multiplier_Combinatorial File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 161
+    Info (12023): Found entity 3: leading_1_detector_23bit File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 524
+    Info (12023): Found entity 4: FP32_Adder_Combinatorial File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 608
+    Info (12023): Found entity 5: FP32_MAC_Combinatorial File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 818
+Info (12127): Elaborating entity "FP32_MAC_Combinatorial" for the top level hierarchy
+Warning (10034): Output port "delta_serial" at fp32_mac.sv(824) has no driver File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 824
+Info (12128): Elaborating entity "FP32_Multiplier_Combinatorial" for hierarchy "FP32_Multiplier_Combinatorial:My_Multiplier" File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 838
+Warning (10036): Verilog HDL or VHDL warning at fp32_mac.sv(176): object "Larger_E" assigned a value but never read File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 176
+Warning (10036): Verilog HDL or VHDL warning at fp32_mac.sv(177): object "Right_Shift" assigned a value but never read File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 177
+Warning (10036): Verilog HDL or VHDL warning at fp32_mac.sv(179): object "EA1" assigned a value but never read File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 179
+Warning (10036): Verilog HDL or VHDL warning at fp32_mac.sv(179): object "EB1" assigned a value but never read File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 179
+Warning (10036): Verilog HDL or VHDL warning at fp32_mac.sv(179): object "E_Equal" assigned a value but never read File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 179
+Warning (10036): Verilog HDL or VHDL warning at fp32_mac.sv(213): object "M_RightBig" assigned a value but never read File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 213
+Warning (10036): Verilog HDL or VHDL warning at fp32_mac.sv(213): object "M_LeftBig" assigned a value but never read File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 213
+Warning (10036): Verilog HDL or VHDL warning at fp32_mac.sv(213): object "M_Equal" assigned a value but never read File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 213
+Warning (10036): Verilog HDL or VHDL warning at fp32_mac.sv(280): object "DEBUG_FINAL_MAN" assigned a value but never read File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 280
+Warning (10036): Verilog HDL or VHDL warning at fp32_mac.sv(281): object "DEBUG_FINAL_EXP" assigned a value but never read File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 281
+Warning (10036): Verilog HDL or VHDL warning at fp32_mac.sv(287): object "DEBUG_EEQ" assigned a value but never read File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 287
+Warning (10230): Verilog HDL assignment warning at fp32_mac.sv(487): truncated value with size 32 to match size of target (1) File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 487
+Info (12128): Elaborating entity "leading_1_detector_48bit" for hierarchy "FP32_Multiplier_Combinatorial:My_Multiplier|leading_1_detector_48bit:leading_1_detector_48bit_1" File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 241
+Info (12128): Elaborating entity "FP32_Adder_Combinatorial" for hierarchy "FP32_Adder_Combinatorial:My_Adder" File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 845
+Warning (10036): Verilog HDL or VHDL warning at fp32_mac.sv(617): object "EA" assigned a value but never read File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 617
+Warning (10036): Verilog HDL or VHDL warning at fp32_mac.sv(617): object "EB" assigned a value but never read File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 617
+Warning (10036): Verilog HDL or VHDL warning at fp32_mac.sv(658): object "M_RightBig" assigned a value but never read File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 658
+Warning (10036): Verilog HDL or VHDL warning at fp32_mac.sv(658): object "M_Equal" assigned a value but never read File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 658
+Warning (10036): Verilog HDL or VHDL warning at fp32_mac.sv(706): object "mantissa_22nd" assigned a value but never read File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 706
+Warning (10036): Verilog HDL or VHDL warning at fp32_mac.sv(731): object "R_mask" assigned a value but never read File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 731
+Warning (10036): Verilog HDL or VHDL warning at fp32_mac.sv(745): object "DEBUG_FINAL_MAN" assigned a value but never read File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 745
+Warning (10036): Verilog HDL or VHDL warning at fp32_mac.sv(746): object "DEBUG_FINAL_EXP" assigned a value but never read File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 746
+Info (12128): Elaborating entity "leading_1_detector_23bit" for hierarchy "FP32_Adder_Combinatorial:My_Adder|leading_1_detector_23bit:leading_1_detector_23bit_1" File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 703
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "delta_serial" is stuck at GND File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 824
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 3 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "alpha_serial" File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 820
+    Warning (15610): No output dependent on input pin "bravo_serial" File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 821
+    Warning (15610): No output dependent on input pin "acc_serial" File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/fp32_mac/fp32_mac.sv Line: 822
+Info (21057): Implemented 4 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 3 input pins
+    Info (21059): Implemented 1 output pins
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 28 warnings
+    Info: Peak virtual memory: 4731 megabytes
+    Info: Processing ended: Fri Oct 07 14:51:13 2022
+    Info: Elapsed time: 00:00:08
+    Info: Total CPU time (on all processors): 00:00:15
 
 

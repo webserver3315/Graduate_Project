@@ -29,7 +29,12 @@ void test_case(Vtop* top, VerilatedVcdC* wave_fp, float32 alpha, float32 bravo, 
     printf("Result:CPP_Sim\t(0x%08llx %f) is ",(ULL)delta_sim.total_int, delta_sim.total); print_binary((ULL)delta_sim.total_int); printf("\n");
     printf("Wanted_Result\t(0x%08llx %f) is ",(ULL)charlie.total_int, charlie.total); print_binary((ULL)charlie.total_int); printf("\n");
     if(delta.total_int != charlie.total_int){
-        printf("%d: ERROR\n", kazu);
+        if(charlie.total_int - delta.total_int == 1){
+            printf("%d: SAME BUT NOT ROUNDED\n", kazu);    
+        }
+        else{
+            printf("%d: ERROR\n", kazu);
+        }
     }else{
         printf("%d: SAME\n", kazu);
     }
@@ -59,6 +64,17 @@ int main(int argc, char** argv, char** env) {
     wave_fp->open("./top.vcd");
 
     float32 aa, bb;
+
+    /*
+        MAC에서 발생한 예외테케
+    */
+
+    aa.total_int = 0x3761; bb.total_int = 0;
+    test_case(top, wave_fp, aa, bb, kazu); kazu++;
+
+    /*
+        MAC 끝
+   */
 
     aa.total = 0.5; bb.total = 0.4375;
     test_case(top, wave_fp, aa, bb, kazu); kazu++;
