@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
-#define VERBOSE 3
+#define VERBOSE 1
 #define RANDOM
 #define ULL unsigned long long
 
@@ -354,8 +354,8 @@ float32 my_multiplier(struct float32 alpha, struct float32 bravo)
     printf("bravo(0x%08llx %f) is ",(ULL)bravo.total_int, bravo.total); print_binary((ULL)bravo.total_int); printf("\n");
     #endif
 
-    struct float32 expected_multiplied_result, gotten_multiplied_result; // expected_multiplied_result: Correct answer
-    expected_multiplied_result.total = alpha.total * bravo.total;
+    struct float32 charlie_multiplier, delta_multiplier; // charlie_multiplier: Correct answer
+    charlie_multiplier.total = alpha.total * bravo.total;
     /**************** Get Larger Exponent ***************/
     int EA, EA0, EA1, EB, EB0, EB1, EA_minus_EB, EB_minus_EA;
     int Larger_E, Right_Shift;
@@ -492,8 +492,13 @@ float32 my_multiplier(struct float32 alpha, struct float32 bravo)
     int Exp = E + 127;
     int UDFL = 0;
     int OVFL = 0;
+    // long long Until_46th_tmp = 46 - leading_1_position;
+    // long long Maximum_Mantissa_LeftShiftAble = EA_plus_EB_minus_254 + 126;
+    // long long Until_46th = (Until_46th_tmp < Maximum_Mantissa_LeftShiftAble) ? Until_46th_tmp : Maximum_Mantissa_LeftShiftAble;
+
     long long Until_46th = 46 - leading_1_position;
     long long Until_126 = -126 - EA_plus_EB_minus_254;
+    long long Maximum_Exp_Cost = 126 + EA_plus_EB_minus_254;
     ULL Man1, Man2, Man3, Man4, Man5, final_Man;
     int Exp1, Exp2, Exp3, Exp4, Exp5, final_Exp;
     int Until_126_2 = 99999999;
@@ -505,9 +510,14 @@ float32 my_multiplier(struct float32 alpha, struct float32 bravo)
     Man4 = M_48_Original<<Until_46th;
     Man5 = M_48_Original<<Until_46th;
         // int Until_126_2 = leading_1_detector_48bit(Man5);
-        Until_126_2 = -126 - (Exp - Until_46th);
-        Man5 = Man5 >> Until_126_2;
-        if(Until_126_2 > 48) Man5 = 0x00;
+        if(Until_46th >= Maximum_Exp_Cost){ // c-e-i // 보상가능
+            Until_126_2 = (Until_46th - Maximum_Exp_Cost);
+            Man5 = Man5 >> Until_126_2; // 
+            if(Until_126_2 > 48) Man5 = 0x00;
+        }else{ // Exp 전부소진해도 denorm
+            //c-e
+            Man5 = Man5 >> Exp;
+        }
     
 
     Exp1 = Exp;
@@ -671,9 +681,9 @@ float32 my_multiplier(struct float32 alpha, struct float32 bravo)
         final_Exp = 0xFF;
         M_48 = 0xFFFFFF;
     }
-    gotten_multiplied_result.sign = final_sign;
-    gotten_multiplied_result.exponent = final_Exp;
-    gotten_multiplied_result.mantissa = M_48;
+    delta_multiplier.sign = final_sign;
+    delta_multiplier.exponent = final_Exp;
+    delta_multiplier.mantissa = M_48;
 
 
     #if VERBOSE >= 5
@@ -685,15 +695,15 @@ float32 my_multiplier(struct float32 alpha, struct float32 bravo)
 
     float32_printer(alpha, "alpha");
     float32_printer(bravo, "bravo");
-    float32_printer(expected_multiplied_result, "expected_multiplied_result");
-    float32_printer(gotten_multiplied_result, "gotten_multiplied_result");
+    float32_printer(charlie_multiplier, "charlie_multiplier");
+    float32_printer(delta_multiplier, "delta_multiplier");
     #endif
 
     #if VERBOSE >= 5
-    printf("gotten_multiplied_result.total(%f) : 0b", gotten_multiplied_result.total); print_binary(gotten_multiplied_result.total_int); printf("\n");
-    printf("expected_multiplied_result.total(%f) : 0b", expected_multiplied_result.total); print_binary(expected_multiplied_result.total_int); printf("\n");
-    printf("expected_multiplied_result vs gotten_multiplied_result : %f vs %f\n", expected_multiplied_result.total, gotten_multiplied_result.total);
-    if(expected_multiplied_result.total == gotten_multiplied_result.total) printf("SAME\n");
+    printf("delta_multiplier.total(%f) : 0b", delta_multiplier.total); print_binary(delta_multiplier.total_int); printf("\n");
+    printf("charlie_multiplier.total(%f) : 0b", charlie_multiplier.total); print_binary(charlie_multiplier.total_int); printf("\n");
+    printf("charlie_multiplier vs delta_multiplier : %f vs %f\n", charlie_multiplier.total, delta_multiplier.total);
+    if(charlie_multiplier.total == delta_multiplier.total) printf("SAME\n");
     else printf("ERROR!!!\n");
 
     printf("my_multiplier: called = %dth\n", called);
@@ -701,7 +711,7 @@ float32 my_multiplier(struct float32 alpha, struct float32 bravo)
     called++;
     #endif
 
-    return gotten_multiplied_result;
+    return delta_multiplier;
 }
 
 float32 my_adder(struct float32 alpha, struct float32 bravo)
@@ -710,8 +720,8 @@ float32 my_adder(struct float32 alpha, struct float32 bravo)
     printf("alpha(0x%08x %f) is ",alpha.total_uint, alpha.total); print_binary(alpha.total_uint); printf("\n");
     printf("bravo(0x%08x %f) is ",bravo.total_uint, bravo.total); print_binary(bravo.total_uint); printf("\n");
     #endif
-    struct float32 expected_added_result, gotten_added_result; // expected_added_result: Correct answer
-    expected_added_result.total = alpha.total + bravo.total;
+    struct float32 charlie_adder, delta_adder; // charlie_adder: Correct answer
+    charlie_adder.total = alpha.total + bravo.total;
     /**************** Get Larger Exponent ***************/
     int EA, EA0, EA1, EB, EB0, EB1, EA_minus_EB, EB_minus_EA;
     int Larger_E, Right_Shift;
@@ -858,9 +868,9 @@ float32 my_adder(struct float32 alpha, struct float32 bravo)
     printf("R: %d\n", R);
     printf("S: %d\n", S);
     printf("small_E_Mantissa3: "); print_binary(small_E_Mantissa3); printf("\n");
-    printf("small_E_Mantissa4(%d): ", small_E_Mantissa4); print_binary(small_E_Mantissa4); printf("\n");
-    printf("small_E_Mantissa5(%d): ", small_E_Mantissa5); print_binary(small_E_Mantissa5); printf("\n");
-    printf("added_Mantissa: "); print_binary(added_Mantissa); printf("\n");
+    printf("small_E_Mantissa4(0x%x): ", small_E_Mantissa4); print_binary(small_E_Mantissa4); printf("\n");
+    printf("small_E_Mantissa5(0x%x): ", small_E_Mantissa5); print_binary(small_E_Mantissa5); printf("\n");
+    printf("added_Mantissa(0x%x): ", added_Mantissa); print_binary(added_Mantissa); printf("\n");
     #endif
 
     /***************************************** Renormalization *****************************************/
@@ -1004,30 +1014,30 @@ float32 my_adder(struct float32 alpha, struct float32 bravo)
     if((EA == 0xFF && MA != 0) || (EB == 0xFF && MB != 0)) NAN_FLAG = 1;
     if((SA == SB) && final_exponent == 0xFF) OVERFLOW_FLAG = 1;
     if(NAN_FLAG){
-        gotten_added_result.sign = final_sign;
-        gotten_added_result.exponent = 0xFF;
-        gotten_added_result.mantissa = 0xFF;
+        delta_adder.sign = final_sign;
+        delta_adder.exponent = 0xFF;
+        delta_adder.mantissa = 0xFF;
     }
     else if(OVERFLOW_FLAG){
-        gotten_added_result.sign = final_sign;
-        gotten_added_result.exponent = 0xFF;
-        gotten_added_result.mantissa = 0x00;
+        delta_adder.sign = final_sign;
+        delta_adder.exponent = 0xFF;
+        delta_adder.mantissa = 0x00;
     }
     else{
-        gotten_added_result.sign = final_sign;
-        gotten_added_result.exponent = final_exponent;
-        gotten_added_result.mantissa = final_mantissa;
+        delta_adder.sign = final_sign;
+        delta_adder.exponent = final_exponent;
+        delta_adder.mantissa = final_mantissa;
     }    
     
     #if VERBOSE >= 3
-        printf("gotten_added_result.total(%f) : 0b", gotten_added_result.total); print_binary(gotten_added_result.total_uint); printf("\n");
-        printf("expected_added_result.total(%f) : 0b", expected_added_result.total); print_binary(expected_added_result.total_uint); printf("\n");
-        printf("expected_added_result vs gotten_added_result : %f vs %f\n", expected_added_result.total, gotten_added_result.total);
-        if(expected_added_result.total == gotten_added_result.total) printf("SAME\n");
+        printf("delta_adder.total(%f) : 0b", delta_adder.total); print_binary(delta_adder.total_uint); printf("\n");
+        printf("charlie_adder.total(%f) : 0b", charlie_adder.total); print_binary(charlie_adder.total_uint); printf("\n");
+        printf("charlie_adder vs delta_adder : %f vs %f\n", charlie_adder.total, delta_adder.total);
+        if(charlie_adder.total == delta_adder.total) printf("SAME\n");
         else printf("ERROR!!!\n");
         printf("\n");
     #endif
-    return gotten_added_result;
+    return delta_adder;
 }
 
 float32 my_mac(struct float32 alpha, struct float32 bravo, struct float32 acc){

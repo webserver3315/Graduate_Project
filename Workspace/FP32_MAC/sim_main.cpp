@@ -81,6 +81,67 @@ int main(int argc, char** argv, char** env) {
     wave_fp->open("./top.vcd");
 
     float32 aa, bb, acc;
+
+    aa.total_int = 0x000568bf; bb.total_int = 0x41ab0eb4; acc.total_int = 0x0bad206c;
+    test_case(top, wave_fp, aa, bb, acc, kazu);
+    kazu++;
+
+
+    aa.total_int = 0x3c578028; bb.total_int = 0x030991f6; acc.total_int = 0x006c9b9f;
+    test_case(top, wave_fp, aa, bb, acc, kazu);
+    kazu++;
+
+    aa.total_int = 0x36667838; bb.total_int = 0x09715acf; acc.total_int = 0x006ffd24;
+    test_case(top, wave_fp, aa, bb, acc, kazu);
+    kazu++;
+
+    aa.total_int = 0x31483b48; bb.total_int = 0x0ddf024d; acc.total_int = 0x006a81a9;
+    test_case(top, wave_fp, aa, bb, acc, kazu);
+    kazu++;
+
+    aa.total_int = 0x1eb6ba67; bb.total_int = 0x1eeb2b1a; acc.total_int = 0x007dfbe3;
+    test_case(top, wave_fp, aa, bb, acc, kazu);
+    kazu++;
+
+    aa.total_int = 0x2acb26ef; bb.total_int = 0x147d8ce0; acc.total_int = 0x007be8bd;
+    test_case(top, wave_fp, aa, bb, acc, kazu);
+    kazu++;
+
+    aa.total_int = 0x05d08462; bb.total_int = 0x39c422a1; acc.total_int = 0x00379634;
+    test_case(top, wave_fp, aa, bb, acc, kazu);
+    kazu++;
+
+    aa.total_int = 0x03dc0adb; bb.total_int = 0x3b358979; acc.total_int = 0x005c824d;
+    test_case(top, wave_fp, aa, bb, acc, kazu);
+    kazu++;
+
+    aa.total_int = 0x384275c8; bb.total_int = 0x072aebb4; acc.total_int = 0x0058e2cf;
+    test_case(top, wave_fp, aa, bb, acc, kazu);
+    kazu++;
+
+    aa.total_int = 0x08231d8a; bb.total_int = 0x36c22ae3; acc.total_int = 0x006a942d;
+    test_case(top, wave_fp, aa, bb, acc, kazu);
+    kazu++;
+
+    aa.total_int = 0x1e22ea13; bb.total_int = 0x21c8ae58; acc.total_int = 0x006b2d33;
+    test_case(top, wave_fp, aa, bb, acc, kazu);
+    kazu++;
+
+    aa.total_int = 0x3900004a; bb.total_int = 0x069d5f40; acc.total_int = 0x004507b8;
+    test_case(top, wave_fp, aa, bb, acc, kazu);
+    kazu++;
+
+    aa.total_int = 0x0d2fe48b; bb.total_int = 0x32322d8c; acc.total_int = 0x007ebc60;
+    test_case(top, wave_fp, aa, bb, acc, kazu);
+    kazu++;
+
+    
+    /*         */
+
+    aa.total_int = 0x40d2e963; bb.total_int = 0x0002ff92; acc.total_int = 0x02643bc1;
+    test_case(top, wave_fp, aa, bb, acc, kazu);
+    kazu++;
+    
     aa.total = -0.5; bb.total = 0.75; acc.total_int = 0x00;
     test_case(top, wave_fp, aa, bb, acc, kazu);
     kazu++;
@@ -115,7 +176,7 @@ int main(int argc, char** argv, char** env) {
 
 
     srand(time(NULL));
-    for(int i=0;i<1000 ;i++){
+    for(int i=0;i<100 ;i++){
         aa.total_int = rand();
         bb.total_int = rand();
         acc.total_int = rand();

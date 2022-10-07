@@ -230,9 +230,9 @@ module FP32_Multiplier_Combinatorial
     /******************************** Multiply Mantissa ******************************/
     wire            [47:0]  M_48_Original;
     wire            [7:0]   leading_1_position;
-    wire            [7:0]   Until_46th, Until_126, Until_126_2;
+    wire            [7:0]   Until_46th, Until_126, Maximum_Exp_Cost;
     wire            [8:0]   E, Exp;
-    wire                    Until_126_Carry, Until_126_2_Carry;
+    wire                    Until_126_Carry, Maximum_Exp_Cost_Carry;
 
     assign M_48_Original = Denorm1 * Denorm2; // reg, wire는 기본적으로 unsigned이다.
     leading_1_detector_48bit leading_1_detector_48bit_1(
@@ -246,7 +246,7 @@ module FP32_Multiplier_Combinatorial
     assign Until_46th = 8'd46 - leading_1_position;
     assign {Until_126_Carry, Until_126} = -(EA_plus_EB) + 9'd128; // -9'd126 - (EA + EB - 9'd254);
 
-    wire        [47:0]  Man1, Man2, Man3, Man4, Man5_tmp, Man5, Man3_tmp;
+    wire        [47:0]  Man1, Man2, Man3, Man4, Man5_tmp, Man5_cei, Man5_ce, Man5, Man3_tmp;
     wire        [7:0]   Exp1, Exp2, Exp3, Exp4, Exp5;
     reg         [47:0]  final_Man;
     reg         [7:0]   final_Exp;
@@ -265,10 +265,12 @@ module FP32_Multiplier_Combinatorial
         // if(Until_126 > 48) Man3 = 0x00;
     assign Man4 = M_48_Original<<Until_46th;
     assign Man5_tmp = M_48_Original<<Until_46th;
-        // int Until_126_2 = leading_1_detector_48bit(Man5);
-    // assign Until_126_2 = -126 - (Exp - Until_46th);
-    assign {Until_126_2_Carry, Until_126_2} = 9'd1 + {1'b0,Until_46th} - (EA_plus_EB);
-    assign Man5 = (~Until_126_2_Carry & (Until_126_2 > 8'd48)) ? 48'd0 : (Man5_tmp >> Until_126_2);
+        // int Maximum_Exp_Cost = leading_1_detector_48bit(Man5);
+    // assign Maximum_Exp_Cost = -126 - (Exp - Until_46th);
+    assign {Maximum_Exp_Cost_Carry, Maximum_Exp_Cost} = (EA_plus_EB) - 9'd128;
+    assign Man5_cei = (Until_46th >= (Maximum_Exp_Cost + 8'd48)) ? 48'd0 : (Man5_tmp >> (Until_46th - Maximum_Exp_Cost));
+    assign Man5_ce = Man5_tmp >> (EA_plus_EB - 9'd127);
+    assign Man5 = (Until_46th >= Maximum_Exp_Cost) ? Man5_cei : Man5_ce;
     
     assign {Exp1_C,Exp1} = (EA_plus_EB - 9'd127);
     assign {Exp2_C,Exp2} = EA_plus_EB - 9'd127 + 9'd1;
@@ -747,7 +749,8 @@ module FP32_Adder_Combinatorial
             `endif
         end
         else if(mantissa_23rd) begin // 같은 부호 더했는데 24째는 0, 23째는 1이면 그대로
-            final_exponent = Larger_E;
+            if(Larger_E == 0) final_exponent = 8'd1;
+            else final_exponent = Larger_E;
             `ifdef DEBUG
             DEBUG_FINAL_EXP = 8'd2;
             `endif

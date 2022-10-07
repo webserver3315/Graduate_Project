@@ -62,10 +62,10 @@ VL_ATTR_COLD void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__E_LeftBig = VL_RAND_RESET_I(1);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__M_48_Original = VL_RAND_RESET_Q(48);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__leading_1_position = VL_RAND_RESET_I(8);
-    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__Until_126_2 = VL_RAND_RESET_I(8);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__E = VL_RAND_RESET_I(9);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__Exp = VL_RAND_RESET_I(9);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__Man3 = VL_RAND_RESET_Q(48);
+    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__Man5_tmp = VL_RAND_RESET_Q(48);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__final_Man = VL_RAND_RESET_Q(48);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__final_Exp = VL_RAND_RESET_I(8);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_FINAL_MAN = VL_RAND_RESET_I(8);
