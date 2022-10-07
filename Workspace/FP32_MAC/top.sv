@@ -592,7 +592,7 @@ module leading_1_detector_23bit
             ret = 8'd23;
         end
         else begin
-            ret = 8'd0;
+            ret = 8'd23;
         end
     end
 endmodule
@@ -684,7 +684,7 @@ module FP32_Adder_Combinatorial
     assign small_E_Mantissa3 = small_E_Mantissa2 >> Right_Shift;
 
     assign small_E_Mantissa4 = ((SA ^ SB) ? (~small_E_Mantissa3) : small_E_Mantissa3);
-    assign small_E_mantissa5 = {23'd0,(SA ^ SB)} + small_E_Mantissa4;
+    assign small_E_mantissa5 = {22'd0,(SA ^ SB)} + small_E_Mantissa4;
     assign added_Mantissa =  small_E_mantissa5 + large_E_Mantissa;
 
     /***************************************** Renormalization *****************************************/
@@ -746,27 +746,33 @@ module FP32_Adder_Combinatorial
             DEBUG_FINAL_EXP = 8'd1;
             `endif
         end
-        else if((SA==SB) & mantissa_23rd) begin // 같은 부호 더했는데 24째는 0, 23째는 1이면 그대로
+        else if(mantissa_23rd) begin // 같은 부호 더했는데 24째는 0, 23째는 1이면 그대로
             final_exponent = Larger_E;
             `ifdef DEBUG
             DEBUG_FINAL_EXP = 8'd2;
             `endif
         end
-        else if(Larger_E > leading_1_position) begin // 23th 24th 모두 0이면, leading 1을 23째까지 좌시프트해야함.
-            final_exponent = (Larger_E - leading_1_position); // OVERFLOW 예방. e.g. final_exp = (0x00 - 0d10)
+        else if(Larger_E == leading_1_position) begin // 23th 24th 모두 0이면, leading 1을 23째까지 좌시프트해야함.
+            final_exponent = 8'd1; // OVERFLOW 예방. e.g. final_exp = (0x00 - 0d10)
             `ifdef DEBUG
             DEBUG_FINAL_EXP = 8'd3;
+            `endif
+        end
+        else if(Larger_E > leading_1_position) begin
+            final_exponent = (Larger_E - leading_1_position);
+            `ifdef DEBUG
+            DEBUG_FINAL_EXP = 8'd4;
             `endif
         end
         else begin // 조건 몰?루
             final_exponent = 8'd0;
             `ifdef DEBUG
-            DEBUG_FINAL_EXP = 8'd4;
+            DEBUG_FINAL_EXP = 8'd5;
             `endif
         end
     end
     always_comb begin
-        if(mantissa_24th) begin // 덧셈에 24th 살아있으면, mantissa 우측으로 제껴야 함
+        if((SA == SB) & (final_exponent != 8'd0) & mantissa_24th) begin // 덧셈에 24th 살아있으면, mantissa 우측으로 제껴야 함
             // assign S = R || S;
             // assign R = frac & 0b01;
             final_mantissa = righted_frac;
@@ -780,14 +786,14 @@ module FP32_Adder_Combinatorial
             DEBUG_FINAL_MAN = 8'd2;
             `endif
         end
-        else if(final_exponent != 8'd0) begin
+        else if((mantissa_24th == 1'b0) & (mantissa_23rd == 1'b0) & (final_exponent == 8'd0)) begin
             final_mantissa = lefted_frac_truncated;
             `ifdef DEBUG
             DEBUG_FINAL_MAN = 8'd3;
             `endif
         end
-        else if(final_exponent == 8'd0) begin // subnorm이면, hidden 1 필요없다.
-            final_mantissa = lefted_frac_righted_truncated;
+        else if((mantissa_24th == 1'b0) & (mantissa_23rd == 1'b0) & (final_exponent != 8'd0)) begin // subnorm이면, hidden 1 필요없다.
+            final_mantissa = lefted_frac_truncated;
             `ifdef DEBUG
             DEBUG_FINAL_MAN = 8'd4;
             `endif
@@ -800,10 +806,23 @@ module FP32_Adder_Combinatorial
         end
     end
 
+    wire            NAN, OVFL;
+    assign  NAN     = ((EA == 8'hFF && MA != 23'd0) || (EB == 8'hFF && MB != 23'd0)) ? 1'b1 : 1'b0;
+    assign OVFL = ((SA == SB) && final_exponent == 8'hFF) ? 1'b1 : 1'b0;
     always_comb begin
         delta[31] = final_sign;
-        delta[30:23] = final_exponent;
-        delta[22:0] = final_mantissa;
+        if(NAN) begin
+            delta[30:23]    =   8'hFF;
+            delta[22:0]     =   23'h7FFFFF;
+        end
+        else if(OVFL) begin
+            delta[30:23]    =   8'hFF;
+            delta[22:0]     =   23'd0;
+        end
+        else begin
+            delta[30:23] = final_exponent;
+            delta[22:0] = final_mantissa;
+        end
     end
 
 endmodule

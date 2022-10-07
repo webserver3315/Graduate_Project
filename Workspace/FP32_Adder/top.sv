@@ -245,10 +245,10 @@ module FP32_Adder_Combinatorial
             final_exponent = (Larger_E - leading_1_position); // OVERFLOW 예방. e.g. final_exp = (0x00 - 0d10)
         end
         else begin // 조건 몰?루
+            final_exponent = 8'd0;
             `ifdef DEBUG
             DEBUG_FINAL_EXP = 8'd4;
             `endif
-            final_exponent = 8'd0;
         end
     end
     always_comb begin
@@ -260,22 +260,22 @@ module FP32_Adder_Combinatorial
             DEBUG_FINAL_MAN = 8'd1;
             `endif
         end
-        else if((SA==SB) && mantissa_23rd) begin // 24번 없고, 23번만 살아있으면 frac 그대로
+        else if((SA==SB) && mantissa_23rd) begin // 덧셈에 24번 없고, 23번만 살아있으면 frac 그대로
             final_mantissa = frac;
             `ifdef DEBUG
             DEBUG_FINAL_MAN = 8'd2;
             `endif
         end
-        else if(~mantissa_23rd) begin
-            final_mantissa = lefted_frac_truncated;
-            `ifdef DEBUG
-            DEBUG_FINAL_MAN = 8'd3;
-            `endif
-        end
-        else if(final_exponent == 8'd0) begin // subnorm이면, hidden 1 필요없다.
+        else if((final_exponent == 8'd0) & (~mantissa_23rd)) begin // subnorm이면
             final_mantissa = lefted_frac_righted_truncated;
             `ifdef DEBUG
             DEBUG_FINAL_MAN = 8'd4;
+            `endif
+        end
+        else if(~mantissa_23rd) begin // 덧셈뺄셈 불문하고 23th 없으면 23번 만들어준 뒤 없애기
+            final_mantissa = lefted_frac_truncated;
+            `ifdef DEBUG
+            DEBUG_FINAL_MAN = 8'd3;
             `endif
         end
         else begin

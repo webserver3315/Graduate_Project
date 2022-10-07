@@ -193,7 +193,7 @@ int leading_1_detector(int tmp)
     }else if(tmp & 1<<0){ // tmp[0]
         return 23;
     }else{
-        return 0;
+        return 23; // no 1 in mantissa
     }
 }
 
@@ -879,8 +879,8 @@ float32 my_adder(struct float32 alpha, struct float32 bravo)
 
     int lefted_frac = adder_output << left_shifting; // [22:0] 에서 leading 1이 23th 에 없으면 23th까지 제낀것
     int lefted_frac_truncated = lefted_frac & 0x007FFFFF; // 23th hidden 1 날려버린 것
-    int lefted_frac_righted = lefted_frac >> 1; // denorm 이라 hidden 1 안날린 것
-    int lefted_frac_righted_truncated = lefted_frac_righted & 0x007FFFFF; // denorm 의 [22:0] 확인사살
+    // int lefted_frac_righted = lefted_frac >> 1; // denorm 이라 hidden 1 안날린 것
+    // int lefted_frac_righted_truncated = lefted_frac_righted & 0x007FFFFF; // denorm 의 [22:0] 확인사살
     
     #if VERBOSE >= 3
     printf("mantissa_24th: "); print_binary(mantissa_24th); printf("\n");
@@ -888,6 +888,7 @@ float32 my_adder(struct float32 alpha, struct float32 bravo)
     printf("mantissa_22nd: "); print_binary(mantissa_22nd); printf("\n");
     printf("Larger_E: %d\n", Larger_E);
     printf("leading_1_position: %d\n",leading_1_position);
+    printf("left_shifting: %d\n",left_shifting);
     printf("\n");
     printf("added_Mantissa: "); print_binary(added_Mantissa); printf("\n");
     printf("adder_output: "); print_binary(adder_output); printf("\n");
@@ -895,8 +896,8 @@ float32 my_adder(struct float32 alpha, struct float32 bravo)
     printf("frac: "); print_binary(frac); printf("\n");
     printf("lefted_frac: "); print_binary(lefted_frac); printf("\n");
     printf("lefted_frac_truncated: "); print_binary(lefted_frac_truncated); printf("\n");
-    printf("lefted_frac_righted: "); print_binary(lefted_frac_righted); printf("\n");
-    printf("lefted_frac_righted_truncated: "); print_binary(lefted_frac_righted_truncated); printf("\n");
+    // printf("lefted_frac_righted: "); print_binary(lefted_frac_righted); printf("\n");
+    // printf("lefted_frac_righted_truncated: "); print_binary(lefted_frac_righted_truncated); printf("\n");
     #endif
     
     int final_sign, final_mantissa, final_exponent;
@@ -911,55 +912,69 @@ float32 my_adder(struct float32 alpha, struct float32 bravo)
         final_exponent = Larger_E + 1;
         #if VERBOSE >= 3
         printf("EXP MUX 1\n");
+        if(final_exponent > 0x00FF) printf("EXP OVERFLOW HAPPENED, BUT NOT HANDLED, MIGHT MAKE INF to NaN\n");
         printf("final_exponent: "); print_binary(final_exponent); printf("\n");
         #endif
-    }else if((SA==SB) && mantissa_23rd){ // 같은 부호 더했는데 24째는 0, 23째는 1이면 그대로
-        final_exponent = Larger_E;
+    }else if(mantissa_23rd){ // 같은 부호 더했는데 24째는 0, 23째는 1이면 그대로        
+        if(Larger_E == 0) final_exponent = 1;
+        else final_exponent = Larger_E;
+
         #if VERBOSE >= 3
         printf("EXP MUX 2\n");
         printf("final_exponent: "); print_binary(final_exponent); printf("\n");
         #endif
     }
-    else if((Larger_E > leading_1_position)){ // 23th 24th 모두 0이면, leading 1을 23째까지 좌시프트해야함.
+    else if((Larger_E == leading_1_position)){ // 23th 24th 모두 0이면, leading 1을 23째까지 좌시프트해야함.
         // 뺄셈 수행시 오버플로우 주의(e.g. 0x00 - 0d10). Larger_E에서 지불할 비용이 없는데 leading 1 을 만드는건 무리임.
-        // 해당 경우는 EXP MUX 4로 옮김
-        final_exponent = (unsigned int)(Larger_E - leading_1_position);
+        // Larger E가 23th 만들기 위한 비용을 부담할 수 있을 때
+        final_exponent = 1;
+        
         #if VERBOSE >= 3
         printf("EXP MUX 3\n");
+        printf("final_exponent: "); print_binary(final_exponent); printf("\n");
+        #endif
+    }
+    else if((Larger_E > leading_1_position)){
+        final_exponent = (unsigned int)(Larger_E - leading_1_position);
+
+        #if VERBOSE >= 3
+        printf("EXP MUX 4\n");
         printf("final_exponent: "); print_binary(final_exponent); printf("\n");
         #endif
     }
     else{ // Larger_E에서 leading_1_position 을 위해 지불할 비용이 없을 때, 될때까지 Mantissa 좌shift 한 뒤, exp는 0으로
         final_exponent = 0;
         #if VERBOSE >= 3
-        printf("EXP MUX 4\n");
+        printf("EXP MUX 5\n");
         printf("final_exponent: "); print_binary(final_exponent); printf("\n");
         #endif
     }
 
     /* MANTISSA MUX */
-    if(mantissa_24th){ // 덧셈에 24th 살아있으면, mantissa 우측으로 제껴야 함
+    if((SA == SB) & (final_exponent != 0) & mantissa_24th){ // norm이고, 24th 살아있으면 >>1하고 hidden 1인 23 날려버린다.
         S = R || S;
         R = frac & 0b01;
-        final_mantissa = righted_frac; // no hidden 1
+        final_mantissa = righted_frac; // make 24th Rshift, hidden 1 is that.
         #if VERBOSE >= 3
         printf("MANTISSA MUX 1\n");
         printf("final_mantissa: "); print_binary(final_mantissa); printf("\n");
         #endif
-    }else if(mantissa_23rd){ // 24번 없고, 23번만 살아있으면 frac 그대로
+    }
+    else if(mantissa_23rd){ // norm이고, 23th 살아있으면 => hidden 1인 23만 날려버린다.
         final_mantissa = frac; // yes hidden 1
+        assert(final_exponent != 0);
         #if VERBOSE >= 3
         printf("MANTISSA MUX 2\n");
         printf("final_mantissa: "); print_binary(final_mantissa); printf("\n");
         #endif
-    }else if(final_exponent != 0){
-        final_mantissa = lefted_frac_truncated; // made leading 1 23th, yes hidden 1
+    }else if((mantissa_24th == 0) & (mantissa_23rd == 0) & (final_exponent == 0)){        
+        final_mantissa = lefted_frac_truncated;  // made leading 1 23th, yes hidden 1
         #if VERBOSE >= 3
         printf("MANTISSA MUX 3\n");
         printf("final_mantissa: "); print_binary(final_mantissa); printf("\n");
         #endif
-    }else if(final_exponent == 0){ // subnorm이면, hidden 1 필요없다.
-        final_mantissa = lefted_frac_righted_truncated; // made leading 1 23th, no hidden 1
+    }else if((mantissa_24th == 0) & (mantissa_23rd == 0) & (final_exponent != 0)){
+        final_mantissa = lefted_frac_truncated;  // made leading 1 23th, yes hidden 1
         #if VERBOSE >= 3
         printf("MANTISSA MUX 4\n");
         printf("final_mantissa: "); print_binary(final_mantissa); printf("\n");
@@ -969,6 +984,7 @@ float32 my_adder(struct float32 alpha, struct float32 bravo)
         final_mantissa = 0;
         #if VERBOSE >= 3
         printf("MANTISSA MUX 5\n");
+        printf("SHOULD NOT BE HERE ISN't IT?\n");
         printf("final_mantissa: "); print_binary(final_mantissa); printf("\n");
         #endif
     }
@@ -983,9 +999,25 @@ float32 my_adder(struct float32 alpha, struct float32 bravo)
         final_mantissa++;
     // if(final_mantissa & 0x1000000) goto RENORM;
 
-    gotten_added_result.sign = final_sign;
-    gotten_added_result.exponent = final_exponent;
-    gotten_added_result.mantissa = final_mantissa;
+    int NAN_FLAG = 0;
+    int OVERFLOW_FLAG = 0;
+    if((EA == 0xFF && MA != 0) || (EB == 0xFF && MB != 0)) NAN_FLAG = 1;
+    if((SA == SB) && final_exponent == 0xFF) OVERFLOW_FLAG = 1;
+    if(NAN_FLAG){
+        gotten_added_result.sign = final_sign;
+        gotten_added_result.exponent = 0xFF;
+        gotten_added_result.mantissa = 0xFF;
+    }
+    else if(OVERFLOW_FLAG){
+        gotten_added_result.sign = final_sign;
+        gotten_added_result.exponent = 0xFF;
+        gotten_added_result.mantissa = 0x00;
+    }
+    else{
+        gotten_added_result.sign = final_sign;
+        gotten_added_result.exponent = final_exponent;
+        gotten_added_result.mantissa = final_mantissa;
+    }    
     
     #if VERBOSE >= 3
         printf("gotten_added_result.total(%f) : 0b", gotten_added_result.total); print_binary(gotten_added_result.total_uint); printf("\n");
