@@ -51,7 +51,7 @@ class Vtop___024root final : public VerilatedModule {
     IData/*23:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__large_E_Mantissa;
     IData/*23:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__small_E_Mantissa3;
     IData/*24:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__added_Mantissa;
-    IData/*23:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__lefted_frac;
+    IData/*24:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__lefted_frac;
     QData/*47:0*/ FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__M_48_Original;
     QData/*47:0*/ FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__Man3;
     QData/*47:0*/ FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__final_Man;

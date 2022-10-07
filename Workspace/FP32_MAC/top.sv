@@ -694,26 +694,26 @@ module FP32_Adder_Combinatorial
         .ret(leading_1_position)
     );
     
-    wire    [24:0]  adder_output, right_frac_tmp;
     wire        mantissa_24th, mantissa_23rd, mantissa_22nd;
+    wire    [24:0]  adder_output, right_frac_tmp;
+    wire    [24:0]  lefted_frac, lefted_frac_righted;
 
     wire    [22:0]  frac, righted_frac;
-    wire    [23:0]  lefted_frac, lefted_frac_righted;
     wire    [22:0]  lefted_frac_truncated, lefted_frac_righted_truncated;
     wire    [7:0]   left_shifting;
 
     assign mantissa_24th    = added_Mantissa[24];
     assign mantissa_23rd    = added_Mantissa[23];
     assign mantissa_22nd    = added_Mantissa[22];
-    assign adder_output     = added_Mantissa;
 
-    assign frac             = adder_output[22:0];
+    assign adder_output     = added_Mantissa;
     assign right_frac_tmp   = adder_output>>25'd1;
     assign righted_frac     = right_frac_tmp[22:0];
 
+    assign frac             = adder_output[22:0];
 
     assign left_shifting    = (Larger_E < leading_1_position) ? Larger_E : leading_1_position;
-    assign lefted_frac                          = {1'b0,frac} << left_shifting;
+    assign lefted_frac                          = adder_output << left_shifting;
     assign lefted_frac_righted                  = lefted_frac>>1;
 
     assign lefted_frac_truncated                = lefted_frac[22:0];
@@ -740,32 +740,32 @@ module FP32_Adder_Combinatorial
 
     always_comb begin
         if((SA==SB) & mantissa_24th) begin // 같은 부호 더했는데 24째에 1이면, mantissa 우시프트
+            final_exponent = Larger_E + 8'd1;
             `ifdef DEBUG
             DEBUG_FINAL_EXP = 8'd1;
             `endif
-            final_exponent = Larger_E + 8'd1;
         end
         else if((SA==SB) & mantissa_23rd) begin // 같은 부호 더했는데 24째는 0, 23째는 1이면 그대로
+            final_exponent = Larger_E;
             `ifdef DEBUG
             DEBUG_FINAL_EXP = 8'd2;
             `endif
-            final_exponent = Larger_E;
         end
-        else if(~mantissa_23rd & (Larger_E > leading_1_position)) begin // 23th 24th 모두 0이면, leading 1을 23째까지 좌시프트해야함.
+        else if(Larger_E > leading_1_position) begin // 23th 24th 모두 0이면, leading 1을 23째까지 좌시프트해야함.
+            final_exponent = (Larger_E - leading_1_position); // OVERFLOW 예방. e.g. final_exp = (0x00 - 0d10)
             `ifdef DEBUG
             DEBUG_FINAL_EXP = 8'd3;
             `endif
-            final_exponent = (Larger_E - leading_1_position); // OVERFLOW 예방. e.g. final_exp = (0x00 - 0d10)
         end
         else begin // 조건 몰?루
+            final_exponent = 8'd0;
             `ifdef DEBUG
             DEBUG_FINAL_EXP = 8'd4;
             `endif
-            final_exponent = 8'd0;
         end
     end
     always_comb begin
-        if((SA==SB) & mantissa_24th) begin // 덧셈에 24th 살아있으면, mantissa 우측으로 제껴야 함
+        if(mantissa_24th) begin // 덧셈에 24th 살아있으면, mantissa 우측으로 제껴야 함
             // assign S = R || S;
             // assign R = frac & 0b01;
             final_mantissa = righted_frac;
@@ -773,13 +773,13 @@ module FP32_Adder_Combinatorial
             DEBUG_FINAL_MAN = 8'd1;
             `endif
         end
-        else if((SA==SB) && mantissa_23rd) begin // 24번 없고, 23번만 살아있으면 frac 그대로
+        else if(mantissa_23rd) begin // 24번 없고, 23번만 살아있으면 frac 그대로
             final_mantissa = frac;
             `ifdef DEBUG
             DEBUG_FINAL_MAN = 8'd2;
             `endif
         end
-        else if(~mantissa_23rd) begin
+        else if(final_exponent != 8'd0) begin
             final_mantissa = lefted_frac_truncated;
             `ifdef DEBUG
             DEBUG_FINAL_MAN = 8'd3;
