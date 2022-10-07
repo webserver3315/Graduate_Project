@@ -34,10 +34,10 @@ VL_ATTR_COLD void Vtop___024root__trace_init_sub__TOP__0(Vtop___024root* vlSelf,
     tracep->declBus(c+94,"EB_minus_EA", false,-1, 7,0);
     tracep->declBus(c+95,"Valid_Minus", false,-1, 7,0);
     tracep->declBus(c+96,"Right_Shift", false,-1, 7,0);
-    tracep->declBit(c+140,"EA_minus_EB_Carry", false,-1);
-    tracep->declBit(c+141,"EB_minus_EA_Carry", false,-1);
-    tracep->declBus(c+142,"EA_plus_EB", false,-1, 8,0);
-    tracep->declBus(c+143,"EA_plus_EB_minus_254", false,-1, 8,0);
+    tracep->declBit(c+141,"EA_minus_EB_Carry", false,-1);
+    tracep->declBit(c+142,"EB_minus_EA_Carry", false,-1);
+    tracep->declBus(c+143,"EA_plus_EB", false,-1, 8,0);
+    tracep->declBus(c+144,"EA_plus_EB_minus_254", false,-1, 8,0);
     tracep->declBit(c+4,"EA0", false,-1);
     tracep->declBit(c+97,"EB0", false,-1);
     tracep->declBit(c+5,"EA1", false,-1);
@@ -65,13 +65,14 @@ VL_ATTR_COLD void Vtop___024root__trace_init_sub__TOP__0(Vtop___024root* vlSelf,
     tracep->declBus(c+107,"small_E_Mantissa2", false,-1, 23,0);
     tracep->declBus(c+18,"small_E_Mantissa3", false,-1, 23,0);
     tracep->declBus(c+108,"small_E_Mantissa4", false,-1, 23,0);
+    tracep->declBus(c+109,"small_E_mantissa5", false,-1, 23,0);
     tracep->declBus(c+19,"added_Mantissa", false,-1, 24,0);
     tracep->declBus(c+20,"leading_1_position", false,-1, 7,0);
+    tracep->declBit(c+21,"mantissa_24th", false,-1);
+    tracep->declBit(c+22,"mantissa_23rd", false,-1);
+    tracep->declBit(c+23,"mantissa_22nd", false,-1);
     tracep->declBus(c+19,"adder_output", false,-1, 24,0);
-    tracep->declBus(c+21,"right_frac_tmp", false,-1, 24,0);
-    tracep->declBit(c+22,"mantissa_24th", false,-1);
-    tracep->declBit(c+23,"mantissa_23rd", false,-1);
-    tracep->declBit(c+24,"mantissa_22nd", false,-1);
+    tracep->declBus(c+24,"right_frac_tmp", false,-1, 24,0);
     tracep->declBus(c+25,"lefted_frac", false,-1, 24,0);
     tracep->declBus(c+26,"lefted_frac_righted", false,-1, 24,0);
     tracep->declBus(c+27,"frac", false,-1, 22,0);
@@ -79,11 +80,11 @@ VL_ATTR_COLD void Vtop___024root__trace_init_sub__TOP__0(Vtop___024root* vlSelf,
     tracep->declBus(c+29,"lefted_frac_truncated", false,-1, 22,0);
     tracep->declBus(c+30,"lefted_frac_righted_truncated", false,-1, 22,0);
     tracep->declBus(c+31,"left_shifting", false,-1, 7,0);
-    tracep->declBit(c+144,"G", false,-1);
-    tracep->declBit(c+145,"R", false,-1);
-    tracep->declBit(c+146,"S", false,-1);
-    tracep->declBus(c+109,"R_mask", false,-1, 23,0);
-    tracep->declBit(c+110,"final_sign", false,-1);
+    tracep->declBit(c+145,"G", false,-1);
+    tracep->declBit(c+146,"R", false,-1);
+    tracep->declBit(c+147,"S", false,-1);
+    tracep->declBus(c+110,"R_mask", false,-1, 23,0);
+    tracep->declBit(c+111,"final_sign", false,-1);
     tracep->declBus(c+32,"final_exponent", false,-1, 7,0);
     tracep->declBus(c+33,"final_mantissa", false,-1, 22,0);
     tracep->declBus(c+34,"DEBUG_FINAL_MAN", false,-1, 7,0);
@@ -96,46 +97,46 @@ VL_ATTR_COLD void Vtop___024root__trace_init_sub__TOP__0(Vtop___024root* vlSelf,
     tracep->declBus(c+88,"alpha", false,-1, 31,0);
     tracep->declBus(c+89,"bravo", false,-1, 31,0);
     tracep->declBus(c+1,"delta", false,-1, 31,0);
-    tracep->declBus(c+111,"EA_Original", false,-1, 7,0);
-    tracep->declBus(c+112,"EB_Original", false,-1, 7,0);
+    tracep->declBus(c+112,"EA_Original", false,-1, 7,0);
+    tracep->declBus(c+113,"EB_Original", false,-1, 7,0);
     tracep->declBus(c+36,"EA", false,-1, 7,0);
     tracep->declBus(c+37,"EB", false,-1, 7,0);
-    tracep->declBus(c+113,"Larger_E", false,-1, 7,0);
-    tracep->declBus(c+114,"EA_minus_EB", false,-1, 7,0);
-    tracep->declBus(c+115,"EB_minus_EA", false,-1, 7,0);
-    tracep->declBus(c+116,"Right_Shift", false,-1, 7,0);
+    tracep->declBus(c+114,"Larger_E", false,-1, 7,0);
+    tracep->declBus(c+115,"EA_minus_EB", false,-1, 7,0);
+    tracep->declBus(c+116,"EB_minus_EA", false,-1, 7,0);
+    tracep->declBus(c+117,"Right_Shift", false,-1, 7,0);
     tracep->declBus(c+38,"EA_plus_EB", false,-1, 8,0);
-    tracep->declBus(c+147,"EA_plus_EB_minus_254", false,-1, 8,0);
-    tracep->declBit(c+117,"EA0", false,-1);
-    tracep->declBit(c+118,"EB0", false,-1);
-    tracep->declBit(c+119,"EA1", false,-1);
-    tracep->declBit(c+120,"EB1", false,-1);
+    tracep->declBus(c+148,"EA_plus_EB_minus_254", false,-1, 8,0);
+    tracep->declBit(c+118,"EA0", false,-1);
+    tracep->declBit(c+119,"EB0", false,-1);
+    tracep->declBit(c+120,"EA1", false,-1);
+    tracep->declBit(c+121,"EB1", false,-1);
     tracep->declBit(c+39,"E_LeftBig", false,-1);
-    tracep->declBit(c+121,"E_RightBig", false,-1);
-    tracep->declBit(c+122,"E_Equal", false,-1);
-    tracep->declBit(c+123,"SA", false,-1);
-    tracep->declBit(c+124,"SB", false,-1);
-    tracep->declBit(c+125,"final_sign", false,-1);
-    tracep->declBus(c+126,"MA", false,-1, 22,0);
-    tracep->declBus(c+127,"MB", false,-1, 22,0);
-    tracep->declBus(c+128,"isDenorm1", false,-1, 23,0);
-    tracep->declBus(c+129,"isDenorm2", false,-1, 23,0);
-    tracep->declBus(c+130,"isDenorm3", false,-1, 23,0);
-    tracep->declBus(c+131,"isDenorm4", false,-1, 23,0);
-    tracep->declBus(c+132,"Denorm1", false,-1, 23,0);
-    tracep->declBus(c+133,"Denorm2", false,-1, 23,0);
-    tracep->declBit(c+134,"M_RightBig", false,-1);
-    tracep->declBit(c+135,"M_LeftBig", false,-1);
-    tracep->declBit(c+136,"M_Equal", false,-1);
-    tracep->declBit(c+137,"MA0", false,-1);
-    tracep->declBit(c+138,"MB0", false,-1);
+    tracep->declBit(c+122,"E_RightBig", false,-1);
+    tracep->declBit(c+123,"E_Equal", false,-1);
+    tracep->declBit(c+124,"SA", false,-1);
+    tracep->declBit(c+125,"SB", false,-1);
+    tracep->declBit(c+126,"final_sign", false,-1);
+    tracep->declBus(c+127,"MA", false,-1, 22,0);
+    tracep->declBus(c+128,"MB", false,-1, 22,0);
+    tracep->declBus(c+129,"isDenorm1", false,-1, 23,0);
+    tracep->declBus(c+130,"isDenorm2", false,-1, 23,0);
+    tracep->declBus(c+131,"isDenorm3", false,-1, 23,0);
+    tracep->declBus(c+132,"isDenorm4", false,-1, 23,0);
+    tracep->declBus(c+133,"Denorm1", false,-1, 23,0);
+    tracep->declBus(c+134,"Denorm2", false,-1, 23,0);
+    tracep->declBit(c+135,"M_RightBig", false,-1);
+    tracep->declBit(c+136,"M_LeftBig", false,-1);
+    tracep->declBit(c+137,"M_Equal", false,-1);
+    tracep->declBit(c+138,"MA0", false,-1);
+    tracep->declBit(c+139,"MB0", false,-1);
     tracep->declQuad(c+40,"M_48_Original", false,-1, 47,0);
     tracep->declBus(c+42,"leading_1_position", false,-1, 7,0);
     tracep->declBus(c+43,"Until_46th", false,-1, 7,0);
     tracep->declBus(c+44,"Until_126", false,-1, 7,0);
     tracep->declBus(c+45,"Until_126_2", false,-1, 7,0);
-    tracep->declBus(c+148,"E", false,-1, 8,0);
-    tracep->declBus(c+149,"Exp", false,-1, 8,0);
+    tracep->declBus(c+149,"E", false,-1, 8,0);
+    tracep->declBus(c+150,"Exp", false,-1, 8,0);
     tracep->declBit(c+46,"Until_126_Carry", false,-1);
     tracep->declBit(c+47,"Until_126_2_Carry", false,-1);
     tracep->declQuad(c+40,"Man1", false,-1, 47,0);
@@ -147,16 +148,16 @@ VL_ATTR_COLD void Vtop___024root__trace_init_sub__TOP__0(Vtop___024root* vlSelf,
     tracep->declQuad(c+56,"Man3_tmp", false,-1, 47,0);
     tracep->declBus(c+58,"Exp1", false,-1, 7,0);
     tracep->declBus(c+59,"Exp2", false,-1, 7,0);
-    tracep->declBus(c+150,"Exp3", false,-1, 7,0);
-    tracep->declBus(c+151,"Exp4", false,-1, 7,0);
+    tracep->declBus(c+151,"Exp3", false,-1, 7,0);
+    tracep->declBus(c+152,"Exp4", false,-1, 7,0);
     tracep->declBus(c+60,"Exp5", false,-1, 7,0);
     tracep->declQuad(c+61,"final_Man", false,-1, 47,0);
     tracep->declBus(c+63,"final_Exp", false,-1, 7,0);
     tracep->declBit(c+64,"final_Exp_Carry", false,-1);
     tracep->declBit(c+65,"Exp1_C", false,-1);
     tracep->declBit(c+66,"Exp2_C", false,-1);
-    tracep->declBit(c+152,"Exp3_C", false,-1);
-    tracep->declBit(c+152,"Exp4_C", false,-1);
+    tracep->declBit(c+153,"Exp3_C", false,-1);
+    tracep->declBit(c+153,"Exp4_C", false,-1);
     tracep->declBit(c+67,"Exp5_C", false,-1);
     tracep->declBus(c+68,"DEBUG_FINAL_MAN", false,-1, 7,0);
     tracep->declBus(c+69,"DEBUG_FINAL_EXP", false,-1, 7,0);
@@ -173,7 +174,7 @@ VL_ATTR_COLD void Vtop___024root__trace_init_sub__TOP__0(Vtop___024root* vlSelf,
     tracep->declBus(c+84,"final_Exp_plus1", false,-1, 8,0);
     tracep->declBus(c+85,"delta_mantissa", false,-1, 22,0);
     tracep->declBus(c+86,"delta_exp", false,-1, 7,0);
-    tracep->declBit(c+139,"NAN", false,-1);
+    tracep->declBit(c+140,"NAN", false,-1);
     tracep->declBit(c+87,"OVFL", false,-1);
     tracep->pushNamePrefix("leading_1_detector_48bit_1 ");
     tracep->declQuad(c+40,"tmp", false,-1, 47,0);
@@ -248,14 +249,14 @@ VL_ATTR_COLD void Vtop___024root__trace_full_sub_0(Vtop___024root* vlSelf, Veril
     bufp->fullIData(oldp+18,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__small_E_Mantissa3),24);
     bufp->fullIData(oldp+19,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__added_Mantissa),25);
     bufp->fullCData(oldp+20,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__leading_1_position),8);
-    bufp->fullIData(oldp+21,((0x1ffffffU & (vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__added_Mantissa 
-                                            >> 1U))),25);
-    bufp->fullBit(oldp+22,((1U & (vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__added_Mantissa 
+    bufp->fullBit(oldp+21,((1U & (vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__added_Mantissa 
                                   >> 0x18U))));
-    bufp->fullBit(oldp+23,((1U & (vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__added_Mantissa 
+    bufp->fullBit(oldp+22,((1U & (vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__added_Mantissa 
                                   >> 0x17U))));
-    bufp->fullBit(oldp+24,((1U & (vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__added_Mantissa 
+    bufp->fullBit(oldp+23,((1U & (vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__added_Mantissa 
                                   >> 0x16U))));
+    bufp->fullIData(oldp+24,((0x1ffffffU & (vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__added_Mantissa 
+                                            >> 1U))),25);
     bufp->fullIData(oldp+25,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__lefted_frac),25);
     bufp->fullIData(oldp+26,((0x1ffffffU & (vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__lefted_frac 
                                             >> 1U))),25);
@@ -656,7 +657,15 @@ VL_ATTR_COLD void Vtop___024root__trace_full_sub_0(Vtop___024root* vlSelf, Veril
                                              >> 0x1fU)
                                              ? (~ vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__small_E_Mantissa3)
                                              : vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__small_E_Mantissa3))),24);
-    bufp->fullIData(oldp+109,(((0x17U >= (0xffU & (
+    bufp->fullIData(oldp+109,((0xffffffU & (((vlSelf->FP32_MAC_Combinatorial__DOT__middle_output 
+                                              ^ vlSelf->acc) 
+                                             >> 0x1fU) 
+                                            + (((vlSelf->FP32_MAC_Combinatorial__DOT__middle_output 
+                                                 ^ vlSelf->acc) 
+                                                >> 0x1fU)
+                                                ? (~ vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__small_E_Mantissa3)
+                                                : vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__small_E_Mantissa3)))),24);
+    bufp->fullIData(oldp+110,(((0x17U >= (0xffU & (
                                                    (((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__E_LeftBig)
                                                       ? 
                                                      ((vlSelf->FP32_MAC_Combinatorial__DOT__middle_output 
@@ -713,30 +722,30 @@ VL_ATTR_COLD void Vtop___024root__trace_full_sub_0(Vtop___024root* vlSelf, Veril
                                                            >> 0x17U))))) 
                                                     - (IData)(1U)))))
                                 : 0U)),24);
-    bufp->fullBit(oldp+110,((1U & (((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__E_LeftBig) 
+    bufp->fullBit(oldp+111,((1U & (((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__E_LeftBig) 
                                     | ((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__E_Equal) 
                                        & (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__M_LeftBig)))
                                     ? (vlSelf->FP32_MAC_Combinatorial__DOT__middle_output 
                                        >> 0x1fU) : 
                                    (vlSelf->acc >> 0x1fU)))));
-    bufp->fullCData(oldp+111,((0xffU & (vlSelf->alpha 
+    bufp->fullCData(oldp+112,((0xffU & (vlSelf->alpha 
                                         >> 0x17U))),8);
-    bufp->fullCData(oldp+112,((0xffU & (vlSelf->bravo 
+    bufp->fullCData(oldp+113,((0xffU & (vlSelf->bravo 
                                         >> 0x17U))),8);
-    bufp->fullCData(oldp+113,((0xffU & ((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__E_LeftBig)
+    bufp->fullCData(oldp+114,((0xffU & ((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__E_LeftBig)
                                          ? (vlSelf->alpha 
                                             >> 0x17U)
                                          : (vlSelf->bravo 
                                             >> 0x17U)))),8);
-    bufp->fullCData(oldp+114,((0xffU & ((vlSelf->alpha 
+    bufp->fullCData(oldp+115,((0xffU & ((vlSelf->alpha 
                                          >> 0x17U) 
                                         - (vlSelf->bravo 
                                            >> 0x17U)))),8);
-    bufp->fullCData(oldp+115,((0xffU & ((vlSelf->bravo 
+    bufp->fullCData(oldp+116,((0xffU & ((vlSelf->bravo 
                                          >> 0x17U) 
                                         - (vlSelf->alpha 
                                            >> 0x17U)))),8);
-    bufp->fullCData(oldp+116,((0xffU & (((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__E_LeftBig)
+    bufp->fullCData(oldp+117,((0xffU & (((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__E_LeftBig)
                                           ? ((vlSelf->alpha 
                                               >> 0x17U) 
                                              - (vlSelf->bravo 
@@ -752,40 +761,40 @@ VL_ATTR_COLD void Vtop___024root__trace_full_sub_0(Vtop___024root* vlSelf, Veril
                                               (0xffU 
                                                & (vlSelf->bravo 
                                                   >> 0x17U))))))),8);
-    bufp->fullBit(oldp+117,((0U == (0xffU & (vlSelf->alpha 
+    bufp->fullBit(oldp+118,((0U == (0xffU & (vlSelf->alpha 
                                              >> 0x17U)))));
-    bufp->fullBit(oldp+118,((0U == (0xffU & (vlSelf->bravo 
+    bufp->fullBit(oldp+119,((0U == (0xffU & (vlSelf->bravo 
                                              >> 0x17U)))));
-    bufp->fullBit(oldp+119,((0xffU == (0xffU & (vlSelf->alpha 
+    bufp->fullBit(oldp+120,((0xffU == (0xffU & (vlSelf->alpha 
                                                 >> 0x17U)))));
-    bufp->fullBit(oldp+120,((0xffU == (0xffU & (vlSelf->bravo 
+    bufp->fullBit(oldp+121,((0xffU == (0xffU & (vlSelf->bravo 
                                                 >> 0x17U)))));
-    bufp->fullBit(oldp+121,(((0xffU & (vlSelf->alpha 
+    bufp->fullBit(oldp+122,(((0xffU & (vlSelf->alpha 
                                        >> 0x17U)) < 
                              (0xffU & (vlSelf->bravo 
                                        >> 0x17U)))));
-    bufp->fullBit(oldp+122,((1U & (~ (((0xffU & (vlSelf->alpha 
+    bufp->fullBit(oldp+123,((1U & (~ (((0xffU & (vlSelf->alpha 
                                                  >> 0x17U)) 
                                        < (0xffU & (vlSelf->bravo 
                                                    >> 0x17U))) 
                                       | (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__E_LeftBig))))));
-    bufp->fullBit(oldp+123,((vlSelf->alpha >> 0x1fU)));
-    bufp->fullBit(oldp+124,((vlSelf->bravo >> 0x1fU)));
-    bufp->fullBit(oldp+125,(((vlSelf->alpha ^ vlSelf->bravo) 
+    bufp->fullBit(oldp+124,((vlSelf->alpha >> 0x1fU)));
+    bufp->fullBit(oldp+125,((vlSelf->bravo >> 0x1fU)));
+    bufp->fullBit(oldp+126,(((vlSelf->alpha ^ vlSelf->bravo) 
                              >> 0x1fU)));
-    bufp->fullIData(oldp+126,((0x7fffffU & vlSelf->alpha)),23);
-    bufp->fullIData(oldp+127,((0x7fffffU & vlSelf->bravo)),23);
-    bufp->fullIData(oldp+128,((((0U != (0xffU & (vlSelf->alpha 
+    bufp->fullIData(oldp+127,((0x7fffffU & vlSelf->alpha)),23);
+    bufp->fullIData(oldp+128,((0x7fffffU & vlSelf->bravo)),23);
+    bufp->fullIData(oldp+129,((((0U != (0xffU & (vlSelf->alpha 
                                                  >> 0x17U))) 
                                 << 0x17U) | (0x7fffffU 
                                              & vlSelf->alpha))),24);
-    bufp->fullIData(oldp+129,((0x7fffffU & vlSelf->alpha)),24);
-    bufp->fullIData(oldp+130,((((0U != (0xffU & (vlSelf->bravo 
+    bufp->fullIData(oldp+130,((0x7fffffU & vlSelf->alpha)),24);
+    bufp->fullIData(oldp+131,((((0U != (0xffU & (vlSelf->bravo 
                                                  >> 0x17U))) 
                                 << 0x17U) | (0x7fffffU 
                                              & vlSelf->bravo))),24);
-    bufp->fullIData(oldp+131,((0x7fffffU & vlSelf->bravo)),24);
-    bufp->fullIData(oldp+132,(((IData)(((0U == (0x7f800000U 
+    bufp->fullIData(oldp+132,((0x7fffffU & vlSelf->bravo)),24);
+    bufp->fullIData(oldp+133,(((IData)(((0U == (0x7f800000U 
                                                 & vlSelf->alpha)) 
                                         & (0U != (0x7fffffU 
                                                   & vlSelf->alpha))))
@@ -795,7 +804,7 @@ VL_ATTR_COLD void Vtop___024root__trace_full_sub_0(Vtop___024root* vlSelf, Veril
                                              >> 0x17U))) 
                                     << 0x17U) | (0x7fffffU 
                                                  & vlSelf->alpha)))),24);
-    bufp->fullIData(oldp+133,(((IData)(((0U == (0x7f800000U 
+    bufp->fullIData(oldp+134,(((IData)(((0U == (0x7f800000U 
                                                 & vlSelf->bravo)) 
                                         & (0U != (0x7fffffU 
                                                   & vlSelf->bravo))))
@@ -805,30 +814,30 @@ VL_ATTR_COLD void Vtop___024root__trace_full_sub_0(Vtop___024root* vlSelf, Veril
                                              >> 0x17U))) 
                                     << 0x17U) | (0x7fffffU 
                                                  & vlSelf->bravo)))),24);
-    bufp->fullBit(oldp+134,(((0x7fffffU & vlSelf->alpha) 
-                             < (0x7fffffU & vlSelf->bravo))));
     bufp->fullBit(oldp+135,(((0x7fffffU & vlSelf->alpha) 
-                             > (0x7fffffU & vlSelf->bravo))));
+                             < (0x7fffffU & vlSelf->bravo))));
     bufp->fullBit(oldp+136,(((0x7fffffU & vlSelf->alpha) 
+                             > (0x7fffffU & vlSelf->bravo))));
+    bufp->fullBit(oldp+137,(((0x7fffffU & vlSelf->alpha) 
                              == (0x7fffffU & vlSelf->bravo))));
-    bufp->fullBit(oldp+137,((0U == (0x7fffffU & vlSelf->alpha))));
-    bufp->fullBit(oldp+138,((0U == (0x7fffffU & vlSelf->bravo))));
-    bufp->fullBit(oldp+139,((((0xffU == (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EA)) 
+    bufp->fullBit(oldp+138,((0U == (0x7fffffU & vlSelf->alpha))));
+    bufp->fullBit(oldp+139,((0U == (0x7fffffU & vlSelf->bravo))));
+    bufp->fullBit(oldp+140,((((0xffU == (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EA)) 
                               & (0U != (0x7fffffU & vlSelf->alpha))) 
                              | ((0xffU == (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EB)) 
                                 & (0U != (0x7fffffU 
                                           & vlSelf->bravo))))));
-    bufp->fullBit(oldp+140,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__EA_minus_EB_Carry));
-    bufp->fullBit(oldp+141,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__EB_minus_EA_Carry));
-    bufp->fullSData(oldp+142,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__EA_plus_EB),9);
-    bufp->fullSData(oldp+143,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__EA_plus_EB_minus_254),9);
-    bufp->fullBit(oldp+144,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__G));
-    bufp->fullBit(oldp+145,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__R));
-    bufp->fullBit(oldp+146,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__S));
-    bufp->fullSData(oldp+147,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EA_plus_EB_minus_254),9);
-    bufp->fullSData(oldp+148,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__E),9);
-    bufp->fullSData(oldp+149,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__Exp),9);
-    bufp->fullCData(oldp+150,(0U),8);
-    bufp->fullCData(oldp+151,(1U),8);
-    bufp->fullBit(oldp+152,(0U));
+    bufp->fullBit(oldp+141,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__EA_minus_EB_Carry));
+    bufp->fullBit(oldp+142,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__EB_minus_EA_Carry));
+    bufp->fullSData(oldp+143,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__EA_plus_EB),9);
+    bufp->fullSData(oldp+144,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__EA_plus_EB_minus_254),9);
+    bufp->fullBit(oldp+145,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__G));
+    bufp->fullBit(oldp+146,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__R));
+    bufp->fullBit(oldp+147,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__S));
+    bufp->fullSData(oldp+148,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EA_plus_EB_minus_254),9);
+    bufp->fullSData(oldp+149,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__E),9);
+    bufp->fullSData(oldp+150,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__Exp),9);
+    bufp->fullCData(oldp+151,(0U),8);
+    bufp->fullCData(oldp+152,(1U),8);
+    bufp->fullBit(oldp+153,(0U));
 }

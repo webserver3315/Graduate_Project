@@ -666,7 +666,7 @@ module FP32_Adder_Combinatorial
 
     /*********************** Add Mantissa ******************************/
     reg     [23:0]      small_E_Mantissa, large_E_Mantissa;
-    wire    [23:0]      small_E_Mantissa2, small_E_Mantissa3, small_E_Mantissa4;
+    wire    [23:0]      small_E_Mantissa2, small_E_Mantissa3, small_E_Mantissa4, small_E_mantissa5;
     wire    [24:0]      added_Mantissa;
 
     always_comb begin
@@ -684,7 +684,8 @@ module FP32_Adder_Combinatorial
     assign small_E_Mantissa3 = small_E_Mantissa2 >> Right_Shift;
 
     assign small_E_Mantissa4 = ((SA ^ SB) ? (~small_E_Mantissa3) : small_E_Mantissa3);
-    assign added_Mantissa = {23'd0,(SA ^ SB)} + small_E_Mantissa4 + large_E_Mantissa;
+    assign small_E_mantissa5 = {23'd0,(SA ^ SB)} + small_E_Mantissa4;
+    assign added_Mantissa =  small_E_mantissa5 + large_E_Mantissa;
 
     /***************************************** Renormalization *****************************************/
 
