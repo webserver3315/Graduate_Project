@@ -13,48 +13,21 @@ class Vtop___024root final : public VerilatedModule {
   public:
 
     // DESIGN SPECIFIC STATE
-    CData/*7:0*/ FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EA;
-    CData/*7:0*/ FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EB;
-    CData/*0:0*/ FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__E_LeftBig;
-    CData/*7:0*/ FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__leading_1_position;
-    CData/*7:0*/ FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__final_Exp;
-    CData/*7:0*/ FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_FINAL_MAN;
-    CData/*7:0*/ FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_FINAL_EXP;
-    CData/*7:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__Larger_E;
-    CData/*0:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__EA_minus_EB_Carry;
-    CData/*0:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__EB_minus_EA_Carry;
-    CData/*0:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__E_LeftBig;
-    CData/*0:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__E_Equal;
-    CData/*0:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__M_LeftBig;
-    CData/*7:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__leading_1_position;
-    CData/*0:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__G;
-    CData/*0:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__R;
-    CData/*0:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__S;
-    CData/*7:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_exponent;
-    CData/*7:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__DEBUG_FINAL_MAN;
-    CData/*7:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__DEBUG_FINAL_EXP;
-    SData/*8:0*/ FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EA_plus_EB;
-    SData/*8:0*/ FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EA_plus_EB_minus_254;
-    SData/*8:0*/ FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__E;
-    SData/*8:0*/ FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__Exp;
-    SData/*8:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__EA_plus_EB;
-    SData/*8:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__EA_plus_EB_minus_254;
-    VL_IN(alpha,31,0);
-    VL_IN(bravo,31,0);
-    VL_IN(acc,31,0);
-    VL_OUT(delta,31,0);
-    IData/*31:0*/ FP32_MAC_Combinatorial__DOT__middle_output;
-    IData/*23:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__Denorm1;
-    IData/*23:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__Denorm2;
-    IData/*23:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__small_E_Mantissa;
-    IData/*23:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__large_E_Mantissa;
-    IData/*23:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__small_E_Mantissa3;
-    IData/*24:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__added_Mantissa;
-    QData/*47:0*/ FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__M_48_Original;
-    QData/*47:0*/ FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__Man3;
-    QData/*47:0*/ FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__Man5_tmp;
-    QData/*47:0*/ FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__final_Man;
-    VlUnpacked<CData/*0:0*/, 2> __Vm_traceActivity;
+    VL_IN8(clk_i,0,0);
+    VL_IN8(btn1_i,0,0);
+    CData/*0:0*/ uart_tx__DOT__clk_div;
+    VL_OUT8(uart_tx_o,0,0);
+    VL_OUT8(led1_o,0,0);
+    VL_OUT8(led2_o,0,0);
+    CData/*3:0*/ uart_tx__DOT__state;
+    CData/*3:0*/ uart_tx__DOT__next_state;
+    CData/*0:0*/ uart_tx__DOT__queueing;
+    CData/*0:0*/ __VinpClk__TOP__uart_tx__DOT__clk_div;
+    CData/*0:0*/ __Vclklast__TOP__btn1_i;
+    CData/*0:0*/ __Vclklast__TOP__clk_i;
+    CData/*0:0*/ __Vclklast__TOP____VinpClk__TOP__uart_tx__DOT__clk_div;
+    CData/*0:0*/ __Vchglast__TOP__uart_tx__DOT__clk_div;
+    IData/*31:0*/ uart_tx__DOT__clk_count;
 
     // INTERNAL VARIABLES
     Vtop__Syms* const vlSymsp;
