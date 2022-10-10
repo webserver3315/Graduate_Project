@@ -1,5 +1,5 @@
 Analysis & Synthesis report for fp32_uart_tx
-Mon Oct 10 23:43:32 2022
+Tue Oct 11 00:41:50 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -46,15 +46,15 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon Oct 10 23:43:32 2022       ;
+; Analysis & Synthesis Status        ; Successful - Tue Oct 11 00:41:50 2022       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; fp32_uart_tx                                ;
 ; Top-level Entity Name              ; fp32_uart_tx                                ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 62                                          ;
-;     Total combinational functions  ; 53                                          ;
-;     Dedicated logic registers      ; 43                                          ;
-; Total registers                    ; 43                                          ;
+; Total logic elements               ; 63                                          ;
+;     Total combinational functions  ; 54                                          ;
+;     Dedicated logic registers      ; 44                                          ;
+; Total registers                    ; 44                                          ;
 ; Total pins                         ; 5                                           ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
@@ -180,20 +180,20 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-------------+
 ; Resource                                    ; Usage       ;
 +---------------------------------------------+-------------+
-; Estimated Total logic elements              ; 62          ;
+; Estimated Total logic elements              ; 63          ;
 ;                                             ;             ;
-; Total combinational functions               ; 53          ;
+; Total combinational functions               ; 54          ;
 ; Logic element usage by number of LUT inputs ;             ;
-;     -- 4 input functions                    ; 11          ;
+;     -- 4 input functions                    ; 12          ;
 ;     -- 3 input functions                    ; 1           ;
 ;     -- <=2 input functions                  ; 41          ;
 ;                                             ;             ;
 ; Logic elements by mode                      ;             ;
-;     -- normal mode                          ; 22          ;
+;     -- normal mode                          ; 23          ;
 ;     -- arithmetic mode                      ; 31          ;
 ;                                             ;             ;
-; Total registers                             ; 43          ;
-;     -- Dedicated logic registers            ; 43          ;
+; Total registers                             ; 44          ;
+;     -- Dedicated logic registers            ; 44          ;
 ;     -- I/O registers                        ; 0           ;
 ;                                             ;             ;
 ; I/O pins                                    ; 5           ;
@@ -201,9 +201,9 @@ https://fpgasoftware.intel.com/eula.
 ; Embedded Multiplier 9-bit elements          ; 0           ;
 ;                                             ;             ;
 ; Maximum fan-out node                        ; clk_i~input ;
-; Maximum fan-out                             ; 43          ;
-; Total fan-out                               ; 229         ;
-; Average fan-out                             ; 2.16        ;
+; Maximum fan-out                             ; 44          ;
+; Total fan-out                               ; 235         ;
+; Average fan-out                             ; 2.18        ;
 +---------------------------------------------+-------------+
 
 
@@ -212,7 +212,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name  ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+--------------+
-; |fp32_uart_tx              ; 53 (53)             ; 43 (43)                   ; 0           ; 0            ; 0       ; 0         ; 5    ; 0            ; |fp32_uart_tx       ; fp32_uart_tx ; work         ;
+; |fp32_uart_tx              ; 54 (54)             ; 44 (44)                   ; 0           ; 0            ; 0       ; 0         ; 5    ; 0            ; |fp32_uart_tx       ; fp32_uart_tx ; work         ;
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -237,17 +237,24 @@ Encoding Type:  One-Hot
 +-------------------+------------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+-------------------+------------------+
 
 
-+------------------------------------------------------------+
-; Registers Removed During Synthesis                         ;
-+---------------------------------------+--------------------+
-; Register name                         ; Reason for Removal ;
-+---------------------------------------+--------------------+
-; tx_state~2                            ; Lost fanout        ;
-; tx_state~3                            ; Lost fanout        ;
-; tx_state~4                            ; Lost fanout        ;
-; tx_state~5                            ; Lost fanout        ;
-; Total Number of Removed Registers = 4 ;                    ;
-+---------------------------------------+--------------------+
++---------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                              ;
++----------------------------------------+----------------------------------------+
+; Register name                          ; Reason for Removal                     ;
++----------------------------------------+----------------------------------------+
+; tx_data[7]                             ; Stuck at GND due to stuck port data_in ;
+; tx_data[4]                             ; Stuck at VCC due to stuck port data_in ;
+; tx_data[3]                             ; Stuck at GND due to stuck port data_in ;
+; tx_data[2]                             ; Stuck at VCC due to stuck port data_in ;
+; tx_data[1]                             ; Stuck at GND due to stuck port data_in ;
+; tx_data[6]                             ; Merged with tx_data[0]                 ;
+; tx_data[0]                             ; Merged with tx_data[5]                 ;
+; tx_state~12                            ; Lost fanout                            ;
+; tx_state~13                            ; Lost fanout                            ;
+; tx_state~14                            ; Lost fanout                            ;
+; tx_state~15                            ; Lost fanout                            ;
+; Total Number of Removed Registers = 11 ;                                        ;
++----------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -255,7 +262,7 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 43    ;
+; Total registers                              ; 44    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
@@ -292,21 +299,21 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 5                           ;
-; cycloneiii_ff         ; 43                          ;
+; cycloneiii_ff         ; 44                          ;
 ;     ENA               ; 11                          ;
-;     plain             ; 32                          ;
-; cycloneiii_lcell_comb ; 54                          ;
+;     plain             ; 33                          ;
+; cycloneiii_lcell_comb ; 55                          ;
 ;     arith             ; 31                          ;
 ;         2 data inputs ; 31                          ;
-;     normal            ; 23                          ;
+;     normal            ; 24                          ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 3                           ;
 ;         2 data inputs ; 7                           ;
 ;         3 data inputs ; 1                           ;
-;         4 data inputs ; 11                          ;
+;         4 data inputs ; 12                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 4.10                        ;
-; Average LUT depth     ; 3.22                        ;
+; Average LUT depth     ; 3.24                        ;
 +-----------------------+-----------------------------+
 
 
@@ -325,13 +332,14 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Mon Oct 10 23:43:26 2022
+    Info: Processing started: Tue Oct 11 00:41:44 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off fp32_uart_tx -c fp32_uart_tx
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file fp32_uart_tx.sv
     Info (12023): Found entity 1: fp32_uart_tx File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_uart_tx/fp32_uart_tx.sv Line: 1
 Info (12127): Elaborating entity "fp32_uart_tx" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at fp32_uart_tx.sv(27): object "repeat_cnt" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_uart_tx/fp32_uart_tx.sv Line: 27
 Warning (10034): Output port "led1_o" at fp32_uart_tx.sv(20) has no driver File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_uart_tx/fp32_uart_tx.sv Line: 20
 Warning (10034): Output port "led2_o" at fp32_uart_tx.sv(21) has no driver File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_uart_tx/fp32_uart_tx.sv Line: 21
 Warning (13024): Output pins are stuck at VCC or GND
@@ -343,14 +351,14 @@ Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 1 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "btn1_i" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_uart_tx/fp32_uart_tx.sv Line: 18
-Info (21057): Implemented 67 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 68 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 2 input pins
     Info (21059): Implemented 3 output pins
-    Info (21061): Implemented 62 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 8 warnings
-    Info: Peak virtual memory: 4813 megabytes
-    Info: Processing ended: Mon Oct 10 23:43:32 2022
+    Info (21061): Implemented 63 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 9 warnings
+    Info: Peak virtual memory: 4812 megabytes
+    Info: Processing ended: Tue Oct 11 00:41:50 2022
     Info: Elapsed time: 00:00:06
-    Info: Total CPU time (on all processors): 00:00:14
+    Info: Total CPU time (on all processors): 00:00:15
 
 
