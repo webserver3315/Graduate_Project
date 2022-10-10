@@ -1,0 +1,15 @@
+|maruta
+DELAY => state~1.DATAIN
+ACT => next_state.PRECHARGING.ALOAD
+ACT => next_state.HIGHING.ALOAD
+ACT => next_state.ACTIVE.ALOAD
+ACT => next_state.IDLE.ALOAD
+PRE => next_state.PRECHARGING.CLK
+PRE => next_state.HIGHING.CLK
+PRE => next_state.ACTIVE.CLK
+PRE => next_state.IDLE.CLK
+PEQ <= PEQ.DB_MAX_OUTPUT_PORT_TYPE
+PWL <= NSA.DB_MAX_OUTPUT_PORT_TYPE
+NSA <= NSA.DB_MAX_OUTPUT_PORT_TYPE
+
+

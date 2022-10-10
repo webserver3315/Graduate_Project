@@ -1,0 +1,16 @@
+inital cond
+ PEQ = 1
+ PWL = 0
+ NSA = 0
+ ACT = 0
+ PRE = 0
+
+if (ACT == 1 && NSA == 0)
+  PEQ = 0
+  PWL = 1 (PEQ=0으로 바뀌고 2ns 뒤에)
+  NSA = PWL (PWL=1으로 바뀌고 3ns 뒤에)
+
+if(PRE == 1 && PEQ ==0)
+  PWL = 0
+  NSA = PWL (PWL=0으로 바뀌고 3ns 뒤에)
+  PEQ = 1

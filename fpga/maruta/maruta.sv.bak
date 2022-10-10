@@ -1,0 +1,68 @@
+module maruta
+    (
+    input wire  ACT, PRE,
+    output reg  PEQ, PWL, NSA
+    );
+
+    // PEQ = 1'b1;
+
+    always_latch @(*) begin
+        if (ACT == 1'b1) begin
+            PEQ = 1'b0;
+            PWL =  1'b1;
+            NSA =  1'b1; 
+        end
+        else if (PRE == 1'b1) begin
+            PWL = 1'b0;
+            NSA = 1'b0;
+            PEQ = 1'b1;            
+        end
+        else begin 
+            PWL = PWL;
+            NSA = NSA;
+            PEQ = PEQ;
+        end
+    end
+endmodule
+
+
+/*
+
+module maruta
+    (
+    input wire  ACT, PRE,
+    output reg  PEQ, PWL, NSA
+    );
+
+    always_latch @(*) begin
+        if (ACT == 1'b1) begin
+            PEQ = 1'b0;
+            NSA = NSA;
+            PWL = PWL;
+        end
+
+        else if (PEQ == 1'b0) begin
+            PWL =  1'b1;
+            NSA =  1'b1;
+            PEQ = PEQ;
+        end
+
+        else if (PRE == 1'b1) begin
+            PWL = 1'b0;
+            NSA = 1'b0;
+            PEQ = PEQ;
+        end
+        else if (NSA == 1'b0) begin
+            PEQ = 1'b1;
+            PWL = PWL;
+            NSA = NSA;
+        end
+        else begin 
+            PEQ = 1'b0;
+            PWL = 1'b0;
+            NSA = 1'b0;
+        end
+    end
+endmodule
+
+*/

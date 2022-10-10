@@ -1,0 +1,137 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'DELAY'
+Slack : -2.228
+TNS   : -6.511
+
+Type  : Slow 1200mV 85C Model Setup 'ACT'
+Slack : -2.108
+TNS   : -5.527
+
+Type  : Slow 1200mV 85C Model Setup 'PRE'
+Slack : -0.655
+TNS   : -1.545
+
+Type  : Slow 1200mV 85C Model Hold 'DELAY'
+Slack : 0.806
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'PRE'
+Slack : 0.807
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'ACT'
+Slack : 1.044
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Recovery 'PRE'
+Slack : 0.135
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Removal 'PRE'
+Slack : -0.161
+TNS   : -0.483
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'DELAY'
+Slack : -3.000
+TNS   : -7.461
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'PRE'
+Slack : -3.000
+TNS   : -7.461
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'ACT'
+Slack : -3.000
+TNS   : -3.000
+
+Type  : Slow 1200mV 0C Model Setup 'DELAY'
+Slack : -2.227
+TNS   : -6.536
+
+Type  : Slow 1200mV 0C Model Setup 'ACT'
+Slack : -1.923
+TNS   : -5.010
+
+Type  : Slow 1200mV 0C Model Setup 'PRE'
+Slack : -0.499
+TNS   : -1.164
+
+Type  : Slow 1200mV 0C Model Hold 'PRE'
+Slack : 0.732
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'DELAY'
+Slack : 0.752
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'ACT'
+Slack : 1.041
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Recovery 'PRE'
+Slack : 0.188
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Removal 'PRE'
+Slack : -0.162
+TNS   : -0.486
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'DELAY'
+Slack : -3.000
+TNS   : -7.461
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'PRE'
+Slack : -3.000
+TNS   : -7.461
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'ACT'
+Slack : -3.000
+TNS   : -3.000
+
+Type  : Fast 1200mV 0C Model Setup 'DELAY'
+Slack : -0.923
+TNS   : -2.698
+
+Type  : Fast 1200mV 0C Model Setup 'PRE'
+Slack : -0.350
+TNS   : -0.966
+
+Type  : Fast 1200mV 0C Model Setup 'ACT'
+Slack : -0.263
+TNS   : -0.466
+
+Type  : Fast 1200mV 0C Model Hold 'PRE'
+Slack : 0.287
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'ACT'
+Slack : 0.315
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'DELAY'
+Slack : 0.320
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Recovery 'PRE'
+Slack : -0.059
+TNS   : -0.177
+
+Type  : Fast 1200mV 0C Model Removal 'PRE'
+Slack : -0.076
+TNS   : -0.228
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'DELAY'
+Slack : -3.000
+TNS   : -6.195
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'PRE'
+Slack : -3.000
+TNS   : -6.195
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'ACT'
+Slack : -3.000
+TNS   : -3.000
+
+------------------------------------------------------------

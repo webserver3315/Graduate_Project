@@ -1,0 +1,33 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "PEQ",
+					"strict" : false
+				},
+				{
+					"name" : "PWL",
+					"strict" : false
+				},
+				{
+					"name" : "NSA",
+					"strict" : false
+				},
+				{
+					"name" : "ACT",
+					"strict" : false
+				},
+				{
+					"name" : "DELAY",
+					"strict" : false
+				},
+				{
+					"name" : "PRE",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
