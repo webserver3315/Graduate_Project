@@ -1,2 +1,0 @@
-Warning (10268): Verilog HDL information at uart_test.sv(55): always construct contains both blocking and non-blocking assignments File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/uart_tx_workspace/uart_test.sv Line: 55
-Warning (10268): Verilog HDL information at uart_test.sv(81): always construct contains both blocking and non-blocking assignments File: //wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/uart_tx_workspace/uart_test.sv Line: 81
