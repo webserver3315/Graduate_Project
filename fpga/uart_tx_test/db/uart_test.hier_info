@@ -32,6 +32,6 @@ tx_clk => clk_count[29].CLK
 tx_clk => clk_count[30].CLK
 tx_clk => clk_count[31].CLK
 tx_clk => tx_state~1.DATAIN
-tx_output << Selector0.DB_MAX_OUTPUT_PORT_TYPE
+tx_output <= Selector0.DB_MAX_OUTPUT_PORT_TYPE
 
 

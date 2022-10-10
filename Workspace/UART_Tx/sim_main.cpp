@@ -12,49 +12,20 @@
 #include "Vtop.h"
 #include "verilated_vcd_c.h"
 
-#include "fpu_mac_test.hpp"
+#include "uart_tx_test.hpp"
 
 // return (a*b)+acc = delta
 
-bool is_nan(float32 tmp){
-    if(tmp.exponent == 0xFF && tmp.mantissa != 0x00) return true;
-    else return false;
-}
-
-void test_case(Vtop* top, VerilatedVcdC* wave_fp, float32 alpha, float32 bravo, float32 acc, int kazu){
-    float32 delta, charlie, delta_sim;
-    top->alpha = alpha.total_int;
-    top->bravo = bravo.total_int;
-    top->acc   = acc.total_int;
+void test_case(Vtop* top, VerilatedVcdC* wave_fp, float32 delta, int clk, int kazu){
+    top->delta = delta.total_int;
+    top->clk = clk;
     top->eval();
     delta.total_int = top->delta;
-    delta_sim = my_mac(alpha, bravo, acc);
-    charlie.total = (alpha.total * bravo.total) + acc.total;
     wave_fp->dump(kazu);
 
-    #if VERBOSE >= 1
-    printf("Input:Alpha\t\t(0x%08llx %f) is ",(ULL)alpha.total_int, alpha.total); print_binary((ULL)alpha.total_int); printf("\n");
-    printf("Input:Bravo\t\t(0x%08llx %f) is ",(ULL)bravo.total_int, bravo.total); print_binary((ULL)bravo.total_int); printf("\n");
-    printf("Input:ACC\t\t(0x%08llx %f) is ",(ULL)acc.total_int, acc.total); print_binary((ULL)acc.total_int); printf("\n");
-    printf("Result:Verilog\t(0x%08llx %f) is ",(ULL)delta.total_int, delta.total); print_binary((ULL)delta.total_int); printf("\n");
-    printf("Result:CPP_Sim\t(0x%08llx %f) is ",(ULL)delta_sim.total_int, delta_sim.total); print_binary((ULL)delta_sim.total_int); printf("\n");
-    printf("Wanted_Result\t(0x%08llx %f) is ",(ULL)charlie.total_int, charlie.total); print_binary((ULL)charlie.total_int); printf("\n");
+    #if VERBOSE >= 1    
+    // printf("Wanted_Result\t(0x%08llx %f) is ",(ULL)charlie.total_int, charlie.total); print_binary((ULL)charlie.total_int); printf("\n");
     #endif
-
-    if(delta.total_int != charlie.total_int){
-        if(is_nan(charlie) && is_nan(delta)){
-            printf("%d: SAME BOTH NaN\n", kazu);
-        }
-        else if(charlie.total_int - delta.total_int == 1){
-            printf("%d: SAME BUT NOT ROUNDED\n", kazu);
-        }
-        else {
-            printf("%d: ERROR\n", kazu);
-        }
-    }else{
-        printf("%d: SAME\n", kazu);
-    }
-    printf("*********************** (%f * %f) + %f END*********************\n", alpha.total, bravo.total, acc.total);
     printf("\n");
 }
 
@@ -79,6 +50,9 @@ int main(int argc, char** argv, char** env) {
     top->trace(wave_fp, 999);
     printf("waveform file name is top.vcd\n");
     wave_fp->open("./top.vcd");
+
+    top->eval();
+    wave_fp->dump(kazu);
 
     float32 aa, bb, acc;
 

@@ -1,8 +1,8 @@
 <sld_project_info>
   <project>
-    <hash md5_digest_80b="b70b906a953e3c5ff60a"/>
+    <hash md5_digest_80b="ade173c89b42a34ede9d"/>
   </project>
   <file_info>
-    <file device="EP4CE6E22C8" path="//wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/uart_test/output_files/uart_test.sof" usercode="0xFFFFFFFF"/>
+    <file device="EP4CE6E22C8" path="//wsl$/Ubuntu/home/user/Desktop/RTL/Graduate_Project/fpga/uart_tx_test/output_files/uart_test.sof" usercode="0xFFFFFFFF"/>
   </file_info>
 </sld_project_info>
