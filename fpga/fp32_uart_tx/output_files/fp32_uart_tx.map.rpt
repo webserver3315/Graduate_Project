@@ -1,5 +1,5 @@
 Analysis & Synthesis report for fp32_uart_tx
-Wed Oct 12 23:50:53 2022
+Thu Oct 13 00:00:41 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -46,7 +46,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Oct 12 23:50:53 2022       ;
+; Analysis & Synthesis Status        ; Successful - Thu Oct 13 00:00:41 2022       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; fp32_uart_tx                                ;
 ; Top-level Entity Name              ; fp32_uart_tx                                ;
@@ -394,14 +394,14 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Wed Oct 12 23:50:46 2022
+    Info: Processing started: Thu Oct 13 00:00:35 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off fp32_uart_tx -c fp32_uart_tx
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file fp32_uart_tx.sv
     Info (12023): Found entity 1: fp32_uart_tx File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_uart_tx/fp32_uart_tx.sv Line: 1
 Info (12127): Elaborating entity "fp32_uart_tx" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at fp32_uart_tx.sv(63): object "repeat_cnt" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_uart_tx/fp32_uart_tx.sv Line: 63
+Warning (10036): Verilog HDL or VHDL warning at fp32_uart_tx.sv(62): object "repeat_cnt" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_uart_tx/fp32_uart_tx.sv Line: 62
 Warning (10034): Output port "led1_o" at fp32_uart_tx.sv(53) has no driver File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_uart_tx/fp32_uart_tx.sv Line: 53
 Warning (10034): Output port "led2_o" at fp32_uart_tx.sv(54) has no driver File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_uart_tx/fp32_uart_tx.sv Line: 54
 Warning (13024): Output pins are stuck at VCC or GND
@@ -418,9 +418,9 @@ Info (21057): Implemented 103 device resources after synthesis - the final resou
     Info (21059): Implemented 3 output pins
     Info (21061): Implemented 98 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 9 warnings
-    Info: Peak virtual memory: 4811 megabytes
-    Info: Processing ended: Wed Oct 12 23:50:53 2022
-    Info: Elapsed time: 00:00:07
-    Info: Total CPU time (on all processors): 00:00:16
+    Info: Peak virtual memory: 4814 megabytes
+    Info: Processing ended: Thu Oct 13 00:00:41 2022
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:13
 
 

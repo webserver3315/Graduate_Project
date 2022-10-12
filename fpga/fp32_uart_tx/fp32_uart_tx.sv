@@ -53,8 +53,7 @@ module fp32_uart_tx
         output reg led1_o, led2_o
     );
 
-//	reg [31:0] full_precision_i = 32'h3332_3130;
-	reg [31:0] full_precision_i = 32'h44434241;
+	reg [31:0] full_precision_i = 32'h4443_4241;
 		
     reg [7:0] tx_state = IDLE0_ST;
 	wire [31:0] tx_data = full_precision_i; // 8'h55
