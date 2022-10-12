@@ -12,8 +12,8 @@ while True:
         # print("Read hexa: 0x", res_hex, " == ", res.decode("utf-8"))
         # print(type(res_hex)) # str
         # print("Read hexa: 0x", res_hex)
-        res = ser.read(size=4)
+        res = ser.read(size=5)
         print(type(res)) # bytes
 
         # print("Read: ", res.decode('utf-8')[:len(res)-1])
-        print("Read: ", res)
+        print("Read: ", res, " == ", res.hex())

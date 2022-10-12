@@ -2,7 +2,16 @@
 	"partitions" : [
 		{
 			"name" : "Top",
-			"pins" : []
+			"pins" : [
+				{
+					"name" : "delta_serial",
+					"strict" : false
+				},
+				{
+					"name" : "clk_i",
+					"strict" : false
+				}
+			]
 		}
 	]
 }

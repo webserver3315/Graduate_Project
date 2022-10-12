@@ -1,11 +1,9 @@
-|FP32_MAC_Combinatorial
-alpha_serial => ~NO_FANOUT~
-bravo_serial => ~NO_FANOUT~
-acc_serial => ~NO_FANOUT~
-delta_serial <= <GND>
+|FP32_MAC_Combinatorial_Tx
+clk_i => clk_i.IN1
+delta_serial <= fp32_uart_tx:My_UART_Tx.uart_tx_o
 
 
-|FP32_MAC_Combinatorial|FP32_Multiplier_Combinatorial:My_Multiplier
+|FP32_MAC_Combinatorial_Tx|FP32_Multiplier_Combinatorial:My_Multiplier
 alpha[0] => Equal2.IN22
 alpha[0] => Mult0.IN23
 alpha[1] => Equal2.IN21
@@ -166,7 +164,7 @@ delta[30] <= delta.DB_MAX_OUTPUT_PORT_TYPE
 delta[31] <= final_sign.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|FP32_MAC_Combinatorial|FP32_Multiplier_Combinatorial:My_Multiplier|leading_1_detector_48bit:leading_1_detector_48bit_1
+|FP32_MAC_Combinatorial_Tx|FP32_Multiplier_Combinatorial:My_Multiplier|leading_1_detector_48bit:leading_1_detector_48bit_1
 tmp[0] => ~NO_FANOUT~
 tmp[1] => ret.DATAA
 tmp[2] => ret.OUTPUTSELECT
@@ -403,7 +401,7 @@ ret[6] <= <GND>
 ret[7] <= <GND>
 
 
-|FP32_MAC_Combinatorial|FP32_Adder_Combinatorial:My_Adder
+|FP32_MAC_Combinatorial_Tx|FP32_Adder_Combinatorial:My_Adder
 alpha[0] => LessThan2.IN23
 alpha[0] => Equal4.IN22
 alpha[0] => small_E_Mantissa[0].DATAA
@@ -742,7 +740,7 @@ delta[30] <= final_exponent.DB_MAX_OUTPUT_PORT_TYPE
 delta[31] <= final_sign.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|FP32_MAC_Combinatorial|FP32_Adder_Combinatorial:My_Adder|leading_1_detector_23bit:leading_1_detector_23bit_1
+|FP32_MAC_Combinatorial_Tx|FP32_Adder_Combinatorial:My_Adder|leading_1_detector_23bit:leading_1_detector_23bit_1
 tmp[0] => ret.DATAA
 tmp[0] => ret.DATAA
 tmp[1] => ret.OUTPUTSELECT
@@ -858,5 +856,74 @@ ret[4] <= ret.DB_MAX_OUTPUT_PORT_TYPE
 ret[5] <= <GND>
 ret[6] <= <GND>
 ret[7] <= <GND>
+
+
+|FP32_MAC_Combinatorial_Tx|fp32_uart_tx:My_UART_Tx
+clk_i => clk_count[0].CLK
+clk_i => clk_count[1].CLK
+clk_i => clk_count[2].CLK
+clk_i => clk_count[3].CLK
+clk_i => clk_count[4].CLK
+clk_i => clk_count[5].CLK
+clk_i => clk_count[6].CLK
+clk_i => clk_count[7].CLK
+clk_i => clk_count[8].CLK
+clk_i => clk_count[9].CLK
+clk_i => clk_count[10].CLK
+clk_i => clk_count[11].CLK
+clk_i => clk_count[12].CLK
+clk_i => clk_count[13].CLK
+clk_i => clk_count[14].CLK
+clk_i => clk_count[15].CLK
+clk_i => clk_count[16].CLK
+clk_i => clk_count[17].CLK
+clk_i => clk_count[18].CLK
+clk_i => clk_count[19].CLK
+clk_i => clk_count[20].CLK
+clk_i => clk_count[21].CLK
+clk_i => clk_count[22].CLK
+clk_i => clk_count[23].CLK
+clk_i => clk_count[24].CLK
+clk_i => clk_count[25].CLK
+clk_i => clk_count[26].CLK
+clk_i => clk_count[27].CLK
+clk_i => clk_count[28].CLK
+clk_i => clk_count[29].CLK
+clk_i => clk_count[30].CLK
+clk_i => clk_count[31].CLK
+clk_i => tx_state~45.DATAIN
+full_precision_i[0] => Selector0.IN67
+full_precision_i[1] => Selector0.IN66
+full_precision_i[2] => Selector0.IN65
+full_precision_i[3] => Selector0.IN64
+full_precision_i[4] => Selector0.IN63
+full_precision_i[5] => Selector0.IN62
+full_precision_i[6] => Selector0.IN61
+full_precision_i[7] => Selector0.IN60
+full_precision_i[8] => Selector0.IN59
+full_precision_i[9] => Selector0.IN58
+full_precision_i[10] => Selector0.IN57
+full_precision_i[11] => Selector0.IN56
+full_precision_i[12] => Selector0.IN55
+full_precision_i[13] => Selector0.IN54
+full_precision_i[14] => Selector0.IN53
+full_precision_i[15] => Selector0.IN52
+full_precision_i[16] => Selector0.IN51
+full_precision_i[17] => Selector0.IN50
+full_precision_i[18] => Selector0.IN49
+full_precision_i[19] => Selector0.IN48
+full_precision_i[20] => Selector0.IN47
+full_precision_i[21] => Selector0.IN46
+full_precision_i[22] => Selector0.IN45
+full_precision_i[23] => Selector0.IN44
+full_precision_i[24] => Selector0.IN43
+full_precision_i[25] => Selector0.IN42
+full_precision_i[26] => Selector0.IN41
+full_precision_i[27] => Selector0.IN40
+full_precision_i[28] => Selector0.IN39
+full_precision_i[29] => Selector0.IN38
+full_precision_i[30] => Selector0.IN37
+full_precision_i[31] => Selector0.IN36
+uart_tx_o <= Selector0.DB_MAX_OUTPUT_PORT_TYPE
 
 

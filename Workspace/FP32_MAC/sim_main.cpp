@@ -176,7 +176,7 @@ int main(int argc, char** argv, char** env) {
 
 
     srand(time(NULL));
-    for(int i=0;i<100 ;i++){
+    for(int i=0;i<100000 ;i++){
         aa.total_int = rand();
         bb.total_int = rand();
         acc.total_int = rand();
