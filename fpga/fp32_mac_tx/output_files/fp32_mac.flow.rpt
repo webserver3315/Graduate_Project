@@ -1,5 +1,5 @@
 Flow report for fp32_mac
-Thu Oct 13 00:43:56 2022
+Thu Oct 13 02:01:12 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -41,15 +41,15 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Thu Oct 13 00:43:54 2022       ;
+; Flow Status                        ; Successful - Thu Oct 13 02:01:10 2022       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; fp32_mac                                    ;
 ; Top-level Entity Name              ; FP32_MAC_Combinatorial_Tx                   ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE6E22C8                                 ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 86 / 6,272 ( 1 % )                          ;
-;     Total combinational functions  ; 53 / 6,272 ( < 1 % )                        ;
+; Total logic elements               ; 87 / 6,272 ( 1 % )                          ;
+;     Total combinational functions  ; 55 / 6,272 ( < 1 % )                        ;
 ;     Dedicated logic registers      ; 76 / 6,272 ( 1 % )                          ;
 ; Total registers                    ; 76                                          ;
 ; Total pins                         ; 2 / 92 ( 2 % )                              ;
@@ -65,7 +65,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 10/13/2022 00:43:41 ;
+; Start date & time ; 10/13/2022 02:00:57 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; fp32_mac            ;
 +-------------------+---------------------+
@@ -76,7 +76,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+---------------+---------------------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name               ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+---------------------------+------------+
-; COMPILER_SIGNATURE_ID               ; 91756747484.166558942126668            ; --            ; --                        ; --         ;
+; COMPILER_SIGNATURE_ID               ; 91756747484.166559405735660            ; --            ; --                        ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --                        ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --                        ; --         ;
 ; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                                   ; --            ; --                        ; --         ;
@@ -95,11 +95,11 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:07     ; 1.0                     ; 4812 MB             ; 00:00:15                           ;
-; Fitter               ; 00:00:03     ; 1.1                     ; 6096 MB             ; 00:00:04                           ;
-; Assembler            ; 00:00:01     ; 1.0                     ; 4675 MB             ; 00:00:01                           ;
-; Timing Analyzer      ; 00:00:01     ; 1.1                     ; 4846 MB             ; 00:00:01                           ;
-; Total                ; 00:00:12     ; --                      ; --                  ; 00:00:21                           ;
+; Analysis & Synthesis ; 00:00:07     ; 1.0                     ; 4815 MB             ; 00:00:15                           ;
+; Fitter               ; 00:00:03     ; 1.1                     ; 6098 MB             ; 00:00:05                           ;
+; Assembler            ; 00:00:01     ; 1.0                     ; 4676 MB             ; 00:00:01                           ;
+; Timing Analyzer      ; 00:00:02     ; 1.1                     ; 4845 MB             ; 00:00:01                           ;
+; Total                ; 00:00:13     ; --                      ; --                  ; 00:00:22                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

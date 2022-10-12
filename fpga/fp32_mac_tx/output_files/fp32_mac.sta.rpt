@@ -1,5 +1,5 @@
 Timing Analyzer report for fp32_mac
-Thu Oct 13 00:43:56 2022
+Thu Oct 13 02:01:12 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -97,12 +97,13 @@ https://fpgasoftware.intel.com/eula.
 ; Number detected on machine ; 12          ;
 ; Maximum allowed            ; 12          ;
 ;                            ;             ;
-; Average used               ; 1.05        ;
+; Average used               ; 1.06        ;
 ; Maximum used               ; 12          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-12        ;   0.5%      ;
+;     Processor 2            ;   0.6%      ;
+;     Processors 3-12        ;   0.5%      ;
 +----------------------------+-------------+
 
 
@@ -120,7 +121,7 @@ https://fpgasoftware.intel.com/eula.
 +------------+-----------------+------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
 +------------+-----------------+------------+------+
-; 220.17 MHz ; 220.17 MHz      ; clk_i      ;      ;
+; 215.29 MHz ; 215.29 MHz      ; clk_i      ;      ;
 +------------+-----------------+------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -136,7 +137,7 @@ HTML report is unavailable in plain text report export.
 +-------+--------+--------------------+
 ; Clock ; Slack  ; End Point TNS      ;
 +-------+--------+--------------------+
-; clk_i ; -3.542 ; -219.313           ;
+; clk_i ; -3.645 ; -223.086           ;
 +-------+--------+--------------------+
 
 
@@ -145,7 +146,7 @@ HTML report is unavailable in plain text report export.
 +-------+-------+--------------------+
 ; Clock ; Slack ; End Point TNS      ;
 +-------+-------+--------------------+
-; clk_i ; 0.500 ; 0.000              ;
+; clk_i ; 0.484 ; 0.000              ;
 +-------+-------+--------------------+
 
 
@@ -170,112 +171,112 @@ No paths to report.
 +-------+--------+----------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Slow 1200mV 85C Model Setup: 'clk_i'                                                                                                                             ;
-+--------+---------------------------------------+-------------------------------------------+--------------+-------------+--------------+------------+------------+
-; Slack  ; From Node                             ; To Node                                   ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+--------+---------------------------------------+-------------------------------------------+--------------+-------------+--------------+------------+------------+
-; -3.542 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.456      ;
-; -3.542 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.456      ;
-; -3.542 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.456      ;
-; -3.542 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.456      ;
-; -3.527 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.444      ;
-; -3.527 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.444      ;
-; -3.527 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D30_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.444      ;
-; -3.527 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D29_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.444      ;
-; -3.527 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D28_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.444      ;
-; -3.527 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE3_ST ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.444      ;
-; -3.527 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP2_ST ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.444      ;
-; -3.527 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D23_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.444      ;
-; -3.527 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D22_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.444      ;
-; -3.527 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.444      ;
-; -3.527 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.444      ;
-; -3.527 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.444      ;
-; -3.527 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.444      ;
-; -3.527 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D17_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.444      ;
-; -3.527 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D16_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.444      ;
-; -3.361 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.275      ;
-; -3.361 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.275      ;
-; -3.361 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.275      ;
-; -3.361 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.275      ;
-; -3.346 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.260      ;
-; -3.346 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.260      ;
-; -3.346 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.260      ;
-; -3.346 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.260      ;
-; -3.346 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.263      ;
-; -3.346 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.263      ;
-; -3.346 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D30_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.263      ;
-; -3.346 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D29_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.263      ;
-; -3.346 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D28_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.263      ;
-; -3.346 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE3_ST ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.263      ;
-; -3.346 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP2_ST ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.263      ;
-; -3.346 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D23_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.263      ;
-; -3.346 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D22_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.263      ;
-; -3.346 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.263      ;
-; -3.346 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.263      ;
-; -3.346 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.263      ;
-; -3.346 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.263      ;
-; -3.346 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D17_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.263      ;
-; -3.346 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D16_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.263      ;
-; -3.342 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.256      ;
-; -3.342 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.256      ;
-; -3.342 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.256      ;
-; -3.342 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.256      ;
-; -3.331 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.248      ;
-; -3.331 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.248      ;
-; -3.331 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D30_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.248      ;
-; -3.331 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D29_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.248      ;
-; -3.331 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D28_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.248      ;
-; -3.331 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE3_ST ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.248      ;
-; -3.331 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP2_ST ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.248      ;
-; -3.331 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D23_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.248      ;
-; -3.331 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D22_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.248      ;
-; -3.331 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.248      ;
-; -3.331 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.248      ;
-; -3.331 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.248      ;
-; -3.331 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.248      ;
-; -3.331 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D17_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.248      ;
-; -3.331 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D16_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.248      ;
-; -3.327 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.244      ;
-; -3.327 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.244      ;
-; -3.327 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D30_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.244      ;
-; -3.327 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D29_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.244      ;
-; -3.327 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D28_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.244      ;
-; -3.327 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE3_ST ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.244      ;
-; -3.327 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.STOP2_ST ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.244      ;
-; -3.327 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D23_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.244      ;
-; -3.327 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D22_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.244      ;
-; -3.327 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.244      ;
-; -3.327 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.244      ;
-; -3.327 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.244      ;
-; -3.327 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.244      ;
-; -3.327 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D17_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.244      ;
-; -3.327 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D16_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.244      ;
-; -3.327 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.241      ;
-; -3.327 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.241      ;
-; -3.327 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.241      ;
-; -3.327 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.241      ;
-; -3.319 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.233      ;
-; -3.319 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.233      ;
-; -3.319 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.233      ;
-; -3.319 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.233      ;
-; -3.308 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.225      ;
-; -3.308 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.225      ;
-; -3.308 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D30_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.225      ;
-; -3.308 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D29_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.225      ;
-; -3.308 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D28_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.225      ;
-; -3.308 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE3_ST ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.225      ;
-; -3.308 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP2_ST ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.225      ;
-; -3.308 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D23_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.225      ;
-; -3.308 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D22_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.225      ;
-; -3.308 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.225      ;
-; -3.308 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.225      ;
-; -3.308 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.225      ;
-; -3.308 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.225      ;
-; -3.308 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D17_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.225      ;
-; -3.308 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D16_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.084     ; 4.225      ;
-; -3.304 ; fp32_uart_tx:My_UART_Tx|clk_count[6]  ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.218      ;
-+--------+---------------------------------------+-------------------------------------------+--------------+-------------+--------------+------------+------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow 1200mV 85C Model Setup: 'clk_i'                                                                                                                              ;
++--------+---------------------------------------+--------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                             ; To Node                                    ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+---------------------------------------+--------------------------------------------+--------------+-------------+--------------+------------+------------+
+; -3.645 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.083     ; 4.563      ;
+; -3.645 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.083     ; 4.563      ;
+; -3.645 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.083     ; 4.563      ;
+; -3.645 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.083     ; 4.563      ;
+; -3.645 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.083     ; 4.563      ;
+; -3.619 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.083     ; 4.537      ;
+; -3.619 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.083     ; 4.537      ;
+; -3.619 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.083     ; 4.537      ;
+; -3.619 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.083     ; 4.537      ;
+; -3.619 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.083     ; 4.537      ;
+; -3.615 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.083     ; 4.533      ;
+; -3.615 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.083     ; 4.533      ;
+; -3.615 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.083     ; 4.533      ;
+; -3.615 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.083     ; 4.533      ;
+; -3.615 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.083     ; 4.533      ;
+; -3.593 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.082     ; 4.512      ;
+; -3.567 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.082     ; 4.486      ;
+; -3.563 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.082     ; 4.482      ;
+; -3.494 ; fp32_uart_tx:My_UART_Tx|clk_count[11] ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.408      ;
+; -3.494 ; fp32_uart_tx:My_UART_Tx|clk_count[11] ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.408      ;
+; -3.494 ; fp32_uart_tx:My_UART_Tx|clk_count[11] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.408      ;
+; -3.494 ; fp32_uart_tx:My_UART_Tx|clk_count[11] ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.408      ;
+; -3.494 ; fp32_uart_tx:My_UART_Tx|clk_count[11] ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.408      ;
+; -3.493 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE1_ST  ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.415      ;
+; -3.493 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST  ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.415      ;
+; -3.493 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.415      ;
+; -3.493 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.415      ;
+; -3.493 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.415      ;
+; -3.493 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.415      ;
+; -3.493 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.415      ;
+; -3.493 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D0_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.415      ;
+; -3.493 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.START0_ST ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.415      ;
+; -3.493 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP1_ST  ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.415      ;
+; -3.493 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D15_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.415      ;
+; -3.493 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D14_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.415      ;
+; -3.493 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D13_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.415      ;
+; -3.493 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D12_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.415      ;
+; -3.493 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D11_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.415      ;
+; -3.493 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D10_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.415      ;
+; -3.483 ; fp32_uart_tx:My_UART_Tx|clk_count[31] ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.083     ; 4.401      ;
+; -3.483 ; fp32_uart_tx:My_UART_Tx|clk_count[31] ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.083     ; 4.401      ;
+; -3.483 ; fp32_uart_tx:My_UART_Tx|clk_count[31] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.083     ; 4.401      ;
+; -3.483 ; fp32_uart_tx:My_UART_Tx|clk_count[31] ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.083     ; 4.401      ;
+; -3.483 ; fp32_uart_tx:My_UART_Tx|clk_count[31] ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.083     ; 4.401      ;
+; -3.467 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE1_ST  ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.389      ;
+; -3.467 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST  ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.389      ;
+; -3.467 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.389      ;
+; -3.467 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.389      ;
+; -3.467 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.389      ;
+; -3.467 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.389      ;
+; -3.467 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.389      ;
+; -3.467 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D0_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.389      ;
+; -3.467 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.START0_ST ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.389      ;
+; -3.467 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP1_ST  ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.389      ;
+; -3.467 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D15_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.389      ;
+; -3.467 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D14_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.389      ;
+; -3.467 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D13_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.389      ;
+; -3.467 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D12_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.389      ;
+; -3.467 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D11_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.389      ;
+; -3.467 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D10_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.389      ;
+; -3.463 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE1_ST  ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.385      ;
+; -3.463 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST  ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.385      ;
+; -3.463 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.385      ;
+; -3.463 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.385      ;
+; -3.463 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.385      ;
+; -3.463 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.385      ;
+; -3.463 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.385      ;
+; -3.463 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D0_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.385      ;
+; -3.463 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.START0_ST ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.385      ;
+; -3.463 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP1_ST  ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.385      ;
+; -3.463 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D15_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.385      ;
+; -3.463 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D14_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.385      ;
+; -3.463 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D13_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.385      ;
+; -3.463 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D12_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.385      ;
+; -3.463 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D11_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.385      ;
+; -3.463 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D10_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.385      ;
+; -3.459 ; fp32_uart_tx:My_UART_Tx|clk_count[10] ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.373      ;
+; -3.459 ; fp32_uart_tx:My_UART_Tx|clk_count[10] ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.373      ;
+; -3.459 ; fp32_uart_tx:My_UART_Tx|clk_count[10] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.373      ;
+; -3.459 ; fp32_uart_tx:My_UART_Tx|clk_count[10] ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.373      ;
+; -3.459 ; fp32_uart_tx:My_UART_Tx|clk_count[10] ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.373      ;
+; -3.435 ; fp32_uart_tx:My_UART_Tx|clk_count[11] ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.086     ; 4.350      ;
+; -3.420 ; fp32_uart_tx:My_UART_Tx|clk_count[22] ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.083     ; 4.338      ;
+; -3.420 ; fp32_uart_tx:My_UART_Tx|clk_count[22] ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.083     ; 4.338      ;
+; -3.420 ; fp32_uart_tx:My_UART_Tx|clk_count[22] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.083     ; 4.338      ;
+; -3.420 ; fp32_uart_tx:My_UART_Tx|clk_count[22] ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.083     ; 4.338      ;
+; -3.420 ; fp32_uart_tx:My_UART_Tx|clk_count[22] ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.083     ; 4.338      ;
+; -3.420 ; fp32_uart_tx:My_UART_Tx|clk_count[6]  ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.334      ;
+; -3.420 ; fp32_uart_tx:My_UART_Tx|clk_count[6]  ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.334      ;
+; -3.420 ; fp32_uart_tx:My_UART_Tx|clk_count[6]  ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.334      ;
+; -3.420 ; fp32_uart_tx:My_UART_Tx|clk_count[6]  ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.334      ;
+; -3.420 ; fp32_uart_tx:My_UART_Tx|clk_count[6]  ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.087     ; 4.334      ;
+; -3.417 ; fp32_uart_tx:My_UART_Tx|clk_count[31] ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.082     ; 4.336      ;
+; -3.407 ; fp32_uart_tx:My_UART_Tx|clk_count[10] ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.086     ; 4.322      ;
+; -3.406 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.083     ; 4.324      ;
+; -3.406 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.083     ; 4.324      ;
+; -3.406 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.083     ; 4.324      ;
+; -3.406 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.083     ; 4.324      ;
+; -3.406 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.083     ; 4.324      ;
+; -3.390 ; fp32_uart_tx:My_UART_Tx|clk_count[8]  ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.088     ; 4.303      ;
++--------+---------------------------------------+--------------------------------------------+--------------+-------------+--------------+------------+------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -283,106 +284,106 @@ No paths to report.
 +-------+--------------------------------------------+--------------------------------------------+--------------+-------------+--------------+------------+------------+
 ; Slack ; From Node                                  ; To Node                                    ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +-------+--------------------------------------------+--------------------------------------------+--------------+-------------+--------------+------------+------------+
-; 0.500 ; fp32_uart_tx:My_UART_Tx|tx_state.D22_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D23_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.793      ;
-; 0.501 ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.794      ;
-; 0.501 ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.794      ;
-; 0.501 ; fp32_uart_tx:My_UART_Tx|tx_state.D29_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D30_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.794      ;
-; 0.501 ; fp32_uart_tx:My_UART_Tx|tx_state.D17_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.794      ;
-; 0.501 ; fp32_uart_tx:My_UART_Tx|tx_state.D14_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D15_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.794      ;
-; 0.501 ; fp32_uart_tx:My_UART_Tx|tx_state.D13_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D14_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.794      ;
-; 0.501 ; fp32_uart_tx:My_UART_Tx|tx_state.D9_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D10_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.794      ;
-; 0.501 ; fp32_uart_tx:My_UART_Tx|tx_state.D8_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D9_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.794      ;
-; 0.502 ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.795      ;
-; 0.502 ; fp32_uart_tx:My_UART_Tx|tx_state.D28_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D29_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.795      ;
+; 0.484 ; fp32_uart_tx:My_UART_Tx|tx_state.STOP3_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE0_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.777      ;
+; 0.500 ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.793      ;
+; 0.500 ; fp32_uart_tx:My_UART_Tx|tx_state.D30_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D31_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.793      ;
+; 0.501 ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.794      ;
+; 0.501 ; fp32_uart_tx:My_UART_Tx|tx_state.D11_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D12_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 0.793      ;
+; 0.502 ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 0.794      ;
+; 0.502 ; fp32_uart_tx:My_UART_Tx|tx_state.D24_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D25_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.795      ;
 ; 0.502 ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.795      ;
-; 0.502 ; fp32_uart_tx:My_UART_Tx|tx_state.D11_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D12_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.795      ;
-; 0.502 ; fp32_uart_tx:My_UART_Tx|tx_state.D10_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D11_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.795      ;
-; 0.503 ; fp32_uart_tx:My_UART_Tx|tx_state.D23_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.STOP2_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.796      ;
-; 0.503 ; fp32_uart_tx:My_UART_Tx|tx_state.D12_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D13_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.796      ;
-; 0.508 ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE1_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.START1_ST ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.801      ;
-; 0.509 ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D22_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.802      ;
-; 0.642 ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.935      ;
-; 0.643 ; fp32_uart_tx:My_UART_Tx|tx_state.START1_ST ; fp32_uart_tx:My_UART_Tx|tx_state.D8_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.936      ;
-; 0.644 ; fp32_uart_tx:My_UART_Tx|tx_state.D16_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D17_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.937      ;
-; 0.669 ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE2_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.START2_ST ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.962      ;
-; 0.681 ; fp32_uart_tx:My_UART_Tx|tx_state.START3_ST ; fp32_uart_tx:My_UART_Tx|tx_state.D24_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.099      ; 0.992      ;
-; 0.687 ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.980      ;
-; 0.691 ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.984      ;
-; 0.696 ; fp32_uart_tx:My_UART_Tx|tx_state.START2_ST ; fp32_uart_tx:My_UART_Tx|tx_state.D16_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 0.988      ;
-; 0.698 ; fp32_uart_tx:My_UART_Tx|tx_state.STOP1_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE2_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.991      ;
-; 0.700 ; fp32_uart_tx:My_UART_Tx|tx_state.D15_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.STOP1_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.993      ;
-; 0.707 ; fp32_uart_tx:My_UART_Tx|tx_state.D31_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.STOP3_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.000      ;
-; 0.707 ; fp32_uart_tx:My_UART_Tx|tx_state.D30_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D31_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.082      ; 1.001      ;
-; 0.707 ; fp32_uart_tx:My_UART_Tx|tx_state.STOP2_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE3_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.000      ;
+; 0.503 ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 0.795      ;
+; 0.503 ; fp32_uart_tx:My_UART_Tx|tx_state.START0_ST ; fp32_uart_tx:My_UART_Tx|tx_state.D0_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 0.795      ;
+; 0.503 ; fp32_uart_tx:My_UART_Tx|tx_state.D10_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D11_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 0.795      ;
+; 0.504 ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 0.796      ;
+; 0.505 ; fp32_uart_tx:My_UART_Tx|tx_state.D13_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D14_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 0.797      ;
+; 0.509 ; fp32_uart_tx:My_UART_Tx|tx_state.D28_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D29_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.802      ;
+; 0.509 ; fp32_uart_tx:My_UART_Tx|tx_state.D25_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D26_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.802      ;
+; 0.509 ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE3_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.START3_ST ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.802      ;
+; 0.509 ; fp32_uart_tx:My_UART_Tx|tx_state.D22_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D23_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.802      ;
+; 0.641 ; fp32_uart_tx:My_UART_Tx|tx_state.START3_ST ; fp32_uart_tx:My_UART_Tx|tx_state.D24_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.934      ;
+; 0.643 ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 0.935      ;
+; 0.644 ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 0.936      ;
+; 0.644 ; fp32_uart_tx:My_UART_Tx|tx_state.D14_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D15_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 0.936      ;
+; 0.646 ; fp32_uart_tx:My_UART_Tx|tx_state.D12_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D13_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 0.938      ;
+; 0.650 ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE1_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 0.942      ;
+; 0.651 ; fp32_uart_tx:My_UART_Tx|tx_state.D29_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D30_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.944      ;
+; 0.699 ; fp32_uart_tx:My_UART_Tx|tx_state.START2_ST ; fp32_uart_tx:My_UART_Tx|tx_state.D16_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.992      ;
+; 0.700 ; fp32_uart_tx:My_UART_Tx|tx_state.D27_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D28_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.993      ;
+; 0.700 ; fp32_uart_tx:My_UART_Tx|tx_state.D15_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.STOP1_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 0.992      ;
+; 0.706 ; fp32_uart_tx:My_UART_Tx|tx_state.D26_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D27_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 0.999      ;
+; 0.708 ; fp32_uart_tx:My_UART_Tx|tx_state.D31_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.STOP3_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.001      ;
+; 0.708 ; fp32_uart_tx:My_UART_Tx|tx_state.D23_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.STOP2_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.001      ;
+; 0.712 ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.005      ;
+; 0.719 ; fp32_uart_tx:My_UART_Tx|tx_state.D16_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D17_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.571      ; 1.502      ;
+; 0.755 ; fp32_uart_tx:My_UART_Tx|tx_state.START1_ST ; fp32_uart_tx:My_UART_Tx|tx_state.D8_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.531      ; 1.498      ;
 ; 0.760 ; fp32_uart_tx:My_UART_Tx|clk_count[15]      ; fp32_uart_tx:My_UART_Tx|clk_count[15]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.053      ;
 ; 0.760 ; fp32_uart_tx:My_UART_Tx|clk_count[3]       ; fp32_uart_tx:My_UART_Tx|clk_count[3]       ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.053      ;
+; 0.761 ; fp32_uart_tx:My_UART_Tx|clk_count[19]      ; fp32_uart_tx:My_UART_Tx|clk_count[19]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.054      ;
 ; 0.761 ; fp32_uart_tx:My_UART_Tx|clk_count[13]      ; fp32_uart_tx:My_UART_Tx|clk_count[13]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.054      ;
 ; 0.761 ; fp32_uart_tx:My_UART_Tx|clk_count[11]      ; fp32_uart_tx:My_UART_Tx|clk_count[11]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.054      ;
-; 0.762 ; fp32_uart_tx:My_UART_Tx|clk_count[19]      ; fp32_uart_tx:My_UART_Tx|clk_count[19]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.054      ;
-; 0.763 ; fp32_uart_tx:My_UART_Tx|clk_count[21]      ; fp32_uart_tx:My_UART_Tx|clk_count[21]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.055      ;
-; 0.763 ; fp32_uart_tx:My_UART_Tx|clk_count[29]      ; fp32_uart_tx:My_UART_Tx|clk_count[29]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.055      ;
-; 0.763 ; fp32_uart_tx:My_UART_Tx|clk_count[27]      ; fp32_uart_tx:My_UART_Tx|clk_count[27]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.055      ;
-; 0.763 ; fp32_uart_tx:My_UART_Tx|clk_count[17]      ; fp32_uart_tx:My_UART_Tx|clk_count[17]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.055      ;
+; 0.762 ; fp32_uart_tx:My_UART_Tx|clk_count[29]      ; fp32_uart_tx:My_UART_Tx|clk_count[29]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.055      ;
+; 0.762 ; fp32_uart_tx:My_UART_Tx|clk_count[27]      ; fp32_uart_tx:My_UART_Tx|clk_count[27]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.055      ;
+; 0.762 ; fp32_uart_tx:My_UART_Tx|clk_count[21]      ; fp32_uart_tx:My_UART_Tx|clk_count[21]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.055      ;
+; 0.762 ; fp32_uart_tx:My_UART_Tx|clk_count[17]      ; fp32_uart_tx:My_UART_Tx|clk_count[17]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.055      ;
+; 0.763 ; fp32_uart_tx:My_UART_Tx|clk_count[31]      ; fp32_uart_tx:My_UART_Tx|clk_count[31]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.056      ;
+; 0.763 ; fp32_uart_tx:My_UART_Tx|clk_count[16]      ; fp32_uart_tx:My_UART_Tx|clk_count[16]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.056      ;
 ; 0.763 ; fp32_uart_tx:My_UART_Tx|clk_count[9]       ; fp32_uart_tx:My_UART_Tx|clk_count[9]       ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.056      ;
 ; 0.763 ; fp32_uart_tx:My_UART_Tx|clk_count[6]       ; fp32_uart_tx:My_UART_Tx|clk_count[6]       ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.056      ;
 ; 0.763 ; fp32_uart_tx:My_UART_Tx|clk_count[2]       ; fp32_uart_tx:My_UART_Tx|clk_count[2]       ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.056      ;
-; 0.764 ; fp32_uart_tx:My_UART_Tx|clk_count[31]      ; fp32_uart_tx:My_UART_Tx|clk_count[31]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.056      ;
-; 0.764 ; fp32_uart_tx:My_UART_Tx|clk_count[16]      ; fp32_uart_tx:My_UART_Tx|clk_count[16]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.056      ;
+; 0.764 ; fp32_uart_tx:My_UART_Tx|clk_count[23]      ; fp32_uart_tx:My_UART_Tx|clk_count[23]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.057      ;
+; 0.764 ; fp32_uart_tx:My_UART_Tx|clk_count[25]      ; fp32_uart_tx:My_UART_Tx|clk_count[25]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.057      ;
+; 0.764 ; fp32_uart_tx:My_UART_Tx|clk_count[22]      ; fp32_uart_tx:My_UART_Tx|clk_count[22]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.057      ;
+; 0.764 ; fp32_uart_tx:My_UART_Tx|clk_count[18]      ; fp32_uart_tx:My_UART_Tx|clk_count[18]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.057      ;
 ; 0.764 ; fp32_uart_tx:My_UART_Tx|clk_count[14]      ; fp32_uart_tx:My_UART_Tx|clk_count[14]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.057      ;
 ; 0.764 ; fp32_uart_tx:My_UART_Tx|clk_count[12]      ; fp32_uart_tx:My_UART_Tx|clk_count[12]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.057      ;
-; 0.765 ; fp32_uart_tx:My_UART_Tx|clk_count[23]      ; fp32_uart_tx:My_UART_Tx|clk_count[23]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.057      ;
-; 0.765 ; fp32_uart_tx:My_UART_Tx|clk_count[25]      ; fp32_uart_tx:My_UART_Tx|clk_count[25]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.057      ;
-; 0.765 ; fp32_uart_tx:My_UART_Tx|clk_count[22]      ; fp32_uart_tx:My_UART_Tx|clk_count[22]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.057      ;
-; 0.765 ; fp32_uart_tx:My_UART_Tx|clk_count[18]      ; fp32_uart_tx:My_UART_Tx|clk_count[18]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.057      ;
+; 0.765 ; fp32_uart_tx:My_UART_Tx|clk_count[30]      ; fp32_uart_tx:My_UART_Tx|clk_count[30]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.058      ;
+; 0.765 ; fp32_uart_tx:My_UART_Tx|clk_count[20]      ; fp32_uart_tx:My_UART_Tx|clk_count[20]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.058      ;
 ; 0.765 ; fp32_uart_tx:My_UART_Tx|clk_count[10]      ; fp32_uart_tx:My_UART_Tx|clk_count[10]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.058      ;
-; 0.766 ; fp32_uart_tx:My_UART_Tx|clk_count[30]      ; fp32_uart_tx:My_UART_Tx|clk_count[30]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.058      ;
-; 0.766 ; fp32_uart_tx:My_UART_Tx|clk_count[20]      ; fp32_uart_tx:My_UART_Tx|clk_count[20]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.058      ;
-; 0.767 ; fp32_uart_tx:My_UART_Tx|clk_count[28]      ; fp32_uart_tx:My_UART_Tx|clk_count[28]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.059      ;
-; 0.767 ; fp32_uart_tx:My_UART_Tx|clk_count[26]      ; fp32_uart_tx:My_UART_Tx|clk_count[26]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.059      ;
-; 0.767 ; fp32_uart_tx:My_UART_Tx|clk_count[24]      ; fp32_uart_tx:My_UART_Tx|clk_count[24]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.059      ;
+; 0.766 ; fp32_uart_tx:My_UART_Tx|clk_count[28]      ; fp32_uart_tx:My_UART_Tx|clk_count[28]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.059      ;
+; 0.766 ; fp32_uart_tx:My_UART_Tx|clk_count[26]      ; fp32_uart_tx:My_UART_Tx|clk_count[26]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.059      ;
+; 0.766 ; fp32_uart_tx:My_UART_Tx|clk_count[24]      ; fp32_uart_tx:My_UART_Tx|clk_count[24]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.059      ;
 ; 0.786 ; fp32_uart_tx:My_UART_Tx|clk_count[0]       ; fp32_uart_tx:My_UART_Tx|clk_count[0]       ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.079      ;
-; 0.820 ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE0_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.START0_ST ; clk_i        ; clk_i       ; 0.000        ; 0.096      ; 1.128      ;
-; 0.889 ; fp32_uart_tx:My_UART_Tx|tx_state.D0_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.099      ; 1.200      ;
-; 0.889 ; fp32_uart_tx:My_UART_Tx|tx_state.D24_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D25_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.099      ; 1.200      ;
-; 0.908 ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.084      ; 1.204      ;
-; 0.915 ; fp32_uart_tx:My_UART_Tx|tx_state.D26_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D27_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.105      ; 1.232      ;
-; 0.964 ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE3_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.START3_ST ; clk_i        ; clk_i       ; 0.000        ; 0.535      ; 1.711      ;
-; 0.978 ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST     ; clk_i        ; clk_i       ; 0.000        ; -0.395     ; 0.795      ;
-; 0.979 ; fp32_uart_tx:My_UART_Tx|tx_state.D27_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D28_ST    ; clk_i        ; clk_i       ; 0.000        ; -0.397     ; 0.794      ;
-; 1.064 ; fp32_uart_tx:My_UART_Tx|tx_state.STOP3_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE0_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.579      ; 1.855      ;
-; 1.071 ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE1_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.082      ; 1.365      ;
-; 1.112 ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.137      ; 1.461      ;
-; 1.115 ; fp32_uart_tx:My_UART_Tx|clk_count[15]      ; fp32_uart_tx:My_UART_Tx|clk_count[16]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.408      ;
+; 0.892 ; fp32_uart_tx:My_UART_Tx|tx_state.D9_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D10_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.078      ; 1.182      ;
+; 0.897 ; fp32_uart_tx:My_UART_Tx|tx_state.STOP1_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE2_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.083      ; 1.192      ;
+; 0.916 ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE2_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.START2_ST ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.209      ;
+; 0.923 ; fp32_uart_tx:My_UART_Tx|tx_state.STOP2_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE3_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.216      ;
+; 0.947 ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE0_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.START0_ST ; clk_i        ; clk_i       ; 0.000        ; 0.078      ; 1.237      ;
+; 0.961 ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE1_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.START1_ST ; clk_i        ; clk_i       ; 0.000        ; 0.083      ; 1.256      ;
+; 0.978 ; fp32_uart_tx:My_UART_Tx|tx_state.D17_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 0.000        ; -0.396     ; 0.794      ;
+; 1.022 ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D22_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.086      ; 1.320      ;
+; 1.025 ; fp32_uart_tx:My_UART_Tx|tx_state.D0_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.077      ; 1.314      ;
+; 1.065 ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.084      ; 1.361      ;
+; 1.116 ; fp32_uart_tx:My_UART_Tx|clk_count[17]      ; fp32_uart_tx:My_UART_Tx|clk_count[18]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.409      ;
 ; 1.116 ; fp32_uart_tx:My_UART_Tx|clk_count[13]      ; fp32_uart_tx:My_UART_Tx|clk_count[14]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.409      ;
 ; 1.116 ; fp32_uart_tx:My_UART_Tx|clk_count[11]      ; fp32_uart_tx:My_UART_Tx|clk_count[12]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.409      ;
-; 1.117 ; fp32_uart_tx:My_UART_Tx|clk_count[17]      ; fp32_uart_tx:My_UART_Tx|clk_count[18]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.409      ;
+; 1.116 ; fp32_uart_tx:My_UART_Tx|clk_count[19]      ; fp32_uart_tx:My_UART_Tx|clk_count[20]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.409      ;
+; 1.117 ; fp32_uart_tx:My_UART_Tx|clk_count[21]      ; fp32_uart_tx:My_UART_Tx|clk_count[22]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.410      ;
+; 1.117 ; fp32_uart_tx:My_UART_Tx|clk_count[29]      ; fp32_uart_tx:My_UART_Tx|clk_count[30]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.410      ;
 ; 1.117 ; fp32_uart_tx:My_UART_Tx|clk_count[9]       ; fp32_uart_tx:My_UART_Tx|clk_count[10]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.410      ;
-; 1.117 ; fp32_uart_tx:My_UART_Tx|clk_count[19]      ; fp32_uart_tx:My_UART_Tx|clk_count[20]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.409      ;
-; 1.118 ; fp32_uart_tx:My_UART_Tx|clk_count[21]      ; fp32_uart_tx:My_UART_Tx|clk_count[22]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.410      ;
-; 1.118 ; fp32_uart_tx:My_UART_Tx|clk_count[29]      ; fp32_uart_tx:My_UART_Tx|clk_count[30]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.410      ;
-; 1.118 ; fp32_uart_tx:My_UART_Tx|clk_count[27]      ; fp32_uart_tx:My_UART_Tx|clk_count[28]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.410      ;
-; 1.119 ; fp32_uart_tx:My_UART_Tx|clk_count[25]      ; fp32_uart_tx:My_UART_Tx|clk_count[26]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.411      ;
-; 1.119 ; fp32_uart_tx:My_UART_Tx|clk_count[23]      ; fp32_uart_tx:My_UART_Tx|clk_count[24]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.411      ;
+; 1.117 ; fp32_uart_tx:My_UART_Tx|clk_count[27]      ; fp32_uart_tx:My_UART_Tx|clk_count[28]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.410      ;
+; 1.118 ; fp32_uart_tx:My_UART_Tx|clk_count[25]      ; fp32_uart_tx:My_UART_Tx|clk_count[26]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.411      ;
+; 1.118 ; fp32_uart_tx:My_UART_Tx|clk_count[23]      ; fp32_uart_tx:My_UART_Tx|clk_count[24]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.411      ;
+; 1.119 ; fp32_uart_tx:My_UART_Tx|clk_count[15]      ; fp32_uart_tx:My_UART_Tx|clk_count[16]      ; clk_i        ; clk_i       ; 0.000        ; 0.077      ; 1.408      ;
 ; 1.124 ; fp32_uart_tx:My_UART_Tx|clk_count[2]       ; fp32_uart_tx:My_UART_Tx|clk_count[3]       ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.417      ;
+; 1.124 ; fp32_uart_tx:My_UART_Tx|clk_count[16]      ; fp32_uart_tx:My_UART_Tx|clk_count[17]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.417      ;
 ; 1.125 ; fp32_uart_tx:My_UART_Tx|clk_count[14]      ; fp32_uart_tx:My_UART_Tx|clk_count[15]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.418      ;
+; 1.125 ; fp32_uart_tx:My_UART_Tx|clk_count[18]      ; fp32_uart_tx:My_UART_Tx|clk_count[19]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.418      ;
 ; 1.125 ; fp32_uart_tx:My_UART_Tx|clk_count[12]      ; fp32_uart_tx:My_UART_Tx|clk_count[13]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.418      ;
-; 1.125 ; fp32_uart_tx:My_UART_Tx|clk_count[16]      ; fp32_uart_tx:My_UART_Tx|clk_count[17]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.417      ;
+; 1.125 ; fp32_uart_tx:My_UART_Tx|clk_count[22]      ; fp32_uart_tx:My_UART_Tx|clk_count[23]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.418      ;
 ; 1.126 ; fp32_uart_tx:My_UART_Tx|clk_count[10]      ; fp32_uart_tx:My_UART_Tx|clk_count[11]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.419      ;
-; 1.126 ; fp32_uart_tx:My_UART_Tx|clk_count[18]      ; fp32_uart_tx:My_UART_Tx|clk_count[19]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.418      ;
-; 1.126 ; fp32_uart_tx:My_UART_Tx|clk_count[22]      ; fp32_uart_tx:My_UART_Tx|clk_count[23]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.418      ;
-; 1.127 ; fp32_uart_tx:My_UART_Tx|clk_count[20]      ; fp32_uart_tx:My_UART_Tx|clk_count[21]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.419      ;
-; 1.127 ; fp32_uart_tx:My_UART_Tx|clk_count[30]      ; fp32_uart_tx:My_UART_Tx|clk_count[31]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.419      ;
-; 1.128 ; fp32_uart_tx:My_UART_Tx|clk_count[28]      ; fp32_uart_tx:My_UART_Tx|clk_count[29]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.420      ;
-; 1.128 ; fp32_uart_tx:My_UART_Tx|clk_count[26]      ; fp32_uart_tx:My_UART_Tx|clk_count[27]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.420      ;
-; 1.128 ; fp32_uart_tx:My_UART_Tx|clk_count[24]      ; fp32_uart_tx:My_UART_Tx|clk_count[25]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.420      ;
+; 1.126 ; fp32_uart_tx:My_UART_Tx|clk_count[20]      ; fp32_uart_tx:My_UART_Tx|clk_count[21]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.419      ;
+; 1.126 ; fp32_uart_tx:My_UART_Tx|clk_count[30]      ; fp32_uart_tx:My_UART_Tx|clk_count[31]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.419      ;
+; 1.127 ; fp32_uart_tx:My_UART_Tx|clk_count[28]      ; fp32_uart_tx:My_UART_Tx|clk_count[29]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.420      ;
+; 1.127 ; fp32_uart_tx:My_UART_Tx|clk_count[26]      ; fp32_uart_tx:My_UART_Tx|clk_count[27]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.420      ;
+; 1.127 ; fp32_uart_tx:My_UART_Tx|clk_count[24]      ; fp32_uart_tx:My_UART_Tx|clk_count[25]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.420      ;
 ; 1.133 ; fp32_uart_tx:My_UART_Tx|clk_count[0]       ; fp32_uart_tx:My_UART_Tx|clk_count[2]       ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.426      ;
-; 1.134 ; fp32_uart_tx:My_UART_Tx|clk_count[14]      ; fp32_uart_tx:My_UART_Tx|clk_count[16]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.427      ;
+; 1.133 ; fp32_uart_tx:My_UART_Tx|clk_count[16]      ; fp32_uart_tx:My_UART_Tx|clk_count[18]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.426      ;
 ; 1.134 ; fp32_uart_tx:My_UART_Tx|clk_count[12]      ; fp32_uart_tx:My_UART_Tx|clk_count[14]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.427      ;
-; 1.134 ; fp32_uart_tx:My_UART_Tx|clk_count[16]      ; fp32_uart_tx:My_UART_Tx|clk_count[18]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.426      ;
+; 1.134 ; fp32_uart_tx:My_UART_Tx|clk_count[18]      ; fp32_uart_tx:My_UART_Tx|clk_count[20]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.427      ;
+; 1.134 ; fp32_uart_tx:My_UART_Tx|clk_count[22]      ; fp32_uart_tx:My_UART_Tx|clk_count[24]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.427      ;
 ; 1.135 ; fp32_uart_tx:My_UART_Tx|clk_count[10]      ; fp32_uart_tx:My_UART_Tx|clk_count[12]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.428      ;
-; 1.135 ; fp32_uart_tx:My_UART_Tx|clk_count[18]      ; fp32_uart_tx:My_UART_Tx|clk_count[20]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.427      ;
-; 1.135 ; fp32_uart_tx:My_UART_Tx|clk_count[22]      ; fp32_uart_tx:My_UART_Tx|clk_count[24]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.427      ;
-; 1.136 ; fp32_uart_tx:My_UART_Tx|clk_count[20]      ; fp32_uart_tx:My_UART_Tx|clk_count[22]      ; clk_i        ; clk_i       ; 0.000        ; 0.080      ; 1.428      ;
+; 1.135 ; fp32_uart_tx:My_UART_Tx|clk_count[20]      ; fp32_uart_tx:My_UART_Tx|clk_count[22]      ; clk_i        ; clk_i       ; 0.000        ; 0.081      ; 1.428      ;
 +-------+--------------------------------------------+--------------------------------------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -397,7 +398,7 @@ No synchronizer chains to report.
 +-----------+-----------------+------------+------+
 ; Fmax      ; Restricted Fmax ; Clock Name ; Note ;
 +-----------+-----------------+------------+------+
-; 237.3 MHz ; 237.3 MHz       ; clk_i      ;      ;
+; 232.5 MHz ; 232.5 MHz       ; clk_i      ;      ;
 +-----------+-----------------+------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -407,7 +408,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------+--------+-------------------+
 ; Clock ; Slack  ; End Point TNS     ;
 +-------+--------+-------------------+
-; clk_i ; -3.214 ; -193.772          ;
+; clk_i ; -3.301 ; -197.470          ;
 +-------+--------+-------------------+
 
 
@@ -416,7 +417,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------+-------+-------------------+
 ; Clock ; Slack ; End Point TNS     ;
 +-------+-------+-------------------+
-; clk_i ; 0.470 ; 0.000             ;
+; clk_i ; 0.448 ; 0.000             ;
 +-------+-------+-------------------+
 
 
@@ -441,112 +442,112 @@ No paths to report.
 +-------+--------+---------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Slow 1200mV 0C Model Setup: 'clk_i'                                                                                                                              ;
-+--------+---------------------------------------+-------------------------------------------+--------------+-------------+--------------+------------+------------+
-; Slack  ; From Node                             ; To Node                                   ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+--------+---------------------------------------+-------------------------------------------+--------------+-------------+--------------+------------+------------+
-; -3.214 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.137      ;
-; -3.214 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.137      ;
-; -3.214 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.137      ;
-; -3.214 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 4.137      ;
-; -3.200 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 4.126      ;
-; -3.200 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 4.126      ;
-; -3.200 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D30_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 4.126      ;
-; -3.200 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D29_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 4.126      ;
-; -3.200 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D28_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 4.126      ;
-; -3.200 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE3_ST ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 4.126      ;
-; -3.200 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP2_ST ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 4.126      ;
-; -3.200 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D23_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 4.126      ;
-; -3.200 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D22_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 4.126      ;
-; -3.200 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 4.126      ;
-; -3.200 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 4.126      ;
-; -3.200 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 4.126      ;
-; -3.200 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 4.126      ;
-; -3.200 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D17_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 4.126      ;
-; -3.200 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D16_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 4.126      ;
-; -3.082 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.078     ; 4.006      ;
-; -3.082 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.078     ; 4.006      ;
-; -3.082 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.078     ; 4.006      ;
-; -3.082 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.078     ; 4.006      ;
-; -3.068 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 3.995      ;
-; -3.068 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 3.995      ;
-; -3.068 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D30_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 3.995      ;
-; -3.068 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D29_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 3.995      ;
-; -3.068 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D28_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 3.995      ;
-; -3.068 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE3_ST ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 3.995      ;
-; -3.068 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.STOP2_ST ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 3.995      ;
-; -3.068 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D23_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 3.995      ;
-; -3.068 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D22_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 3.995      ;
-; -3.068 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 3.995      ;
-; -3.068 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 3.995      ;
-; -3.068 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 3.995      ;
-; -3.068 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 3.995      ;
-; -3.068 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D17_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 3.995      ;
-; -3.068 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D16_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 3.995      ;
-; -3.052 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 3.975      ;
-; -3.052 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 3.975      ;
-; -3.052 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 3.975      ;
-; -3.052 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 3.975      ;
-; -3.044 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 3.967      ;
-; -3.044 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 3.967      ;
-; -3.044 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 3.967      ;
-; -3.044 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 3.967      ;
-; -3.038 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 3.964      ;
-; -3.038 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 3.964      ;
-; -3.038 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D30_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 3.964      ;
-; -3.038 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D29_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 3.964      ;
-; -3.038 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D28_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 3.964      ;
-; -3.038 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE3_ST ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 3.964      ;
-; -3.038 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP2_ST ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 3.964      ;
-; -3.038 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D23_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 3.964      ;
-; -3.038 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D22_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 3.964      ;
-; -3.038 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 3.964      ;
-; -3.038 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 3.964      ;
-; -3.038 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 3.964      ;
-; -3.038 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 3.964      ;
-; -3.038 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D17_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 3.964      ;
-; -3.038 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D16_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 3.964      ;
-; -3.036 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.078     ; 3.960      ;
-; -3.036 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.078     ; 3.960      ;
-; -3.036 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.078     ; 3.960      ;
-; -3.036 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.078     ; 3.960      ;
-; -3.030 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 3.956      ;
-; -3.030 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 3.956      ;
-; -3.030 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D30_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 3.956      ;
-; -3.030 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D29_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 3.956      ;
-; -3.030 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D28_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 3.956      ;
-; -3.030 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE3_ST ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 3.956      ;
-; -3.030 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP2_ST ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 3.956      ;
-; -3.030 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D23_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 3.956      ;
-; -3.030 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D22_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 3.956      ;
-; -3.030 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 3.956      ;
-; -3.030 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 3.956      ;
-; -3.030 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 3.956      ;
-; -3.030 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 3.956      ;
-; -3.030 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D17_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 3.956      ;
-; -3.030 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D16_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 3.956      ;
-; -3.022 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 3.949      ;
-; -3.022 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 3.949      ;
-; -3.022 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D30_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 3.949      ;
-; -3.022 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D29_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 3.949      ;
-; -3.022 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D28_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 3.949      ;
-; -3.022 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE3_ST ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 3.949      ;
-; -3.022 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.STOP2_ST ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 3.949      ;
-; -3.022 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D23_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 3.949      ;
-; -3.022 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D22_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 3.949      ;
-; -3.022 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 3.949      ;
-; -3.022 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 3.949      ;
-; -3.022 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 3.949      ;
-; -3.022 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 3.949      ;
-; -3.022 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D17_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 3.949      ;
-; -3.022 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D16_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 3.949      ;
-; -3.017 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 3.940      ;
-; -3.017 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 3.940      ;
-; -3.017 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 3.940      ;
-; -3.017 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.079     ; 3.940      ;
-; -3.006 ; fp32_uart_tx:My_UART_Tx|clk_count[6]  ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.078     ; 3.930      ;
-+--------+---------------------------------------+-------------------------------------------+--------------+-------------+--------------+------------+------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow 1200mV 0C Model Setup: 'clk_i'                                                                                                                               ;
++--------+---------------------------------------+--------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                             ; To Node                                    ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+---------------------------------------+--------------------------------------------+--------------+-------------+--------------+------------+------------+
+; -3.301 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 4.228      ;
+; -3.301 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 4.228      ;
+; -3.301 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 4.228      ;
+; -3.301 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 4.228      ;
+; -3.301 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 4.228      ;
+; -3.283 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 4.210      ;
+; -3.283 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 4.210      ;
+; -3.283 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 4.210      ;
+; -3.283 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 4.210      ;
+; -3.283 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 4.210      ;
+; -3.279 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 4.206      ;
+; -3.279 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 4.206      ;
+; -3.279 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 4.206      ;
+; -3.279 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 4.206      ;
+; -3.279 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 4.206      ;
+; -3.249 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.074     ; 4.177      ;
+; -3.231 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.074     ; 4.159      ;
+; -3.227 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.074     ; 4.155      ;
+; -3.176 ; fp32_uart_tx:My_UART_Tx|clk_count[11] ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.077     ; 4.101      ;
+; -3.176 ; fp32_uart_tx:My_UART_Tx|clk_count[11] ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.077     ; 4.101      ;
+; -3.176 ; fp32_uart_tx:My_UART_Tx|clk_count[11] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.077     ; 4.101      ;
+; -3.176 ; fp32_uart_tx:My_UART_Tx|clk_count[11] ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.077     ; 4.101      ;
+; -3.176 ; fp32_uart_tx:My_UART_Tx|clk_count[11] ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.077     ; 4.101      ;
+; -3.161 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE1_ST  ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.092      ;
+; -3.161 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST  ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.092      ;
+; -3.161 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.092      ;
+; -3.161 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.092      ;
+; -3.161 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.092      ;
+; -3.161 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.092      ;
+; -3.161 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.092      ;
+; -3.161 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D0_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.092      ;
+; -3.161 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.START0_ST ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.092      ;
+; -3.161 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP1_ST  ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.092      ;
+; -3.161 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D15_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.092      ;
+; -3.161 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D14_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.092      ;
+; -3.161 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D13_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.092      ;
+; -3.161 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D12_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.092      ;
+; -3.161 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D11_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.092      ;
+; -3.161 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D10_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.092      ;
+; -3.145 ; fp32_uart_tx:My_UART_Tx|clk_count[31] ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 4.072      ;
+; -3.145 ; fp32_uart_tx:My_UART_Tx|clk_count[31] ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 4.072      ;
+; -3.145 ; fp32_uart_tx:My_UART_Tx|clk_count[31] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 4.072      ;
+; -3.145 ; fp32_uart_tx:My_UART_Tx|clk_count[31] ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 4.072      ;
+; -3.145 ; fp32_uart_tx:My_UART_Tx|clk_count[31] ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 4.072      ;
+; -3.143 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE1_ST  ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.074      ;
+; -3.143 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST  ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.074      ;
+; -3.143 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.074      ;
+; -3.143 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.074      ;
+; -3.143 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.074      ;
+; -3.143 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.074      ;
+; -3.143 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.074      ;
+; -3.143 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D0_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.074      ;
+; -3.143 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.START0_ST ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.074      ;
+; -3.143 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP1_ST  ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.074      ;
+; -3.143 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D15_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.074      ;
+; -3.143 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D14_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.074      ;
+; -3.143 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D13_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.074      ;
+; -3.143 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D12_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.074      ;
+; -3.143 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D11_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.074      ;
+; -3.143 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D10_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.074      ;
+; -3.139 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE1_ST  ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.070      ;
+; -3.139 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST  ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.070      ;
+; -3.139 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.070      ;
+; -3.139 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.070      ;
+; -3.139 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.070      ;
+; -3.139 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.070      ;
+; -3.139 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.070      ;
+; -3.139 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D0_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.070      ;
+; -3.139 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.START0_ST ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.070      ;
+; -3.139 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP1_ST  ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.070      ;
+; -3.139 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D15_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.070      ;
+; -3.139 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D14_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.070      ;
+; -3.139 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D13_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.070      ;
+; -3.139 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D12_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.070      ;
+; -3.139 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D11_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.070      ;
+; -3.139 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D10_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.071     ; 4.070      ;
+; -3.137 ; fp32_uart_tx:My_UART_Tx|clk_count[8]  ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.078     ; 4.061      ;
+; -3.137 ; fp32_uart_tx:My_UART_Tx|clk_count[8]  ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.078     ; 4.061      ;
+; -3.137 ; fp32_uart_tx:My_UART_Tx|clk_count[8]  ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.078     ; 4.061      ;
+; -3.137 ; fp32_uart_tx:My_UART_Tx|clk_count[8]  ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.078     ; 4.061      ;
+; -3.137 ; fp32_uart_tx:My_UART_Tx|clk_count[8]  ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.078     ; 4.061      ;
+; -3.136 ; fp32_uart_tx:My_UART_Tx|clk_count[10] ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.077     ; 4.061      ;
+; -3.136 ; fp32_uart_tx:My_UART_Tx|clk_count[10] ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.077     ; 4.061      ;
+; -3.136 ; fp32_uart_tx:My_UART_Tx|clk_count[10] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.077     ; 4.061      ;
+; -3.136 ; fp32_uart_tx:My_UART_Tx|clk_count[10] ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.077     ; 4.061      ;
+; -3.136 ; fp32_uart_tx:My_UART_Tx|clk_count[10] ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.077     ; 4.061      ;
+; -3.124 ; fp32_uart_tx:My_UART_Tx|clk_count[11] ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.076     ; 4.050      ;
+; -3.107 ; fp32_uart_tx:My_UART_Tx|clk_count[22] ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 4.034      ;
+; -3.107 ; fp32_uart_tx:My_UART_Tx|clk_count[22] ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 4.034      ;
+; -3.107 ; fp32_uart_tx:My_UART_Tx|clk_count[22] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 4.034      ;
+; -3.107 ; fp32_uart_tx:My_UART_Tx|clk_count[22] ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 4.034      ;
+; -3.107 ; fp32_uart_tx:My_UART_Tx|clk_count[22] ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 4.034      ;
+; -3.106 ; fp32_uart_tx:My_UART_Tx|clk_count[6]  ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.077     ; 4.031      ;
+; -3.106 ; fp32_uart_tx:My_UART_Tx|clk_count[6]  ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.077     ; 4.031      ;
+; -3.106 ; fp32_uart_tx:My_UART_Tx|clk_count[6]  ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.077     ; 4.031      ;
+; -3.106 ; fp32_uart_tx:My_UART_Tx|clk_count[6]  ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.077     ; 4.031      ;
+; -3.106 ; fp32_uart_tx:My_UART_Tx|clk_count[6]  ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.077     ; 4.031      ;
+; -3.105 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 4.032      ;
+; -3.105 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 4.032      ;
+; -3.105 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.075     ; 4.032      ;
++--------+---------------------------------------+--------------------------------------------+--------------+-------------+--------------+------------+------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -554,42 +555,44 @@ No paths to report.
 +-------+--------------------------------------------+--------------------------------------------+--------------+-------------+--------------+------------+------------+
 ; Slack ; From Node                                  ; To Node                                    ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +-------+--------------------------------------------+--------------------------------------------+--------------+-------------+--------------+------------+------------+
-; 0.470 ; fp32_uart_tx:My_UART_Tx|tx_state.D22_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D23_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.737      ;
-; 0.470 ; fp32_uart_tx:My_UART_Tx|tx_state.D13_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D14_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.737      ;
-; 0.471 ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.738      ;
-; 0.471 ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.738      ;
-; 0.471 ; fp32_uart_tx:My_UART_Tx|tx_state.D29_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D30_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.738      ;
-; 0.471 ; fp32_uart_tx:My_UART_Tx|tx_state.D28_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D29_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.738      ;
+; 0.448 ; fp32_uart_tx:My_UART_Tx|tx_state.STOP3_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE0_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 0.716      ;
+; 0.469 ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 0.737      ;
+; 0.469 ; fp32_uart_tx:My_UART_Tx|tx_state.D30_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D31_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 0.737      ;
+; 0.469 ; fp32_uart_tx:My_UART_Tx|tx_state.D11_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D12_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 0.737      ;
+; 0.470 ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.737      ;
+; 0.471 ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 0.739      ;
+; 0.471 ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 0.739      ;
+; 0.471 ; fp32_uart_tx:My_UART_Tx|tx_state.START0_ST ; fp32_uart_tx:My_UART_Tx|tx_state.D0_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 0.739      ;
+; 0.471 ; fp32_uart_tx:My_UART_Tx|tx_state.D24_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D25_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 0.739      ;
+; 0.471 ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.738      ;
 ; 0.471 ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.738      ;
-; 0.471 ; fp32_uart_tx:My_UART_Tx|tx_state.D17_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.738      ;
-; 0.471 ; fp32_uart_tx:My_UART_Tx|tx_state.D14_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D15_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.738      ;
-; 0.471 ; fp32_uart_tx:My_UART_Tx|tx_state.D9_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D10_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.738      ;
-; 0.471 ; fp32_uart_tx:My_UART_Tx|tx_state.D8_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D9_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.738      ;
-; 0.472 ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.739      ;
-; 0.472 ; fp32_uart_tx:My_UART_Tx|tx_state.D23_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.STOP2_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.739      ;
-; 0.472 ; fp32_uart_tx:My_UART_Tx|tx_state.D12_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D13_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.739      ;
-; 0.472 ; fp32_uart_tx:My_UART_Tx|tx_state.D11_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D12_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.739      ;
-; 0.472 ; fp32_uart_tx:My_UART_Tx|tx_state.D10_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D11_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.739      ;
-; 0.477 ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D22_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.744      ;
-; 0.477 ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE1_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.START1_ST ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.744      ;
-; 0.599 ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.866      ;
-; 0.600 ; fp32_uart_tx:My_UART_Tx|tx_state.START1_ST ; fp32_uart_tx:My_UART_Tx|tx_state.D8_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.867      ;
-; 0.601 ; fp32_uart_tx:My_UART_Tx|tx_state.D16_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D17_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.868      ;
-; 0.611 ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.878      ;
-; 0.617 ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.884      ;
-; 0.621 ; fp32_uart_tx:My_UART_Tx|tx_state.START2_ST ; fp32_uart_tx:My_UART_Tx|tx_state.D16_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.071      ; 0.887      ;
-; 0.622 ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE2_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.START2_ST ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.889      ;
-; 0.625 ; fp32_uart_tx:My_UART_Tx|tx_state.D30_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D31_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 0.893      ;
-; 0.630 ; fp32_uart_tx:My_UART_Tx|tx_state.START3_ST ; fp32_uart_tx:My_UART_Tx|tx_state.D24_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.089      ; 0.914      ;
-; 0.645 ; fp32_uart_tx:My_UART_Tx|tx_state.STOP1_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE2_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.912      ;
-; 0.648 ; fp32_uart_tx:My_UART_Tx|tx_state.D15_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.STOP1_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.915      ;
-; 0.655 ; fp32_uart_tx:My_UART_Tx|tx_state.STOP2_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE3_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.922      ;
-; 0.656 ; fp32_uart_tx:My_UART_Tx|tx_state.D31_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.STOP3_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.923      ;
+; 0.471 ; fp32_uart_tx:My_UART_Tx|tx_state.D10_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D11_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 0.739      ;
+; 0.473 ; fp32_uart_tx:My_UART_Tx|tx_state.D13_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D14_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 0.741      ;
+; 0.476 ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE3_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.START3_ST ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 0.744      ;
+; 0.477 ; fp32_uart_tx:My_UART_Tx|tx_state.D28_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D29_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 0.745      ;
+; 0.477 ; fp32_uart_tx:My_UART_Tx|tx_state.D22_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D23_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 0.745      ;
+; 0.478 ; fp32_uart_tx:My_UART_Tx|tx_state.D25_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D26_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 0.746      ;
+; 0.597 ; fp32_uart_tx:My_UART_Tx|tx_state.START3_ST ; fp32_uart_tx:My_UART_Tx|tx_state.D24_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 0.865      ;
+; 0.598 ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 0.866      ;
+; 0.599 ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 0.867      ;
+; 0.600 ; fp32_uart_tx:My_UART_Tx|tx_state.D14_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D15_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 0.868      ;
+; 0.602 ; fp32_uart_tx:My_UART_Tx|tx_state.D12_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D13_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 0.870      ;
+; 0.606 ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE1_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 0.874      ;
+; 0.609 ; fp32_uart_tx:My_UART_Tx|tx_state.D29_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D30_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 0.877      ;
+; 0.616 ; fp32_uart_tx:My_UART_Tx|tx_state.D16_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D17_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.538      ; 1.349      ;
+; 0.622 ; fp32_uart_tx:My_UART_Tx|tx_state.D27_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D28_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 0.890      ;
+; 0.629 ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 0.897      ;
+; 0.645 ; fp32_uart_tx:My_UART_Tx|tx_state.D15_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.STOP1_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 0.913      ;
+; 0.647 ; fp32_uart_tx:My_UART_Tx|tx_state.START2_ST ; fp32_uart_tx:My_UART_Tx|tx_state.D16_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.914      ;
+; 0.653 ; fp32_uart_tx:My_UART_Tx|tx_state.D26_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D27_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 0.921      ;
+; 0.655 ; fp32_uart_tx:My_UART_Tx|tx_state.D31_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.STOP3_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 0.923      ;
+; 0.655 ; fp32_uart_tx:My_UART_Tx|tx_state.D23_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.STOP2_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 0.923      ;
+; 0.667 ; fp32_uart_tx:My_UART_Tx|tx_state.START1_ST ; fp32_uart_tx:My_UART_Tx|tx_state.D8_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.492      ; 1.354      ;
 ; 0.705 ; fp32_uart_tx:My_UART_Tx|clk_count[15]      ; fp32_uart_tx:My_UART_Tx|clk_count[15]      ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.972      ;
 ; 0.705 ; fp32_uart_tx:My_UART_Tx|clk_count[13]      ; fp32_uart_tx:My_UART_Tx|clk_count[13]      ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.972      ;
 ; 0.705 ; fp32_uart_tx:My_UART_Tx|clk_count[3]       ; fp32_uart_tx:My_UART_Tx|clk_count[3]       ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.972      ;
-; 0.706 ; fp32_uart_tx:My_UART_Tx|clk_count[21]      ; fp32_uart_tx:My_UART_Tx|clk_count[21]      ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.973      ;
 ; 0.706 ; fp32_uart_tx:My_UART_Tx|clk_count[29]      ; fp32_uart_tx:My_UART_Tx|clk_count[29]      ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.973      ;
+; 0.706 ; fp32_uart_tx:My_UART_Tx|clk_count[21]      ; fp32_uart_tx:My_UART_Tx|clk_count[21]      ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.973      ;
 ; 0.706 ; fp32_uart_tx:My_UART_Tx|clk_count[19]      ; fp32_uart_tx:My_UART_Tx|clk_count[19]      ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.973      ;
 ; 0.706 ; fp32_uart_tx:My_UART_Tx|clk_count[11]      ; fp32_uart_tx:My_UART_Tx|clk_count[11]      ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.973      ;
 ; 0.707 ; fp32_uart_tx:My_UART_Tx|clk_count[27]      ; fp32_uart_tx:My_UART_Tx|clk_count[27]      ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.974      ;
@@ -612,19 +615,16 @@ No paths to report.
 ; 0.712 ; fp32_uart_tx:My_UART_Tx|clk_count[20]      ; fp32_uart_tx:My_UART_Tx|clk_count[20]      ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.979      ;
 ; 0.713 ; fp32_uart_tx:My_UART_Tx|clk_count[24]      ; fp32_uart_tx:My_UART_Tx|clk_count[24]      ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 0.980      ;
 ; 0.733 ; fp32_uart_tx:My_UART_Tx|clk_count[0]       ; fp32_uart_tx:My_UART_Tx|clk_count[0]       ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 1.000      ;
-; 0.770 ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE0_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.START0_ST ; clk_i        ; clk_i       ; 0.000        ; 0.082      ; 1.047      ;
-; 0.808 ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.075      ; 1.078      ;
-; 0.818 ; fp32_uart_tx:My_UART_Tx|tx_state.D26_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D27_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.090      ; 1.103      ;
-; 0.819 ; fp32_uart_tx:My_UART_Tx|tx_state.D0_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.089      ; 1.103      ;
-; 0.819 ; fp32_uart_tx:My_UART_Tx|tx_state.D24_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D25_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.089      ; 1.103      ;
-; 0.855 ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE3_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.START3_ST ; clk_i        ; clk_i       ; 0.000        ; 0.496      ; 1.546      ;
-; 0.923 ; fp32_uart_tx:My_UART_Tx|tx_state.D27_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D28_ST    ; clk_i        ; clk_i       ; 0.000        ; -0.381     ; 0.737      ;
-; 0.928 ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST     ; clk_i        ; clk_i       ; 0.000        ; -0.385     ; 0.738      ;
-; 0.957 ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE1_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 1.225      ;
-; 0.965 ; fp32_uart_tx:My_UART_Tx|tx_state.STOP3_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE0_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.545      ; 1.705      ;
-; 0.971 ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.137      ; 1.303      ;
-; 1.005 ; fp32_uart_tx:My_UART_Tx|tx_state.D25_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D26_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.137      ; 1.337      ;
-; 1.026 ; fp32_uart_tx:My_UART_Tx|clk_count[15]      ; fp32_uart_tx:My_UART_Tx|clk_count[16]      ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 1.294      ;
+; 0.807 ; fp32_uart_tx:My_UART_Tx|tx_state.D9_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D10_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 1.074      ;
+; 0.814 ; fp32_uart_tx:My_UART_Tx|tx_state.STOP2_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE3_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 1.082      ;
+; 0.829 ; fp32_uart_tx:My_UART_Tx|tx_state.STOP1_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE2_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 1.097      ;
+; 0.841 ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE0_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.START0_ST ; clk_i        ; clk_i       ; 0.000        ; 0.070      ; 1.106      ;
+; 0.846 ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE2_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.START2_ST ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 1.113      ;
+; 0.878 ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE1_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.START1_ST ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 1.146      ;
+; 0.906 ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D22_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.079      ; 1.180      ;
+; 0.912 ; fp32_uart_tx:My_UART_Tx|tx_state.D0_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.068      ; 1.175      ;
+; 0.923 ; fp32_uart_tx:My_UART_Tx|tx_state.D17_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 0.000        ; -0.380     ; 0.738      ;
+; 0.946 ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.077      ; 1.218      ;
 ; 1.027 ; fp32_uart_tx:My_UART_Tx|clk_count[13]      ; fp32_uart_tx:My_UART_Tx|clk_count[14]      ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 1.294      ;
 ; 1.027 ; fp32_uart_tx:My_UART_Tx|clk_count[22]      ; fp32_uart_tx:My_UART_Tx|clk_count[23]      ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 1.294      ;
 ; 1.028 ; fp32_uart_tx:My_UART_Tx|clk_count[14]      ; fp32_uart_tx:My_UART_Tx|clk_count[15]      ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 1.295      ;
@@ -638,6 +638,7 @@ No paths to report.
 ; 1.029 ; fp32_uart_tx:My_UART_Tx|clk_count[20]      ; fp32_uart_tx:My_UART_Tx|clk_count[21]      ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 1.296      ;
 ; 1.029 ; fp32_uart_tx:My_UART_Tx|clk_count[18]      ; fp32_uart_tx:My_UART_Tx|clk_count[19]      ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 1.296      ;
 ; 1.029 ; fp32_uart_tx:My_UART_Tx|clk_count[10]      ; fp32_uart_tx:My_UART_Tx|clk_count[11]      ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 1.296      ;
+; 1.029 ; fp32_uart_tx:My_UART_Tx|clk_count[15]      ; fp32_uart_tx:My_UART_Tx|clk_count[16]      ; clk_i        ; clk_i       ; 0.000        ; 0.070      ; 1.294      ;
 ; 1.029 ; fp32_uart_tx:My_UART_Tx|clk_count[27]      ; fp32_uart_tx:My_UART_Tx|clk_count[28]      ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 1.296      ;
 ; 1.030 ; fp32_uart_tx:My_UART_Tx|clk_count[28]      ; fp32_uart_tx:My_UART_Tx|clk_count[29]      ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 1.297      ;
 ; 1.030 ; fp32_uart_tx:My_UART_Tx|clk_count[26]      ; fp32_uart_tx:My_UART_Tx|clk_count[27]      ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 1.297      ;
@@ -649,11 +650,11 @@ No paths to report.
 ; 1.033 ; fp32_uart_tx:My_UART_Tx|clk_count[23]      ; fp32_uart_tx:My_UART_Tx|clk_count[24]      ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 1.300      ;
 ; 1.042 ; fp32_uart_tx:My_UART_Tx|clk_count[22]      ; fp32_uart_tx:My_UART_Tx|clk_count[24]      ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 1.309      ;
 ; 1.043 ; fp32_uart_tx:My_UART_Tx|clk_count[0]       ; fp32_uart_tx:My_UART_Tx|clk_count[2]       ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 1.310      ;
-; 1.043 ; fp32_uart_tx:My_UART_Tx|clk_count[14]      ; fp32_uart_tx:My_UART_Tx|clk_count[16]      ; clk_i        ; clk_i       ; 0.000        ; 0.073      ; 1.311      ;
 ; 1.044 ; fp32_uart_tx:My_UART_Tx|clk_count[16]      ; fp32_uart_tx:My_UART_Tx|clk_count[18]      ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 1.311      ;
 ; 1.045 ; fp32_uart_tx:My_UART_Tx|clk_count[12]      ; fp32_uart_tx:My_UART_Tx|clk_count[14]      ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 1.312      ;
 ; 1.045 ; fp32_uart_tx:My_UART_Tx|clk_count[10]      ; fp32_uart_tx:My_UART_Tx|clk_count[12]      ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 1.312      ;
 ; 1.045 ; fp32_uart_tx:My_UART_Tx|clk_count[18]      ; fp32_uart_tx:My_UART_Tx|clk_count[20]      ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 1.312      ;
+; 1.046 ; fp32_uart_tx:My_UART_Tx|clk_count[20]      ; fp32_uart_tx:My_UART_Tx|clk_count[22]      ; clk_i        ; clk_i       ; 0.000        ; 0.072      ; 1.313      ;
 +-------+--------------------------------------------+--------------------------------------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -668,7 +669,7 @@ No synchronizer chains to report.
 +-------+--------+-------------------+
 ; Clock ; Slack  ; End Point TNS     ;
 +-------+--------+-------------------+
-; clk_i ; -0.915 ; -51.222           ;
+; clk_i ; -0.978 ; -53.687           ;
 +-------+--------+-------------------+
 
 
@@ -698,116 +699,116 @@ No paths to report.
 +-------+--------+---------------------------------+
 ; Clock ; Slack  ; End Point TNS                   ;
 +-------+--------+---------------------------------+
-; clk_i ; -3.000 ; -84.034                         ;
+; clk_i ; -3.000 ; -83.853                         ;
 +-------+--------+---------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Fast 1200mV 0C Model Setup: 'clk_i'                                                                                                                              ;
-+--------+---------------------------------------+-------------------------------------------+--------------+-------------+--------------+------------+------------+
-; Slack  ; From Node                             ; To Node                                   ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+--------+---------------------------------------+-------------------------------------------+--------------+-------------+--------------+------------+------------+
-; -0.915 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.044     ; 1.858      ;
-; -0.915 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.044     ; 1.858      ;
-; -0.915 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.044     ; 1.858      ;
-; -0.915 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.044     ; 1.858      ;
-; -0.910 ; fp32_uart_tx:My_UART_Tx|clk_count[1]  ; fp32_uart_tx:My_UART_Tx|clk_count[31]     ; clk_i        ; clk_i       ; 1.000        ; -0.034     ; 1.863      ;
-; -0.906 ; fp32_uart_tx:My_UART_Tx|clk_count[1]  ; fp32_uart_tx:My_UART_Tx|clk_count[30]     ; clk_i        ; clk_i       ; 1.000        ; -0.034     ; 1.859      ;
-; -0.903 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.850      ;
-; -0.903 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.850      ;
-; -0.903 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D30_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.850      ;
-; -0.903 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D29_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.850      ;
-; -0.903 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D28_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.850      ;
-; -0.903 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE3_ST ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.850      ;
-; -0.903 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP2_ST ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.850      ;
-; -0.903 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D23_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.850      ;
-; -0.903 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D22_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.850      ;
-; -0.903 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.850      ;
-; -0.903 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.850      ;
-; -0.903 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.850      ;
-; -0.903 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.850      ;
-; -0.903 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D17_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.850      ;
-; -0.903 ; fp32_uart_tx:My_UART_Tx|clk_count[19] ; fp32_uart_tx:My_UART_Tx|tx_state.D16_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.850      ;
-; -0.879 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.043     ; 1.823      ;
-; -0.879 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.043     ; 1.823      ;
-; -0.879 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.043     ; 1.823      ;
-; -0.879 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.043     ; 1.823      ;
-; -0.866 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.814      ;
-; -0.866 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.814      ;
-; -0.866 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D30_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.814      ;
-; -0.866 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D29_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.814      ;
-; -0.866 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D28_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.814      ;
-; -0.866 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE3_ST ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.814      ;
-; -0.866 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.STOP2_ST ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.814      ;
-; -0.866 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D23_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.814      ;
-; -0.866 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D22_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.814      ;
-; -0.866 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.814      ;
-; -0.866 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.814      ;
-; -0.866 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.814      ;
-; -0.866 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.814      ;
-; -0.866 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D17_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.814      ;
-; -0.866 ; fp32_uart_tx:My_UART_Tx|clk_count[0]  ; fp32_uart_tx:My_UART_Tx|tx_state.D16_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.814      ;
-; -0.846 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.044     ; 1.789      ;
-; -0.846 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.044     ; 1.789      ;
-; -0.846 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.044     ; 1.789      ;
-; -0.846 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.044     ; 1.789      ;
-; -0.842 ; fp32_uart_tx:My_UART_Tx|clk_count[1]  ; fp32_uart_tx:My_UART_Tx|clk_count[29]     ; clk_i        ; clk_i       ; 1.000        ; -0.034     ; 1.795      ;
-; -0.841 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.043     ; 1.785      ;
-; -0.841 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.043     ; 1.785      ;
-; -0.841 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.043     ; 1.785      ;
-; -0.841 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.043     ; 1.785      ;
-; -0.839 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.044     ; 1.782      ;
-; -0.839 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.044     ; 1.782      ;
-; -0.839 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.044     ; 1.782      ;
-; -0.839 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.044     ; 1.782      ;
-; -0.839 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.044     ; 1.782      ;
-; -0.839 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.044     ; 1.782      ;
-; -0.839 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.044     ; 1.782      ;
-; -0.839 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.044     ; 1.782      ;
-; -0.838 ; fp32_uart_tx:My_UART_Tx|clk_count[1]  ; fp32_uart_tx:My_UART_Tx|clk_count[28]     ; clk_i        ; clk_i       ; 1.000        ; -0.034     ; 1.791      ;
-; -0.836 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.783      ;
-; -0.836 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.783      ;
-; -0.836 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D30_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.783      ;
-; -0.836 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D29_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.783      ;
-; -0.836 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D28_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.783      ;
-; -0.836 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE3_ST ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.783      ;
-; -0.836 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP2_ST ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.783      ;
-; -0.836 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D23_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.783      ;
-; -0.836 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D22_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.783      ;
-; -0.836 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.783      ;
-; -0.836 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.783      ;
-; -0.836 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.783      ;
-; -0.836 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.783      ;
-; -0.836 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D17_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.783      ;
-; -0.836 ; fp32_uart_tx:My_UART_Tx|clk_count[26] ; fp32_uart_tx:My_UART_Tx|tx_state.D16_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.783      ;
-; -0.834 ; fp32_uart_tx:My_UART_Tx|clk_count[29] ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.044     ; 1.777      ;
-; -0.834 ; fp32_uart_tx:My_UART_Tx|clk_count[29] ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.044     ; 1.777      ;
-; -0.834 ; fp32_uart_tx:My_UART_Tx|clk_count[29] ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.044     ; 1.777      ;
-; -0.834 ; fp32_uart_tx:My_UART_Tx|clk_count[29] ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.044     ; 1.777      ;
-; -0.832 ; fp32_uart_tx:My_UART_Tx|clk_count[6]  ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.043     ; 1.776      ;
-; -0.832 ; fp32_uart_tx:My_UART_Tx|clk_count[6]  ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.043     ; 1.776      ;
-; -0.832 ; fp32_uart_tx:My_UART_Tx|clk_count[6]  ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.043     ; 1.776      ;
-; -0.832 ; fp32_uart_tx:My_UART_Tx|clk_count[6]  ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.043     ; 1.776      ;
-; -0.828 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.776      ;
-; -0.828 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.776      ;
-; -0.828 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D30_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.776      ;
-; -0.828 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D29_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.776      ;
-; -0.828 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D28_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.776      ;
-; -0.828 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE3_ST ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.776      ;
-; -0.828 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.STOP2_ST ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.776      ;
-; -0.828 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D23_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.776      ;
-; -0.828 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D22_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.776      ;
-; -0.828 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.776      ;
-; -0.828 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.776      ;
-; -0.828 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.776      ;
-; -0.828 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.776      ;
-; -0.828 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D17_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.776      ;
-; -0.828 ; fp32_uart_tx:My_UART_Tx|clk_count[2]  ; fp32_uart_tx:My_UART_Tx|tx_state.D16_ST   ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.776      ;
-; -0.826 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.773      ;
-; -0.826 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.773      ;
-; -0.826 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.773      ;
-; -0.826 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.773      ;
-+--------+---------------------------------------+-------------------------------------------+--------------+-------------+--------------+------------+------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast 1200mV 0C Model Setup: 'clk_i'                                                                                                                               ;
++--------+---------------------------------------+--------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                             ; To Node                                    ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+---------------------------------------+--------------------------------------------+--------------+-------------+--------------+------------+------------+
+; -0.978 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.925      ;
+; -0.978 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.925      ;
+; -0.978 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.925      ;
+; -0.978 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.925      ;
+; -0.978 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.925      ;
+; -0.975 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.922      ;
+; -0.975 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.922      ;
+; -0.975 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.922      ;
+; -0.975 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.922      ;
+; -0.975 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.922      ;
+; -0.968 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.915      ;
+; -0.968 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.915      ;
+; -0.968 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.915      ;
+; -0.968 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.915      ;
+; -0.968 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.915      ;
+; -0.956 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.904      ;
+; -0.951 ; fp32_uart_tx:My_UART_Tx|clk_count[8]  ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.042     ; 1.896      ;
+; -0.951 ; fp32_uart_tx:My_UART_Tx|clk_count[8]  ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.042     ; 1.896      ;
+; -0.951 ; fp32_uart_tx:My_UART_Tx|clk_count[8]  ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.042     ; 1.896      ;
+; -0.951 ; fp32_uart_tx:My_UART_Tx|clk_count[8]  ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.042     ; 1.896      ;
+; -0.951 ; fp32_uart_tx:My_UART_Tx|clk_count[8]  ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.042     ; 1.896      ;
+; -0.942 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.890      ;
+; -0.935 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.883      ;
+; -0.934 ; fp32_uart_tx:My_UART_Tx|clk_count[11] ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.042     ; 1.879      ;
+; -0.934 ; fp32_uart_tx:My_UART_Tx|clk_count[11] ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.042     ; 1.879      ;
+; -0.934 ; fp32_uart_tx:My_UART_Tx|clk_count[11] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.042     ; 1.879      ;
+; -0.934 ; fp32_uart_tx:My_UART_Tx|clk_count[11] ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.042     ; 1.879      ;
+; -0.934 ; fp32_uart_tx:My_UART_Tx|clk_count[11] ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.042     ; 1.879      ;
+; -0.930 ; fp32_uart_tx:My_UART_Tx|clk_count[31] ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.877      ;
+; -0.930 ; fp32_uart_tx:My_UART_Tx|clk_count[31] ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.877      ;
+; -0.930 ; fp32_uart_tx:My_UART_Tx|clk_count[31] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.877      ;
+; -0.930 ; fp32_uart_tx:My_UART_Tx|clk_count[31] ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.877      ;
+; -0.930 ; fp32_uart_tx:My_UART_Tx|clk_count[31] ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.877      ;
+; -0.921 ; fp32_uart_tx:My_UART_Tx|clk_count[1]  ; fp32_uart_tx:My_UART_Tx|clk_count[31]      ; clk_i        ; clk_i       ; 1.000        ; -0.038     ; 1.870      ;
+; -0.918 ; fp32_uart_tx:My_UART_Tx|clk_count[8]  ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.041     ; 1.864      ;
+; -0.917 ; fp32_uart_tx:My_UART_Tx|clk_count[1]  ; fp32_uart_tx:My_UART_Tx|clk_count[30]      ; clk_i        ; clk_i       ; 1.000        ; -0.038     ; 1.866      ;
+; -0.917 ; fp32_uart_tx:My_UART_Tx|clk_count[10] ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.042     ; 1.862      ;
+; -0.917 ; fp32_uart_tx:My_UART_Tx|clk_count[10] ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.042     ; 1.862      ;
+; -0.917 ; fp32_uart_tx:My_UART_Tx|clk_count[10] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.042     ; 1.862      ;
+; -0.917 ; fp32_uart_tx:My_UART_Tx|clk_count[10] ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.042     ; 1.862      ;
+; -0.917 ; fp32_uart_tx:My_UART_Tx|clk_count[10] ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.042     ; 1.862      ;
+; -0.903 ; fp32_uart_tx:My_UART_Tx|clk_count[6]  ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.042     ; 1.848      ;
+; -0.903 ; fp32_uart_tx:My_UART_Tx|clk_count[6]  ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.042     ; 1.848      ;
+; -0.903 ; fp32_uart_tx:My_UART_Tx|clk_count[6]  ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.042     ; 1.848      ;
+; -0.903 ; fp32_uart_tx:My_UART_Tx|clk_count[6]  ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.042     ; 1.848      ;
+; -0.903 ; fp32_uart_tx:My_UART_Tx|clk_count[6]  ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.042     ; 1.848      ;
+; -0.902 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE1_ST  ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.853      ;
+; -0.902 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST  ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.853      ;
+; -0.902 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.853      ;
+; -0.902 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.853      ;
+; -0.902 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.853      ;
+; -0.902 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.853      ;
+; -0.902 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.853      ;
+; -0.902 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D0_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.853      ;
+; -0.902 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.START0_ST ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.853      ;
+; -0.902 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP1_ST  ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.853      ;
+; -0.902 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D15_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.853      ;
+; -0.902 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D14_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.853      ;
+; -0.902 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D13_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.853      ;
+; -0.902 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D12_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.853      ;
+; -0.902 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D11_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.853      ;
+; -0.902 ; fp32_uart_tx:My_UART_Tx|clk_count[20] ; fp32_uart_tx:My_UART_Tx|tx_state.D10_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.853      ;
+; -0.901 ; fp32_uart_tx:My_UART_Tx|clk_count[11] ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.041     ; 1.847      ;
+; -0.897 ; fp32_uart_tx:My_UART_Tx|clk_count[31] ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.039     ; 1.845      ;
+; -0.884 ; fp32_uart_tx:My_UART_Tx|clk_count[10] ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.041     ; 1.830      ;
+; -0.882 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.829      ;
+; -0.882 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.829      ;
+; -0.882 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.829      ;
+; -0.882 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.829      ;
+; -0.882 ; fp32_uart_tx:My_UART_Tx|clk_count[17] ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.040     ; 1.829      ;
+; -0.878 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE1_ST  ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.829      ;
+; -0.878 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST  ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.829      ;
+; -0.878 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.829      ;
+; -0.878 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.829      ;
+; -0.878 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.829      ;
+; -0.878 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.829      ;
+; -0.878 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.829      ;
+; -0.878 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D0_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.829      ;
+; -0.878 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.START0_ST ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.829      ;
+; -0.878 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP1_ST  ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.829      ;
+; -0.878 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D15_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.829      ;
+; -0.878 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D14_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.829      ;
+; -0.878 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D13_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.829      ;
+; -0.878 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D12_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.829      ;
+; -0.878 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D11_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.829      ;
+; -0.878 ; fp32_uart_tx:My_UART_Tx|clk_count[18] ; fp32_uart_tx:My_UART_Tx|tx_state.D10_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.829      ;
+; -0.872 ; fp32_uart_tx:My_UART_Tx|clk_count[4]  ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.042     ; 1.817      ;
+; -0.872 ; fp32_uart_tx:My_UART_Tx|clk_count[4]  ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.042     ; 1.817      ;
+; -0.872 ; fp32_uart_tx:My_UART_Tx|clk_count[4]  ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.042     ; 1.817      ;
+; -0.872 ; fp32_uart_tx:My_UART_Tx|clk_count[4]  ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.042     ; 1.817      ;
+; -0.872 ; fp32_uart_tx:My_UART_Tx|clk_count[4]  ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 1.000        ; -0.042     ; 1.817      ;
+; -0.871 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE1_ST  ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.822      ;
+; -0.871 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST  ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.822      ;
+; -0.871 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.822      ;
+; -0.871 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.822      ;
+; -0.871 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.822      ;
+; -0.871 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.822      ;
+; -0.871 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.822      ;
+; -0.871 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.D0_ST     ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.822      ;
+; -0.871 ; fp32_uart_tx:My_UART_Tx|clk_count[16] ; fp32_uart_tx:My_UART_Tx|tx_state.START0_ST ; clk_i        ; clk_i       ; 1.000        ; -0.036     ; 1.822      ;
++--------+---------------------------------------+--------------------------------------------+--------------+-------------+--------------+------------+------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -815,105 +816,105 @@ No paths to report.
 +-------+--------------------------------------------+--------------------------------------------+--------------+-------------+--------------+------------+------------+
 ; Slack ; From Node                                  ; To Node                                    ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +-------+--------------------------------------------+--------------------------------------------+--------------+-------------+--------------+------------+------------+
-; 0.193 ; fp32_uart_tx:My_UART_Tx|tx_state.D22_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D23_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.313      ;
-; 0.194 ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.314      ;
-; 0.194 ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.314      ;
-; 0.194 ; fp32_uart_tx:My_UART_Tx|tx_state.D29_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D30_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.314      ;
-; 0.194 ; fp32_uart_tx:My_UART_Tx|tx_state.D28_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D29_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.314      ;
+; 0.193 ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.313      ;
+; 0.193 ; fp32_uart_tx:My_UART_Tx|tx_state.D11_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D12_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.313      ;
+; 0.194 ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.314      ;
+; 0.194 ; fp32_uart_tx:My_UART_Tx|tx_state.D30_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D31_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.314      ;
+; 0.194 ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.314      ;
 ; 0.194 ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.314      ;
-; 0.194 ; fp32_uart_tx:My_UART_Tx|tx_state.D17_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.314      ;
-; 0.194 ; fp32_uart_tx:My_UART_Tx|tx_state.D14_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D15_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.314      ;
-; 0.194 ; fp32_uart_tx:My_UART_Tx|tx_state.D13_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D14_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.314      ;
-; 0.194 ; fp32_uart_tx:My_UART_Tx|tx_state.D8_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D9_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.314      ;
-; 0.195 ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.315      ;
-; 0.195 ; fp32_uart_tx:My_UART_Tx|tx_state.D11_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D12_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.315      ;
+; 0.195 ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.315      ;
+; 0.195 ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D4_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.315      ;
+; 0.195 ; fp32_uart_tx:My_UART_Tx|tx_state.START0_ST ; fp32_uart_tx:My_UART_Tx|tx_state.D0_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.315      ;
+; 0.195 ; fp32_uart_tx:My_UART_Tx|tx_state.D24_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D25_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.315      ;
 ; 0.195 ; fp32_uart_tx:My_UART_Tx|tx_state.D10_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D11_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.315      ;
-; 0.195 ; fp32_uart_tx:My_UART_Tx|tx_state.D9_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D10_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.315      ;
-; 0.196 ; fp32_uart_tx:My_UART_Tx|tx_state.D23_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.STOP2_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.316      ;
-; 0.196 ; fp32_uart_tx:My_UART_Tx|tx_state.D12_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D13_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.316      ;
-; 0.197 ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D22_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.317      ;
-; 0.197 ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE1_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.START1_ST ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.317      ;
-; 0.253 ; fp32_uart_tx:My_UART_Tx|tx_state.D5_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.373      ;
-; 0.255 ; fp32_uart_tx:My_UART_Tx|tx_state.D16_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D17_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.375      ;
-; 0.255 ; fp32_uart_tx:My_UART_Tx|tx_state.START1_ST ; fp32_uart_tx:My_UART_Tx|tx_state.D8_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.375      ;
-; 0.260 ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.380      ;
-; 0.261 ; fp32_uart_tx:My_UART_Tx|tx_state.START3_ST ; fp32_uart_tx:My_UART_Tx|tx_state.D24_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.043      ; 0.388      ;
-; 0.262 ; fp32_uart_tx:My_UART_Tx|tx_state.D19_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.382      ;
-; 0.263 ; fp32_uart_tx:My_UART_Tx|tx_state.START2_ST ; fp32_uart_tx:My_UART_Tx|tx_state.D16_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.035      ; 0.382      ;
-; 0.266 ; fp32_uart_tx:My_UART_Tx|tx_state.D30_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D31_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.037      ; 0.387      ;
-; 0.266 ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE2_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.START2_ST ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.386      ;
-; 0.266 ; fp32_uart_tx:My_UART_Tx|tx_state.STOP1_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE2_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.386      ;
-; 0.269 ; fp32_uart_tx:My_UART_Tx|tx_state.D15_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.STOP1_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.389      ;
-; 0.272 ; fp32_uart_tx:My_UART_Tx|tx_state.STOP2_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE3_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.392      ;
-; 0.273 ; fp32_uart_tx:My_UART_Tx|tx_state.D31_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.STOP3_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.393      ;
-; 0.303 ; fp32_uart_tx:My_UART_Tx|clk_count[15]      ; fp32_uart_tx:My_UART_Tx|clk_count[15]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.423      ;
+; 0.197 ; fp32_uart_tx:My_UART_Tx|tx_state.D13_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D14_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.317      ;
+; 0.198 ; fp32_uart_tx:My_UART_Tx|tx_state.D28_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D29_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.318      ;
+; 0.198 ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE3_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.START3_ST ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.318      ;
+; 0.198 ; fp32_uart_tx:My_UART_Tx|tx_state.D22_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D23_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.318      ;
+; 0.199 ; fp32_uart_tx:My_UART_Tx|tx_state.STOP3_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE0_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.319      ;
+; 0.199 ; fp32_uart_tx:My_UART_Tx|tx_state.D25_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D26_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.319      ;
+; 0.253 ; fp32_uart_tx:My_UART_Tx|tx_state.START3_ST ; fp32_uart_tx:My_UART_Tx|tx_state.D24_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.373      ;
+; 0.254 ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.374      ;
+; 0.254 ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.374      ;
+; 0.255 ; fp32_uart_tx:My_UART_Tx|tx_state.D14_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D15_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.375      ;
+; 0.257 ; fp32_uart_tx:My_UART_Tx|tx_state.D12_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D13_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.377      ;
+; 0.258 ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE1_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.378      ;
+; 0.260 ; fp32_uart_tx:My_UART_Tx|tx_state.D29_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D30_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.380      ;
+; 0.265 ; fp32_uart_tx:My_UART_Tx|tx_state.D27_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D28_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.385      ;
+; 0.267 ; fp32_uart_tx:My_UART_Tx|tx_state.START2_ST ; fp32_uart_tx:My_UART_Tx|tx_state.D16_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.037      ; 0.388      ;
+; 0.267 ; fp32_uart_tx:My_UART_Tx|tx_state.D15_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.STOP1_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.387      ;
+; 0.269 ; fp32_uart_tx:My_UART_Tx|tx_state.D20_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.037      ; 0.390      ;
+; 0.269 ; fp32_uart_tx:My_UART_Tx|tx_state.START1_ST ; fp32_uart_tx:My_UART_Tx|tx_state.D8_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.221      ; 0.574      ;
+; 0.272 ; fp32_uart_tx:My_UART_Tx|tx_state.D26_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D27_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.392      ;
+; 0.274 ; fp32_uart_tx:My_UART_Tx|tx_state.D31_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.STOP3_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.394      ;
+; 0.274 ; fp32_uart_tx:My_UART_Tx|tx_state.D23_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.STOP2_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.394      ;
+; 0.282 ; fp32_uart_tx:My_UART_Tx|tx_state.D16_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D17_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.230      ; 0.596      ;
+; 0.302 ; fp32_uart_tx:My_UART_Tx|clk_count[15]      ; fp32_uart_tx:My_UART_Tx|clk_count[15]      ; clk_i        ; clk_i       ; 0.000        ; 0.037      ; 0.423      ;
+; 0.303 ; fp32_uart_tx:My_UART_Tx|clk_count[13]      ; fp32_uart_tx:My_UART_Tx|clk_count[13]      ; clk_i        ; clk_i       ; 0.000        ; 0.037      ; 0.424      ;
+; 0.303 ; fp32_uart_tx:My_UART_Tx|clk_count[3]       ; fp32_uart_tx:My_UART_Tx|clk_count[3]       ; clk_i        ; clk_i       ; 0.000        ; 0.037      ; 0.424      ;
 ; 0.304 ; fp32_uart_tx:My_UART_Tx|clk_count[31]      ; fp32_uart_tx:My_UART_Tx|clk_count[31]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.424      ;
-; 0.304 ; fp32_uart_tx:My_UART_Tx|clk_count[13]      ; fp32_uart_tx:My_UART_Tx|clk_count[13]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.424      ;
-; 0.304 ; fp32_uart_tx:My_UART_Tx|clk_count[3]       ; fp32_uart_tx:My_UART_Tx|clk_count[3]       ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.424      ;
-; 0.305 ; fp32_uart_tx:My_UART_Tx|clk_count[21]      ; fp32_uart_tx:My_UART_Tx|clk_count[21]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.425      ;
+; 0.304 ; fp32_uart_tx:My_UART_Tx|clk_count[11]      ; fp32_uart_tx:My_UART_Tx|clk_count[11]      ; clk_i        ; clk_i       ; 0.000        ; 0.037      ; 0.425      ;
+; 0.304 ; fp32_uart_tx:My_UART_Tx|clk_count[6]       ; fp32_uart_tx:My_UART_Tx|clk_count[6]       ; clk_i        ; clk_i       ; 0.000        ; 0.037      ; 0.425      ;
 ; 0.305 ; fp32_uart_tx:My_UART_Tx|clk_count[29]      ; fp32_uart_tx:My_UART_Tx|clk_count[29]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.425      ;
 ; 0.305 ; fp32_uart_tx:My_UART_Tx|clk_count[27]      ; fp32_uart_tx:My_UART_Tx|clk_count[27]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.425      ;
+; 0.305 ; fp32_uart_tx:My_UART_Tx|clk_count[21]      ; fp32_uart_tx:My_UART_Tx|clk_count[21]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.425      ;
 ; 0.305 ; fp32_uart_tx:My_UART_Tx|clk_count[19]      ; fp32_uart_tx:My_UART_Tx|clk_count[19]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.425      ;
 ; 0.305 ; fp32_uart_tx:My_UART_Tx|clk_count[17]      ; fp32_uart_tx:My_UART_Tx|clk_count[17]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.425      ;
-; 0.305 ; fp32_uart_tx:My_UART_Tx|clk_count[11]      ; fp32_uart_tx:My_UART_Tx|clk_count[11]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.425      ;
-; 0.305 ; fp32_uart_tx:My_UART_Tx|clk_count[6]       ; fp32_uart_tx:My_UART_Tx|clk_count[6]       ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.425      ;
+; 0.305 ; fp32_uart_tx:My_UART_Tx|clk_count[14]      ; fp32_uart_tx:My_UART_Tx|clk_count[14]      ; clk_i        ; clk_i       ; 0.000        ; 0.037      ; 0.426      ;
+; 0.305 ; fp32_uart_tx:My_UART_Tx|clk_count[9]       ; fp32_uart_tx:My_UART_Tx|clk_count[9]       ; clk_i        ; clk_i       ; 0.000        ; 0.037      ; 0.426      ;
+; 0.305 ; fp32_uart_tx:My_UART_Tx|clk_count[2]       ; fp32_uart_tx:My_UART_Tx|clk_count[2]       ; clk_i        ; clk_i       ; 0.000        ; 0.037      ; 0.426      ;
 ; 0.306 ; fp32_uart_tx:My_UART_Tx|clk_count[23]      ; fp32_uart_tx:My_UART_Tx|clk_count[23]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.426      ;
 ; 0.306 ; fp32_uart_tx:My_UART_Tx|clk_count[25]      ; fp32_uart_tx:My_UART_Tx|clk_count[25]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.426      ;
 ; 0.306 ; fp32_uart_tx:My_UART_Tx|clk_count[22]      ; fp32_uart_tx:My_UART_Tx|clk_count[22]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.426      ;
 ; 0.306 ; fp32_uart_tx:My_UART_Tx|clk_count[16]      ; fp32_uart_tx:My_UART_Tx|clk_count[16]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.426      ;
-; 0.306 ; fp32_uart_tx:My_UART_Tx|clk_count[14]      ; fp32_uart_tx:My_UART_Tx|clk_count[14]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.426      ;
-; 0.306 ; fp32_uart_tx:My_UART_Tx|clk_count[9]       ; fp32_uart_tx:My_UART_Tx|clk_count[9]       ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.426      ;
-; 0.306 ; fp32_uart_tx:My_UART_Tx|clk_count[2]       ; fp32_uart_tx:My_UART_Tx|clk_count[2]       ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.426      ;
+; 0.306 ; fp32_uart_tx:My_UART_Tx|clk_count[12]      ; fp32_uart_tx:My_UART_Tx|clk_count[12]      ; clk_i        ; clk_i       ; 0.000        ; 0.037      ; 0.427      ;
+; 0.306 ; fp32_uart_tx:My_UART_Tx|clk_count[10]      ; fp32_uart_tx:My_UART_Tx|clk_count[10]      ; clk_i        ; clk_i       ; 0.000        ; 0.037      ; 0.427      ;
 ; 0.307 ; fp32_uart_tx:My_UART_Tx|clk_count[30]      ; fp32_uart_tx:My_UART_Tx|clk_count[30]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.427      ;
 ; 0.307 ; fp32_uart_tx:My_UART_Tx|clk_count[24]      ; fp32_uart_tx:My_UART_Tx|clk_count[24]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.427      ;
 ; 0.307 ; fp32_uart_tx:My_UART_Tx|clk_count[20]      ; fp32_uart_tx:My_UART_Tx|clk_count[20]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.427      ;
 ; 0.307 ; fp32_uart_tx:My_UART_Tx|clk_count[18]      ; fp32_uart_tx:My_UART_Tx|clk_count[18]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.427      ;
-; 0.307 ; fp32_uart_tx:My_UART_Tx|clk_count[12]      ; fp32_uart_tx:My_UART_Tx|clk_count[12]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.427      ;
-; 0.307 ; fp32_uart_tx:My_UART_Tx|clk_count[10]      ; fp32_uart_tx:My_UART_Tx|clk_count[10]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.427      ;
 ; 0.308 ; fp32_uart_tx:My_UART_Tx|clk_count[28]      ; fp32_uart_tx:My_UART_Tx|clk_count[28]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.428      ;
 ; 0.308 ; fp32_uart_tx:My_UART_Tx|clk_count[26]      ; fp32_uart_tx:My_UART_Tx|clk_count[26]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.428      ;
-; 0.316 ; fp32_uart_tx:My_UART_Tx|clk_count[0]       ; fp32_uart_tx:My_UART_Tx|clk_count[0]       ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.436      ;
-; 0.320 ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE0_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.START0_ST ; clk_i        ; clk_i       ; 0.000        ; 0.042      ; 0.446      ;
-; 0.329 ; fp32_uart_tx:My_UART_Tx|tx_state.D0_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.043      ; 0.456      ;
-; 0.329 ; fp32_uart_tx:My_UART_Tx|tx_state.D24_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D25_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.043      ; 0.456      ;
-; 0.360 ; fp32_uart_tx:My_UART_Tx|tx_state.D6_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D7_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.040      ; 0.484      ;
-; 0.360 ; fp32_uart_tx:My_UART_Tx|tx_state.D26_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D27_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.048      ; 0.492      ;
-; 0.369 ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE3_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.START3_ST ; clk_i        ; clk_i       ; 0.000        ; 0.222      ; 0.675      ;
-; 0.387 ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST     ; clk_i        ; clk_i       ; 0.000        ; -0.157     ; 0.314      ;
-; 0.387 ; fp32_uart_tx:My_UART_Tx|tx_state.D27_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D28_ST    ; clk_i        ; clk_i       ; 0.000        ; -0.157     ; 0.314      ;
-; 0.418 ; fp32_uart_tx:My_UART_Tx|tx_state.STOP0_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE1_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.037      ; 0.539      ;
-; 0.437 ; fp32_uart_tx:My_UART_Tx|tx_state.STOP3_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE0_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.237      ; 0.758      ;
-; 0.443 ; fp32_uart_tx:My_UART_Tx|tx_state.START0_ST ; fp32_uart_tx:My_UART_Tx|tx_state.D0_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.030      ; 0.557      ;
-; 0.451 ; fp32_uart_tx:My_UART_Tx|clk_count[15]      ; fp32_uart_tx:My_UART_Tx|clk_count[16]      ; clk_i        ; clk_i       ; 0.000        ; 0.037      ; 0.572      ;
-; 0.453 ; fp32_uart_tx:My_UART_Tx|clk_count[13]      ; fp32_uart_tx:My_UART_Tx|clk_count[14]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.573      ;
+; 0.315 ; fp32_uart_tx:My_UART_Tx|clk_count[0]       ; fp32_uart_tx:My_UART_Tx|clk_count[0]       ; clk_i        ; clk_i       ; 0.000        ; 0.037      ; 0.436      ;
+; 0.331 ; fp32_uart_tx:My_UART_Tx|tx_state.STOP1_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE2_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.038      ; 0.453      ;
+; 0.334 ; fp32_uart_tx:My_UART_Tx|tx_state.D9_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D10_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.035      ; 0.453      ;
+; 0.340 ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE2_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.START2_ST ; clk_i        ; clk_i       ; 0.000        ; 0.037      ; 0.461      ;
+; 0.356 ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE1_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.START1_ST ; clk_i        ; clk_i       ; 0.000        ; 0.038      ; 0.478      ;
+; 0.364 ; fp32_uart_tx:My_UART_Tx|tx_state.STOP2_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE3_ST  ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.484      ;
+; 0.375 ; fp32_uart_tx:My_UART_Tx|tx_state.IDLE0_ST  ; fp32_uart_tx:My_UART_Tx|tx_state.START0_ST ; clk_i        ; clk_i       ; 0.000        ; 0.033      ; 0.492      ;
+; 0.385 ; fp32_uart_tx:My_UART_Tx|tx_state.D17_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D18_ST    ; clk_i        ; clk_i       ; 0.000        ; -0.155     ; 0.314      ;
+; 0.407 ; fp32_uart_tx:My_UART_Tx|tx_state.D21_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D22_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.042      ; 0.533      ;
+; 0.415 ; fp32_uart_tx:My_UART_Tx|tx_state.D0_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.032      ; 0.531      ;
+; 0.422 ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D3_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.040      ; 0.546      ;
+; 0.452 ; fp32_uart_tx:My_UART_Tx|clk_count[13]      ; fp32_uart_tx:My_UART_Tx|clk_count[14]      ; clk_i        ; clk_i       ; 0.000        ; 0.037      ; 0.573      ;
+; 0.453 ; fp32_uart_tx:My_UART_Tx|clk_count[15]      ; fp32_uart_tx:My_UART_Tx|clk_count[16]      ; clk_i        ; clk_i       ; 0.000        ; 0.035      ; 0.572      ;
+; 0.453 ; fp32_uart_tx:My_UART_Tx|clk_count[11]      ; fp32_uart_tx:My_UART_Tx|clk_count[12]      ; clk_i        ; clk_i       ; 0.000        ; 0.037      ; 0.574      ;
 ; 0.454 ; fp32_uart_tx:My_UART_Tx|clk_count[21]      ; fp32_uart_tx:My_UART_Tx|clk_count[22]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.574      ;
+; 0.454 ; fp32_uart_tx:My_UART_Tx|clk_count[9]       ; fp32_uart_tx:My_UART_Tx|clk_count[10]      ; clk_i        ; clk_i       ; 0.000        ; 0.037      ; 0.575      ;
 ; 0.454 ; fp32_uart_tx:My_UART_Tx|clk_count[29]      ; fp32_uart_tx:My_UART_Tx|clk_count[30]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.574      ;
 ; 0.454 ; fp32_uart_tx:My_UART_Tx|clk_count[19]      ; fp32_uart_tx:My_UART_Tx|clk_count[20]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.574      ;
 ; 0.454 ; fp32_uart_tx:My_UART_Tx|clk_count[17]      ; fp32_uart_tx:My_UART_Tx|clk_count[18]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.574      ;
-; 0.454 ; fp32_uart_tx:My_UART_Tx|clk_count[11]      ; fp32_uart_tx:My_UART_Tx|clk_count[12]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.574      ;
 ; 0.454 ; fp32_uart_tx:My_UART_Tx|clk_count[27]      ; fp32_uart_tx:My_UART_Tx|clk_count[28]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.574      ;
 ; 0.455 ; fp32_uart_tx:My_UART_Tx|clk_count[23]      ; fp32_uart_tx:My_UART_Tx|clk_count[24]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.575      ;
-; 0.455 ; fp32_uart_tx:My_UART_Tx|clk_count[9]       ; fp32_uart_tx:My_UART_Tx|clk_count[10]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.575      ;
 ; 0.455 ; fp32_uart_tx:My_UART_Tx|clk_count[25]      ; fp32_uart_tx:My_UART_Tx|clk_count[26]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.575      ;
-; 0.458 ; fp32_uart_tx:My_UART_Tx|tx_state.D1_ST     ; fp32_uart_tx:My_UART_Tx|tx_state.D2_ST     ; clk_i        ; clk_i       ; 0.000        ; 0.054      ; 0.596      ;
-; 0.464 ; fp32_uart_tx:My_UART_Tx|clk_count[14]      ; fp32_uart_tx:My_UART_Tx|clk_count[15]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.584      ;
-; 0.464 ; fp32_uart_tx:My_UART_Tx|clk_count[2]       ; fp32_uart_tx:My_UART_Tx|clk_count[3]       ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.584      ;
+; 0.463 ; fp32_uart_tx:My_UART_Tx|clk_count[14]      ; fp32_uart_tx:My_UART_Tx|clk_count[15]      ; clk_i        ; clk_i       ; 0.000        ; 0.037      ; 0.584      ;
+; 0.463 ; fp32_uart_tx:My_UART_Tx|clk_count[2]       ; fp32_uart_tx:My_UART_Tx|clk_count[3]       ; clk_i        ; clk_i       ; 0.000        ; 0.037      ; 0.584      ;
+; 0.464 ; fp32_uart_tx:My_UART_Tx|clk_count[12]      ; fp32_uart_tx:My_UART_Tx|clk_count[13]      ; clk_i        ; clk_i       ; 0.000        ; 0.037      ; 0.585      ;
+; 0.464 ; fp32_uart_tx:My_UART_Tx|clk_count[10]      ; fp32_uart_tx:My_UART_Tx|clk_count[11]      ; clk_i        ; clk_i       ; 0.000        ; 0.037      ; 0.585      ;
 ; 0.464 ; fp32_uart_tx:My_UART_Tx|clk_count[16]      ; fp32_uart_tx:My_UART_Tx|clk_count[17]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.584      ;
 ; 0.464 ; fp32_uart_tx:My_UART_Tx|clk_count[22]      ; fp32_uart_tx:My_UART_Tx|clk_count[23]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.584      ;
 ; 0.465 ; fp32_uart_tx:My_UART_Tx|clk_count[30]      ; fp32_uart_tx:My_UART_Tx|clk_count[31]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.585      ;
-; 0.465 ; fp32_uart_tx:My_UART_Tx|clk_count[12]      ; fp32_uart_tx:My_UART_Tx|clk_count[13]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.585      ;
 ; 0.465 ; fp32_uart_tx:My_UART_Tx|clk_count[20]      ; fp32_uart_tx:My_UART_Tx|clk_count[21]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.585      ;
 ; 0.465 ; fp32_uart_tx:My_UART_Tx|clk_count[18]      ; fp32_uart_tx:My_UART_Tx|clk_count[19]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.585      ;
-; 0.465 ; fp32_uart_tx:My_UART_Tx|clk_count[10]      ; fp32_uart_tx:My_UART_Tx|clk_count[11]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.585      ;
+; 0.465 ; fp32_uart_tx:My_UART_Tx|clk_count[0]       ; fp32_uart_tx:My_UART_Tx|clk_count[2]       ; clk_i        ; clk_i       ; 0.000        ; 0.037      ; 0.586      ;
 ; 0.465 ; fp32_uart_tx:My_UART_Tx|clk_count[24]      ; fp32_uart_tx:My_UART_Tx|clk_count[25]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.585      ;
 ; 0.466 ; fp32_uart_tx:My_UART_Tx|clk_count[28]      ; fp32_uart_tx:My_UART_Tx|clk_count[29]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.586      ;
 ; 0.466 ; fp32_uart_tx:My_UART_Tx|clk_count[26]      ; fp32_uart_tx:My_UART_Tx|clk_count[27]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.586      ;
-; 0.466 ; fp32_uart_tx:My_UART_Tx|clk_count[0]       ; fp32_uart_tx:My_UART_Tx|clk_count[2]       ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.586      ;
-; 0.466 ; fp32_uart_tx:My_UART_Tx|clk_count[14]      ; fp32_uart_tx:My_UART_Tx|clk_count[16]      ; clk_i        ; clk_i       ; 0.000        ; 0.037      ; 0.587      ;
-; 0.467 ; fp32_uart_tx:My_UART_Tx|tx_state.D25_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.D26_ST    ; clk_i        ; clk_i       ; 0.000        ; 0.054      ; 0.605      ;
+; 0.467 ; fp32_uart_tx:My_UART_Tx|clk_count[12]      ; fp32_uart_tx:My_UART_Tx|clk_count[14]      ; clk_i        ; clk_i       ; 0.000        ; 0.037      ; 0.588      ;
+; 0.467 ; fp32_uart_tx:My_UART_Tx|clk_count[10]      ; fp32_uart_tx:My_UART_Tx|clk_count[12]      ; clk_i        ; clk_i       ; 0.000        ; 0.037      ; 0.588      ;
 ; 0.467 ; fp32_uart_tx:My_UART_Tx|clk_count[16]      ; fp32_uart_tx:My_UART_Tx|clk_count[18]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.587      ;
 ; 0.467 ; fp32_uart_tx:My_UART_Tx|clk_count[22]      ; fp32_uart_tx:My_UART_Tx|clk_count[24]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.587      ;
-; 0.468 ; fp32_uart_tx:My_UART_Tx|clk_count[12]      ; fp32_uart_tx:My_UART_Tx|clk_count[14]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.588      ;
+; 0.468 ; fp32_uart_tx:My_UART_Tx|clk_count[14]      ; fp32_uart_tx:My_UART_Tx|clk_count[16]      ; clk_i        ; clk_i       ; 0.000        ; 0.035      ; 0.587      ;
 ; 0.468 ; fp32_uart_tx:My_UART_Tx|clk_count[20]      ; fp32_uart_tx:My_UART_Tx|clk_count[22]      ; clk_i        ; clk_i       ; 0.000        ; 0.036      ; 0.588      ;
 +-------+--------------------------------------------+--------------------------------------------+--------------+-------------+--------------+------------+------------+
 
@@ -929,10 +930,10 @@ No synchronizer chains to report.
 +------------------+----------+-------+----------+---------+---------------------+
 ; Clock            ; Setup    ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
 +------------------+----------+-------+----------+---------+---------------------+
-; Worst-case Slack ; -3.542   ; 0.193 ; N/A      ; N/A     ; -3.000              ;
-;  clk_i           ; -3.542   ; 0.193 ; N/A      ; N/A     ; -3.000              ;
-; Design-wide TNS  ; -219.313 ; 0.0   ; 0.0      ; 0.0     ; -116.012            ;
-;  clk_i           ; -219.313 ; 0.000 ; N/A      ; N/A     ; -116.012            ;
+; Worst-case Slack ; -3.645   ; 0.193 ; N/A      ; N/A     ; -3.000              ;
+;  clk_i           ; -3.645   ; 0.193 ; N/A      ; N/A     ; -3.000              ;
+; Design-wide TNS  ; -223.086 ; 0.0   ; 0.0      ; 0.0     ; -116.012            ;
+;  clk_i           ; -223.086 ; 0.000 ; N/A      ; N/A     ; -116.012            ;
 +------------------+----------+-------+----------+---------+---------------------+
 
 
@@ -1034,7 +1035,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; Unconstrained Input Ports       ; 0     ; 0    ;
 ; Unconstrained Input Port Paths  ; 0     ; 0    ;
 ; Unconstrained Output Ports      ; 1     ; 1    ;
-; Unconstrained Output Port Paths ; 10    ; 10   ;
+; Unconstrained Output Port Paths ; 16    ; 16   ;
 +---------------------------------+-------+------+
 
 
@@ -1071,7 +1072,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Thu Oct 13 00:43:55 2022
+    Info: Processing started: Thu Oct 13 02:01:10 2022
 Info: Command: quartus_sta fp32_mac_tx -c fp32_mac
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -1088,14 +1089,14 @@ Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1200mV 85C Model
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -3.542
+Info (332146): Worst-case setup slack is -3.645
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.542            -219.313 clk_i 
-Info (332146): Worst-case hold slack is 0.500
+    Info (332119):    -3.645            -223.086 clk_i 
+Info (332146): Worst-case hold slack is 0.484
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.500               0.000 clk_i 
+    Info (332119):     0.484               0.000 clk_i 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -3.000
@@ -1108,14 +1109,14 @@ Info (334004): Delay annotation completed successfully
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -3.214
+Info (332146): Worst-case setup slack is -3.301
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.214            -193.772 clk_i 
-Info (332146): Worst-case hold slack is 0.470
+    Info (332119):    -3.301            -197.470 clk_i 
+Info (332146): Worst-case hold slack is 0.448
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.470               0.000 clk_i 
+    Info (332119):     0.448               0.000 clk_i 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -3.000
@@ -1126,10 +1127,10 @@ Info: Analyzing Fast 1200mV 0C Model
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -0.915
+Info (332146): Worst-case setup slack is -0.978
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.915             -51.222 clk_i 
+    Info (332119):    -0.978             -53.687 clk_i 
 Info (332146): Worst-case hold slack is 0.193
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
@@ -1139,13 +1140,13 @@ Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -3.000
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.000             -84.034 clk_i 
+    Info (332119):    -3.000             -83.853 clk_i 
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 4846 megabytes
-    Info: Processing ended: Thu Oct 13 00:43:56 2022
-    Info: Elapsed time: 00:00:01
+    Info: Peak virtual memory: 4845 megabytes
+    Info: Processing ended: Thu Oct 13 02:01:12 2022
+    Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:01
 
 

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for fp32_mac
-Thu Oct 13 00:43:49 2022
+Thu Oct 13 02:01:04 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -48,13 +48,13 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Oct 13 00:43:49 2022       ;
+; Analysis & Synthesis Status        ; Successful - Thu Oct 13 02:01:04 2022       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; fp32_mac                                    ;
 ; Top-level Entity Name              ; FP32_MAC_Combinatorial_Tx                   ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 95                                          ;
-;     Total combinational functions  ; 53                                          ;
+; Total logic elements               ; 97                                          ;
+;     Total combinational functions  ; 55                                          ;
 ;     Dedicated logic registers      ; 76                                          ;
 ; Total registers                    ; 76                                          ;
 ; Total pins                         ; 2                                           ;
@@ -182,16 +182,16 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-------------+
 ; Resource                                    ; Usage       ;
 +---------------------------------------------+-------------+
-; Estimated Total logic elements              ; 95          ;
+; Estimated Total logic elements              ; 97          ;
 ;                                             ;             ;
-; Total combinational functions               ; 53          ;
+; Total combinational functions               ; 55          ;
 ; Logic element usage by number of LUT inputs ;             ;
-;     -- 4 input functions                    ; 13          ;
+;     -- 4 input functions                    ; 15          ;
 ;     -- 3 input functions                    ; 0           ;
 ;     -- <=2 input functions                  ; 40          ;
 ;                                             ;             ;
 ; Logic elements by mode                      ;             ;
-;     -- normal mode                          ; 22          ;
+;     -- normal mode                          ; 24          ;
 ;     -- arithmetic mode                      ; 31          ;
 ;                                             ;             ;
 ; Total registers                             ; 76          ;
@@ -204,8 +204,8 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;             ;
 ; Maximum fan-out node                        ; clk_i~input ;
 ; Maximum fan-out                             ; 76          ;
-; Total fan-out                               ; 328         ;
-; Average fan-out                             ; 2.47        ;
+; Total fan-out                               ; 336         ;
+; Average fan-out                             ; 2.49        ;
 +---------------------------------------------+-------------+
 
 
@@ -214,8 +214,8 @@ https://fpgasoftware.intel.com/eula.
 +------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------+---------------------------+--------------+
 ; Compilation Hierarchy Node   ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                ; Entity Name               ; Library Name ;
 +------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------+---------------------------+--------------+
-; |FP32_MAC_Combinatorial_Tx   ; 53 (0)              ; 76 (0)                    ; 0           ; 0            ; 0       ; 0         ; 2    ; 0            ; |FP32_MAC_Combinatorial_Tx                         ; FP32_MAC_Combinatorial_Tx ; work         ;
-;    |fp32_uart_tx:My_UART_Tx| ; 53 (53)             ; 76 (76)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FP32_MAC_Combinatorial_Tx|fp32_uart_tx:My_UART_Tx ; fp32_uart_tx              ; work         ;
+; |FP32_MAC_Combinatorial_Tx   ; 55 (0)              ; 76 (0)                    ; 0           ; 0            ; 0       ; 0         ; 2    ; 0            ; |FP32_MAC_Combinatorial_Tx                         ; FP32_MAC_Combinatorial_Tx ; work         ;
+;    |fp32_uart_tx:My_UART_Tx| ; 55 (55)             ; 76 (76)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |FP32_MAC_Combinatorial_Tx|fp32_uart_tx:My_UART_Tx ; fp32_uart_tx              ; work         ;
 +------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------+---------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -394,16 +394,16 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; cycloneiii_ff         ; 76                          ;
 ;     ENA               ; 44                          ;
 ;     plain             ; 32                          ;
-; cycloneiii_lcell_comb ; 53                          ;
+; cycloneiii_lcell_comb ; 55                          ;
 ;     arith             ; 31                          ;
 ;         2 data inputs ; 31                          ;
-;     normal            ; 22                          ;
+;     normal            ; 24                          ;
 ;         1 data inputs ; 3                           ;
 ;         2 data inputs ; 6                           ;
-;         4 data inputs ; 13                          ;
+;         4 data inputs ; 15                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 4.10                        ;
-; Average LUT depth     ; 2.62                        ;
+; Average LUT depth     ; 2.70                        ;
 +-----------------------+-----------------------------+
 
 
@@ -422,56 +422,56 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Thu Oct 13 00:43:41 2022
+    Info: Processing started: Thu Oct 13 02:00:57 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off fp32_mac_tx -c fp32_mac
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
 Info (12021): Found 6 design units, including 6 entities, in source file top.sv
     Info (12023): Found entity 1: fp32_uart_tx File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 5
-    Info (12023): Found entity 2: leading_1_detector_48bit File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 173
-    Info (12023): Found entity 3: FP32_Multiplier_Combinatorial File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 329
-    Info (12023): Found entity 4: leading_1_detector_23bit File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 692
-    Info (12023): Found entity 5: FP32_Adder_Combinatorial File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 776
-    Info (12023): Found entity 6: FP32_MAC_Combinatorial_Tx File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 986
+    Info (12023): Found entity 2: leading_1_detector_48bit File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 176
+    Info (12023): Found entity 3: FP32_Multiplier_Combinatorial File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 332
+    Info (12023): Found entity 4: leading_1_detector_23bit File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 691
+    Info (12023): Found entity 5: FP32_Adder_Combinatorial File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 775
+    Info (12023): Found entity 6: FP32_MAC_Combinatorial_Tx File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 1006
 Info (12127): Elaborating entity "FP32_MAC_Combinatorial_Tx" for the top level hierarchy
-Info (12128): Elaborating entity "FP32_Multiplier_Combinatorial" for hierarchy "FP32_Multiplier_Combinatorial:My_Multiplier" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 1004
-Warning (10036): Verilog HDL or VHDL warning at top.sv(344): object "Larger_E" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 344
-Warning (10036): Verilog HDL or VHDL warning at top.sv(345): object "Right_Shift" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 345
-Warning (10036): Verilog HDL or VHDL warning at top.sv(347): object "EA1" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 347
-Warning (10036): Verilog HDL or VHDL warning at top.sv(347): object "EB1" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 347
-Warning (10036): Verilog HDL or VHDL warning at top.sv(347): object "E_Equal" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 347
-Warning (10036): Verilog HDL or VHDL warning at top.sv(381): object "M_RightBig" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 381
-Warning (10036): Verilog HDL or VHDL warning at top.sv(381): object "M_LeftBig" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 381
-Warning (10036): Verilog HDL or VHDL warning at top.sv(381): object "M_Equal" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 381
-Warning (10036): Verilog HDL or VHDL warning at top.sv(448): object "DEBUG_FINAL_MAN" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 448
-Warning (10036): Verilog HDL or VHDL warning at top.sv(449): object "DEBUG_FINAL_EXP" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 449
-Warning (10036): Verilog HDL or VHDL warning at top.sv(455): object "DEBUG_EEQ" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 455
-Warning (10230): Verilog HDL assignment warning at top.sv(655): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 655
-Info (12128): Elaborating entity "leading_1_detector_48bit" for hierarchy "FP32_Multiplier_Combinatorial:My_Multiplier|leading_1_detector_48bit:leading_1_detector_48bit_1" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 409
-Info (12128): Elaborating entity "FP32_Adder_Combinatorial" for hierarchy "FP32_Adder_Combinatorial:My_Adder" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 1011
-Warning (10036): Verilog HDL or VHDL warning at top.sv(785): object "EA" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 785
-Warning (10036): Verilog HDL or VHDL warning at top.sv(785): object "EB" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 785
-Warning (10036): Verilog HDL or VHDL warning at top.sv(826): object "M_RightBig" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 826
-Warning (10036): Verilog HDL or VHDL warning at top.sv(826): object "M_Equal" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 826
-Warning (10036): Verilog HDL or VHDL warning at top.sv(874): object "mantissa_22nd" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 874
+Info (12128): Elaborating entity "FP32_Multiplier_Combinatorial" for hierarchy "FP32_Multiplier_Combinatorial:My_Multiplier" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 1029
+Warning (10036): Verilog HDL or VHDL warning at top.sv(347): object "Larger_E" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 347
+Warning (10036): Verilog HDL or VHDL warning at top.sv(348): object "Right_Shift" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 348
+Warning (10036): Verilog HDL or VHDL warning at top.sv(350): object "EA1" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 350
+Warning (10036): Verilog HDL or VHDL warning at top.sv(350): object "EB1" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 350
+Warning (10036): Verilog HDL or VHDL warning at top.sv(350): object "E_Equal" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 350
+Warning (10036): Verilog HDL or VHDL warning at top.sv(384): object "M_RightBig" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 384
+Warning (10036): Verilog HDL or VHDL warning at top.sv(384): object "M_LeftBig" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 384
+Warning (10036): Verilog HDL or VHDL warning at top.sv(384): object "M_Equal" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 384
+Warning (10036): Verilog HDL or VHDL warning at top.sv(406): object "Maximum_Exp_Cost_Carry" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 406
+Warning (10036): Verilog HDL or VHDL warning at top.sv(453): object "DEBUG_FINAL_MAN" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 453
+Warning (10036): Verilog HDL or VHDL warning at top.sv(454): object "DEBUG_FINAL_EXP" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 454
+Warning (10036): Verilog HDL or VHDL warning at top.sv(457): object "DEBUG_EEQ" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 457
+Warning (10230): Verilog HDL assignment warning at top.sv(654): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 654
+Info (12128): Elaborating entity "leading_1_detector_48bit" for hierarchy "FP32_Multiplier_Combinatorial:My_Multiplier|leading_1_detector_48bit:leading_1_detector_48bit_1" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 412
+Info (12128): Elaborating entity "FP32_Adder_Combinatorial" for hierarchy "FP32_Adder_Combinatorial:My_Adder" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 1036
+Warning (10036): Verilog HDL or VHDL warning at top.sv(825): object "M_RightBig" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 825
+Warning (10036): Verilog HDL or VHDL warning at top.sv(825): object "M_Equal" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 825
+Warning (10036): Verilog HDL or VHDL warning at top.sv(873): object "mantissa_22nd" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 873
+Warning (10036): Verilog HDL or VHDL warning at top.sv(878): object "lefted_frac_righted_truncated" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 878
 Warning (10036): Verilog HDL or VHDL warning at top.sv(899): object "R_mask" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 899
 Warning (10036): Verilog HDL or VHDL warning at top.sv(913): object "DEBUG_FINAL_MAN" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 913
 Warning (10036): Verilog HDL or VHDL warning at top.sv(914): object "DEBUG_FINAL_EXP" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 914
 Info (12128): Elaborating entity "leading_1_detector_23bit" for hierarchy "FP32_Adder_Combinatorial:My_Adder|leading_1_detector_23bit:leading_1_detector_23bit_1" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 871
-Info (12128): Elaborating entity "fp32_uart_tx" for hierarchy "fp32_uart_tx:My_UART_Tx" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 1018
+Info (12128): Elaborating entity "fp32_uart_tx" for hierarchy "fp32_uart_tx:My_UART_Tx" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 1043
 Warning (10036): Verilog HDL or VHDL warning at top.sv(63): object "repeat_cnt" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_mac_tx/top.sv Line: 63
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 8 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 97 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 99 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 1 input pins
     Info (21059): Implemented 1 output pins
-    Info (21061): Implemented 95 logic cells
+    Info (21061): Implemented 97 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 22 warnings
-    Info: Peak virtual memory: 4812 megabytes
-    Info: Processing ended: Thu Oct 13 00:43:49 2022
-    Info: Elapsed time: 00:00:08
+    Info: Peak virtual memory: 4815 megabytes
+    Info: Processing ended: Thu Oct 13 02:01:04 2022
+    Info: Elapsed time: 00:00:07
     Info: Total CPU time (on all processors): 00:00:15
 
 

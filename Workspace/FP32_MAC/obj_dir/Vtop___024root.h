@@ -20,6 +20,9 @@ class Vtop___024root final : public VerilatedModule {
     CData/*7:0*/ FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__final_Exp;
     CData/*7:0*/ FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_FINAL_MAN;
     CData/*7:0*/ FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_FINAL_EXP;
+    CData/*0:0*/ FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_ELB;
+    CData/*0:0*/ FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_ERB;
+    CData/*0:0*/ FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_EEQ;
     CData/*7:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__Larger_E;
     CData/*0:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__EA_minus_EB_Carry;
     CData/*0:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__EB_minus_EA_Carry;

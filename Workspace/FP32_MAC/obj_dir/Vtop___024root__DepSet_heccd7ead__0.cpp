@@ -25,18 +25,6 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__0(Vtop___024root* vlSelf) {
                                             << 0x17U) 
                                            | (0x7fffffU 
                                               & vlSelf->acc)));
-    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EA 
-        = (0xffU & ((vlSelf->alpha >> 0x17U) + (0U 
-                                                == 
-                                                (0xffU 
-                                                 & (vlSelf->alpha 
-                                                    >> 0x17U)))));
-    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EB 
-        = (0xffU & ((vlSelf->bravo >> 0x17U) + (0U 
-                                                == 
-                                                (0xffU 
-                                                 & (vlSelf->bravo 
-                                                    >> 0x17U)))));
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__M_48_Original 
         = (0xffffffffffffULL & ((QData)((IData)(((IData)(
                                                          ((0U 
@@ -80,9 +68,18 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__0(Vtop___024root* vlSelf) {
                                                      << 0x17U) 
                                                     | (0x7fffffU 
                                                        & vlSelf->bravo)))))));
-    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EA_plus_EB 
-        = (0x1ffU & ((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EA) 
-                     + (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EB)));
+    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EA 
+        = (0xffU & ((vlSelf->alpha >> 0x17U) + (0U 
+                                                == 
+                                                (0xffU 
+                                                 & (vlSelf->alpha 
+                                                    >> 0x17U)))));
+    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EB 
+        = (0xffU & ((vlSelf->bravo >> 0x17U) + (0U 
+                                                == 
+                                                (0xffU 
+                                                 & (vlSelf->bravo 
+                                                    >> 0x17U)))));
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__leading_1_position 
         = ((1U & (IData)((vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__M_48_Original 
                           >> 0x2fU))) ? 0x2fU : ((1U 
@@ -361,6 +358,15 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__0(Vtop___024root* vlSelf) {
                                                                                 >> 1U)))
                                                                                  ? 1U
                                                                                  : 0U)))))))))))))))))))))))))))))))))))))))))))))));
+    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EA_plus_EB 
+        = (0x1ffU & ((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EA) 
+                     + (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EB)));
+    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__Man5_tmp 
+        = ((0x2fU >= (0xffU & ((IData)(0x2eU) - (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__leading_1_position))))
+            ? (0xffffffffffffULL & (vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__M_48_Original 
+                                    << (0xffU & ((IData)(0x2eU) 
+                                                 - (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__leading_1_position)))))
+            : 0ULL);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__Man3 
         = (0xffffffffffffULL & ((0x100U & ((IData)(0x80U) 
                                            + (- (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EA_plus_EB))))
@@ -376,13 +382,14 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__0(Vtop___024root* vlSelf) {
                                              + (0x1ffU 
                                                 & (- (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EA_plus_EB))))))
                                      : 0ULL)));
-    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__Man5_tmp 
-        = ((0x2fU >= (0xffU & ((IData)(0x2eU) - (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__leading_1_position))))
-            ? (0xffffffffffffULL & (vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__M_48_Original 
-                                    << (0xffU & ((IData)(0x2eU) 
-                                                 - (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__leading_1_position)))))
-            : 0ULL);
-    if ((0x80U < (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EA_plus_EB))) {
+    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_ELB 
+        = (0x80U < (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EA_plus_EB));
+    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_ERB 
+        = (0x80U > (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EA_plus_EB));
+    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_EEQ 
+        = (1U & (~ ((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_ELB) 
+                    ^ (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_ERB))));
+    if (vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_ELB) {
         if ((0x2fU == (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__leading_1_position))) {
             vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_FINAL_MAN = 1U;
             vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_FINAL_EXP = 1U;
@@ -490,7 +497,7 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__0(Vtop___024root* vlSelf) {
                     = (0xffU & 0U);
             }
         }
-    } else if ((0x80U > (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EA_plus_EB))) {
+    } else if (vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_ERB) {
         if ((0x2fU == (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__leading_1_position))) {
             vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_FINAL_MAN = 5U;
             if ((1U == (0xffU & ((IData)(0x80U) + (0x1ffU 
@@ -551,8 +558,7 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__0(Vtop___024root* vlSelf) {
                | ((0xffU == (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EB)) 
                   & (0U != (0x7fffffU & vlSelf->bravo))))
                ? 0x7fffffffU : (((0xfeU < ((0x100U 
-                                            & (((0x80U 
-                                                 < (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EA_plus_EB))
+                                            & (((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_ELB)
                                                  ? 
                                                 ((0x2fU 
                                                   == (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__leading_1_position))
@@ -589,8 +595,7 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__0(Vtop___024root* vlSelf) {
                                                               - (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__leading_1_position)))) 
                                                          >> 8U)))))
                                                  : 
-                                                ((0x80U 
-                                                  <= (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EA_plus_EB)) 
+                                                ((~ (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_ERB)) 
                                                  & ((0x2fU 
                                                      == (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__leading_1_position))
                                                      ? 

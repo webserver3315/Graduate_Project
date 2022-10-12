@@ -70,6 +70,9 @@ VL_ATTR_COLD void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__final_Exp = VL_RAND_RESET_I(8);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_FINAL_MAN = VL_RAND_RESET_I(8);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_FINAL_EXP = VL_RAND_RESET_I(8);
+    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_ELB = VL_RAND_RESET_I(1);
+    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_ERB = VL_RAND_RESET_I(1);
+    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_EEQ = VL_RAND_RESET_I(1);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__Larger_E = VL_RAND_RESET_I(8);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__EA_minus_EB_Carry = VL_RAND_RESET_I(1);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__EB_minus_EA_Carry = VL_RAND_RESET_I(1);

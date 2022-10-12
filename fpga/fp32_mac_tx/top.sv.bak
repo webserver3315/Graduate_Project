@@ -1006,8 +1006,8 @@ endmodule
 module FP32_MAC_Combinatorial_Tx
     (
         input   wire    clk_i,
-        output  reg     delta_serial // BEC00000
-//        output reg [31:0] delta_output
+        output  reg     delta_serial, // BEC00000
+        output reg [31:0] delta_output
     );
 
     reg     [31:0]  alpha = 32'hBF000000; // -0.5
@@ -1017,9 +1017,9 @@ module FP32_MAC_Combinatorial_Tx
     wire     [31:0]  middle_delta;
     reg     [31:0]  delta;
     
-//    always_comb begin
-//        delta_output = delta;
-//    end
+    always_comb begin
+        delta_output = delta;
+    end
 
     FP32_Multiplier_Combinatorial My_Multiplier
     (

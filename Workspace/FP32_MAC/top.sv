@@ -284,9 +284,12 @@ module FP32_Multiplier_Combinatorial
     `endif
 
     // EA_plus_EB 가 아니라 EA+EB 를 넣으면 부등호가 안맞다. 왜 이럴까...? 아무튼 EA_plus_EB로 바꿈.
-    reg         DEBUG_ELB       =   (EA_plus_EB > 9'd128);
-    reg         DEBUG_ERB       =   (EA_plus_EB < 9'd128); // EA + EB - 9'd128 < 0
-    reg         DEBUG_EEQ       =   ~(DEBUG_ELB ^ DEBUG_ERB); // E == -126, ELB ^ EEQ 해도 됨.
+    reg DEBUG_ELB, DEBUG_ERB, DEBUG_EEQ;
+    always_comb begin
+        DEBUG_ELB       =   (EA_plus_EB > 9'd128);
+        DEBUG_ERB       =   (EA_plus_EB < 9'd128); // EA + EB - 9'd128 < 0
+        DEBUG_EEQ       =   ~(DEBUG_ELB ^ DEBUG_ERB); // E == -126, ELB ^ EEQ 해도 됨.
+    end
     // ******************************************** final_Man Setter *****************************/
     always_comb begin
         if(DEBUG_ELB) begin
