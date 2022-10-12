@@ -25,28 +25,27 @@ module fp32_uart_tx
     reg [31:0] clk_count;
 
     reg [7:0] repeat_cnt = 8'd5;
+    reg [31:0] input_buffer = 32'h3332_3130;
+	 reg [31:0] input_buffer_n = 32'h3332_3130;
 
-    /*
-        문제가 뭔가?
-            w가 자꾸 중간에 발생한다.
-        원인이 뭔가?
-            1) 연속출력되는와중 uart_tx_o = txdata[3] 할때즈음 txdata[7:0] 이 바뀐다. 일종의 RaW가 발생한다.
-            2) 물리적인 노이즈로써, parity bit 을 둬야한다. => dksla.
-        어떻게 증명할건가?
-            1-1) 
-            2-1) 
-
-    */
     always @(posedge clk_i) begin
         if(clk_count == 32'd433) begin // 50MHz(20ns) to 115200 BR(8.68us)=>div_434
             clk_count = 0;
             case(tx_state)
                 IDLE_ST :   begin
                     tx_state = START_ST;
-                    tx_data = (tx_data == "U") ? "4" : "U"; // "3" == 8'b0011_0011 == 8'h33
+                    // tx_data = (tx_data == "U") ? "4" : "U"; // "3" == 8'b0011_0011 == 8'h33
                 end
-                START_ST :   tx_state = D0_ST;
-                D0_ST   :   tx_state = D1_ST;   
+                START_ST :   begin
+                    tx_state = D0_ST;
+                    input_buffer = input_buffer_n;
+                    tx_data = input_buffer[7:0];
+//							 tx_data = "U";
+                end
+                D0_ST   :   begin
+						tx_state = D1_ST;   
+						input_buffer_n = {input_buffer[7:0], input_buffer[31:8]};
+					 end
                 D1_ST   :   tx_state = D2_ST;
                 D2_ST   :   tx_state = D3_ST;
                 D3_ST   :   tx_state = D4_ST;
