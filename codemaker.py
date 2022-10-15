@@ -61,8 +61,17 @@ for i in range (0, 44, 1):
         cnt += 1
     # D0_ST   :   uart_tx_o = tx_data[0];
 
-for i in range (0, 44, 1):
-    print("%s   :   tx_state = %s;" % (queue[i],queue[i+1]))
+for i in range (0, 43, 1):
+    print("%s   :   begin" % (queue[i]))
+    print("\tif(clk_cnt == 443) begin")
+    print("\t\tclk_cnt = 0;")
+    print("\t\ttx_state = %s;" % (queue[i+1]))
+    print("\tend")
+    print("\telse begin")
+    print("\t\tclk_cnt = clk_cnt + 1;")
+    print("\t\ttx_state = %s;" % (queue[i]))
+    print("\tend")
+    print("end")
 
 # D1_ST   :   tx_state = D2_ST;
 # D2_ST   :   tx_state = D3_ST;

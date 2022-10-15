@@ -1,0 +1,25 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "TX_DATA_O",
+					"strict" : false
+				},
+				{
+					"name" : "CLK_I",
+					"strict" : false
+				},
+				{
+					"name" : "RSTL_I",
+					"strict" : false
+				},
+				{
+					"name" : "UART_RX_I",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
