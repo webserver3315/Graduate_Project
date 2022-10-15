@@ -1,5 +1,5 @@
 Analysis & Synthesis report for fp32_uart_tx
-Thu Oct 13 00:00:41 2022
+Sun Oct 16 04:42:05 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -16,10 +16,11 @@ Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
   8. State Machine - |fp32_uart_tx|tx_state
   9. Registers Removed During Synthesis
  10. General Register Statistics
- 11. Parameter Settings for User Entity Instance: Top-level Entity: |fp32_uart_tx
- 12. Post-Synthesis Netlist Statistics for Top Partition
- 13. Elapsed Time Per Partition
- 14. Analysis & Synthesis Messages
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Parameter Settings for User Entity Instance: Top-level Entity: |fp32_uart_tx
+ 13. Post-Synthesis Netlist Statistics for Top Partition
+ 14. Elapsed Time Per Partition
+ 15. Analysis & Synthesis Messages
 
 
 
@@ -46,16 +47,16 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Oct 13 00:00:41 2022       ;
+; Analysis & Synthesis Status        ; Successful - Sun Oct 16 04:42:05 2022       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; fp32_uart_tx                                ;
 ; Top-level Entity Name              ; fp32_uart_tx                                ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 98                                          ;
-;     Total combinational functions  ; 56                                          ;
+; Total logic elements               ; 95                                          ;
+;     Total combinational functions  ; 53                                          ;
 ;     Dedicated logic registers      ; 76                                          ;
 ; Total registers                    ; 76                                          ;
-; Total pins                         ; 5                                           ;
+; Total pins                         ; 7                                           ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
@@ -166,13 +167,13 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                   ;
-+----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                               ; Library ;
-+----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------+---------+
-; fp32_uart_tx.sv                  ; yes             ; User SystemVerilog HDL File  ; D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_uart_tx/fp32_uart_tx.sv ;         ;
-+----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------+---------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                             ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                         ; Library ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------+---------+
+; fp32_uart_tx.sv                  ; yes             ; User SystemVerilog HDL File  ; D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv ;         ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------+---------+
 
 
 +-----------------------------------------------------------+
@@ -180,30 +181,30 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-------------+
 ; Resource                                    ; Usage       ;
 +---------------------------------------------+-------------+
-; Estimated Total logic elements              ; 98          ;
+; Estimated Total logic elements              ; 95          ;
 ;                                             ;             ;
-; Total combinational functions               ; 56          ;
+; Total combinational functions               ; 53          ;
 ; Logic element usage by number of LUT inputs ;             ;
-;     -- 4 input functions                    ; 15          ;
+;     -- 4 input functions                    ; 17          ;
 ;     -- 3 input functions                    ; 0           ;
-;     -- <=2 input functions                  ; 41          ;
+;     -- <=2 input functions                  ; 36          ;
 ;                                             ;             ;
 ; Logic elements by mode                      ;             ;
-;     -- normal mode                          ; 25          ;
+;     -- normal mode                          ; 22          ;
 ;     -- arithmetic mode                      ; 31          ;
 ;                                             ;             ;
 ; Total registers                             ; 76          ;
 ;     -- Dedicated logic registers            ; 76          ;
 ;     -- I/O registers                        ; 0           ;
 ;                                             ;             ;
-; I/O pins                                    ; 5           ;
+; I/O pins                                    ; 7           ;
 ;                                             ;             ;
 ; Embedded Multiplier 9-bit elements          ; 0           ;
 ;                                             ;             ;
-; Maximum fan-out node                        ; clk_i~input ;
+; Maximum fan-out node                        ; CLK_I~input ;
 ; Maximum fan-out                             ; 76          ;
-; Total fan-out                               ; 341         ;
-; Average fan-out                             ; 2.40        ;
+; Total fan-out                               ; 482         ;
+; Average fan-out                             ; 3.37        ;
 +---------------------------------------------+-------------+
 
 
@@ -212,7 +213,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name  ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+--------------+
-; |fp32_uart_tx              ; 56 (56)             ; 76 (76)                   ; 0           ; 0            ; 0       ; 0         ; 5    ; 0            ; |fp32_uart_tx       ; fp32_uart_tx ; work         ;
+; |fp32_uart_tx              ; 53 (53)             ; 76 (76)                   ; 0           ; 0            ; 0       ; 0         ; 7    ; 0            ; |fp32_uart_tx       ; fp32_uart_tx ; work         ;
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -275,14 +276,14 @@ Encoding Type:  One-Hot
 +---------------------------------------+--------------------+
 ; Register name                         ; Reason for Removal ;
 +---------------------------------------+--------------------+
-; tx_state~46                           ; Lost fanout        ;
-; tx_state~47                           ; Lost fanout        ;
-; tx_state~48                           ; Lost fanout        ;
-; tx_state~49                           ; Lost fanout        ;
-; tx_state~50                           ; Lost fanout        ;
-; tx_state~51                           ; Lost fanout        ;
-; tx_state~52                           ; Lost fanout        ;
-; tx_state~53                           ; Lost fanout        ;
+; tx_state~4                            ; Lost fanout        ;
+; tx_state~5                            ; Lost fanout        ;
+; tx_state~6                            ; Lost fanout        ;
+; tx_state~7                            ; Lost fanout        ;
+; tx_state~8                            ; Lost fanout        ;
+; tx_state~9                            ; Lost fanout        ;
+; tx_state~10                           ; Lost fanout        ;
+; tx_state~11                           ; Lost fanout        ;
 ; Total Number of Removed Registers = 8 ;                    ;
 +---------------------------------------+--------------------+
 
@@ -293,13 +294,22 @@ Encoding Type:  One-Hot
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
 ; Total registers                              ; 76    ;
-; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Clear  ; 32    ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Clear ; 76    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 44    ;
+; Number of registers using Clock Enable       ; 74    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; 4:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |fp32_uart_tx|clk_cnt[10]  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 
 
 +------------------------------------------------------------------------------+
@@ -361,21 +371,22 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 5                           ;
+; boundary_port         ; 7                           ;
 ; cycloneiii_ff         ; 76                          ;
-;     ENA               ; 44                          ;
-;     plain             ; 32                          ;
-; cycloneiii_lcell_comb ; 57                          ;
+;     CLR               ; 2                           ;
+;     ENA CLR           ; 42                          ;
+;     ENA CLR SCLR      ; 32                          ;
+; cycloneiii_lcell_comb ; 56                          ;
 ;     arith             ; 31                          ;
 ;         2 data inputs ; 31                          ;
-;     normal            ; 26                          ;
-;         0 data inputs ; 1                           ;
-;         1 data inputs ; 3                           ;
-;         2 data inputs ; 7                           ;
-;         4 data inputs ; 15                          ;
+;     normal            ; 25                          ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 2                           ;
+;         2 data inputs ; 4                           ;
+;         4 data inputs ; 17                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 4.10                        ;
-; Average LUT depth     ; 2.74                        ;
+; Average LUT depth     ; 2.66                        ;
 +-----------------------+-----------------------------+
 
 
@@ -394,32 +405,60 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Thu Oct 13 00:00:35 2022
+    Info: Processing started: Sun Oct 16 04:41:59 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off fp32_uart_tx -c fp32_uart_tx
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file fp32_uart_tx.sv
-    Info (12023): Found entity 1: fp32_uart_tx File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_uart_tx/fp32_uart_tx.sv Line: 1
+    Info (12023): Found entity 1: fp32_uart_tx File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 1
 Info (12127): Elaborating entity "fp32_uart_tx" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at fp32_uart_tx.sv(62): object "repeat_cnt" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_uart_tx/fp32_uart_tx.sv Line: 62
-Warning (10034): Output port "led1_o" at fp32_uart_tx.sv(53) has no driver File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_uart_tx/fp32_uart_tx.sv Line: 53
-Warning (10034): Output port "led2_o" at fp32_uart_tx.sv(54) has no driver File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_uart_tx/fp32_uart_tx.sv Line: 54
+Warning (10240): Verilog HDL Always Construct warning at fp32_uart_tx.sv(73): inferring latch(es) for variable "tx_data", which holds its previous value in one or more paths through the always construct File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 73
+Info (10041): Inferred latch for "tx_data[0]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
+Info (10041): Inferred latch for "tx_data[1]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
+Info (10041): Inferred latch for "tx_data[2]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
+Info (10041): Inferred latch for "tx_data[3]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
+Info (10041): Inferred latch for "tx_data[4]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
+Info (10041): Inferred latch for "tx_data[5]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
+Info (10041): Inferred latch for "tx_data[6]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
+Info (10041): Inferred latch for "tx_data[7]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
+Info (10041): Inferred latch for "tx_data[8]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
+Info (10041): Inferred latch for "tx_data[9]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
+Info (10041): Inferred latch for "tx_data[10]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
+Info (10041): Inferred latch for "tx_data[11]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
+Info (10041): Inferred latch for "tx_data[12]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
+Info (10041): Inferred latch for "tx_data[13]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
+Info (10041): Inferred latch for "tx_data[14]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
+Info (10041): Inferred latch for "tx_data[15]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
+Info (10041): Inferred latch for "tx_data[16]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
+Info (10041): Inferred latch for "tx_data[17]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
+Info (10041): Inferred latch for "tx_data[18]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
+Info (10041): Inferred latch for "tx_data[19]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
+Info (10041): Inferred latch for "tx_data[20]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
+Info (10041): Inferred latch for "tx_data[21]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
+Info (10041): Inferred latch for "tx_data[22]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
+Info (10041): Inferred latch for "tx_data[23]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
+Info (10041): Inferred latch for "tx_data[24]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
+Info (10041): Inferred latch for "tx_data[25]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
+Info (10041): Inferred latch for "tx_data[26]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
+Info (10041): Inferred latch for "tx_data[27]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
+Info (10041): Inferred latch for "tx_data[28]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
+Info (10041): Inferred latch for "tx_data[29]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
+Info (10041): Inferred latch for "tx_data[30]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
+Info (10041): Inferred latch for "tx_data[31]" at fp32_uart_tx.sv(81) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 81
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "led1_o" is stuck at GND File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_uart_tx/fp32_uart_tx.sv Line: 53
-    Warning (13410): Pin "led2_o" is stuck at GND File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_uart_tx/fp32_uart_tx.sv Line: 54
+    Warning (13410): Pin "LED2" is stuck at VCC File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 56
+    Warning (13410): Pin "LED3" is stuck at GND File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/fp32_uart_tx.sv Line: 58
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 8 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 1 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "btn1_i" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_uart_tx/fp32_uart_tx.sv Line: 51
-Info (21057): Implemented 103 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 2 input pins
-    Info (21059): Implemented 3 output pins
-    Info (21061): Implemented 98 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 9 warnings
-    Info: Peak virtual memory: 4814 megabytes
-    Info: Processing ended: Thu Oct 13 00:00:41 2022
+Info (21057): Implemented 102 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 3 input pins
+    Info (21059): Implemented 4 output pins
+    Info (21061): Implemented 95 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 4813 megabytes
+    Info: Processing ended: Sun Oct 16 04:42:05 2022
     Info: Elapsed time: 00:00:06
     Info: Total CPU time (on all processors): 00:00:13
 

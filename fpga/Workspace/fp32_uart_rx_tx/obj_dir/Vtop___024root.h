@@ -18,9 +18,11 @@ class Vtop___024root final : public VerilatedModule {
     VL_IN8(UART_RX_I,0,0);
     VL_OUT8(TX_DATA_O,0,0);
     CData/*0:0*/ fp32_uart_rx_tx__DOT__RX_VALID_O;
-    CData/*7:0*/ fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__bit_idx;
     CData/*2:0*/ fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state;
-    CData/*0:0*/ fp32_uart_rx_tx__DOT__My_UART_Rx__DOT____Vlvbound_h836f5cac__0;
+    CData/*7:0*/ fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__received_byte;
+    CData/*7:0*/ fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__received_bit;
+    CData/*7:0*/ fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__total_index;
+    CData/*0:0*/ fp32_uart_rx_tx__DOT__My_UART_Rx__DOT____Vlvbound_h93dc11f2__0;
     CData/*7:0*/ fp32_uart_rx_tx__DOT__My_UART_Tx__DOT__tx_state;
     CData/*0:0*/ __Vclklast__TOP__CLK_I;
     CData/*0:0*/ __Vclklast__TOP__RSTL_I;

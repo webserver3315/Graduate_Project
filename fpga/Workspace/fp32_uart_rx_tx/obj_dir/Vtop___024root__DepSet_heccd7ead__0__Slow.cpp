@@ -20,6 +20,9 @@ VL_ATTR_COLD void Vtop___024root___settle__TOP__0(Vtop___024root* vlSelf) {
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___settle__TOP__0\n"); );
     // Body
+    vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__total_index 
+        = (0xffU & (((IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__received_byte) 
+                     << 3U) + (IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__received_bit)));
     vlSelf->TX_DATA_O = (1U & (((((((((0U == (IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Tx__DOT__tx_state)) 
                                       | (1U == (IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Tx__DOT__tx_state))) 
                                      | (2U == (IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Tx__DOT__tx_state))) 
@@ -277,6 +280,8 @@ VL_ATTR_COLD void Vtop___024root___eval_settle(Vtop___024root* vlSelf) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___eval_settle\n"); );
     // Body
     Vtop___024root___settle__TOP__0(vlSelf);
+    vlSelf->__Vm_traceActivity[1U] = 1U;
+    vlSelf->__Vm_traceActivity[0U] = 1U;
 }
 
 VL_ATTR_COLD void Vtop___024root___final(Vtop___024root* vlSelf) {
@@ -297,9 +302,11 @@ VL_ATTR_COLD void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->fp32_uart_rx_tx__DOT__RX_VALID_O = VL_RAND_RESET_I(1);
     VL_RAND_RESET_W(96, vlSelf->fp32_uart_rx_tx__DOT__data);
     vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__clk_cnt = VL_RAND_RESET_I(32);
-    vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__bit_idx = VL_RAND_RESET_I(8);
     vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state = VL_RAND_RESET_I(3);
-    vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT____Vlvbound_h836f5cac__0 = VL_RAND_RESET_I(1);
+    vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__received_byte = VL_RAND_RESET_I(8);
+    vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__received_bit = VL_RAND_RESET_I(8);
+    vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__total_index = VL_RAND_RESET_I(8);
+    vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT____Vlvbound_h93dc11f2__0 = VL_RAND_RESET_I(1);
     vlSelf->fp32_uart_rx_tx__DOT__My_UART_Tx__DOT__tx_state = VL_RAND_RESET_I(8);
     vlSelf->fp32_uart_rx_tx__DOT__My_UART_Tx__DOT__tx_data = VL_RAND_RESET_I(32);
     vlSelf->fp32_uart_rx_tx__DOT__My_UART_Tx__DOT__clk_cnt = VL_RAND_RESET_I(32);

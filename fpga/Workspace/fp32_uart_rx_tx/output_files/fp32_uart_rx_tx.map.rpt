@@ -1,5 +1,5 @@
 Analysis & Synthesis report for fp32_uart_rx_tx
-Sun Oct 16 02:12:28 2022
+Sun Oct 16 03:45:59 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -49,13 +49,13 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun Oct 16 02:12:28 2022       ;
+; Analysis & Synthesis Status        ; Successful - Sun Oct 16 03:45:59 2022       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; fp32_uart_rx_tx                             ;
 ; Top-level Entity Name              ; fp32_uart_rx_tx                             ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 189                                         ;
-;     Total combinational functions  ; 148                                         ;
+; Total logic elements               ; 171                                         ;
+;     Total combinational functions  ; 130                                         ;
 ;     Dedicated logic registers      ; 122                                         ;
 ; Total registers                    ; 122                                         ;
 ; Total pins                         ; 4                                           ;
@@ -183,16 +183,16 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-------------+
 ; Resource                                    ; Usage       ;
 +---------------------------------------------+-------------+
-; Estimated Total logic elements              ; 189         ;
+; Estimated Total logic elements              ; 171         ;
 ;                                             ;             ;
-; Total combinational functions               ; 148         ;
+; Total combinational functions               ; 130         ;
 ; Logic element usage by number of LUT inputs ;             ;
-;     -- 4 input functions                    ; 49          ;
-;     -- 3 input functions                    ; 12          ;
-;     -- <=2 input functions                  ; 87          ;
+;     -- 4 input functions                    ; 44          ;
+;     -- 3 input functions                    ; 6           ;
+;     -- <=2 input functions                  ; 80          ;
 ;                                             ;             ;
 ; Logic elements by mode                      ;             ;
-;     -- normal mode                          ; 79          ;
+;     -- normal mode                          ; 61          ;
 ;     -- arithmetic mode                      ; 69          ;
 ;                                             ;             ;
 ; Total registers                             ; 122         ;
@@ -205,7 +205,7 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;             ;
 ; Maximum fan-out node                        ; CLK_I~input ;
 ; Maximum fan-out                             ; 122         ;
-; Total fan-out                               ; 927         ;
+; Total fan-out                               ; 867         ;
 ; Average fan-out                             ; 3.33        ;
 +---------------------------------------------+-------------+
 
@@ -215,8 +215,8 @@ https://fpgasoftware.intel.com/eula.
 +------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------+-----------------+--------------+
 ; Compilation Hierarchy Node   ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                      ; Entity Name     ; Library Name ;
 +------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------+-----------------+--------------+
-; |fp32_uart_rx_tx             ; 148 (0)             ; 122 (0)                   ; 0           ; 0            ; 0       ; 0         ; 4    ; 0            ; |fp32_uart_rx_tx                         ; fp32_uart_rx_tx ; work         ;
-;    |fp32_uart_rx:My_UART_Rx| ; 97 (97)             ; 46 (46)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |fp32_uart_rx_tx|fp32_uart_rx:My_UART_Rx ; fp32_uart_rx    ; work         ;
+; |fp32_uart_rx_tx             ; 130 (0)             ; 122 (0)                   ; 0           ; 0            ; 0       ; 0         ; 4    ; 0            ; |fp32_uart_rx_tx                         ; fp32_uart_rx_tx ; work         ;
+;    |fp32_uart_rx:My_UART_Rx| ; 79 (79)             ; 46 (46)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |fp32_uart_rx_tx|fp32_uart_rx:My_UART_Rx ; fp32_uart_rx    ; work         ;
 ;    |fp32_uart_tx:My_UART_Tx| ; 51 (51)             ; 76 (76)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |fp32_uart_rx_tx|fp32_uart_tx:My_UART_Tx ; fp32_uart_tx    ; work         ;
 +------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------+-----------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -315,23 +315,23 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Total registers                              ; 122   ;
 ; Number of registers using Synchronous Clear  ; 64    ;
-; Number of registers using Synchronous Load   ; 8     ;
-; Number of registers using Asynchronous Clear ; 82    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 90    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 113   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                     ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
-; 9:1                ; 32 bits   ; 192 LEs       ; 32 LEs               ; 160 LEs                ; Yes        ; |fp32_uart_rx_tx|fp32_uart_rx:My_UART_Rx|clk_cnt[6]  ;
-; 5:1                ; 32 bits   ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; Yes        ; |fp32_uart_rx_tx|fp32_uart_tx:My_UART_Tx|clk_cnt[29] ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |fp32_uart_rx_tx|fp32_uart_rx:My_UART_Rx|bit_idx     ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------+
+; 7:1                ; 32 bits   ; 128 LEs       ; 32 LEs               ; 96 LEs                 ; Yes        ; |fp32_uart_rx_tx|fp32_uart_rx:My_UART_Rx|clk_cnt[6]   ;
+; 5:1                ; 32 bits   ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; Yes        ; |fp32_uart_rx_tx|fp32_uart_tx:My_UART_Tx|clk_cnt[29]  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |fp32_uart_rx_tx|fp32_uart_rx:My_UART_Rx|received_bit ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------+
 
 
 +----------------------------------------------------------------------+
@@ -406,21 +406,20 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; boundary_port         ; 4                           ;
 ; cycloneiii_ff         ; 122                         ;
 ;     CLR               ; 9                           ;
-;     ENA CLR           ; 41                          ;
+;     ENA CLR           ; 49                          ;
 ;     ENA CLR SCLR      ; 32                          ;
 ;     ENA SCLR          ; 32                          ;
-;     ENA SLD           ; 8                           ;
-; cycloneiii_lcell_comb ; 148                         ;
+; cycloneiii_lcell_comb ; 130                         ;
 ;     arith             ; 69                          ;
 ;         2 data inputs ; 69                          ;
-;     normal            ; 79                          ;
+;     normal            ; 61                          ;
 ;         1 data inputs ; 3                           ;
-;         2 data inputs ; 15                          ;
-;         3 data inputs ; 12                          ;
-;         4 data inputs ; 49                          ;
+;         2 data inputs ; 8                           ;
+;         3 data inputs ; 6                           ;
+;         4 data inputs ; 44                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 5.00                        ;
-; Average LUT depth     ; 3.17                        ;
+; Average LUT depth     ; 3.10                        ;
 +-----------------------+-----------------------------+
 
 
@@ -439,64 +438,66 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Sun Oct 16 02:12:21 2022
+    Info: Processing started: Sun Oct 16 03:45:52 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off fp32_uart_rx_tx -c fp32_uart_rx_tx
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
 Info (12021): Found 3 design units, including 3 entities, in source file top.sv
     Info (12023): Found entity 1: fp32_uart_rx File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 3
-    Info (12023): Found entity 2: fp32_uart_tx File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 121
-    Info (12023): Found entity 3: fp32_uart_rx_tx File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 677
+    Info (12023): Found entity 2: fp32_uart_tx File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 136
+    Info (12023): Found entity 3: fp32_uart_rx_tx File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 692
 Info (12127): Elaborating entity "fp32_uart_rx_tx" for the top level hierarchy
-Info (12128): Elaborating entity "fp32_uart_rx" for hierarchy "fp32_uart_rx:My_UART_Rx" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 696
-Warning (10230): Verilog HDL assignment warning at top.sv(76): truncated value with size 32 to match size of target (8) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 76
-Info (12128): Elaborating entity "fp32_uart_tx" for hierarchy "fp32_uart_tx:My_UART_Tx" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 705
-Info (10264): Verilog HDL Case Statement information at top.sv(188): all case item expressions in this case statement are onehot File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Warning (10240): Verilog HDL Always Construct warning at top.sv(181): inferring latch(es) for variable "tx_data", which holds its previous value in one or more paths through the always construct File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 181
-Info (10041): Inferred latch for "tx_data[0]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Info (10041): Inferred latch for "tx_data[1]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Info (10041): Inferred latch for "tx_data[2]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Info (10041): Inferred latch for "tx_data[3]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Info (10041): Inferred latch for "tx_data[4]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Info (10041): Inferred latch for "tx_data[5]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Info (10041): Inferred latch for "tx_data[6]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Info (10041): Inferred latch for "tx_data[7]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Info (10041): Inferred latch for "tx_data[8]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Info (10041): Inferred latch for "tx_data[9]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Info (10041): Inferred latch for "tx_data[10]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Info (10041): Inferred latch for "tx_data[11]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Info (10041): Inferred latch for "tx_data[12]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Info (10041): Inferred latch for "tx_data[13]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Info (10041): Inferred latch for "tx_data[14]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Info (10041): Inferred latch for "tx_data[15]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Info (10041): Inferred latch for "tx_data[16]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Info (10041): Inferred latch for "tx_data[17]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Info (10041): Inferred latch for "tx_data[18]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Info (10041): Inferred latch for "tx_data[19]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Info (10041): Inferred latch for "tx_data[20]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Info (10041): Inferred latch for "tx_data[21]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Info (10041): Inferred latch for "tx_data[22]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Info (10041): Inferred latch for "tx_data[23]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Info (10041): Inferred latch for "tx_data[24]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Info (10041): Inferred latch for "tx_data[25]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Info (10041): Inferred latch for "tx_data[26]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Info (10041): Inferred latch for "tx_data[27]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Info (10041): Inferred latch for "tx_data[28]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Info (10041): Inferred latch for "tx_data[29]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Info (10041): Inferred latch for "tx_data[30]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
-Info (10041): Inferred latch for "tx_data[31]" at top.sv(188) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 188
+Info (12128): Elaborating entity "fp32_uart_rx" for hierarchy "fp32_uart_rx:My_UART_Rx" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 711
+Warning (10230): Verilog HDL assignment warning at top.sv(28): truncated value with size 32 to match size of target (8) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 28
+Warning (10230): Verilog HDL assignment warning at top.sv(85): truncated value with size 32 to match size of target (8) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 85
+Warning (10230): Verilog HDL assignment warning at top.sv(91): truncated value with size 32 to match size of target (8) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 91
+Info (12128): Elaborating entity "fp32_uart_tx" for hierarchy "fp32_uart_tx:My_UART_Tx" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 720
+Info (10264): Verilog HDL Case Statement information at top.sv(203): all case item expressions in this case statement are onehot File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Warning (10240): Verilog HDL Always Construct warning at top.sv(196): inferring latch(es) for variable "tx_data", which holds its previous value in one or more paths through the always construct File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 196
+Info (10041): Inferred latch for "tx_data[0]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Info (10041): Inferred latch for "tx_data[1]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Info (10041): Inferred latch for "tx_data[2]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Info (10041): Inferred latch for "tx_data[3]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Info (10041): Inferred latch for "tx_data[4]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Info (10041): Inferred latch for "tx_data[5]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Info (10041): Inferred latch for "tx_data[6]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Info (10041): Inferred latch for "tx_data[7]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Info (10041): Inferred latch for "tx_data[8]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Info (10041): Inferred latch for "tx_data[9]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Info (10041): Inferred latch for "tx_data[10]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Info (10041): Inferred latch for "tx_data[11]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Info (10041): Inferred latch for "tx_data[12]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Info (10041): Inferred latch for "tx_data[13]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Info (10041): Inferred latch for "tx_data[14]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Info (10041): Inferred latch for "tx_data[15]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Info (10041): Inferred latch for "tx_data[16]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Info (10041): Inferred latch for "tx_data[17]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Info (10041): Inferred latch for "tx_data[18]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Info (10041): Inferred latch for "tx_data[19]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Info (10041): Inferred latch for "tx_data[20]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Info (10041): Inferred latch for "tx_data[21]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Info (10041): Inferred latch for "tx_data[22]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Info (10041): Inferred latch for "tx_data[23]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Info (10041): Inferred latch for "tx_data[24]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Info (10041): Inferred latch for "tx_data[25]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Info (10041): Inferred latch for "tx_data[26]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Info (10041): Inferred latch for "tx_data[27]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Info (10041): Inferred latch for "tx_data[28]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Info (10041): Inferred latch for "tx_data[29]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Info (10041): Inferred latch for "tx_data[30]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
+Info (10041): Inferred latch for "tx_data[31]" at top.sv(203) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_rx_tx/top.sv Line: 203
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 10 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 194 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 176 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
     Info (21059): Implemented 1 output pins
-    Info (21061): Implemented 190 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 3 warnings
-    Info: Peak virtual memory: 4822 megabytes
-    Info: Processing ended: Sun Oct 16 02:12:28 2022
+    Info (21061): Implemented 172 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 4812 megabytes
+    Info: Processing ended: Sun Oct 16 03:45:59 2022
     Info: Elapsed time: 00:00:07
-    Info: Total CPU time (on all processors): 00:00:13
+    Info: Total CPU time (on all processors): 00:00:15
 
 

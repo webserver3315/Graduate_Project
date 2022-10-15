@@ -8,6 +8,7 @@ import serial
 ser = serial.Serial("COM5", 115200, timeout = 1)
 while True:
     print("insert op :", end=' ')
+    input()
     op = input()
     ser.write(op.encode())
     print("R: ", ser.readline())

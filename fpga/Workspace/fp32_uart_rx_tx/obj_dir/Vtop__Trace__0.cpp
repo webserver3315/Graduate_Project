@@ -27,17 +27,19 @@ void Vtop___024root__trace_chg_sub_0(Vtop___024root* vlSelf, VerilatedVcd::Buffe
         bufp->chgBit(oldp+0,(vlSelf->fp32_uart_rx_tx__DOT__RX_VALID_O));
         bufp->chgWData(oldp+1,(vlSelf->fp32_uart_rx_tx__DOT__data),96);
         bufp->chgIData(oldp+4,(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__clk_cnt),32);
-        bufp->chgCData(oldp+5,(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__bit_idx),8);
-        bufp->chgCData(oldp+6,(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state),3);
-        bufp->chgIData(oldp+7,(vlSelf->fp32_uart_rx_tx__DOT__data[0U]),32);
-        bufp->chgCData(oldp+8,(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Tx__DOT__tx_state),8);
-        bufp->chgIData(oldp+9,(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Tx__DOT__tx_data),32);
-        bufp->chgIData(oldp+10,(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Tx__DOT__clk_cnt),32);
+        bufp->chgCData(oldp+5,(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state),3);
+        bufp->chgCData(oldp+6,(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__received_byte),8);
+        bufp->chgCData(oldp+7,(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__received_bit),8);
+        bufp->chgCData(oldp+8,(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__total_index),8);
+        bufp->chgIData(oldp+9,(vlSelf->fp32_uart_rx_tx__DOT__data[0U]),32);
+        bufp->chgCData(oldp+10,(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Tx__DOT__tx_state),8);
+        bufp->chgIData(oldp+11,(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Tx__DOT__tx_data),32);
+        bufp->chgIData(oldp+12,(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Tx__DOT__clk_cnt),32);
     }
-    bufp->chgBit(oldp+11,(vlSelf->CLK_I));
-    bufp->chgBit(oldp+12,(vlSelf->RSTL_I));
-    bufp->chgBit(oldp+13,(vlSelf->UART_RX_I));
-    bufp->chgBit(oldp+14,(vlSelf->TX_DATA_O));
+    bufp->chgBit(oldp+13,(vlSelf->CLK_I));
+    bufp->chgBit(oldp+14,(vlSelf->RSTL_I));
+    bufp->chgBit(oldp+15,(vlSelf->UART_RX_I));
+    bufp->chgBit(oldp+16,(vlSelf->TX_DATA_O));
 }
 
 void Vtop___024root__trace_cleanup(void* voidSelf, VerilatedVcd* /*unused*/) {

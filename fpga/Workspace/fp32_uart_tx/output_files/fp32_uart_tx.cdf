@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EP4CE6E22) Path("D:/Quartus_Projects/RTL/Graduate_Project/fpga/fp32_uart_tx/output_files/") File("fp32_uart_tx.sof") MfrSpec(OpMask(1));
+		Device PartName(EP4CE6E22) Path("D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_uart_tx/output_files/") File("fp32_uart_tx.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

@@ -10,14 +10,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__0(Vtop___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___sequent__TOP__0\n"); );
-    // Init
-    CData/*2:0*/ __Vdly__fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state;
-    IData/*31:0*/ __Vdly__fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__clk_cnt;
     // Body
-    __Vdly__fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__clk_cnt 
-        = vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__clk_cnt;
-    __Vdly__fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state 
-        = vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state;
     if ((1U & (~ (IData)(vlSelf->RSTL_I)))) {
         vlSelf->fp32_uart_rx_tx__DOT__My_UART_Tx__DOT__tx_data = 0U;
     }
@@ -445,59 +438,65 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__0(Vtop___024root* vlSelf) {
         }
         if ((4U & (IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state))) {
             if ((2U & (IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state))) {
-                __Vdly__fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state = 0U;
+                vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state = 0U;
                 vlSelf->fp32_uart_rx_tx__DOT__RX_VALID_O = 0U;
             } else if ((1U & (IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state))) {
-                __Vdly__fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state = 0U;
+                vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state = 0U;
                 vlSelf->fp32_uart_rx_tx__DOT__RX_VALID_O = 0U;
             } else {
                 vlSelf->fp32_uart_rx_tx__DOT__RX_VALID_O = 0U;
-                __Vdly__fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state = 0U;
+                vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state = 0U;
             }
         } else if ((2U & (IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state))) {
             if ((1U & (IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state))) {
-                vlSelf->fp32_uart_rx_tx__DOT__RX_VALID_O = 0U;
                 if ((0x1bbU > vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__clk_cnt)) {
-                    __Vdly__fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__clk_cnt 
+                    vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__clk_cnt 
                         = ((IData)(1U) + vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__clk_cnt);
-                    __Vdly__fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state = 3U;
+                    vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state = 3U;
                     vlSelf->fp32_uart_rx_tx__DOT__RX_VALID_O = 0U;
                 } else {
-                    __Vdly__fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__clk_cnt = 0U;
-                    __Vdly__fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state = 4U;
+                    vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__clk_cnt = 0U;
+                    vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state = 4U;
                     vlSelf->fp32_uart_rx_tx__DOT__RX_VALID_O = 1U;
                 }
             } else {
                 vlSelf->fp32_uart_rx_tx__DOT__RX_VALID_O = 0U;
-                if ((0x1bbU == vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__clk_cnt)) {
-                    __Vdly__fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__clk_cnt 
+                if ((0x1bbU > vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__clk_cnt)) {
+                    vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__clk_cnt 
                         = ((IData)(1U) + vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__clk_cnt);
-                    __Vdly__fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state = 2U;
+                    vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state = 2U;
                 } else {
-                    vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT____Vlvbound_h836f5cac__0 
+                    vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT____Vlvbound_h93dc11f2__0 
                         = vlSelf->UART_RX_I;
-                    __Vdly__fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__clk_cnt = 0U;
-                    if ((0x5fU >= (0x7fU & (IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__bit_idx)))) {
+                    vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__clk_cnt = 0U;
+                    if ((0x5fU >= (0x7fU & (IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__total_index)))) {
                         vlSelf->fp32_uart_rx_tx__DOT__data[(3U 
-                                                            & ((IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__bit_idx) 
+                                                            & ((IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__total_index) 
                                                                >> 5U))] 
                             = (((~ ((IData)(1U) << 
-                                    (0x1fU & (IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__bit_idx)))) 
+                                    (0x1fU & (IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__total_index)))) 
                                 & vlSelf->fp32_uart_rx_tx__DOT__data[
-                                (3U & ((IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__bit_idx) 
+                                (3U & ((IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__total_index) 
                                        >> 5U))]) | 
-                               ((IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT____Vlvbound_h836f5cac__0) 
-                                << (0x1fU & (IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__bit_idx))));
+                               ((IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT____Vlvbound_h93dc11f2__0) 
+                                << (0x1fU & (IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__total_index))));
                     }
-                    if ((0x5fU > (IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__bit_idx))) {
-                        vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__bit_idx 
+                    if ((7U > (IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__received_bit))) {
+                        vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__received_bit 
                             = (0xffU & ((IData)(1U) 
-                                        + (IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__bit_idx)));
-                        __Vdly__fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state = 2U;
+                                        + (IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__received_bit)));
+                        vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state = 2U;
                     } else {
-                        vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__bit_idx = 0U;
-                        __Vdly__fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state = 3U;
-                        vlSelf->fp32_uart_rx_tx__DOT__RX_VALID_O = 0U;
+                        vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__received_bit = 0U;
+                        if ((0xbU > (IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__received_byte))) {
+                            vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__received_byte 
+                                = (0xffU & ((IData)(1U) 
+                                            + (IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__received_byte)));
+                            vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state = 3U;
+                        } else {
+                            vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__received_byte = 0U;
+                            vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state = 3U;
+                        }
                     }
                 }
             }
@@ -505,34 +504,36 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__0(Vtop___024root* vlSelf) {
             vlSelf->fp32_uart_rx_tx__DOT__RX_VALID_O = 0U;
             if ((0xddU == vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__clk_cnt)) {
                 if (vlSelf->UART_RX_I) {
-                    __Vdly__fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state = 0U;
+                    vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state = 0U;
                     vlSelf->fp32_uart_rx_tx__DOT__RX_VALID_O = 1U;
                 } else {
-                    __Vdly__fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__clk_cnt = 0U;
-                    __Vdly__fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state = 2U;
+                    vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__clk_cnt = 0U;
+                    vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state = 2U;
                     vlSelf->fp32_uart_rx_tx__DOT__RX_VALID_O = 0U;
                 }
             } else {
-                __Vdly__fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__clk_cnt 
+                vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__clk_cnt 
                     = ((IData)(1U) + vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__clk_cnt);
-                __Vdly__fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state = 1U;
+                vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state = 1U;
             }
         } else {
-            __Vdly__fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__clk_cnt = 0U;
-            vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__bit_idx = 0U;
             vlSelf->fp32_uart_rx_tx__DOT__RX_VALID_O = 1U;
+            vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__clk_cnt = 0U;
+            vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__received_bit = 0U;
             if (vlSelf->UART_RX_I) {
-                __Vdly__fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state = 0U;
+                vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state = 0U;
             } else {
-                __Vdly__fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state = 1U;
+                vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state = 1U;
                 vlSelf->fp32_uart_rx_tx__DOT__RX_VALID_O = 0U;
             }
         }
     } else {
         vlSelf->fp32_uart_rx_tx__DOT__My_UART_Tx__DOT__tx_state = 0U;
         vlSelf->fp32_uart_rx_tx__DOT__My_UART_Tx__DOT__clk_cnt = 0U;
-        __Vdly__fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state = 0U;
+        vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state = 0U;
         vlSelf->fp32_uart_rx_tx__DOT__RX_VALID_O = 0U;
+        vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__received_byte = 0U;
+        vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__received_bit = 0U;
     }
     vlSelf->TX_DATA_O = (1U & (((((((((0U == (IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Tx__DOT__tx_state)) 
                                       | (1U == (IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Tx__DOT__tx_state))) 
@@ -771,10 +772,9 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__0(Vtop___024root* vlSelf) {
                                                       != (IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Tx__DOT__tx_state)) 
                                                      | (vlSelf->fp32_uart_rx_tx__DOT__My_UART_Tx__DOT__tx_data 
                                                         >> 0x1fU))))))))));
-    vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state 
-        = __Vdly__fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__rx_state;
-    vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__clk_cnt 
-        = __Vdly__fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__clk_cnt;
+    vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__total_index 
+        = (0xffU & (((IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__received_byte) 
+                     << 3U) + (IData)(vlSelf->fp32_uart_rx_tx__DOT__My_UART_Rx__DOT__received_bit)));
 }
 
 void Vtop___024root___eval(Vtop___024root* vlSelf) {
