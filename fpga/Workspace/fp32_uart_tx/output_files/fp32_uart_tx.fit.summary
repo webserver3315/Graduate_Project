@@ -1,14 +1,14 @@
-Fitter Status : Successful - Sun Oct 16 04:42:09 2022
+Fitter Status : Successful - Sun Oct 16 04:59:15 2022
 Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 Revision Name : fp32_uart_tx
 Top-level Entity Name : fp32_uart_tx
 Family : Cyclone IV E
 Device : EP4CE6E22C8
 Timing Models : Final
-Total logic elements : 86 / 6,272 ( 1 % )
-    Total combinational functions : 53 / 6,272 ( < 1 % )
-    Dedicated logic registers : 76 / 6,272 ( 1 % )
-Total registers : 76
+Total logic elements : 89 / 6,272 ( 1 % )
+    Total combinational functions : 55 / 6,272 ( < 1 % )
+    Dedicated logic registers : 77 / 6,272 ( 1 % )
+Total registers : 77
 Total pins : 7 / 92 ( 8 % )
 Total virtual pins : 0
 Total memory bits : 0 / 276,480 ( 0 % )

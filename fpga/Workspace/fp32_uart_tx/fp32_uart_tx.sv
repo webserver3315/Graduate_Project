@@ -60,12 +60,17 @@ module fp32_uart_tx
     /*
         원하는 것: TX_VALID가 HIGH 일 때 출력, TX_VALID는 LED로 확인
     */
-    always_comb begin
+
+    reg TX_VALID_I;
+    reg tx_valid_before;
+
+	 always_comb begin
+        TX_VALID_I = ~TX_VALID_I_REV;
         LED1 = ~TX_VALID_I_REV;
         LED2 = 1'b1;
         LED3 = 1'b0;
     end
-
+	 
     reg [7:0] tx_state = IDLE0_ST;
 	reg [31:0] tx_data = 32'h4443_4241; // 8'h55
     reg [31:0] clk_cnt;
@@ -76,11 +81,12 @@ module fp32_uart_tx
             clk_cnt = 0;
             // tx_data = tx_data + 1;
             tx_data = 32'h4443_4241;
+            tx_valid_before = 0;
         end
         else begin // 50MHz(20ns) to 115200 BR(8.68us)=>div_434
             case(tx_state)
                 IDLE0_ST   :   begin // 천이조건이 유일하게 TX_VALID_I_REV. 즉, clk_div sensitive 가 아니다.
-                    if(~TX_VALID_I_REV) begin // BTN1 PRESSED(==LOW)
+                    if(TX_VALID_I & (~tx_valid_before)) begin // BTN1 PRESSED(==LOW)
                         clk_cnt = 0;
                         tx_state = START0_ST;
                     end
@@ -522,6 +528,7 @@ module fp32_uart_tx
                 default: begin
                 end
             endcase
+            tx_valid_before = TX_VALID_I;
         end
     end
 

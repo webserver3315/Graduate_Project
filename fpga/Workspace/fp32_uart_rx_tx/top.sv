@@ -132,7 +132,6 @@ module fp32_uart_rx
     end 
 end
 endmodule
-
 module fp32_uart_tx
     #(
         parameter   BAUD_RATE = 32'd115_200,
@@ -186,23 +185,31 @@ module fp32_uart_tx
         input CLK_I, // Assume 50MHz
         input TX_VALID_I,
         input [31:0] TX_DATA_I, // 8'h55
-        output reg TX_DATA_O
+        output reg TX_DATA_O,
     );
-		
+
+    /*
+        원하는 것: TX_VALID가 HIGH 일 때 출력, TX_VALID는 LED로 확인
+    */
+
     reg [7:0] tx_state = IDLE0_ST;
-	reg [31:0] tx_data = 32'h00000000; // 8'h55
+	reg [31:0] tx_data = 32'h4443_4241; // 8'h55
     reg [31:0] clk_cnt;
+
+    reg tx_valid_before = 0;
 
     always @(posedge CLK_I or negedge RSTL_I) begin
         if(~RSTL_I) begin
             tx_state = IDLE0_ST;
             clk_cnt = 0;
-            tx_data = 32'h00000000;
+            // tx_data = tx_data + 1;
+            tx_data = 32'h4443_4241;
+            tx_valid_before = 0;
         end
         else begin // 50MHz(20ns) to 115200 BR(8.68us)=>div_434
             case(tx_state)
                 IDLE0_ST   :   begin // 천이조건이 유일하게 TX_VALID_I. 즉, clk_div sensitive 가 아니다.
-                    if(TX_VALID_I) begin
+                    if(TX_VALID_I & (~tx_valid_before)) begin // BTN1 PRESSED(==LOW)
                         clk_cnt = 0;
                         tx_state = START0_ST;
                     end
@@ -631,9 +638,20 @@ module fp32_uart_tx
                         tx_state = D31_ST;
                     end
                 end
+                STOP3_ST   :   begin
+                    if(clk_cnt == 443) begin
+                        clk_cnt = 0;
+                        tx_state = IDLE0_ST;
+                    end
+                    else begin
+                        clk_cnt = clk_cnt + 1;
+                        tx_state = STOP3_ST;
+                    end
+                end
                 default: begin
                 end
             endcase
+            tx_valid_before = TX_VALID_I;
         end
     end
 
@@ -687,7 +705,6 @@ module fp32_uart_tx
         endcase
     end
 endmodule
-
 
 module fp32_uart_rx_tx
     (
