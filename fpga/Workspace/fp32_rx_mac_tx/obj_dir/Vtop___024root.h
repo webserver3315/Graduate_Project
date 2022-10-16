@@ -28,7 +28,7 @@ class Vtop___024root final : public VerilatedModule {
         CData/*6:0*/ fp32_rx_mac_tx__DOT__My_UART_Rx__DOT__total_index;
         CData/*0:0*/ fp32_rx_mac_tx__DOT__My_UART_Rx__DOT__DEBUG_CLK;
         CData/*0:0*/ fp32_rx_mac_tx__DOT__My_UART_Rx__DOT____Vlvbound_h8ebc310e__0;
-        CData/*3:0*/ fp32_rx_mac_tx__DOT__My_MAC__DOT__mac_state;
+        CData/*0:0*/ fp32_rx_mac_tx__DOT__My_MAC__DOT__mac_state;
         CData/*7:0*/ fp32_rx_mac_tx__DOT__My_MAC__DOT__My_Multiplier__DOT__EA;
         CData/*7:0*/ fp32_rx_mac_tx__DOT__My_MAC__DOT__My_Multiplier__DOT__EB;
         CData/*0:0*/ fp32_rx_mac_tx__DOT__My_MAC__DOT__My_Multiplier__DOT__E_LeftBig;

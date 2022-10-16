@@ -44,7 +44,7 @@ VL_ATTR_COLD void Vtop___024root__trace_init_sub__TOP__0(Vtop___024root* vlSelf,
     tracep->declBus(c+23,"acc_internal", false,-1, 31,0);
     tracep->declBus(c+24,"middle_output", false,-1, 31,0);
     tracep->declBus(c+25,"delta_internal", false,-1, 31,0);
-    tracep->declBus(c+9,"mac_state", false,-1, 3,0);
+    tracep->declBit(c+9,"mac_state", false,-1);
     tracep->declBus(c+10,"clk_cnt", false,-1, 31,0);
     tracep->pushNamePrefix("My_Adder ");
     tracep->declBus(c+24,"alpha", false,-1, 31,0);
@@ -334,7 +334,7 @@ VL_ATTR_COLD void Vtop___024root__trace_full_sub_0(Vtop___024root* vlSelf, Veril
     bufp->fullIData(oldp+6,(vlSelf->fp32_rx_mac_tx__DOT__data[0U]),32);
     bufp->fullIData(oldp+7,(vlSelf->fp32_rx_mac_tx__DOT__data[1U]),32);
     bufp->fullIData(oldp+8,(vlSelf->fp32_rx_mac_tx__DOT__data[2U]),32);
-    bufp->fullCData(oldp+9,(vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__mac_state),4);
+    bufp->fullBit(oldp+9,(vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__mac_state));
     bufp->fullIData(oldp+10,(vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__clk_cnt),32);
     bufp->fullIData(oldp+11,(vlSelf->fp32_rx_mac_tx__DOT__My_UART_Rx__DOT__clk_cnt),32);
     bufp->fullCData(oldp+12,(vlSelf->fp32_rx_mac_tx__DOT__My_UART_Rx__DOT__rx_state),3);

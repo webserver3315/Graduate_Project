@@ -1310,7 +1310,7 @@ VL_ATTR_COLD void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__acc_internal = VL_RAND_RESET_I(32);
     vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__middle_output = VL_RAND_RESET_I(32);
     vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__delta_internal = VL_RAND_RESET_I(32);
-    vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__mac_state = VL_RAND_RESET_I(4);
+    vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__mac_state = VL_RAND_RESET_I(1);
     vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__clk_cnt = VL_RAND_RESET_I(32);
     vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__My_Multiplier__DOT__EA = VL_RAND_RESET_I(8);
     vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__My_Multiplier__DOT__EB = VL_RAND_RESET_I(8);

@@ -30,7 +30,7 @@ void Vtop___024root__trace_chg_sub_0(Vtop___024root* vlSelf, VerilatedVcd::Buffe
         bufp->chgIData(oldp+5,(vlSelf->fp32_rx_mac_tx__DOT__data[0U]),32);
         bufp->chgIData(oldp+6,(vlSelf->fp32_rx_mac_tx__DOT__data[1U]),32);
         bufp->chgIData(oldp+7,(vlSelf->fp32_rx_mac_tx__DOT__data[2U]),32);
-        bufp->chgCData(oldp+8,(vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__mac_state),4);
+        bufp->chgBit(oldp+8,(vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__mac_state));
         bufp->chgIData(oldp+9,(vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__clk_cnt),32);
         bufp->chgIData(oldp+10,(vlSelf->fp32_rx_mac_tx__DOT__My_UART_Rx__DOT__clk_cnt),32);
         bufp->chgCData(oldp+11,(vlSelf->fp32_rx_mac_tx__DOT__My_UART_Rx__DOT__rx_state),3);

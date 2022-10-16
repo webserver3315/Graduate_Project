@@ -10,15 +10,18 @@ module fp32_uart_rx
     output reg [95:0] RX_DATA_O // TYPE "AAAA BBBB CCCC"
     );
     
-    localparam IDLE         = 3'b000;
-    localparam START = 3'b001;
-    localparam DATA = 3'b010;
-    localparam STOP  = 3'b011;
-    localparam MORE      = 3'b100;
-    localparam STOP_FIN = 3'b101;
+    localparam IDLE         = 0;
+    localparam START        = 1;
+    localparam DATA         = 2;
+    localparam STOP         = 3;
+    localparam MORE         = 4;
+
+    localparam ZZIN_STOP         = 5;
+    localparam ZZIN_MORE         = 6;
+    localparam ZZIN_IDLE         = 7;
 
     reg [31:0] clk_cnt;
-    reg [2:0] rx_state;
+    reg [3:0] rx_state;
 
     // we should receive 4 * 3, total 12 Byte
     // we get 1 Byte per iteration THUS need 12 ITERATION
@@ -36,7 +39,7 @@ module fp32_uart_rx
     always @(posedge CLK_I or negedge RSTL_I) begin
     if (~RSTL_I) begin
         rx_state       = IDLE;
-        RX_VALID_O      = 1;
+        RX_VALID_O      = 0;
         received_byte   = 0;
         received_bit = 0;
         `ifdef DEBUG_RX
@@ -49,6 +52,7 @@ module fp32_uart_rx
             begin
                 clk_cnt     = 0;
                 received_bit     = 0;
+                RX_VALID_O = 0;
                 if (UART_RX_I == 1'b0) begin // UART 가 0이면 즉시 START 로 이동
                     RX_VALID_O = 0;
                     rx_state    = START;
@@ -60,6 +64,7 @@ module fp32_uart_rx
 
         START :
             begin
+                RX_VALID_O = 0;
                 if (clk_cnt == (443 / 2)) begin
                     if (UART_RX_I == 1'b0) begin
                         clk_cnt  = 0;  // START 진입 후 절반시점에, 여전히 UART 가 0이어야 DATA 로 진입
@@ -79,6 +84,7 @@ module fp32_uart_rx
             end
         DATA :
             begin
+                RX_VALID_O = 0;
                 if (clk_cnt < 443) begin
                     clk_cnt     = clk_cnt + 1;
                     rx_state    = DATA;
@@ -102,7 +108,7 @@ module fp32_uart_rx
                         end
                         else begin
                             received_byte = 0;
-                            rx_state   = STOP_FIN;
+                            rx_state   = ZZIN_STOP;
                         end
                     end
                 end
@@ -111,6 +117,7 @@ module fp32_uart_rx
         // Receive Stop bit.  Stop bit = 1
         STOP :
             begin
+            RX_VALID_O = 0;
             `ifdef DEBUG_RX
             DEBUG_CLK = 0;
             `endif
@@ -126,25 +133,71 @@ module fp32_uart_rx
             end
             end // case: STOP
 
-        STOP_FIN :
+        // Stay here 1 clock
+        MORE :
             begin
+                RX_VALID_O = 0;
+                if (clk_cnt < 443)
+                begin
+                    clk_cnt      = clk_cnt + 1;
+                    rx_state     = MORE;
+                end
+                else
+                begin
+                    clk_cnt          = 0;
+                    rx_state         = IDLE;
+                end
+            end
+
+        // Receive Stop bit.  Stop bit = 1
+        ZZIN_STOP :
+            begin
+            RX_VALID_O = 0;
+            `ifdef DEBUG_RX
+            DEBUG_CLK = 0;
+            `endif
             if (clk_cnt < 443)
             begin
                 clk_cnt      = clk_cnt + 1;
-                rx_state     = STOP_FIN;
+                rx_state     = ZZIN_STOP;
             end
             else
             begin
                 clk_cnt          = 0;
-                RX_VALID_O      = 1;
-                rx_state         = MORE;
+                rx_state         = ZZIN_MORE;
             end
             end // case: STOP
+
         // Stay here 1 clock
-        MORE :
+        ZZIN_MORE :
+            RX_VALID_O = 1;
             begin
-            rx_state    = IDLE;
+                if (clk_cnt < 443)
+                begin
+                    clk_cnt      = clk_cnt + 1;
+                    rx_state     = ZZIN_MORE;
+                end
+                else
+                begin
+                    clk_cnt          = 0;
+                    rx_state         = ZZIN_IDLE;
+                end
             end
+
+        ZZIN_IDLE :
+            RX_VALID_O = 1;
+            begin
+                clk_cnt     = 0;
+                received_bit     = 0;
+                if (UART_RX_I == 1'b0) begin // UART 가 0이면 즉시 START 로 이동
+                    RX_VALID_O = 0;
+                    rx_state    = START;
+                end
+                else begin
+                    rx_state = ZZIN_IDLE;
+                end
+            end
+
         default :
             begin
             rx_state = IDLE;   

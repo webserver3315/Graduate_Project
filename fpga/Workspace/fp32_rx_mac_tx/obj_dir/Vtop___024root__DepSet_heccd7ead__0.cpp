@@ -12,25 +12,24 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__0(Vtop___024root* vlSelf) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___sequent__TOP__0\n"); );
     // Body
     if (vlSelf->RSTL_I) {
-        if ((0U == (IData)(vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__mac_state))) {
-            if (vlSelf->fp32_rx_mac_tx__DOT__rx_valid_o_mac_valid_i) {
-                vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__clk_cnt = 0U;
+        if (vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__mac_state) {
+            if (vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__mac_state) {
                 vlSelf->fp32_rx_mac_tx__DOT__mac_valid_o_tx_valid_i = 0U;
-                vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__mac_state = 1U;
-            } else {
-                vlSelf->fp32_rx_mac_tx__DOT__mac_valid_o_tx_valid_i = 1U;
-                vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__mac_state = 0U;
+                if ((0x1b1U > vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__clk_cnt)) {
+                    vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__clk_cnt 
+                        = ((IData)(1U) + vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__clk_cnt);
+                    vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__mac_state = 1U;
+                } else {
+                    vlSelf->fp32_rx_mac_tx__DOT__mac_valid_o_tx_valid_i = 0U;
+                    vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__mac_state = 0U;
+                }
             }
-        } else if ((1U == (IData)(vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__mac_state))) {
-            if ((0x1b1U > vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__clk_cnt)) {
-                vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__clk_cnt 
-                    = ((IData)(1U) + vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__clk_cnt);
-                vlSelf->fp32_rx_mac_tx__DOT__mac_valid_o_tx_valid_i = 0U;
-                vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__mac_state = 1U;
-            } else {
-                vlSelf->fp32_rx_mac_tx__DOT__mac_valid_o_tx_valid_i = 1U;
-                vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__mac_state = 0U;
-            }
+        } else if (vlSelf->fp32_rx_mac_tx__DOT__rx_valid_o_mac_valid_i) {
+            vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__clk_cnt = 0U;
+            vlSelf->fp32_rx_mac_tx__DOT__mac_valid_o_tx_valid_i = 1U;
+            vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__mac_state = 1U;
+        } else {
+            vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__mac_state = 0U;
         }
         if (((((((((0U == (IData)(vlSelf->fp32_rx_mac_tx__DOT__My_UART_Tx__DOT__tx_state)) 
                    | (1U == (IData)(vlSelf->fp32_rx_mac_tx__DOT__My_UART_Tx__DOT__tx_state))) 
@@ -480,7 +479,12 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__0(Vtop___024root* vlSelf) {
                     vlSelf->fp32_rx_mac_tx__DOT__rx_valid_o_mac_valid_i = 1U;
                     vlSelf->fp32_rx_mac_tx__DOT__My_UART_Rx__DOT__rx_state = 4U;
                 }
+            } else if ((0x1bbU > vlSelf->fp32_rx_mac_tx__DOT__My_UART_Rx__DOT__clk_cnt)) {
+                vlSelf->fp32_rx_mac_tx__DOT__My_UART_Rx__DOT__clk_cnt 
+                    = ((IData)(1U) + vlSelf->fp32_rx_mac_tx__DOT__My_UART_Rx__DOT__clk_cnt);
+                vlSelf->fp32_rx_mac_tx__DOT__My_UART_Rx__DOT__rx_state = 4U;
             } else {
+                vlSelf->fp32_rx_mac_tx__DOT__My_UART_Rx__DOT__clk_cnt = 0U;
                 vlSelf->fp32_rx_mac_tx__DOT__My_UART_Rx__DOT__rx_state = 0U;
             }
         } else if ((2U & (IData)(vlSelf->fp32_rx_mac_tx__DOT__My_UART_Rx__DOT__rx_state))) {
@@ -559,12 +563,13 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__0(Vtop___024root* vlSelf) {
     } else {
         vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__clk_cnt = 0U;
         vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__mac_state = 0U;
+        vlSelf->fp32_rx_mac_tx__DOT__mac_valid_o_tx_valid_i = 0U;
         vlSelf->fp32_rx_mac_tx__DOT__My_UART_Tx__DOT__tx_state = 0U;
         vlSelf->fp32_rx_mac_tx__DOT__My_UART_Tx__DOT__clk_cnt = 0U;
         vlSelf->fp32_rx_mac_tx__DOT__My_UART_Tx__DOT__tx_data = 0x44434241U;
         vlSelf->fp32_rx_mac_tx__DOT__My_UART_Tx__DOT__tx_valid_before = 0U;
         vlSelf->fp32_rx_mac_tx__DOT__My_UART_Rx__DOT__rx_state = 0U;
-        vlSelf->fp32_rx_mac_tx__DOT__rx_valid_o_mac_valid_i = 1U;
+        vlSelf->fp32_rx_mac_tx__DOT__rx_valid_o_mac_valid_i = 0U;
         vlSelf->fp32_rx_mac_tx__DOT__My_UART_Rx__DOT__received_byte = 0U;
         vlSelf->fp32_rx_mac_tx__DOT__My_UART_Rx__DOT__received_bit = 0U;
         vlSelf->fp32_rx_mac_tx__DOT__My_UART_Rx__DOT__DEBUG_CLK = 0U;
