@@ -18,6 +18,7 @@ module fp32_uart_rx
     localparam STOP  = 3'b011;
     localparam MORE      = 3'b100;
     
+    
     reg [31:0] clk_cnt;
     reg [2:0] rx_state;
 
