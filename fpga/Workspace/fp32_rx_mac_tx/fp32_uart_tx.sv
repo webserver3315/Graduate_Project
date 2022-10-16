@@ -76,6 +76,7 @@ module fp32_uart_tx
                 IDLE0_ST   :   begin // 천이조건이 유일하게 TX_VALID_I. 즉, clk_div sensitive 가 아니다.
                     if(TX_VALID_I & (~tx_valid_before)) begin // BTN1 PRESSED(==LOW)
                         clk_cnt = 0;
+                        tx_data = TX_DATA_I;
                         tx_state = START0_ST;
                     end
                     else begin

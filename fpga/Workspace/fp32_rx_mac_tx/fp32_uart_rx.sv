@@ -1,3 +1,5 @@
+`define DEBUG_RX
+
 module fp32_uart_rx
     (
     input            RSTL_I,
@@ -26,13 +28,20 @@ module fp32_uart_rx
     wire [6:0] total_index; // MAX 11*8 + 7 == 95
     assign total_index = received_byte * 8 + received_bit;
 
+    `ifdef DEBUG_RX
+    reg DEBUG_CLK;    
+    `endif
+
     // Purpose: Control RX state machine
     always @(posedge CLK_I or negedge RSTL_I) begin
     if (~RSTL_I) begin
-        rx_state       = 3'b000;
-        RX_VALID_O      = 1'b1;
+        rx_state       = IDLE;
+        RX_VALID_O      = 1;
         received_byte   = 0;
         received_bit = 0;
+        `ifdef DEBUG_RX
+        DEBUG_CLK = 0;    
+        `endif
     end
     else begin
         case (rx_state)
@@ -55,6 +64,9 @@ module fp32_uart_rx
                     if (UART_RX_I == 1'b0) begin
                         clk_cnt  = 0;  // START 진입 후 절반시점에, 여전히 UART 가 0이어야 DATA 로 진입
                         rx_state = DATA;
+                        `ifdef DEBUG_RX
+                        DEBUG_CLK = 1;
+                        `endif
                     end
                     else begin
                         rx_state = IDLE; // ROLLBACK
@@ -72,6 +84,9 @@ module fp32_uart_rx
                     rx_state    = DATA;
                 end
                 else begin
+                    `ifdef DEBUG_RX
+                    DEBUG_CLK = ~DEBUG_CLK;
+                    `endif
                     clk_cnt                 = 0;
                     RX_DATA_O[total_index]  = UART_RX_I;
                     // Check if we have received all bits
@@ -96,6 +111,9 @@ module fp32_uart_rx
         // Receive Stop bit.  Stop bit = 1
         STOP :
             begin
+            `ifdef DEBUG_RX
+            DEBUG_CLK = 0;
+            `endif
             if (clk_cnt < 443)
             begin
                 clk_cnt      = clk_cnt + 1;

@@ -1303,6 +1303,7 @@ VL_ATTR_COLD void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->fp32_rx_mac_tx__DOT__My_UART_Rx__DOT__received_byte = VL_RAND_RESET_I(7);
     vlSelf->fp32_rx_mac_tx__DOT__My_UART_Rx__DOT__received_bit = VL_RAND_RESET_I(7);
     vlSelf->fp32_rx_mac_tx__DOT__My_UART_Rx__DOT__total_index = VL_RAND_RESET_I(7);
+    vlSelf->fp32_rx_mac_tx__DOT__My_UART_Rx__DOT__DEBUG_CLK = VL_RAND_RESET_I(1);
     vlSelf->fp32_rx_mac_tx__DOT__My_UART_Rx__DOT____Vlvbound_h8ebc310e__0 = VL_RAND_RESET_I(1);
     vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__alpha_internal = VL_RAND_RESET_I(32);
     vlSelf->fp32_rx_mac_tx__DOT__My_MAC__DOT__bravo_internal = VL_RAND_RESET_I(32);

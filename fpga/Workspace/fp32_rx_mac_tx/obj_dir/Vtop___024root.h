@@ -26,6 +26,7 @@ class Vtop___024root final : public VerilatedModule {
         CData/*6:0*/ fp32_rx_mac_tx__DOT__My_UART_Rx__DOT__received_byte;
         CData/*6:0*/ fp32_rx_mac_tx__DOT__My_UART_Rx__DOT__received_bit;
         CData/*6:0*/ fp32_rx_mac_tx__DOT__My_UART_Rx__DOT__total_index;
+        CData/*0:0*/ fp32_rx_mac_tx__DOT__My_UART_Rx__DOT__DEBUG_CLK;
         CData/*0:0*/ fp32_rx_mac_tx__DOT__My_UART_Rx__DOT____Vlvbound_h8ebc310e__0;
         CData/*3:0*/ fp32_rx_mac_tx__DOT__My_MAC__DOT__mac_state;
         CData/*7:0*/ fp32_rx_mac_tx__DOT__My_MAC__DOT__My_Multiplier__DOT__EA;
@@ -78,9 +79,9 @@ class Vtop___024root final : public VerilatedModule {
         IData/*23:0*/ fp32_rx_mac_tx__DOT__My_MAC__DOT__My_Adder__DOT__large_E_Mantissa;
         IData/*23:0*/ fp32_rx_mac_tx__DOT__My_MAC__DOT__My_Adder__DOT__small_E_Mantissa3;
         IData/*24:0*/ fp32_rx_mac_tx__DOT__My_MAC__DOT__My_Adder__DOT__added_Mantissa;
-        IData/*31:0*/ fp32_rx_mac_tx__DOT__My_UART_Tx__DOT__tx_data;
     };
     struct {
+        IData/*31:0*/ fp32_rx_mac_tx__DOT__My_UART_Tx__DOT__tx_data;
         IData/*31:0*/ fp32_rx_mac_tx__DOT__My_UART_Tx__DOT__clk_cnt;
         QData/*47:0*/ fp32_rx_mac_tx__DOT__My_MAC__DOT__My_Multiplier__DOT__M_48_Original;
         QData/*47:0*/ fp32_rx_mac_tx__DOT__My_MAC__DOT__My_Multiplier__DOT__Man3;

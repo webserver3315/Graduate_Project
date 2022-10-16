@@ -1,5 +1,5 @@
 Flow report for fp32_rx_mac_tx
-Sun Oct 16 23:15:28 2022
+Mon Oct 17 00:26:02 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -41,21 +41,21 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Sun Oct 16 23:15:26 2022       ;
+; Flow Status                        ; Successful - Mon Oct 17 00:25:59 2022       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; fp32_rx_mac_tx                              ;
 ; Top-level Entity Name              ; fp32_rx_mac_tx                              ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE6E22C8                                 ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 224 / 6,272 ( 4 % )                         ;
-;     Total combinational functions  ; 187 / 6,272 ( 3 % )                         ;
-;     Dedicated logic registers      ; 164 / 6,272 ( 3 % )                         ;
-; Total registers                    ; 164                                         ;
+; Total logic elements               ; 3,027 / 6,272 ( 48 % )                      ;
+;     Total combinational functions  ; 2,845 / 6,272 ( 45 % )                      ;
+;     Dedicated logic registers      ; 420 / 6,272 ( 7 % )                         ;
+; Total registers                    ; 420                                         ;
 ; Total pins                         ; 4 / 92 ( 4 % )                              ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0 / 276,480 ( 0 % )                         ;
-; Embedded Multiplier 9-bit elements ; 0 / 30 ( 0 % )                              ;
+; Embedded Multiplier 9-bit elements ; 7 / 30 ( 23 % )                             ;
 ; Total PLLs                         ; 0 / 2 ( 0 % )                               ;
 +------------------------------------+---------------------------------------------+
 
@@ -65,7 +65,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 10/16/2022 23:15:13 ;
+; Start date & time ; 10/17/2022 00:25:18 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; fp32_rx_mac_tx      ;
 +-------------------+---------------------+
@@ -76,7 +76,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 198112237861296.166592971322596        ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 198112237861296.166593391826120        ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
 ; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                                   ; --            ; --          ; --         ;
@@ -92,11 +92,11 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:06     ; 1.0                     ; 4816 MB             ; 00:00:14                           ;
-; Fitter               ; 00:00:04     ; 1.1                     ; 6102 MB             ; 00:00:05                           ;
-; Assembler            ; 00:00:01     ; 1.0                     ; 4679 MB             ; 00:00:01                           ;
-; Timing Analyzer      ; 00:00:01     ; 1.1                     ; 4856 MB             ; 00:00:01                           ;
-; Total                ; 00:00:12     ; --                      ; --                  ; 00:00:21                           ;
+; Analysis & Synthesis ; 00:00:15     ; 1.0                     ; 4839 MB             ; 00:00:22                           ;
+; Fitter               ; 00:00:23     ; 1.2                     ; 6144 MB             ; 00:00:45                           ;
+; Assembler            ; 00:00:01     ; 1.0                     ; 4684 MB             ; 00:00:01                           ;
+; Timing Analyzer      ; 00:00:02     ; 1.5                     ; 4883 MB             ; 00:00:03                           ;
+; Total                ; 00:00:41     ; --                      ; --                  ; 00:01:11                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

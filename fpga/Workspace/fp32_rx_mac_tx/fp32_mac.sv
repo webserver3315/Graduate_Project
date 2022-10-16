@@ -35,14 +35,26 @@ module FP32_MAC_Combinatorial
         MAC_READY_O = 1;
     end
 
-    always @(posedge MAC_VALID_I) begin
-        alpha_internal = alpha;
-        bravo_internal = bravo;
-        acc_internal = acc;
+    always @(posedge MAC_VALID_I or negedge RSTL_I) begin
+        if(~RSTL_I) begin
+            alpha_internal = 0;
+            bravo_internal = 0;
+            acc_internal = 0;
+        end
+        else begin
+            alpha_internal = alpha;
+            bravo_internal = bravo;
+            acc_internal = acc;
+        end
     end
 
-    always @(posedge MAC_VALID_O) begin
-        delta = delta_internal;
+    always @(posedge MAC_VALID_O or negedge RSTL_I) begin
+        if(~RSTL_I) begin
+            delta = 0;
+        end
+        else begin
+            delta = delta_internal;
+        end
     end
 
     FP32_Multiplier_Combinatorial My_Multiplier

@@ -1,5 +1,5 @@
 Fitter report for fp32_rx_mac_tx
-Sun Oct 16 23:15:24 2022
+Mon Oct 17 00:25:57 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -10,36 +10,41 @@ Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
   2. Fitter Summary
   3. Fitter Settings
   4. Parallel Compilation
-  5. Incremental Compilation Preservation Summary
-  6. Incremental Compilation Partition Settings
-  7. Incremental Compilation Placement Preservation
-  8. Pin-Out File
-  9. Fitter Resource Usage Summary
- 10. Fitter Partition Statistics
- 11. Input Pins
- 12. Output Pins
- 13. Dual Purpose and Dedicated Pins
- 14. I/O Bank Usage
- 15. All Package Pins
- 16. I/O Assignment Warnings
- 17. Fitter Resource Utilization by Entity
- 18. Delay Chain Summary
- 19. Pad To Core Delay Chain Fanout
- 20. Control Signals
- 21. Global & Other Fast Signals
- 22. Routing Usage Summary
- 23. LAB Logic Elements
- 24. LAB-wide Signals
- 25. LAB Signals Sourced
- 26. LAB Signals Sourced Out
- 27. LAB Distinct Inputs
- 28. I/O Rules Summary
- 29. I/O Rules Details
- 30. I/O Rules Matrix
- 31. Fitter Device Options
- 32. Operating Settings and Conditions
- 33. Fitter Messages
- 34. Fitter Suppressed Messages
+  5. Fitter Netlist Optimizations
+  6. Incremental Compilation Preservation Summary
+  7. Incremental Compilation Partition Settings
+  8. Incremental Compilation Placement Preservation
+  9. Pin-Out File
+ 10. Fitter Resource Usage Summary
+ 11. Fitter Partition Statistics
+ 12. Input Pins
+ 13. Output Pins
+ 14. Dual Purpose and Dedicated Pins
+ 15. I/O Bank Usage
+ 16. All Package Pins
+ 17. I/O Assignment Warnings
+ 18. Fitter Resource Utilization by Entity
+ 19. Delay Chain Summary
+ 20. Pad To Core Delay Chain Fanout
+ 21. Control Signals
+ 22. Global & Other Fast Signals
+ 23. Fitter DSP Block Usage Summary
+ 24. DSP Block Details
+ 25. Routing Usage Summary
+ 26. LAB Logic Elements
+ 27. LAB-wide Signals
+ 28. LAB Signals Sourced
+ 29. LAB Signals Sourced Out
+ 30. LAB Distinct Inputs
+ 31. I/O Rules Summary
+ 32. I/O Rules Details
+ 33. I/O Rules Matrix
+ 34. Fitter Device Options
+ 35. Operating Settings and Conditions
+ 36. Estimated Delay Added for Hold Timing Summary
+ 37. Estimated Delay Added for Hold Timing Details
+ 38. Fitter Messages
+ 39. Fitter Suppressed Messages
 
 
 
@@ -66,21 +71,21 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Fitter Summary                                                                   ;
 +------------------------------------+---------------------------------------------+
-; Fitter Status                      ; Successful - Sun Oct 16 23:15:24 2022       ;
+; Fitter Status                      ; Successful - Mon Oct 17 00:25:57 2022       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; fp32_rx_mac_tx                              ;
 ; Top-level Entity Name              ; fp32_rx_mac_tx                              ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE6E22C8                                 ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 224 / 6,272 ( 4 % )                         ;
-;     Total combinational functions  ; 187 / 6,272 ( 3 % )                         ;
-;     Dedicated logic registers      ; 164 / 6,272 ( 3 % )                         ;
-; Total registers                    ; 164                                         ;
+; Total logic elements               ; 3,027 / 6,272 ( 48 % )                      ;
+;     Total combinational functions  ; 2,845 / 6,272 ( 45 % )                      ;
+;     Dedicated logic registers      ; 420 / 6,272 ( 7 % )                         ;
+; Total registers                    ; 420                                         ;
 ; Total pins                         ; 4 / 92 ( 4 % )                              ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0 / 276,480 ( 0 % )                         ;
-; Embedded Multiplier 9-bit elements ; 0 / 30 ( 0 % )                              ;
+; Embedded Multiplier 9-bit elements ; 7 / 30 ( 23 % )                             ;
 ; Total PLLs                         ; 0 / 2 ( 0 % )                               ;
 +------------------------------------+---------------------------------------------+
 
@@ -153,28 +158,187 @@ https://fpgasoftware.intel.com/eula.
 ; Number detected on machine ; 12          ;
 ; Maximum allowed            ; 12          ;
 ;                            ;             ;
-; Average used               ; 1.12        ;
+; Average used               ; 1.20        ;
 ; Maximum used               ; 12          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-12        ;   1.1%      ;
+;     Processor 2            ;   2.4%      ;
+;     Processor 3            ;   2.1%      ;
+;     Processor 4            ;   2.0%      ;
+;     Processor 5            ;   1.9%      ;
+;     Processor 6            ;   1.8%      ;
+;     Processor 7            ;   1.8%      ;
+;     Processor 8            ;   1.7%      ;
+;     Processors 9-12        ;   1.5%      ;
 +----------------------------+-------------+
 
 
-+--------------------------------------------------------------------------------------------------+
-; Incremental Compilation Preservation Summary                                                     ;
-+---------------------+--------------------+----------------------------+--------------------------+
-; Type                ; Total [A + B]      ; From Design Partitions [A] ; From Rapid Recompile [B] ;
-+---------------------+--------------------+----------------------------+--------------------------+
-; Placement (by node) ;                    ;                            ;                          ;
-;     -- Requested    ; 0.00 % ( 0 / 372 ) ; 0.00 % ( 0 / 372 )         ; 0.00 % ( 0 / 372 )       ;
-;     -- Achieved     ; 0.00 % ( 0 / 372 ) ; 0.00 % ( 0 / 372 )         ; 0.00 % ( 0 / 372 )       ;
-;                     ;                    ;                            ;                          ;
-; Routing (by net)    ;                    ;                            ;                          ;
-;     -- Requested    ; 0.00 % ( 0 / 0 )   ; 0.00 % ( 0 / 0 )           ; 0.00 % ( 0 / 0 )         ;
-;     -- Achieved     ; 0.00 % ( 0 / 0 )   ; 0.00 % ( 0 / 0 )           ; 0.00 % ( 0 / 0 )         ;
-+---------------------+--------------------+----------------------------+--------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fitter Netlist Optimizations                                                                                                                                                                                                                                                                                                  ;
++---------------------------------------------------------------+-----------------+------------------+---------------------+-----------+----------------+----------------------------------------------------------------------------------------------------------------------------+------------------+-----------------------+
+; Node                                                          ; Action          ; Operation        ; Reason              ; Node Port ; Node Port Name ; Destination Node                                                                                                           ; Destination Port ; Destination Port Name ;
++---------------------------------------------------------------+-----------------+------------------+---------------------+-----------+----------------+----------------------------------------------------------------------------------------------------------------------------+------------------+-----------------------+
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[0]               ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[0]               ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[0]~_Duplicate_1                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[0]~_Duplicate_1  ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult3 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[0]~_Duplicate_1  ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[0]~_Duplicate_2                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[1]               ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[1]               ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[1]~_Duplicate_1                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[1]~_Duplicate_1  ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult3 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[1]~_Duplicate_1  ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[1]~_Duplicate_2                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[2]               ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[2]               ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[2]~_Duplicate_1                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[2]~_Duplicate_1  ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult3 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[2]~_Duplicate_1  ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[2]~_Duplicate_2                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[3]               ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[3]               ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[3]~_Duplicate_1                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[3]~_Duplicate_1  ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult3 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[3]~_Duplicate_1  ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[3]~_Duplicate_2                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[4]               ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[4]               ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[4]~_Duplicate_1                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[4]~_Duplicate_1  ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult3 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[4]~_Duplicate_1  ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[4]~_Duplicate_2                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[5]               ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[5]               ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[5]~_Duplicate_1                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[5]~_Duplicate_1  ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult3 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[5]~_Duplicate_1  ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[5]~_Duplicate_2                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[6]               ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[6]               ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[6]~_Duplicate_1                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[6]~_Duplicate_1  ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult3 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[6]~_Duplicate_1  ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[6]~_Duplicate_2                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[7]               ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[7]               ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[7]~_Duplicate_1                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[7]~_Duplicate_1  ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult3 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[7]~_Duplicate_1  ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[7]~_Duplicate_2                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[8]               ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[8]               ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[8]~_Duplicate_1                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[8]~_Duplicate_1  ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult3 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[8]~_Duplicate_1  ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[8]~_Duplicate_2                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[9]               ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[9]               ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[9]~_Duplicate_1                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[9]~_Duplicate_1  ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult3 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[9]~_Duplicate_1  ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[9]~_Duplicate_2                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[10]              ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[10]              ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[10]~_Duplicate_1                                                              ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[10]~_Duplicate_1 ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult3 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[10]~_Duplicate_1 ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[10]~_Duplicate_2                                                              ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[11]              ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[11]              ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[11]~_Duplicate_1                                                              ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[11]~_Duplicate_1 ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult3 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[11]~_Duplicate_1 ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[11]~_Duplicate_2                                                              ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[12]              ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[12]              ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[12]~_Duplicate_1                                                              ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[12]~_Duplicate_1 ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult3 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[12]~_Duplicate_1 ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[12]~_Duplicate_2                                                              ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[13]              ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[13]              ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[13]~_Duplicate_1                                                              ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[13]~_Duplicate_1 ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult3 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[13]~_Duplicate_1 ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[13]~_Duplicate_2                                                              ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[14]              ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[14]              ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[14]~_Duplicate_1                                                              ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[14]~_Duplicate_1 ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult3 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[14]~_Duplicate_1 ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[14]~_Duplicate_2                                                              ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[15]              ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[15]              ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[15]~_Duplicate_1                                                              ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[15]~_Duplicate_1 ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult3 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[15]~_Duplicate_1 ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[15]~_Duplicate_2                                                              ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[16]              ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[16]              ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[16]~_Duplicate_1                                                              ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[16]~_Duplicate_1 ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult3 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[16]~_Duplicate_1 ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[16]~_Duplicate_2                                                              ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[17]              ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[17]              ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[17]~_Duplicate_1                                                              ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[17]~_Duplicate_1 ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult3 ; DATAA            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|alpha_internal[17]~_Duplicate_1 ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|alpha_internal[17]~_Duplicate_2                                                              ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[0]               ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[0]               ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[0]~_Duplicate_1                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[0]~_Duplicate_1  ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult5 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[0]~_Duplicate_1  ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[0]~_Duplicate_2                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[1]               ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[1]               ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[1]~_Duplicate_1                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[1]~_Duplicate_1  ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult5 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[1]~_Duplicate_1  ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[1]~_Duplicate_2                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[2]               ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[2]               ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[2]~_Duplicate_1                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[2]~_Duplicate_1  ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult5 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[2]~_Duplicate_1  ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[2]~_Duplicate_2                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[3]               ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[3]               ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[3]~_Duplicate_1                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[3]~_Duplicate_1  ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult5 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[3]~_Duplicate_1  ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[3]~_Duplicate_2                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[4]               ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[4]               ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[4]~_Duplicate_1                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[4]~_Duplicate_1  ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult5 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[4]~_Duplicate_1  ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[4]~_Duplicate_2                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[5]               ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[5]               ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[5]~_Duplicate_1                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[5]~_Duplicate_1  ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult5 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[5]~_Duplicate_1  ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[5]~_Duplicate_2                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[6]               ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[6]               ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[6]~_Duplicate_1                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[6]~_Duplicate_1  ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult5 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[6]~_Duplicate_1  ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[6]~_Duplicate_2                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[7]               ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[7]               ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[7]~_Duplicate_1                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[7]~_Duplicate_1  ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult5 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[7]~_Duplicate_1  ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[7]~_Duplicate_2                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[8]               ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[8]               ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[8]~_Duplicate_1                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[8]~_Duplicate_1  ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult5 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[8]~_Duplicate_1  ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[8]~_Duplicate_2                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[9]               ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[9]               ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[9]~_Duplicate_1                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[9]~_Duplicate_1  ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult5 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[9]~_Duplicate_1  ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[9]~_Duplicate_2                                                               ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[10]              ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[10]              ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[10]~_Duplicate_1                                                              ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[10]~_Duplicate_1 ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult5 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[10]~_Duplicate_1 ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[10]~_Duplicate_2                                                              ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[11]              ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[11]              ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[11]~_Duplicate_1                                                              ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[11]~_Duplicate_1 ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult5 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[11]~_Duplicate_1 ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[11]~_Duplicate_2                                                              ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[12]              ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[12]              ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[12]~_Duplicate_1                                                              ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[12]~_Duplicate_1 ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult5 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[12]~_Duplicate_1 ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[12]~_Duplicate_2                                                              ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[13]              ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[13]              ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[13]~_Duplicate_1                                                              ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[13]~_Duplicate_1 ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult5 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[13]~_Duplicate_1 ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[13]~_Duplicate_2                                                              ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[14]              ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[14]              ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[14]~_Duplicate_1                                                              ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[14]~_Duplicate_1 ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult5 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[14]~_Duplicate_1 ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[14]~_Duplicate_2                                                              ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[15]              ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[15]              ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[15]~_Duplicate_1                                                              ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[15]~_Duplicate_1 ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult5 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[15]~_Duplicate_1 ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[15]~_Duplicate_2                                                              ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[16]              ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[16]              ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[16]~_Duplicate_1                                                              ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[16]~_Duplicate_1 ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult5 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[16]~_Duplicate_1 ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[16]~_Duplicate_2                                                              ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[17]              ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[17]              ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[17]~_Duplicate_1                                                              ; Q                ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[17]~_Duplicate_1 ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult5 ; DATAB            ;                       ;
+; FP32_MAC_Combinatorial:My_MAC|bravo_internal[17]~_Duplicate_1 ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; FP32_MAC_Combinatorial:My_MAC|bravo_internal[17]~_Duplicate_2                                                              ; Q                ;                       ;
++---------------------------------------------------------------+-----------------+------------------+---------------------+-----------+----------------+----------------------------------------------------------------------------------------------------------------------------+------------------+-----------------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Incremental Compilation Preservation Summary                                                      ;
++---------------------+---------------------+----------------------------+--------------------------+
+; Type                ; Total [A + B]       ; From Design Partitions [A] ; From Rapid Recompile [B] ;
++---------------------+---------------------+----------------------------+--------------------------+
+; Placement (by node) ;                     ;                            ;                          ;
+;     -- Requested    ; 0.00 % ( 0 / 3296 ) ; 0.00 % ( 0 / 3296 )        ; 0.00 % ( 0 / 3296 )      ;
+;     -- Achieved     ; 0.00 % ( 0 / 3296 ) ; 0.00 % ( 0 / 3296 )        ; 0.00 % ( 0 / 3296 )      ;
+;                     ;                     ;                            ;                          ;
+; Routing (by net)    ;                     ;                            ;                          ;
+;     -- Requested    ; 0.00 % ( 0 / 0 )    ; 0.00 % ( 0 / 0 )           ; 0.00 % ( 0 / 0 )         ;
+;     -- Achieved     ; 0.00 % ( 0 / 0 )    ; 0.00 % ( 0 / 0 )           ; 0.00 % ( 0 / 0 )         ;
++---------------------+---------------------+----------------------------+--------------------------+
 
 
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -192,7 +356,7 @@ https://fpgasoftware.intel.com/eula.
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
 ; Partition Name                 ; Preservation Achieved ; Preservation Level Used ; Netlist Type Used ; Preservation Method ; Notes ;
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
-; Top                            ; 0.00 % ( 0 / 362 )    ; N/A                     ; Source File       ; N/A                 ;       ;
+; Top                            ; 0.00 % ( 0 / 3286 )   ; N/A                     ; Source File       ; N/A                 ;       ;
 ; hard_block:auto_generated_inst ; 0.00 % ( 0 / 10 )     ; N/A                     ; Source File       ; N/A                 ;       ;
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
 
@@ -203,127 +367,127 @@ https://fpgasoftware.intel.com/eula.
 The pin-out file can be found in D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/output_files/fp32_rx_mac_tx.pin.
 
 
-+-------------------------------------------------------------------+
-; Fitter Resource Usage Summary                                     ;
-+---------------------------------------------+---------------------+
-; Resource                                    ; Usage               ;
-+---------------------------------------------+---------------------+
-; Total logic elements                        ; 224 / 6,272 ( 4 % ) ;
-;     -- Combinational with no register       ; 60                  ;
-;     -- Register only                        ; 37                  ;
-;     -- Combinational with a register        ; 127                 ;
-;                                             ;                     ;
-; Logic element usage by number of LUT inputs ;                     ;
-;     -- 4 input functions                    ; 59                  ;
-;     -- 3 input functions                    ; 14                  ;
-;     -- <=2 input functions                  ; 114                 ;
-;     -- Register only                        ; 37                  ;
-;                                             ;                     ;
-; Logic elements by mode                      ;                     ;
-;     -- normal mode                          ; 82                  ;
-;     -- arithmetic mode                      ; 105                 ;
-;                                             ;                     ;
-; Total registers*                            ; 164 / 6,684 ( 2 % ) ;
-;     -- Dedicated logic registers            ; 164 / 6,272 ( 3 % ) ;
-;     -- I/O registers                        ; 0 / 412 ( 0 % )     ;
-;                                             ;                     ;
-; Total LABs:  partially or completely used   ; 18 / 392 ( 5 % )    ;
-; Virtual pins                                ; 0                   ;
-; I/O pins                                    ; 4 / 92 ( 4 % )      ;
-;     -- Clock pins                           ; 2 / 3 ( 67 % )      ;
-;     -- Dedicated input pins                 ; 0 / 9 ( 0 % )       ;
-;                                             ;                     ;
-; M9Ks                                        ; 0 / 30 ( 0 % )      ;
-; Total block memory bits                     ; 0 / 276,480 ( 0 % ) ;
-; Total block memory implementation bits      ; 0 / 276,480 ( 0 % ) ;
-; Embedded Multiplier 9-bit elements          ; 0 / 30 ( 0 % )      ;
-; PLLs                                        ; 0 / 2 ( 0 % )       ;
-; Global signals                              ; 2                   ;
-;     -- Global clocks                        ; 2 / 10 ( 20 % )     ;
-; JTAGs                                       ; 0 / 1 ( 0 % )       ;
-; CRC blocks                                  ; 0 / 1 ( 0 % )       ;
-; ASMI blocks                                 ; 0 / 1 ( 0 % )       ;
-; Oscillator blocks                           ; 0 / 1 ( 0 % )       ;
-; Impedance control blocks                    ; 0 / 4 ( 0 % )       ;
-; Average interconnect usage (total/H/V)      ; 0.3% / 0.3% / 0.4%  ;
-; Peak interconnect usage (total/H/V)         ; 1.6% / 1.3% / 2.0%  ;
-; Maximum fan-out                             ; 164                 ;
-; Highest non-global fan-out                  ; 45                  ;
-; Total fan-out                               ; 1262                ;
-; Average fan-out                             ; 3.11                ;
-+---------------------------------------------+---------------------+
++----------------------------------------------------------------------+
+; Fitter Resource Usage Summary                                        ;
++---------------------------------------------+------------------------+
+; Resource                                    ; Usage                  ;
++---------------------------------------------+------------------------+
+; Total logic elements                        ; 3,027 / 6,272 ( 48 % ) ;
+;     -- Combinational with no register       ; 2607                   ;
+;     -- Register only                        ; 182                    ;
+;     -- Combinational with a register        ; 238                    ;
+;                                             ;                        ;
+; Logic element usage by number of LUT inputs ;                        ;
+;     -- 4 input functions                    ; 1672                   ;
+;     -- 3 input functions                    ; 787                    ;
+;     -- <=2 input functions                  ; 386                    ;
+;     -- Register only                        ; 182                    ;
+;                                             ;                        ;
+; Logic elements by mode                      ;                        ;
+;     -- normal mode                          ; 2475                   ;
+;     -- arithmetic mode                      ; 370                    ;
+;                                             ;                        ;
+; Total registers*                            ; 420 / 6,684 ( 6 % )    ;
+;     -- Dedicated logic registers            ; 420 / 6,272 ( 7 % )    ;
+;     -- I/O registers                        ; 0 / 412 ( 0 % )        ;
+;                                             ;                        ;
+; Total LABs:  partially or completely used   ; 221 / 392 ( 56 % )     ;
+; Virtual pins                                ; 0                      ;
+; I/O pins                                    ; 4 / 92 ( 4 % )         ;
+;     -- Clock pins                           ; 2 / 3 ( 67 % )         ;
+;     -- Dedicated input pins                 ; 0 / 9 ( 0 % )          ;
+;                                             ;                        ;
+; M9Ks                                        ; 0 / 30 ( 0 % )         ;
+; Total block memory bits                     ; 0 / 276,480 ( 0 % )    ;
+; Total block memory implementation bits      ; 0 / 276,480 ( 0 % )    ;
+; Embedded Multiplier 9-bit elements          ; 7 / 30 ( 23 % )        ;
+; PLLs                                        ; 0 / 2 ( 0 % )          ;
+; Global signals                              ; 4                      ;
+;     -- Global clocks                        ; 4 / 10 ( 40 % )        ;
+; JTAGs                                       ; 0 / 1 ( 0 % )          ;
+; CRC blocks                                  ; 0 / 1 ( 0 % )          ;
+; ASMI blocks                                 ; 0 / 1 ( 0 % )          ;
+; Oscillator blocks                           ; 0 / 1 ( 0 % )          ;
+; Impedance control blocks                    ; 0 / 4 ( 0 % )          ;
+; Average interconnect usage (total/H/V)      ; 16.0% / 15.2% / 17.0%  ;
+; Peak interconnect usage (total/H/V)         ; 30.5% / 27.7% / 34.2%  ;
+; Maximum fan-out                             ; 294                    ;
+; Highest non-global fan-out                  ; 115                    ;
+; Total fan-out                               ; 11407                  ;
+; Average fan-out                             ; 3.29                   ;
++---------------------------------------------+------------------------+
 *  Register count does not include registers inside RAM blocks or DSP blocks.
 
 
 
-+---------------------------------------------------------------------------------------------------+
-; Fitter Partition Statistics                                                                       ;
-+---------------------------------------------+--------------------+--------------------------------+
-; Statistic                                   ; Top                ; hard_block:auto_generated_inst ;
-+---------------------------------------------+--------------------+--------------------------------+
-; Difficulty Clustering Region                ; Low                ; Low                            ;
-;                                             ;                    ;                                ;
-; Total logic elements                        ; 224 / 6272 ( 4 % ) ; 0 / 6272 ( 0 % )               ;
-;     -- Combinational with no register       ; 60                 ; 0                              ;
-;     -- Register only                        ; 37                 ; 0                              ;
-;     -- Combinational with a register        ; 127                ; 0                              ;
-;                                             ;                    ;                                ;
-; Logic element usage by number of LUT inputs ;                    ;                                ;
-;     -- 4 input functions                    ; 59                 ; 0                              ;
-;     -- 3 input functions                    ; 14                 ; 0                              ;
-;     -- <=2 input functions                  ; 114                ; 0                              ;
-;     -- Register only                        ; 37                 ; 0                              ;
-;                                             ;                    ;                                ;
-; Logic elements by mode                      ;                    ;                                ;
-;     -- normal mode                          ; 82                 ; 0                              ;
-;     -- arithmetic mode                      ; 105                ; 0                              ;
-;                                             ;                    ;                                ;
-; Total registers                             ; 164                ; 0                              ;
-;     -- Dedicated logic registers            ; 164 / 6272 ( 3 % ) ; 0 / 6272 ( 0 % )               ;
-;     -- I/O registers                        ; 0                  ; 0                              ;
-;                                             ;                    ;                                ;
-; Total LABs:  partially or completely used   ; 18 / 392 ( 5 % )   ; 0 / 392 ( 0 % )                ;
-;                                             ;                    ;                                ;
-; Virtual pins                                ; 0                  ; 0                              ;
-; I/O pins                                    ; 4                  ; 0                              ;
-; Embedded Multiplier 9-bit elements          ; 0 / 30 ( 0 % )     ; 0 / 30 ( 0 % )                 ;
-; Total memory bits                           ; 0                  ; 0                              ;
-; Total RAM block bits                        ; 0                  ; 0                              ;
-; Clock control block                         ; 2 / 12 ( 16 % )    ; 0 / 12 ( 0 % )                 ;
-;                                             ;                    ;                                ;
-; Connections                                 ;                    ;                                ;
-;     -- Input Connections                    ; 0                  ; 0                              ;
-;     -- Registered Input Connections         ; 0                  ; 0                              ;
-;     -- Output Connections                   ; 0                  ; 0                              ;
-;     -- Registered Output Connections        ; 0                  ; 0                              ;
-;                                             ;                    ;                                ;
-; Internal Connections                        ;                    ;                                ;
-;     -- Total Connections                    ; 1257               ; 5                              ;
-;     -- Registered Connections               ; 367                ; 0                              ;
-;                                             ;                    ;                                ;
-; External Connections                        ;                    ;                                ;
-;     -- Top                                  ; 0                  ; 0                              ;
-;     -- hard_block:auto_generated_inst       ; 0                  ; 0                              ;
-;                                             ;                    ;                                ;
-; Partition Interface                         ;                    ;                                ;
-;     -- Input Ports                          ; 3                  ; 0                              ;
-;     -- Output Ports                         ; 1                  ; 0                              ;
-;     -- Bidir Ports                          ; 0                  ; 0                              ;
-;                                             ;                    ;                                ;
-; Registered Ports                            ;                    ;                                ;
-;     -- Registered Input Ports               ; 0                  ; 0                              ;
-;     -- Registered Output Ports              ; 0                  ; 0                              ;
-;                                             ;                    ;                                ;
-; Port Connectivity                           ;                    ;                                ;
-;     -- Input Ports driven by GND            ; 0                  ; 0                              ;
-;     -- Output Ports driven by GND           ; 0                  ; 0                              ;
-;     -- Input Ports driven by VCC            ; 0                  ; 0                              ;
-;     -- Output Ports driven by VCC           ; 0                  ; 0                              ;
-;     -- Input Ports with no Source           ; 0                  ; 0                              ;
-;     -- Output Ports with no Source          ; 0                  ; 0                              ;
-;     -- Input Ports with no Fanout           ; 0                  ; 0                              ;
-;     -- Output Ports with no Fanout          ; 0                  ; 0                              ;
-+---------------------------------------------+--------------------+--------------------------------+
++-----------------------------------------------------------------------------------------------------+
+; Fitter Partition Statistics                                                                         ;
++---------------------------------------------+----------------------+--------------------------------+
+; Statistic                                   ; Top                  ; hard_block:auto_generated_inst ;
++---------------------------------------------+----------------------+--------------------------------+
+; Difficulty Clustering Region                ; Low                  ; Low                            ;
+;                                             ;                      ;                                ;
+; Total logic elements                        ; 3027 / 6272 ( 48 % ) ; 0 / 6272 ( 0 % )               ;
+;     -- Combinational with no register       ; 2607                 ; 0                              ;
+;     -- Register only                        ; 182                  ; 0                              ;
+;     -- Combinational with a register        ; 238                  ; 0                              ;
+;                                             ;                      ;                                ;
+; Logic element usage by number of LUT inputs ;                      ;                                ;
+;     -- 4 input functions                    ; 1672                 ; 0                              ;
+;     -- 3 input functions                    ; 787                  ; 0                              ;
+;     -- <=2 input functions                  ; 386                  ; 0                              ;
+;     -- Register only                        ; 182                  ; 0                              ;
+;                                             ;                      ;                                ;
+; Logic elements by mode                      ;                      ;                                ;
+;     -- normal mode                          ; 2475                 ; 0                              ;
+;     -- arithmetic mode                      ; 370                  ; 0                              ;
+;                                             ;                      ;                                ;
+; Total registers                             ; 420                  ; 0                              ;
+;     -- Dedicated logic registers            ; 420 / 6272 ( 7 % )   ; 0 / 6272 ( 0 % )               ;
+;     -- I/O registers                        ; 0                    ; 0                              ;
+;                                             ;                      ;                                ;
+; Total LABs:  partially or completely used   ; 221 / 392 ( 56 % )   ; 0 / 392 ( 0 % )                ;
+;                                             ;                      ;                                ;
+; Virtual pins                                ; 0                    ; 0                              ;
+; I/O pins                                    ; 4                    ; 0                              ;
+; Embedded Multiplier 9-bit elements          ; 7 / 30 ( 23 % )      ; 0 / 30 ( 0 % )                 ;
+; Total memory bits                           ; 0                    ; 0                              ;
+; Total RAM block bits                        ; 0                    ; 0                              ;
+; Clock control block                         ; 4 / 12 ( 33 % )      ; 0 / 12 ( 0 % )                 ;
+;                                             ;                      ;                                ;
+; Connections                                 ;                      ;                                ;
+;     -- Input Connections                    ; 0                    ; 0                              ;
+;     -- Registered Input Connections         ; 0                    ; 0                              ;
+;     -- Output Connections                   ; 0                    ; 0                              ;
+;     -- Registered Output Connections        ; 0                    ; 0                              ;
+;                                             ;                      ;                                ;
+; Internal Connections                        ;                      ;                                ;
+;     -- Total Connections                    ; 11618                ; 5                              ;
+;     -- Registered Connections               ; 1075                 ; 0                              ;
+;                                             ;                      ;                                ;
+; External Connections                        ;                      ;                                ;
+;     -- Top                                  ; 0                    ; 0                              ;
+;     -- hard_block:auto_generated_inst       ; 0                    ; 0                              ;
+;                                             ;                      ;                                ;
+; Partition Interface                         ;                      ;                                ;
+;     -- Input Ports                          ; 3                    ; 0                              ;
+;     -- Output Ports                         ; 1                    ; 0                              ;
+;     -- Bidir Ports                          ; 0                    ; 0                              ;
+;                                             ;                      ;                                ;
+; Registered Ports                            ;                      ;                                ;
+;     -- Registered Input Ports               ; 0                    ; 0                              ;
+;     -- Registered Output Ports              ; 0                    ; 0                              ;
+;                                             ;                      ;                                ;
+; Port Connectivity                           ;                      ;                                ;
+;     -- Input Ports driven by GND            ; 0                    ; 0                              ;
+;     -- Output Ports driven by GND           ; 0                    ; 0                              ;
+;     -- Input Ports driven by VCC            ; 0                    ; 0                              ;
+;     -- Output Ports driven by VCC           ; 0                    ; 0                              ;
+;     -- Input Ports with no Source           ; 0                    ; 0                              ;
+;     -- Output Ports with no Source          ; 0                    ; 0                              ;
+;     -- Input Ports with no Fanout           ; 0                    ; 0                              ;
+;     -- Output Ports with no Fanout          ; 0                    ; 0                              ;
++---------------------------------------------+----------------------+--------------------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -331,9 +495,9 @@ The pin-out file can be found in D:/Quartus_Projects/RTL/Graduate_Project/fpga/W
 +-----------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+----------------+---------------+-----------------+----------+--------------+--------------+---------------------------+----------------------+-----------+
 ; Name      ; Pin # ; I/O Bank ; X coordinate ; Y coordinate ; Z coordinate ; Combinational Fan-Out ; Registered Fan-Out ; Global ; Input Register ; Power Up High ; PCI I/O Enabled ; Bus Hold ; Weak Pull Up ; I/O Standard ; Termination Control Block ; Location assigned by ; Slew Rate ;
 +-----------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+----------------+---------------+-----------------+----------+--------------+--------------+---------------------------+----------------------+-----------+
-; CLK_I     ; 23    ; 1        ; 0            ; 11           ; 7            ; 164                   ; 0                  ; yes    ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; no        ;
-; RSTL_I    ; 91    ; 6        ; 34           ; 12           ; 0            ; 133                   ; 0                  ; yes    ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; no        ;
-; UART_RX_I ; 115   ; 7        ; 28           ; 24           ; 21           ; 5                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; no        ;
+; CLK_I     ; 23    ; 1        ; 0            ; 11           ; 7            ; 292                   ; 0                  ; yes    ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; no        ;
+; RSTL_I    ; 91    ; 6        ; 34           ; 12           ; 0            ; 298                   ; 0                  ; yes    ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; no        ;
+; UART_RX_I ; 115   ; 7        ; 28           ; 24           ; 21           ; 101                   ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; no        ;
 +-----------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+----------------+---------------+-----------------+----------+--------------+--------------+---------------------------+----------------------+-----------+
 
 
@@ -550,16 +714,22 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 +-----------+-------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Fitter Resource Utilization by Entity                                                                                                                                                                                                                                                                                      ;
-+------------------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+-----------------------------------------------+------------------------+--------------+
-; Compilation Hierarchy Node         ; Logic Cells ; Dedicated Logic Registers ; I/O Registers ; Memory Bits ; M9Ks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Full Hierarchy Name                           ; Entity Name            ; Library Name ;
-+------------------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+-----------------------------------------------+------------------------+--------------+
-; |fp32_rx_mac_tx                    ; 224 (0)     ; 164 (0)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 4    ; 0            ; 60 (0)       ; 37 (0)            ; 127 (0)          ; |fp32_rx_mac_tx                               ; fp32_rx_mac_tx         ; work         ;
-;    |FP32_MAC_Combinatorial:My_MAC| ; 46 (46)     ; 34 (34)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 12 (12)      ; 1 (1)             ; 33 (33)          ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC ; FP32_MAC_Combinatorial ; work         ;
-;    |fp32_uart_rx:My_UART_Rx|       ; 90 (90)     ; 53 (53)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 37 (37)      ; 2 (2)             ; 51 (51)          ; |fp32_rx_mac_tx|fp32_uart_rx:My_UART_Rx       ; fp32_uart_rx           ; work         ;
-;    |fp32_uart_tx:My_UART_Tx|       ; 88 (88)     ; 77 (77)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 11 (11)      ; 34 (34)           ; 43 (43)          ; |fp32_rx_mac_tx|fp32_uart_tx:My_UART_Tx       ; fp32_uart_tx           ; work         ;
-+------------------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+-----------------------------------------------+------------------------+--------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fitter Resource Utilization by Entity                                                                                                                                                                                                                                                                                                                                                                                                                         ;
++----------------------------------------------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------+--------------+
+; Compilation Hierarchy Node                                     ; Logic Cells ; Dedicated Logic Registers ; I/O Registers ; Memory Bits ; M9Ks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Full Hierarchy Name                                                                                                                           ; Entity Name                   ; Library Name ;
++----------------------------------------------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------+--------------+
+; |fp32_rx_mac_tx                                                ; 3027 (0)    ; 420 (0)                   ; 0 (0)         ; 0           ; 0    ; 7            ; 1       ; 3         ; 4    ; 0            ; 2607 (0)     ; 182 (0)           ; 238 (0)          ; |fp32_rx_mac_tx                                                                                                                               ; fp32_rx_mac_tx                ; work         ;
+;    |FP32_MAC_Combinatorial:My_MAC|                             ; 2597 (193)  ; 162 (162)                 ; 0 (0)         ; 0           ; 0    ; 7            ; 1       ; 3         ; 0    ; 0            ; 2415 (34)    ; 56 (56)           ; 126 (50)         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC                                                                                                 ; FP32_MAC_Combinatorial        ; work         ;
+;       |FP32_Adder_Combinatorial:My_Adder|                      ; 619 (590)   ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 576 (547)    ; 0 (0)             ; 43 (43)          ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder                                                               ; FP32_Adder_Combinatorial      ; work         ;
+;          |leading_1_detector_23bit:leading_1_detector_23bit_1| ; 29 (29)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 29 (29)      ; 0 (0)             ; 0 (0)            ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|leading_1_detector_23bit:leading_1_detector_23bit_1           ; leading_1_detector_23bit      ; work         ;
+;       |FP32_Multiplier_Combinatorial:My_Multiplier|            ; 1838 (1716) ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 7            ; 1       ; 3         ; 0    ; 0            ; 1805 (1684)  ; 0 (0)             ; 33 (32)          ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier                                                     ; FP32_Multiplier_Combinatorial ; work         ;
+;          |leading_1_detector_48bit:leading_1_detector_48bit_1| ; 67 (67)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 66 (66)      ; 0 (0)             ; 1 (1)            ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|leading_1_detector_48bit:leading_1_detector_48bit_1 ; leading_1_detector_48bit      ; work         ;
+;          |lpm_mult:Mult0|                                      ; 55 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 7            ; 1       ; 3         ; 0    ; 0            ; 55 (0)       ; 0 (0)             ; 0 (0)            ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0                                      ; lpm_mult                      ; work         ;
+;             |mult_bdt:auto_generated|                          ; 55 (55)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 7            ; 1       ; 3         ; 0    ; 0            ; 55 (55)      ; 0 (0)             ; 0 (0)            ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated              ; mult_bdt                      ; work         ;
+;    |fp32_uart_rx:My_UART_Rx|                                   ; 335 (335)   ; 149 (149)                 ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 167 (167)    ; 78 (78)           ; 90 (90)          ; |fp32_rx_mac_tx|fp32_uart_rx:My_UART_Rx                                                                                                       ; fp32_uart_rx                  ; work         ;
+;    |fp32_uart_tx:My_UART_Tx|                                   ; 134 (134)   ; 109 (109)                 ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 25 (25)      ; 48 (48)           ; 61 (61)          ; |fp32_rx_mac_tx|fp32_uart_tx:My_UART_Tx                                                                                                       ; fp32_uart_tx                  ; work         ;
++----------------------------------------------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -571,24 +741,120 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; TX_DATA_O ; Output   ; --            ; --            ; --                    ; --  ; --   ;
 ; CLK_I     ; Input    ; (0) 0 ps      ; --            ; --                    ; --  ; --   ;
 ; RSTL_I    ; Input    ; (0) 0 ps      ; --            ; --                    ; --  ; --   ;
-; UART_RX_I ; Input    ; (6) 1314 ps   ; --            ; --                    ; --  ; --   ;
+; UART_RX_I ; Input    ; --            ; (6) 1314 ps   ; --                    ; --  ; --   ;
 +-----------+----------+---------------+---------------+-----------------------+-----+------+
 
 
-+-----------------------------------------------------------------------------+
-; Pad To Core Delay Chain Fanout                                              ;
-+-----------------------------------------------+-------------------+---------+
-; Source Pin / Fanout                           ; Pad To Core Index ; Setting ;
-+-----------------------------------------------+-------------------+---------+
-; CLK_I                                         ;                   ;         ;
-; RSTL_I                                        ;                   ;         ;
-; UART_RX_I                                     ;                   ;         ;
-;      - fp32_uart_rx:My_UART_Rx|RX_VALID_O~0   ; 0                 ; 6       ;
-;      - fp32_uart_rx:My_UART_Rx|Selector40~0   ; 0                 ; 6       ;
-;      - fp32_uart_rx:My_UART_Rx|clk_cnt[31]~54 ; 0                 ; 6       ;
-;      - fp32_uart_rx:My_UART_Rx|Selector41~0   ; 0                 ; 6       ;
-;      - fp32_uart_rx:My_UART_Rx|Selector42~3   ; 0                 ; 6       ;
-+-----------------------------------------------+-------------------+---------+
++-------------------------------------------------------------------------------+
+; Pad To Core Delay Chain Fanout                                                ;
++-------------------------------------------------+-------------------+---------+
+; Source Pin / Fanout                             ; Pad To Core Index ; Setting ;
++-------------------------------------------------+-------------------+---------+
+; CLK_I                                           ;                   ;         ;
+; RSTL_I                                          ;                   ;         ;
+; UART_RX_I                                       ;                   ;         ;
+;      - fp32_uart_rx:My_UART_Rx|RX_VALID_O~0     ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|Selector40~0     ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|clk_cnt[31]~50   ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[95]~0  ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[94]~1  ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[62]~2  ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[61]~3  ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[60]~4  ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[59]~5  ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[58]~6  ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[57]~7  ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[56]~8  ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[55]~9  ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[30]~10 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[29]~11 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[28]~12 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[27]~13 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[26]~14 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[25]~15 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[24]~16 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[23]~17 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[54]~18 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[53]~19 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[52]~20 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[51]~21 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[50]~22 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[49]~23 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[48]~24 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[47]~25 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[46]~26 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[45]~27 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[44]~28 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[43]~29 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[42]~30 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[41]~31 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[40]~32 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[39]~33 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[38]~34 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[37]~35 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[36]~36 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[35]~37 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[33]~38 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[32]~39 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[34]~40 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[22]~41 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[21]~42 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[20]~43 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[19]~44 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[18]~45 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[17]~46 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[16]~47 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[15]~48 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[14]~49 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[13]~50 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[12]~51 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[11]~52 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[10]~53 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[9]~54  ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[8]~55  ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[7]~56  ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[6]~57  ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[5]~58  ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[4]~59  ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[3]~60  ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[2]~61  ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[1]~62  ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[0]~63  ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[93]~64 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[92]~65 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[91]~66 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[90]~67 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[89]~68 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[88]~69 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[87]~70 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[86]~71 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[85]~72 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[84]~73 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[83]~74 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[82]~75 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[81]~76 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[80]~78 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[79]~79 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[78]~80 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[77]~81 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[76]~82 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[75]~83 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[74]~84 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[73]~85 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[72]~86 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[71]~87 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[70]~88 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[69]~89 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[68]~90 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[67]~91 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[66]~92 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[65]~93 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[64]~94 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[31]~95 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|RX_DATA_O[63]~96 ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|Selector41~0     ; 1                 ; 6       ;
+;      - fp32_uart_rx:My_UART_Rx|Selector42~1     ; 1                 ; 6       ;
++-------------------------------------------------+-------------------+---------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -596,195 +862,236 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+--------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
 ; Name                                         ; Location           ; Fan-Out ; Usage        ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
 +----------------------------------------------+--------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
-; CLK_I                                        ; PIN_23             ; 164     ; Clock        ; yes    ; Global Clock         ; GCLK2            ; --                        ;
-; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O~11 ; LCCOMB_X28_Y17_N30 ; 34      ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; FP32_MAC_Combinatorial:My_MAC|mac_state.CALC ; FF_X28_Y17_N17     ; 34      ; Sync. clear  ; no     ; --                   ; --               ; --                        ;
-; RSTL_I                                       ; PIN_91             ; 3       ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; RSTL_I                                       ; PIN_91             ; 131     ; Async. clear ; yes    ; Global Clock         ; GCLK9            ; --                        ;
-; fp32_uart_rx:My_UART_Rx|Add2~15              ; LCCOMB_X23_Y15_N18 ; 7       ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; fp32_uart_rx:My_UART_Rx|LessThan1~1          ; LCCOMB_X23_Y17_N8  ; 9       ; Sync. clear  ; no     ; --                   ; --               ; --                        ;
-; fp32_uart_rx:My_UART_Rx|clk_cnt[31]~54       ; LCCOMB_X24_Y15_N22 ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; fp32_uart_rx:My_UART_Rx|clk_cnt[9]~53        ; LCCOMB_X24_Y15_N0  ; 32      ; Sync. clear  ; no     ; --                   ; --               ; --                        ;
-; fp32_uart_rx:My_UART_Rx|received_byte[6]~7   ; LCCOMB_X23_Y17_N2  ; 9       ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; fp32_uart_tx:My_UART_Tx|Equal0~10            ; LCCOMB_X30_Y20_N12 ; 45      ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; fp32_uart_tx:My_UART_Tx|Selector32~0         ; LCCOMB_X28_Y20_N22 ; 33      ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; fp32_uart_tx:My_UART_Tx|clk_cnt[6]~38        ; LCCOMB_X30_Y20_N2  ; 32      ; Sync. clear  ; no     ; --                   ; --               ; --                        ;
+; CLK_I                                        ; PIN_23             ; 292     ; Clock        ; yes    ; Global Clock         ; GCLK2            ; --                        ;
+; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O    ; FF_X32_Y12_N5      ; 32      ; Clock        ; yes    ; Global Clock         ; GCLK8            ; --                        ;
+; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O~8  ; LCCOMB_X32_Y12_N14 ; 34      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; FP32_MAC_Combinatorial:My_MAC|mac_state.CALC ; FF_X32_Y12_N27     ; 34      ; Sync. clear  ; no     ; --                   ; --               ; --                        ;
+; RSTL_I                                       ; PIN_91             ; 5       ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RSTL_I                                       ; PIN_91             ; 294     ; Async. clear ; yes    ; Global Clock         ; GCLK9            ; --                        ;
+; fp32_uart_rx:My_UART_Rx|Add2~15              ; LCCOMB_X32_Y11_N30 ; 7       ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; fp32_uart_rx:My_UART_Rx|LessThan1~1          ; LCCOMB_X33_Y11_N26 ; 9       ; Sync. clear  ; no     ; --                   ; --               ; --                        ;
+; fp32_uart_rx:My_UART_Rx|RX_VALID_O           ; FF_X32_Y12_N25     ; 99      ; Clock        ; yes    ; Global Clock         ; GCLK5            ; --                        ;
+; fp32_uart_rx:My_UART_Rx|clk_cnt[29]~49       ; LCCOMB_X31_Y15_N0  ; 32      ; Sync. clear  ; no     ; --                   ; --               ; --                        ;
+; fp32_uart_rx:My_UART_Rx|clk_cnt[31]~50       ; LCCOMB_X31_Y12_N10 ; 32      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; fp32_uart_rx:My_UART_Rx|received_byte[6]~7   ; LCCOMB_X32_Y15_N14 ; 9       ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; fp32_uart_tx:My_UART_Tx|Equal0~10            ; LCCOMB_X32_Y16_N0  ; 45      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; fp32_uart_tx:My_UART_Tx|Selector32~0         ; LCCOMB_X32_Y12_N0  ; 33      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; fp32_uart_tx:My_UART_Tx|Selector33~0         ; LCCOMB_X32_Y12_N18 ; 33      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; fp32_uart_tx:My_UART_Tx|clk_cnt[0]~38        ; LCCOMB_X32_Y16_N30 ; 32      ; Sync. clear  ; no     ; --                   ; --               ; --                        ;
 +----------------------------------------------+--------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------+
-; Global & Other Fast Signals                                                                                                              ;
-+--------+----------+---------+--------------------------------------+----------------------+------------------+---------------------------+
-; Name   ; Location ; Fan-Out ; Fan-Out Using Intentional Clock Skew ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
-+--------+----------+---------+--------------------------------------+----------------------+------------------+---------------------------+
-; CLK_I  ; PIN_23   ; 164     ; 29                                   ; Global Clock         ; GCLK2            ; --                        ;
-; RSTL_I ; PIN_91   ; 131     ; 0                                    ; Global Clock         ; GCLK9            ; --                        ;
-+--------+----------+---------+--------------------------------------+----------------------+------------------+---------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Global & Other Fast Signals                                                                                                                                                       ;
++-------------------------------------------+----------------+---------+--------------------------------------+----------------------+------------------+---------------------------+
+; Name                                      ; Location       ; Fan-Out ; Fan-Out Using Intentional Clock Skew ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
++-------------------------------------------+----------------+---------+--------------------------------------+----------------------+------------------+---------------------------+
+; CLK_I                                     ; PIN_23         ; 292     ; 40                                   ; Global Clock         ; GCLK2            ; --                        ;
+; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O ; FF_X32_Y12_N5  ; 32      ; 0                                    ; Global Clock         ; GCLK8            ; --                        ;
+; RSTL_I                                    ; PIN_91         ; 294     ; 0                                    ; Global Clock         ; GCLK9            ; --                        ;
+; fp32_uart_rx:My_UART_Rx|RX_VALID_O        ; FF_X32_Y12_N25 ; 99      ; 3                                    ; Global Clock         ; GCLK5            ; --                        ;
++-------------------------------------------+----------------+---------+--------------------------------------+----------------------+------------------+---------------------------+
 
 
-+------------------------------------------------+
-; Routing Usage Summary                          ;
-+-----------------------+------------------------+
-; Routing Resource Type ; Usage                  ;
-+-----------------------+------------------------+
-; Block interconnects   ; 188 / 32,401 ( < 1 % ) ;
-; C16 interconnects     ; 1 / 1,326 ( < 1 % )    ;
-; C4 interconnects      ; 80 / 21,816 ( < 1 % )  ;
-; Direct links          ; 56 / 32,401 ( < 1 % )  ;
-; Global clocks         ; 2 / 10 ( 20 % )        ;
-; Local interconnects   ; 201 / 10,320 ( 2 % )   ;
-; R24 interconnects     ; 2 / 1,289 ( < 1 % )    ;
-; R4 interconnects      ; 79 / 28,186 ( < 1 % )  ;
-+-----------------------+------------------------+
++-----------------------------------------------------------------------------------------------+
+; Fitter DSP Block Usage Summary                                                                ;
++---------------------------------------+-------------+---------------------+-------------------+
+; Statistic                             ; Number Used ; Available per Block ; Maximum Available ;
++---------------------------------------+-------------+---------------------+-------------------+
+; Simple Multipliers (9-bit)            ; 1           ; 2                   ; 30                ;
+; Simple Multipliers (18-bit)           ; 3           ; 1                   ; 15                ;
+; Embedded Multiplier Blocks            ; 4           ; --                  ; 15                ;
+; Embedded Multiplier 9-bit elements    ; 7           ; 2                   ; 30                ;
+; Signed Embedded Multipliers           ; 0           ; --                  ; --                ;
+; Unsigned Embedded Multipliers         ; 4           ; --                  ; --                ;
+; Mixed Sign Embedded Multipliers       ; 0           ; --                  ; --                ;
+; Variable Sign Embedded Multipliers    ; 0           ; --                  ; --                ;
+; Dedicated Input Shift Register Chains ; 0           ; --                  ; --                ;
++---------------------------------------+-------------+---------------------+-------------------+
 
 
-+----------------------------------------------------------------------------+
-; LAB Logic Elements                                                         ;
-+---------------------------------------------+------------------------------+
-; Number of Logic Elements  (Average = 12.44) ; Number of LABs  (Total = 18) ;
-+---------------------------------------------+------------------------------+
-; 1                                           ; 1                            ;
-; 2                                           ; 1                            ;
-; 3                                           ; 0                            ;
-; 4                                           ; 1                            ;
-; 5                                           ; 1                            ;
-; 6                                           ; 0                            ;
-; 7                                           ; 0                            ;
-; 8                                           ; 0                            ;
-; 9                                           ; 0                            ;
-; 10                                          ; 1                            ;
-; 11                                          ; 0                            ;
-; 12                                          ; 1                            ;
-; 13                                          ; 0                            ;
-; 14                                          ; 1                            ;
-; 15                                          ; 0                            ;
-; 16                                          ; 11                           ;
-+---------------------------------------------+------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; DSP Block Details                                                                                                                                                                                                                                                                                                            ;
++-------------------------------------------------------------------------------------------------------------------------------+----------------------------+--------------------+---------------------+--------------------------------+-----------------------+-----------------------+-------------------+-----------------+
+; Name                                                                                                                          ; Mode                       ; Location           ; Sign Representation ; Has Input Shift Register Chain ; Data A Input Register ; Data B Input Register ; Pipeline Register ; Output Register ;
++-------------------------------------------------------------------------------------------------------------------------------+----------------------------+--------------------+---------------------+--------------------------------+-----------------------+-----------------------+-------------------+-----------------+
+; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_out8     ; Simple Multiplier (9-bit)  ; DSPOUT_X20_Y12_N2  ;                     ; No                             ;                       ;                       ;                   ; no              ;
+;    FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult7 ;                            ; DSPMULT_X20_Y12_N0 ; Unsigned            ;                                ; no                    ; no                    ; no                ;                 ;
+; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_out6     ; Simple Multiplier (18-bit) ; DSPOUT_X20_Y10_N2  ;                     ; No                             ;                       ;                       ;                   ; no              ;
+;    FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult5 ;                            ; DSPMULT_X20_Y10_N0 ; Unsigned            ;                                ; yes                   ; no                    ; no                ;                 ;
+; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_out4     ; Simple Multiplier (18-bit) ; DSPOUT_X20_Y11_N2  ;                     ; No                             ;                       ;                       ;                   ; no              ;
+;    FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult3 ;                            ; DSPMULT_X20_Y11_N0 ; Unsigned            ;                                ; yes                   ; no                    ; no                ;                 ;
+; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|w385w[0]     ; Simple Multiplier (18-bit) ; DSPOUT_X20_Y13_N2  ;                     ; No                             ;                       ;                       ;                   ; no              ;
+;    FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult1 ;                            ; DSPMULT_X20_Y13_N0 ; Unsigned            ;                                ; yes                   ; yes                   ; no                ;                 ;
++-------------------------------------------------------------------------------------------------------------------------------+----------------------------+--------------------+---------------------+--------------------------------+-----------------------+-----------------------+-------------------+-----------------+
 
 
-+-------------------------------------------------------------------+
-; LAB-wide Signals                                                  ;
-+------------------------------------+------------------------------+
-; LAB-wide Signals  (Average = 2.67) ; Number of LABs  (Total = 18) ;
-+------------------------------------+------------------------------+
-; 1 Async. clear                     ; 13                           ;
-; 1 Clock                            ; 16                           ;
-; 1 Clock enable                     ; 12                           ;
-; 1 Sync. clear                      ; 7                            ;
-+------------------------------------+------------------------------+
-
-
-+-----------------------------------------------------------------------------+
-; LAB Signals Sourced                                                         ;
-+----------------------------------------------+------------------------------+
-; Number of Signals Sourced  (Average = 21.44) ; Number of LABs  (Total = 18) ;
-+----------------------------------------------+------------------------------+
-; 0                                            ; 0                            ;
-; 1                                            ; 1                            ;
-; 2                                            ; 0                            ;
-; 3                                            ; 0                            ;
-; 4                                            ; 2                            ;
-; 5                                            ; 0                            ;
-; 6                                            ; 0                            ;
-; 7                                            ; 0                            ;
-; 8                                            ; 0                            ;
-; 9                                            ; 1                            ;
-; 10                                           ; 0                            ;
-; 11                                           ; 0                            ;
-; 12                                           ; 0                            ;
-; 13                                           ; 0                            ;
-; 14                                           ; 0                            ;
-; 15                                           ; 0                            ;
-; 16                                           ; 2                            ;
-; 17                                           ; 0                            ;
-; 18                                           ; 0                            ;
-; 19                                           ; 1                            ;
-; 20                                           ; 0                            ;
-; 21                                           ; 0                            ;
-; 22                                           ; 1                            ;
-; 23                                           ; 1                            ;
-; 24                                           ; 1                            ;
-; 25                                           ; 0                            ;
-; 26                                           ; 1                            ;
-; 27                                           ; 0                            ;
-; 28                                           ; 0                            ;
-; 29                                           ; 0                            ;
-; 30                                           ; 1                            ;
-; 31                                           ; 0                            ;
-; 32                                           ; 6                            ;
-+----------------------------------------------+------------------------------+
-
-
-+--------------------------------------------------------------------------------+
-; LAB Signals Sourced Out                                                        ;
-+-------------------------------------------------+------------------------------+
-; Number of Signals Sourced Out  (Average = 8.00) ; Number of LABs  (Total = 18) ;
-+-------------------------------------------------+------------------------------+
-; 0                                               ; 0                            ;
-; 1                                               ; 1                            ;
-; 2                                               ; 0                            ;
-; 3                                               ; 3                            ;
-; 4                                               ; 3                            ;
-; 5                                               ; 4                            ;
-; 6                                               ; 1                            ;
-; 7                                               ; 0                            ;
-; 8                                               ; 0                            ;
-; 9                                               ; 0                            ;
-; 10                                              ; 0                            ;
-; 11                                              ; 0                            ;
-; 12                                              ; 0                            ;
-; 13                                              ; 0                            ;
-; 14                                              ; 0                            ;
-; 15                                              ; 0                            ;
-; 16                                              ; 6                            ;
-+-------------------------------------------------+------------------------------+
++-------------------------------------------------+
+; Routing Usage Summary                           ;
++-----------------------+-------------------------+
+; Routing Resource Type ; Usage                   ;
++-----------------------+-------------------------+
+; Block interconnects   ; 5,343 / 32,401 ( 16 % ) ;
+; C16 interconnects     ; 105 / 1,326 ( 8 % )     ;
+; C4 interconnects      ; 3,516 / 21,816 ( 16 % ) ;
+; Direct links          ; 432 / 32,401 ( 1 % )    ;
+; Global clocks         ; 4 / 10 ( 40 % )         ;
+; Local interconnects   ; 1,975 / 10,320 ( 19 % ) ;
+; R24 interconnects     ; 95 / 1,289 ( 7 % )      ;
+; R4 interconnects      ; 4,159 / 28,186 ( 15 % ) ;
++-----------------------+-------------------------+
 
 
 +-----------------------------------------------------------------------------+
-; LAB Distinct Inputs                                                         ;
-+----------------------------------------------+------------------------------+
-; Number of Distinct Inputs  (Average = 11.17) ; Number of LABs  (Total = 18) ;
-+----------------------------------------------+------------------------------+
-; 0                                            ; 0                            ;
-; 1                                            ; 0                            ;
-; 2                                            ; 0                            ;
-; 3                                            ; 0                            ;
-; 4                                            ; 4                            ;
-; 5                                            ; 4                            ;
-; 6                                            ; 2                            ;
-; 7                                            ; 1                            ;
-; 8                                            ; 1                            ;
-; 9                                            ; 0                            ;
-; 10                                           ; 2                            ;
-; 11                                           ; 1                            ;
-; 12                                           ; 0                            ;
-; 13                                           ; 0                            ;
-; 14                                           ; 0                            ;
-; 15                                           ; 0                            ;
-; 16                                           ; 0                            ;
-; 17                                           ; 0                            ;
-; 18                                           ; 0                            ;
-; 19                                           ; 0                            ;
-; 20                                           ; 0                            ;
-; 21                                           ; 0                            ;
-; 22                                           ; 0                            ;
-; 23                                           ; 0                            ;
-; 24                                           ; 0                            ;
-; 25                                           ; 0                            ;
-; 26                                           ; 0                            ;
-; 27                                           ; 0                            ;
-; 28                                           ; 0                            ;
-; 29                                           ; 0                            ;
-; 30                                           ; 0                            ;
-; 31                                           ; 0                            ;
-; 32                                           ; 0                            ;
-; 33                                           ; 1                            ;
-; 34                                           ; 0                            ;
-; 35                                           ; 0                            ;
-; 36                                           ; 1                            ;
-; 37                                           ; 0                            ;
-; 38                                           ; 1                            ;
-+----------------------------------------------+------------------------------+
+; LAB Logic Elements                                                          ;
++---------------------------------------------+-------------------------------+
+; Number of Logic Elements  (Average = 13.70) ; Number of LABs  (Total = 221) ;
++---------------------------------------------+-------------------------------+
+; 1                                           ; 3                             ;
+; 2                                           ; 3                             ;
+; 3                                           ; 6                             ;
+; 4                                           ; 3                             ;
+; 5                                           ; 1                             ;
+; 6                                           ; 6                             ;
+; 7                                           ; 4                             ;
+; 8                                           ; 5                             ;
+; 9                                           ; 2                             ;
+; 10                                          ; 4                             ;
+; 11                                          ; 3                             ;
+; 12                                          ; 6                             ;
+; 13                                          ; 13                            ;
+; 14                                          ; 15                            ;
+; 15                                          ; 15                            ;
+; 16                                          ; 132                           ;
++---------------------------------------------+-------------------------------+
+
+
++--------------------------------------------------------------------+
+; LAB-wide Signals                                                   ;
++------------------------------------+-------------------------------+
+; LAB-wide Signals  (Average = 0.76) ; Number of LABs  (Total = 221) ;
++------------------------------------+-------------------------------+
+; 1 Async. clear                     ; 61                            ;
+; 1 Clock                            ; 38                            ;
+; 1 Clock enable                     ; 26                            ;
+; 1 Sync. clear                      ; 8                             ;
+; 2 Clock enables                    ; 3                             ;
+; 2 Clocks                           ; 33                            ;
++------------------------------------+-------------------------------+
+
+
++------------------------------------------------------------------------------+
+; LAB Signals Sourced                                                          ;
++----------------------------------------------+-------------------------------+
+; Number of Signals Sourced  (Average = 15.40) ; Number of LABs  (Total = 221) ;
++----------------------------------------------+-------------------------------+
+; 0                                            ; 0                             ;
+; 1                                            ; 3                             ;
+; 2                                            ; 1                             ;
+; 3                                            ; 3                             ;
+; 4                                            ; 2                             ;
+; 5                                            ; 4                             ;
+; 6                                            ; 7                             ;
+; 7                                            ; 6                             ;
+; 8                                            ; 1                             ;
+; 9                                            ; 4                             ;
+; 10                                           ; 2                             ;
+; 11                                           ; 5                             ;
+; 12                                           ; 6                             ;
+; 13                                           ; 8                             ;
+; 14                                           ; 12                            ;
+; 15                                           ; 17                            ;
+; 16                                           ; 92                            ;
+; 17                                           ; 8                             ;
+; 18                                           ; 5                             ;
+; 19                                           ; 2                             ;
+; 20                                           ; 4                             ;
+; 21                                           ; 5                             ;
+; 22                                           ; 0                             ;
+; 23                                           ; 5                             ;
+; 24                                           ; 4                             ;
+; 25                                           ; 2                             ;
+; 26                                           ; 4                             ;
+; 27                                           ; 0                             ;
+; 28                                           ; 3                             ;
+; 29                                           ; 0                             ;
+; 30                                           ; 1                             ;
+; 31                                           ; 0                             ;
+; 32                                           ; 5                             ;
++----------------------------------------------+-------------------------------+
+
+
++---------------------------------------------------------------------------------+
+; LAB Signals Sourced Out                                                         ;
++-------------------------------------------------+-------------------------------+
+; Number of Signals Sourced Out  (Average = 7.87) ; Number of LABs  (Total = 221) ;
++-------------------------------------------------+-------------------------------+
+; 0                                               ; 0                             ;
+; 1                                               ; 9                             ;
+; 2                                               ; 12                            ;
+; 3                                               ; 14                            ;
+; 4                                               ; 9                             ;
+; 5                                               ; 18                            ;
+; 6                                               ; 18                            ;
+; 7                                               ; 18                            ;
+; 8                                               ; 31                            ;
+; 9                                               ; 23                            ;
+; 10                                              ; 17                            ;
+; 11                                              ; 14                            ;
+; 12                                              ; 12                            ;
+; 13                                              ; 8                             ;
+; 14                                              ; 4                             ;
+; 15                                              ; 3                             ;
+; 16                                              ; 10                            ;
+; 17                                              ; 1                             ;
++-------------------------------------------------+-------------------------------+
+
+
++------------------------------------------------------------------------------+
+; LAB Distinct Inputs                                                          ;
++----------------------------------------------+-------------------------------+
+; Number of Distinct Inputs  (Average = 22.70) ; Number of LABs  (Total = 221) ;
++----------------------------------------------+-------------------------------+
+; 0                                            ; 0                             ;
+; 1                                            ; 0                             ;
+; 2                                            ; 1                             ;
+; 3                                            ; 1                             ;
+; 4                                            ; 6                             ;
+; 5                                            ; 1                             ;
+; 6                                            ; 6                             ;
+; 7                                            ; 2                             ;
+; 8                                            ; 4                             ;
+; 9                                            ; 5                             ;
+; 10                                           ; 2                             ;
+; 11                                           ; 5                             ;
+; 12                                           ; 6                             ;
+; 13                                           ; 6                             ;
+; 14                                           ; 5                             ;
+; 15                                           ; 5                             ;
+; 16                                           ; 6                             ;
+; 17                                           ; 4                             ;
+; 18                                           ; 7                             ;
+; 19                                           ; 5                             ;
+; 20                                           ; 5                             ;
+; 21                                           ; 7                             ;
+; 22                                           ; 7                             ;
+; 23                                           ; 7                             ;
+; 24                                           ; 9                             ;
+; 25                                           ; 14                            ;
+; 26                                           ; 6                             ;
+; 27                                           ; 6                             ;
+; 28                                           ; 11                            ;
+; 29                                           ; 8                             ;
+; 30                                           ; 8                             ;
+; 31                                           ; 16                            ;
+; 32                                           ; 6                             ;
+; 33                                           ; 6                             ;
+; 34                                           ; 4                             ;
+; 35                                           ; 15                            ;
+; 36                                           ; 7                             ;
+; 37                                           ; 1                             ;
+; 38                                           ; 1                             ;
++----------------------------------------------+-------------------------------+
 
 
 +------------------------------------------+
@@ -891,6 +1198,82 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------+--------+
 
 
++--------------------------------------------------------------------------------------+
+; Estimated Delay Added for Hold Timing Summary                                        ;
++-------------------------------------------+----------------------+-------------------+
+; Source Clock(s)                           ; Destination Clock(s) ; Delay Added in ns ;
++-------------------------------------------+----------------------+-------------------+
+; CLK_I                                     ; CLK_I                ; 41.8              ;
+; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O ; CLK_I                ; 6.5               ;
+; CLK_I,I/O                                 ; CLK_I                ; 1.6               ;
++-------------------------------------------+----------------------+-------------------+
+Note: For more information on problematic transfers, consider running the Fitter again with the Optimize hold timing option (Settings Menu) turned off.
+This will disable optimization of problematic paths and expose them for further analysis using the Timing Analyzer.
+
+
++---------------------------------------------------------------------------------------------------------------+
+; Estimated Delay Added for Hold Timing Details                                                                 ;
++----------------------------------------------+--------------------------------------------+-------------------+
+; Source Register                              ; Destination Register                       ; Delay Added in ns ;
++----------------------------------------------+--------------------------------------------+-------------------+
+; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O    ; fp32_uart_tx:My_UART_Tx|tx_valid_before    ; 3.336             ;
+; fp32_uart_rx:My_UART_Rx|RX_VALID_O           ; fp32_uart_rx:My_UART_Rx|RX_VALID_O         ; 3.265             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[30]    ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[29]    ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[28]    ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[27]    ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[26]    ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[25]    ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[24]    ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[23]    ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[22]    ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[21]    ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[20]    ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[19]    ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[18]    ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[17]    ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[16]    ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[15]    ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[14]    ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[13]    ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[12]    ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[11]    ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[10]    ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[9]     ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[8]     ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[7]     ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[6]     ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[5]     ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[4]     ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[3]     ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[2]     ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[1]     ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[0]     ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|clk_cnt[31]    ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; FP32_MAC_Combinatorial:My_MAC|mac_state.CALC ; FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  ; 1.994             ;
+; fp32_uart_tx:My_UART_Tx|tx_valid_before      ; fp32_uart_tx:My_UART_Tx|tx_state.START0_ST ; 1.842             ;
+; fp32_uart_tx:My_UART_Tx|tx_state.IDLE0_ST    ; fp32_uart_tx:My_UART_Tx|tx_state.START0_ST ; 1.842             ;
+; UART_RX_I                                    ; fp32_uart_rx:My_UART_Rx|RX_VALID_O         ; 1.633             ;
+; fp32_uart_rx:My_UART_Rx|rx_state.000         ; fp32_uart_rx:My_UART_Rx|RX_VALID_O         ; 1.633             ;
+; FP32_MAC_Combinatorial:My_MAC|delta[0]       ; fp32_uart_tx:My_UART_Tx|tx_data[0]         ; 0.760             ;
+; FP32_MAC_Combinatorial:My_MAC|delta[9]       ; fp32_uart_tx:My_UART_Tx|tx_data[9]         ; 0.760             ;
+; FP32_MAC_Combinatorial:My_MAC|delta[17]      ; fp32_uart_tx:My_UART_Tx|tx_data[17]        ; 0.760             ;
+; FP32_MAC_Combinatorial:My_MAC|delta[16]      ; fp32_uart_tx:My_UART_Tx|tx_data[16]        ; 0.747             ;
+; FP32_MAC_Combinatorial:My_MAC|delta[26]      ; fp32_uart_tx:My_UART_Tx|tx_data[26]        ; 0.497             ;
+; FP32_MAC_Combinatorial:My_MAC|delta[5]       ; fp32_uart_tx:My_UART_Tx|tx_data[5]         ; 0.412             ;
+; FP32_MAC_Combinatorial:My_MAC|delta[7]       ; fp32_uart_tx:My_UART_Tx|tx_data[7]         ; 0.412             ;
+; FP32_MAC_Combinatorial:My_MAC|delta[20]      ; fp32_uart_tx:My_UART_Tx|tx_data[20]        ; 0.400             ;
+; FP32_MAC_Combinatorial:My_MAC|delta[25]      ; fp32_uart_tx:My_UART_Tx|tx_data[25]        ; 0.400             ;
+; FP32_MAC_Combinatorial:My_MAC|delta[1]       ; fp32_uart_tx:My_UART_Tx|tx_data[1]         ; 0.397             ;
+; FP32_MAC_Combinatorial:My_MAC|delta[4]       ; fp32_uart_tx:My_UART_Tx|tx_data[4]         ; 0.397             ;
+; FP32_MAC_Combinatorial:My_MAC|delta[31]      ; fp32_uart_tx:My_UART_Tx|tx_data[31]        ; 0.397             ;
+; FP32_MAC_Combinatorial:My_MAC|delta[14]      ; fp32_uart_tx:My_UART_Tx|tx_data[14]        ; 0.069             ;
+; FP32_MAC_Combinatorial:My_MAC|delta[29]      ; fp32_uart_tx:My_UART_Tx|tx_data[29]        ; 0.036             ;
+; FP32_MAC_Combinatorial:My_MAC|delta[6]       ; fp32_uart_tx:My_UART_Tx|tx_data[6]         ; 0.032             ;
++----------------------------------------------+--------------------------------------------+-------------------+
+Note: This table only shows the top 54 path(s) that have the largest delay added for hold.
+
+
 +-----------------+
 ; Fitter Messages ;
 +-----------------+
@@ -915,43 +1298,57 @@ Warning (15714): Some pins have incomplete I/O assignments. Refer to the I/O Ass
 Critical Warning (332012): Synopsys Design Constraints File file not found: 'fp32_rx_mac_tx.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
 Info (332144): No user constrained base clocks found in the design
 Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
-Info (332154): The derive_clock_uncertainty command did not apply clock uncertainty to any clock-to-clock transfers.
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Info (332130): Timing requirements not specified -- quality metrics such as performance may be sacrificed to reduce compilation time.
 Info (176353): Automatically promoted node CLK_I~input (placed in PIN 23 (CLK1, DIFFCLK_0n)) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/top.sv Line: 7
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock CLKCTRL_G2
+Info (176353): Automatically promoted node fp32_uart_rx:My_UART_Rx|RX_VALID_O  File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_uart_rx.sv Line: 7
+    Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
+    Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
+        Info (176357): Destination node FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O~8 File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_mac.sv Line: 20
+        Info (176357): Destination node fp32_uart_rx:My_UART_Rx|RX_VALID_O~0 File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_uart_rx.sv Line: 7
+Info (176353): Automatically promoted node FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O  File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_mac.sv Line: 20
+    Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
+    Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
+        Info (176357): Destination node fp32_uart_tx:My_UART_Tx|tx_valid_before File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_uart_tx.sv Line: 64
+        Info (176357): Destination node fp32_uart_tx:My_UART_Tx|Selector32~0 File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_uart_tx.sv Line: 75
+        Info (176357): Destination node fp32_uart_tx:My_UART_Tx|Selector33~0 File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_uart_tx.sv Line: 75
 Info (176353): Automatically promoted node RSTL_I~input (placed in PIN 91 (CLK4, DIFFCLK_2p)) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/top.sv Line: 8
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock CLKCTRL_G9
     Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
         Info (176357): Destination node FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_mac.sv Line: 20
-        Info (176357): Destination node fp32_uart_rx:My_UART_Rx|clk_cnt[31]~54 File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_uart_rx.sv Line: 38
+        Info (176357): Destination node fp32_uart_rx:My_UART_Rx|clk_cnt[31]~50 File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_uart_rx.sv Line: 38
+        Info (176357): Destination node fp32_uart_rx:My_UART_Rx|Decoder0~46 File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_uart_rx.sv Line: 76
+        Info (176357): Destination node fp32_uart_rx:My_UART_Rx|Decoder0~57 File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_uart_rx.sv Line: 76
 Info (176233): Starting register packing
 Info (176235): Finished register packing
-    Extra Info (176219): No registers were packed into other blocks
-Info (171121): Fitter preparation operations ending: elapsed time is 00:00:00
+    Extra Info (176218): Packed 72 registers into blocks of type Embedded multiplier block
+    Extra Info (176220): Created 72 register duplicates
+Info (171121): Fitter preparation operations ending: elapsed time is 00:00:02
 Info (14896): Fitter has disabled Advanced Physical Optimization because it is not supported for the current family.
 Info (170189): Fitter placement preparation operations beginning
 Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:00
 Info (170191): Fitter placement operations beginning
 Info (170137): Fitter placement was successful
-Info (170192): Fitter placement operations ending: elapsed time is 00:00:01
+Info (170192): Fitter placement operations ending: elapsed time is 00:00:06
 Info (170193): Fitter routing operations beginning
-Info (170195): Router estimated average interconnect usage is 0% of the available device resources
-    Info (170196): Router estimated peak interconnect usage is 1% of the available device resources in the region that extends from location X23_Y12 to location X34_Y24
+Info (170195): Router estimated average interconnect usage is 11% of the available device resources
+    Info (170196): Router estimated peak interconnect usage is 24% of the available device resources in the region that extends from location X11_Y12 to location X22_Y24
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
-Info (170194): Fitter routing operations ending: elapsed time is 00:00:00
-Info (11888): Total time spent on timing analysis during the Fitter is 0.20 seconds.
+Info (170194): Fitter routing operations ending: elapsed time is 00:00:13
+Info (11888): Total time spent on timing analysis during the Fitter is 1.49 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:01
+Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:02
 Info (144001): Generated suppressed messages file D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/output_files/fp32_rx_mac_tx.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 4 warnings
-    Info: Peak virtual memory: 6102 megabytes
-    Info: Processing ended: Sun Oct 16 23:15:24 2022
-    Info: Elapsed time: 00:00:04
-    Info: Total CPU time (on all processors): 00:00:05
+    Info: Peak virtual memory: 6144 megabytes
+    Info: Processing ended: Mon Oct 17 00:25:57 2022
+    Info: Elapsed time: 00:00:23
+    Info: Total CPU time (on all processors): 00:00:45
 
 
 +----------------------------+
