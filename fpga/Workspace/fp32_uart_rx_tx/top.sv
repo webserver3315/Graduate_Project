@@ -132,6 +132,7 @@ module fp32_uart_rx
     end 
 end
 endmodule
+
 module fp32_uart_tx
     #(
         parameter   BAUD_RATE = 32'd115_200,
@@ -185,7 +186,7 @@ module fp32_uart_tx
         input CLK_I, // Assume 50MHz
         input TX_VALID_I,
         input [31:0] TX_DATA_I, // 8'h55
-        output reg TX_DATA_O,
+        output reg TX_DATA_O
     );
 
     /*

@@ -1,5 +1,6 @@
 from cgi import test
 from typing import ByteString
+import weakref
 from serial import Serial
 
 ser = Serial('COM5', 115200, timeout = 1)
@@ -32,7 +33,17 @@ def test_loopback():
             result_hex = result.hex()
             print("Read hexa: 0x", result_hex)
 
-def test_fpga():
+def TryRead(ser):
+    result = ser.read(size=4)
+    result_hex = result.hex()
+    print("Read hexa: 0x", result_hex)
+
+def TryWrite(ser, byte_string):
+    print("byte_string type : ", type(byte_string))
+    print("Sent ", byte_string)
+    ser.write(byte_string)
+
+def test_RXTX():
     # print("Read hexa: 0x", result_hex, " == ", result.decode("utf-8"))
     # print(type(result_hex)) # str
 
@@ -41,14 +52,25 @@ def test_fpga():
 
     # print("Read: ", result.decode('utf-8')[:len(result)-1])
     # print("Read: ", result, " == ", result.hex())
+
     while True:
         if(ser.readable()):
             # result = ser.readline()
+
             input()
-            byte_string = b'AAAABBBBCCCC'
-            print("byte_string type : ", type(byte_string))
-            print("Sent ", byte_string)
-            ser.write(byte_string)
+            TryRead(ser)
+
+            input()
+            TryWrite(ser, b'C')
+            TryRead(ser)
+
+            input()
+            TryWrite(ser, b'BBBB')
+            TryRead(ser)
+
+            input()
+            TryWrite(ser, b'AAAA')
+            TryRead(ser)
 
             result = ser.read(size=4)
             result_hex = result.hex()
@@ -71,6 +93,6 @@ def test_TX():
             result = ser.read(size=4)
             result_hex = result.hex()
             print("Read hexa: 0x", result_hex)
-test_TX()
-# test_fpga()
+# test_TX()
+test_RXTX()
 # test_loopback()

@@ -1,5 +1,5 @@
 Flow report for fp32_uart_rx_tx
-Sun Oct 16 03:46:07 2022
+Sun Oct 16 16:52:57 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -41,17 +41,17 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Sun Oct 16 03:46:05 2022       ;
+; Flow Status                        ; Successful - Sun Oct 16 16:52:55 2022       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; fp32_uart_rx_tx                             ;
 ; Top-level Entity Name              ; fp32_uart_rx_tx                             ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE6E22C8                                 ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 168 / 6,272 ( 3 % )                         ;
-;     Total combinational functions  ; 130 / 6,272 ( 2 % )                         ;
-;     Dedicated logic registers      ; 122 / 6,272 ( 2 % )                         ;
-; Total registers                    ; 122                                         ;
+; Total logic elements               ; 174 / 6,272 ( 3 % )                         ;
+;     Total combinational functions  ; 133 / 6,272 ( 2 % )                         ;
+;     Dedicated logic registers      ; 123 / 6,272 ( 2 % )                         ;
+; Total registers                    ; 123                                         ;
 ; Total pins                         ; 4 / 92 ( 4 % )                              ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0 / 276,480 ( 0 % )                         ;
@@ -65,7 +65,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 10/16/2022 03:45:52 ;
+; Start date & time ; 10/16/2022 16:52:41 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; fp32_uart_rx_tx     ;
 +-------------------+---------------------+
@@ -76,7 +76,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 198112237861296.166585955228556        ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 198112237861296.166590676116452        ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
 ; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                                   ; --            ; --          ; --         ;
@@ -94,11 +94,11 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:07     ; 1.0                     ; 4812 MB             ; 00:00:15                           ;
-; Fitter               ; 00:00:03     ; 1.1                     ; 6102 MB             ; 00:00:06                           ;
+; Analysis & Synthesis ; 00:00:06     ; 1.0                     ; 4814 MB             ; 00:00:14                           ;
+; Fitter               ; 00:00:05     ; 1.1                     ; 6098 MB             ; 00:00:05                           ;
 ; Assembler            ; 00:00:01     ; 1.0                     ; 4675 MB             ; 00:00:01                           ;
 ; Timing Analyzer      ; 00:00:01     ; 1.1                     ; 4849 MB             ; 00:00:01                           ;
-; Total                ; 00:00:12     ; --                      ; --                  ; 00:00:23                           ;
+; Total                ; 00:00:13     ; --                      ; --                  ; 00:00:21                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
