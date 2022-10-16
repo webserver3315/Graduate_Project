@@ -1,6 +1,6 @@
 `define DEBUG
-`include "fp32_adder.sv"
-`include "fp32_multiplier.sv"
+// `include "fp32_adder.sv"
+// `include "fp32_multiplier.sv"
 /*
     FP32_MAC
 */

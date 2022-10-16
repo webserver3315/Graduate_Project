@@ -3,7 +3,7 @@ module fp32_uart_rx
     input            RSTL_I,
     input            CLK_I,
     input            UART_RX_I,
-    input            Mac_READY_I,
+    input            RX_READY_I,
     output reg       RX_VALID_O,
     output reg [95:0] RX_DATA_O // TYPE "AAAA BBBB CCCC"
     );
@@ -21,9 +21,9 @@ module fp32_uart_rx
     // we should receive 4 * 3, total 12 Byte
     // we get 1 Byte per iteration THUS need 12 ITERATION
     // total_index = received_byte * 8 + idx
-    reg [7:0] received_byte;
-    reg [7:0] received_bit;
-    wire [7:0] total_index;
+    reg [6:0] received_byte; // MAX 11
+    reg [6:0] received_bit; // MAX 7
+    wire [6:0] total_index; // MAX 11*8 + 7 == 95
     assign total_index = received_byte * 8 + received_bit;
 
     // Purpose: Control RX state machine
@@ -31,8 +31,8 @@ module fp32_uart_rx
     if (~RSTL_I) begin
         rx_state       = 3'b000;
         RX_VALID_O      = 1'b1;
-        received_byte   = 8'b0;
-        received_bit = 8'b0;
+        received_byte   = 0;
+        received_bit = 0;
     end
     else begin
         case (rx_state)

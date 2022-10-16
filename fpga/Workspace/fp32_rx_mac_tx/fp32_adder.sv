@@ -1,4 +1,3 @@
-
 module leading_1_detector_23bit
     (
         input   wire    [24:0]  tmp,

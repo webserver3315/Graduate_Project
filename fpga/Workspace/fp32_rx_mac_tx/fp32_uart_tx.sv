@@ -1,62 +1,61 @@
 module fp32_uart_tx
-    #(
-        parameter   BAUD_RATE = 32'd115_200,
-        parameter    IDLE0_ST   =   0,
-        parameter    START0_ST   =   1,
-        parameter    D0_ST   =   2,
-        parameter    D1_ST   =   3,
-        parameter    D2_ST   =   4,
-        parameter    D3_ST   =   5,
-        parameter    D4_ST   =   6,
-        parameter    D5_ST   =   7,
-        parameter    D6_ST   =   8,
-        parameter    D7_ST   =   9,
-        parameter    STOP0_ST   =   10,
-        parameter    IDLE1_ST   =   11,
-        parameter    START1_ST   =   12,
-        parameter    D8_ST   =   13,
-        parameter    D9_ST   =   14,
-        parameter    D10_ST   =   15,
-        parameter    D11_ST   =   16,
-        parameter    D12_ST   =   17,
-        parameter    D13_ST   =   18,
-        parameter    D14_ST   =   19,
-        parameter    D15_ST   =   20,
-        parameter    STOP1_ST   =   21,
-        parameter    IDLE2_ST   =   22,
-        parameter    START2_ST   =   23,
-        parameter    D16_ST   =   24,
-        parameter    D17_ST   =   25,
-        parameter    D18_ST   =   26,
-        parameter    D19_ST   =   27,
-        parameter    D20_ST   =   28,
-        parameter    D21_ST   =   29,
-        parameter    D22_ST   =   30,
-        parameter    D23_ST   =   31,
-        parameter    STOP2_ST   =   32,
-        parameter    IDLE3_ST   =   33,
-        parameter    START3_ST   =   34,
-        parameter    D24_ST   =   35,
-        parameter    D25_ST   =   36,
-        parameter    D26_ST   =   37,
-        parameter    D27_ST   =   38,
-        parameter    D28_ST   =   39,
-        parameter    D29_ST   =   40,
-        parameter    D30_ST   =   41,
-        parameter    D31_ST   =   42,
-        parameter    STOP3_ST   =   43
-    )
     (
         input RSTL_I,
         input CLK_I, // Assume 50MHz
         input TX_VALID_I,
         input [31:0] TX_DATA_I, // 8'h55
-        output reg TX_DATA_O
+        output reg TX_DATA_O,
+        output TX_READY_O
     );
 
     /*
         원하는 것: TX_VALID가 HIGH 일 때 출력, TX_VALID는 LED로 확인
     */
+    localparam   BAUD_RATE = 32'd115_200;
+    localparam    IDLE0_ST   =   0;
+    localparam    START0_ST   =   1;
+    localparam    D0_ST   =   2;
+    localparam    D1_ST   =   3;
+    localparam    D2_ST   =   4;
+    localparam    D3_ST   =   5;
+    localparam    D4_ST   =   6;
+    localparam    D5_ST   =   7;
+    localparam    D6_ST   =   8;
+    localparam    D7_ST   =   9;
+    localparam    STOP0_ST   =   10;
+    localparam    IDLE1_ST   =   11;
+    localparam    START1_ST   =   12;
+    localparam    D8_ST   =   13;
+    localparam    D9_ST   =   14;
+    localparam    D10_ST   =   15;
+    localparam    D11_ST   =   16;
+    localparam    D12_ST   =   17;
+    localparam    D13_ST   =   18;
+    localparam    D14_ST   =   19;
+    localparam    D15_ST   =   20;
+    localparam    STOP1_ST   =   21;
+    localparam    IDLE2_ST   =   22;
+    localparam    START2_ST   =   23;
+    localparam    D16_ST   =   24;
+    localparam    D17_ST   =   25;
+    localparam    D18_ST   =   26;
+    localparam    D19_ST   =   27;
+    localparam    D20_ST   =   28;
+    localparam    D21_ST   =   29;
+    localparam    D22_ST   =   30;
+    localparam    D23_ST   =   31;
+    localparam    STOP2_ST   =   32;
+    localparam    IDLE3_ST   =   33;
+    localparam    START3_ST   =   34;
+    localparam    D24_ST   =   35;
+    localparam    D25_ST   =   36;
+    localparam    D26_ST   =   37;
+    localparam    D27_ST   =   38;
+    localparam    D28_ST   =   39;
+    localparam    D29_ST   =   40;
+    localparam    D30_ST   =   41;
+    localparam    D31_ST   =   42;
+    localparam    STOP3_ST   =   43;
 
     reg [7:0] tx_state = IDLE0_ST;
 	reg [31:0] tx_data = 32'h4443_4241; // 8'h55
