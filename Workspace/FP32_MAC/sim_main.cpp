@@ -82,6 +82,22 @@ int main(int argc, char** argv, char** env) {
 
     float32 aa, bb, acc;
 
+    aa.total = 0.5; bb.total = -0.75; acc.total_int = 0x00;
+    test_case(top, wave_fp, aa, bb, acc, kazu);
+    kazu++;
+
+    aa.total = 0.5; bb.total = 0.4375; acc.total_int = 0x00;
+    test_case(top, wave_fp, aa, bb, acc, kazu);
+    kazu++;
+
+    aa.total = 0; bb.total = 0; acc.total_int = 0x00;
+    test_case(top, wave_fp, aa, bb, acc, kazu); acc.total_int = 0x00;
+    kazu++;
+
+    aa.total = 0; bb.total = 0; acc.total_int = 0x00;
+    test_case(top, wave_fp, aa, bb, acc, kazu);
+    kazu++;
+
     aa.total_int = 0x000568bf; bb.total_int = 0x41ab0eb4; acc.total_int = 0x0bad206c;
     test_case(top, wave_fp, aa, bb, acc, kazu);
     kazu++;
@@ -150,9 +166,6 @@ int main(int argc, char** argv, char** env) {
     test_case(top, wave_fp, aa, bb, acc, kazu);
     kazu++;
 
-    aa.total = 0.5; bb.total = 0.4375; acc.total_int = 0x00;
-    test_case(top, wave_fp, aa, bb, acc, kazu);
-    kazu++;
 
     aa.total_int = 0x643c9869; bb.total_int = 0x66334873; acc.total_int = 0x00;
     test_case(top, wave_fp, aa, bb, acc, kazu);
@@ -162,17 +175,7 @@ int main(int argc, char** argv, char** env) {
     test_case(top, wave_fp, aa, bb, acc, kazu);
     kazu++;
 
-    aa.total = 0.5; bb.total = 0.75; acc.total_int = 0x00;
-    test_case(top, wave_fp, aa, bb, acc, kazu);
-    kazu++;
 
-    aa.total = 0; bb.total = 0; acc.total_int = 0x00;
-    test_case(top, wave_fp, aa, bb, acc, kazu); acc.total_int = 0x00;
-    kazu++;
-
-    aa.total = 0; bb.total = 0; acc.total_int = 0x00;
-    test_case(top, wave_fp, aa, bb, acc, kazu);
-    kazu++;
 
 
     srand(time(NULL));

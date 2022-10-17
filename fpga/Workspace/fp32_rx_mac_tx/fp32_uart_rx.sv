@@ -1,3 +1,4 @@
+// `timescale 10ns/10ns
 `define DEBUG_RX
 
 module fp32_uart_rx
@@ -170,8 +171,8 @@ module fp32_uart_rx
 
         // Stay here 1 clock
         ZZIN_MORE :
-            RX_VALID_O = 1;
             begin
+            RX_VALID_O = 1;
                 if (clk_cnt < 443)
                 begin
                     clk_cnt      = clk_cnt + 1;
@@ -185,8 +186,8 @@ module fp32_uart_rx
             end
 
         ZZIN_IDLE :
-            RX_VALID_O = 1;
             begin
+            RX_VALID_O = 1;
                 clk_cnt     = 0;
                 received_bit     = 0;
                 if (UART_RX_I == 1'b0) begin // UART 가 0이면 즉시 START 로 이동

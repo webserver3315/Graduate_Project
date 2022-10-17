@@ -1,6 +1,10 @@
-// `include "fp32_uart_rx.sv"
-`include "fp32_mac.sv"
-// `include "fp32_uart_tx.sv"
+//`timescale 10ns/10ns
+//`include "fp32_posedge_detector.sv"
+//`include "fp32_uart_rx.sv"
+//`include "fp32_multiplier.sv"
+//`include "fp32_adder.sv"
+//`include "fp32_mac.sv"
+//`include "fp32_uart_tx.sv"
 
 module fp32_rx_mac_tx
     (

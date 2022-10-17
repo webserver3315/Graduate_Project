@@ -1,3 +1,5 @@
+// `timescale 10ns/10ns
+
 module fp32_uart_tx
     (
         input RSTL_I,
@@ -58,23 +60,28 @@ module fp32_uart_tx
     localparam    STOP3_ST   =   43;
 
     reg [7:0] tx_state = IDLE0_ST;
-	reg [31:0] tx_data = 32'h4443_4241; // 8'h55
+	reg [31:0] tx_data = 32'h0000_0000; // 8'h55
     reg [31:0] clk_cnt;
 
-    reg tx_valid_before = 0;
+    wire tx_valid_i_posedge;
+    posedge_detector My_posedge_detector
+    (
+        .clk(CLK_I),
+        .sig(TX_VALID_I),
+        .pulse(tx_valid_i_posedge)
+    );
 
     always @(posedge CLK_I or negedge RSTL_I) begin
         if(~RSTL_I) begin
             tx_state = IDLE0_ST;
             clk_cnt = 0;
             // tx_data = tx_data + 1;
-            tx_data = 32'h4443_4241;
-            tx_valid_before = 0;
+            tx_data = 32'h0000_0000;
         end
         else begin // 50MHz(20ns) to 115200 BR(8.68us)=>div_434
             case(tx_state)
                 IDLE0_ST   :   begin // 천이조건이 유일하게 TX_VALID_I. 즉, clk_div sensitive 가 아니다.
-                    if(TX_VALID_I & (~tx_valid_before)) begin // BTN1 PRESSED(==LOW)
+                    if(tx_valid_i_posedge) begin // BTN1 PRESSED(==LOW)
                         clk_cnt = 0;
                         tx_data = TX_DATA_I;
                         tx_state = START0_ST;
@@ -517,7 +524,6 @@ module fp32_uart_tx
                 default: begin
                 end
             endcase
-            tx_valid_before = TX_VALID_I;
         end
     end
 

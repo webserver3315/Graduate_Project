@@ -164,6 +164,12 @@ int main(int argc, char** argv, char** env) {
     put_Four_Byte(top, wave_fp, string("BF000000"));
     put_Four_Byte(top, wave_fp, string("3F400000"));
     put_Four_Byte(top, wave_fp, string("00000000"));
+    //0xbec00000
+
+    put_Four_Byte(top, wave_fp, string("3F000000"));
+    put_Four_Byte(top, wave_fp, string("3EE00000"));
+    put_Four_Byte(top, wave_fp, string("00000000"));
+    //0x3e600000
 
     for(int i=0;i<100;i++){
         test_case_433(top, wave_fp, 1, 1);

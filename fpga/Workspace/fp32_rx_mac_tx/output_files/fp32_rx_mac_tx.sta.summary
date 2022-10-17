@@ -2,112 +2,40 @@
 Timing Analyzer Summary
 ------------------------------------------------------------
 
-Type  : Slow 1200mV 85C Model Setup 'FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O'
-Slack : -60.429
-TNS   : -1887.258
-
 Type  : Slow 1200mV 85C Model Setup 'CLK_I'
-Slack : -7.220
-TNS   : -1469.950
-
-Type  : Slow 1200mV 85C Model Setup 'fp32_uart_rx:My_UART_Rx|RX_VALID_O'
-Slack : -2.236
-TNS   : -239.243
+Slack : -4.688
+TNS   : -803.426
 
 Type  : Slow 1200mV 85C Model Hold 'CLK_I'
-Slack : -1.316
-TNS   : -2.837
-
-Type  : Slow 1200mV 85C Model Hold 'fp32_uart_rx:My_UART_Rx|RX_VALID_O'
-Slack : 0.898
+Slack : 0.433
 TNS   : 0.000
-
-Type  : Slow 1200mV 85C Model Hold 'FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O'
-Slack : 1.809
-TNS   : 0.000
-
-Type  : Slow 1200mV 85C Model Minimum Pulse Width 'fp32_uart_rx:My_UART_Rx|RX_VALID_O'
-Slack : -4.000
-TNS   : -431.904
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'CLK_I'
 Slack : -3.000
-TNS   : -437.204
-
-Type  : Slow 1200mV 85C Model Minimum Pulse Width 'FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O'
-Slack : -1.487
-TNS   : -47.584
-
-Type  : Slow 1200mV 0C Model Setup 'FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O'
-Slack : -56.821
-TNS   : -1769.078
+TNS   : -347.984
 
 Type  : Slow 1200mV 0C Model Setup 'CLK_I'
-Slack : -6.789
-TNS   : -1364.340
-
-Type  : Slow 1200mV 0C Model Setup 'fp32_uart_rx:My_UART_Rx|RX_VALID_O'
-Slack : -2.190
-TNS   : -231.066
+Slack : -4.331
+TNS   : -733.959
 
 Type  : Slow 1200mV 0C Model Hold 'CLK_I'
-Slack : -1.197
-TNS   : -2.652
-
-Type  : Slow 1200mV 0C Model Hold 'fp32_uart_rx:My_UART_Rx|RX_VALID_O'
-Slack : 0.926
+Slack : 0.383
 TNS   : 0.000
-
-Type  : Slow 1200mV 0C Model Hold 'FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O'
-Slack : 1.619
-TNS   : 0.000
-
-Type  : Slow 1200mV 0C Model Minimum Pulse Width 'fp32_uart_rx:My_UART_Rx|RX_VALID_O'
-Slack : -4.000
-TNS   : -433.668
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'CLK_I'
 Slack : -3.000
-TNS   : -437.204
-
-Type  : Slow 1200mV 0C Model Minimum Pulse Width 'FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O'
-Slack : -1.487
-TNS   : -47.584
-
-Type  : Fast 1200mV 0C Model Setup 'FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O'
-Slack : -26.081
-TNS   : -814.471
+TNS   : -347.984
 
 Type  : Fast 1200mV 0C Model Setup 'CLK_I'
-Slack : -2.587
-TNS   : -461.047
-
-Type  : Fast 1200mV 0C Model Setup 'fp32_uart_rx:My_UART_Rx|RX_VALID_O'
-Slack : -0.725
-TNS   : -55.734
+Slack : -1.363
+TNS   : -204.834
 
 Type  : Fast 1200mV 0C Model Hold 'CLK_I'
-Slack : -0.679
-TNS   : -1.454
-
-Type  : Fast 1200mV 0C Model Hold 'fp32_uart_rx:My_UART_Rx|RX_VALID_O'
-Slack : 0.586
-TNS   : 0.000
-
-Type  : Fast 1200mV 0C Model Hold 'FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O'
-Slack : 1.074
+Slack : 0.178
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'CLK_I'
 Slack : -3.000
-TNS   : -314.650
-
-Type  : Fast 1200mV 0C Model Minimum Pulse Width 'fp32_uart_rx:My_UART_Rx|RX_VALID_O'
-Slack : -1.000
-TNS   : -168.000
-
-Type  : Fast 1200mV 0C Model Minimum Pulse Width 'FP32_MAC_Combinatorial:My_MAC|MAC_VALID_O'
-Slack : -1.000
-TNS   : -32.000
+TNS   : -251.348
 
 ------------------------------------------------------------
