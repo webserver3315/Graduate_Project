@@ -1,5 +1,5 @@
 Analysis & Synthesis report for rx_96_tx
-Tue Oct 18 02:26:16 2022
+Tue Oct 18 02:29:23 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -50,7 +50,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Oct 18 02:26:16 2022       ;
+; Analysis & Synthesis Status        ; Successful - Tue Oct 18 02:29:23 2022       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; rx_96_tx                                    ;
 ; Top-level Entity Name              ; top                                         ;
@@ -209,7 +209,7 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;             ;
 ; Maximum fan-out node                        ; CLK_I~input ;
 ; Maximum fan-out                             ; 221         ;
-; Total fan-out                               ; 1410        ;
+; Total fan-out                               ; 1409        ;
 ; Average fan-out                             ; 3.52        ;
 +---------------------------------------------+-------------+
 
@@ -221,8 +221,8 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------+------------------+--------------+
 ; |top                                         ; 171 (0)             ; 221 (0)                   ; 0           ; 0            ; 0       ; 0         ; 4    ; 0            ; |top                                                                    ; top              ; work         ;
 ;    |fp32_uart_rx:My_UART_Rx|                 ; 95 (95)             ; 55 (55)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fp32_uart_rx:My_UART_Rx                                            ; fp32_uart_rx     ; work         ;
-;    |fp32_uart_tx_96:My_UART_Tx_96|           ; 76 (75)             ; 166 (165)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fp32_uart_tx_96:My_UART_Tx_96                                      ; fp32_uart_tx_96  ; work         ;
-;       |posedge_detector:My_posedge_detector| ; 1 (1)               ; 1 (1)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fp32_uart_tx_96:My_UART_Tx_96|posedge_detector:My_posedge_detector ; posedge_detector ; work         ;
+;    |fp32_uart_tx_96:My_UART_Tx_96|           ; 76 (76)             ; 166 (165)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fp32_uart_tx_96:My_UART_Tx_96                                      ; fp32_uart_tx_96  ; work         ;
+;       |posedge_detector:My_posedge_detector| ; 0 (0)               ; 1 (1)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fp32_uart_tx_96:My_UART_Tx_96|posedge_detector:My_posedge_detector ; posedge_detector ; work         ;
 +----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------+------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -416,7 +416,7 @@ Encoding Type:  One-Hot
 ; Total registers                              ; 221   ;
 ; Number of registers using Synchronous Clear  ; 71    ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 188   ;
+; Number of registers using Asynchronous Clear ; 187   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 203   ;
 ; Number of registers using Preset             ; 0     ;
@@ -460,11 +460,11 @@ Encoding Type:  One-Hot
 +-----------------------+-----------------------------+
 ; boundary_port         ; 4                           ;
 ; cycloneiii_ff         ; 221                         ;
-;     CLR               ; 17                          ;
+;     CLR               ; 16                          ;
 ;     ENA CLR           ; 132                         ;
 ;     ENA CLR SCLR      ; 39                          ;
 ;     ENA SCLR          ; 32                          ;
-;     plain             ; 1                           ;
+;     plain             ; 2                           ;
 ; cycloneiii_lcell_comb ; 171                         ;
 ;     arith             ; 74                          ;
 ;         2 data inputs ; 74                          ;
@@ -494,7 +494,7 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Tue Oct 18 02:26:08 2022
+    Info: Processing started: Tue Oct 18 02:29:16 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off rx_96_tx -c rx_96_tx
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
@@ -524,9 +524,9 @@ Info (21057): Implemented 308 device resources after synthesis - the final resou
     Info (21059): Implemented 1 output pins
     Info (21061): Implemented 304 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 4816 megabytes
-    Info: Processing ended: Tue Oct 18 02:26:16 2022
-    Info: Elapsed time: 00:00:08
+    Info: Peak virtual memory: 4818 megabytes
+    Info: Processing ended: Tue Oct 18 02:29:23 2022
+    Info: Elapsed time: 00:00:07
     Info: Total CPU time (on all processors): 00:00:15
 
 

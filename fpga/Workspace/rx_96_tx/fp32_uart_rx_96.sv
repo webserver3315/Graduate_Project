@@ -38,7 +38,9 @@ module fp32_uart_rx
     reg DEBUG_CLK;    
     `endif
 
-    // Purpose: Control RX state machine
+    // 문제
+    // 1. RSTN 이후, 1회는 반드시 응답을 안함
+    // 2. 응답 5회 이후, 1회는 반드시 응답을 안함.
     always @(posedge CLK_I or negedge RSTL_I) begin
     if (~RSTL_I) begin
         rx_state       = IDLE;

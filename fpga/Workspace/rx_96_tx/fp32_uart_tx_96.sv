@@ -1,5 +1,5 @@
 // `timescale 10ns/10ns
-// `define DEBUG_TX_96
+`define DEBUG_TX_96
 
 module fp32_uart_tx_96
     (
@@ -181,8 +181,7 @@ module fp32_uart_tx_96
                         `ifdef DEBUG_TX_96
                         tx_data = 96'h0123_4567_89AB_CDEF_1122_3344;
                         `else
-                        // tx_data = TX_DATA_I;
-                        tx_data = 96'h0123_4567_89AB_CDEF_1122_3344;
+                        tx_data = TX_DATA_I;
                         `endif
                         tx_state = START0_ST;
                     end
