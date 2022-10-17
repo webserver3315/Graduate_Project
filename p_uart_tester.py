@@ -4,7 +4,7 @@ import weakref
 from serial import Serial
 import time
 
-ser = Serial('COM5', 115200, timeout = 0)
+ser = Serial('COM5', 9600, timeout = 0)
 newfile = open("output.bin", "wb")
 # ser = Serial('dev/ttyS5', 115200)
 
@@ -13,20 +13,23 @@ def TryWrite(ser, byte_string):
     print("Sent ", byte_string)
     ser.write(byte_string)
     time.sleep(0.5)
-    print("Sleep 1sec Completed")
+    print("Sleep .5sec Completed")
 
 def TryRead(ser):
-    result = ser.read(size=4)
+    list = []
+    for i in range(0,4,1):
+        result = ser.read(size=1)
+        result_hex = result.hex()
+        list.append(result_hex)
     time.sleep(0.5)
-    print("Sleep 1sec Completed")
-    print("result type : ", type(result))
-    result_hex = result.hex()
-    print("Read : 0x", result)
-    print("Read hexa: 0x", result_hex)
+    list.reverse()
+    print("Read list is ", list)
+    # print("Read : 0x", result)
+    # print("Read hexa: 0x", result_hex)
 
-    newfile.write(result)
-    newfile.flush()
-    print(result)
+    # newfile.write(result)
+    # newfile.flush()
+    # print(result)
 
 def alpha_bravo_acc(alpha, bravo, acc):
     hexstring = acc + bravo + alpha;
@@ -53,7 +56,7 @@ def test_05_75_00():
                 bravo = "00000000"
                 acc = "00000000"                
                 TryRead(ser)
-            elif arg == 'a':
+            elif arg == 'z':
                 alpha = "00000000"
                 bravo = "00000000"
                 acc = "00000000"
@@ -61,7 +64,7 @@ def test_05_75_00():
                 bstring = bytes.fromhex(hexstring)
                 TryWrite(ser, bstring)
                 TryRead(ser)
-            elif arg == 'b':            
+            elif arg == 'p':            
                 alpha = "00000000"
                 bravo = "00000000"
                 acc = "00100000"
@@ -69,7 +72,7 @@ def test_05_75_00():
                 bstring = bytes.fromhex(hexstring)
                 TryWrite(ser, bstring)
                 TryRead(ser)
-            elif arg == 'c':
+            elif arg == 'a':
                 alpha = "BF000000"
                 bravo = "3F400000"
                 acc = "00000000"
@@ -78,7 +81,7 @@ def test_05_75_00():
                 TryWrite(ser, bstring)
                 TryRead(ser)
                 #0xbec00000
-            elif arg == 'd':
+            elif arg == 'b':
                 alpha = "3F000000"
                 bravo = "3EE00000"
                 acc = "00000000"

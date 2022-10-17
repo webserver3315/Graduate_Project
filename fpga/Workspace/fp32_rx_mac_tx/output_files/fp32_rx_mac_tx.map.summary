@@ -1,14 +1,14 @@
-Analysis & Synthesis Status : Successful - Tue Oct 18 00:10:55 2022
+Analysis & Synthesis Status : Successful - Tue Oct 18 01:28:55 2022
 Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 Revision Name : fp32_rx_mac_tx
 Top-level Entity Name : fp32_rx_mac_tx
 Family : Cyclone IV E
-Total logic elements : 325
-    Total combinational functions : 246
-    Dedicated logic registers : 232
-Total registers : 232
+Total logic elements : 2,221
+    Total combinational functions : 2,142
+    Dedicated logic registers : 237
+Total registers : 237
 Total pins : 4
 Total virtual pins : 0
 Total memory bits : 0
-Embedded Multiplier 9-bit elements : 0
+Embedded Multiplier 9-bit elements : 7
 Total PLLs : 0

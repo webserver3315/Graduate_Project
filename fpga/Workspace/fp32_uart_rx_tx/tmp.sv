@@ -54,7 +54,7 @@ module fp32_uart_rx
         START :
             begin
                 RX_VALID_O <= 1'b0;
-                if (clk_cnt == (443 / 2)) begin
+                if (clk_cnt == (434 / 2)) begin
                     if (UART_RX_I == 1'b0) begin
                         clk_cnt  <= 0;  // START 진입 후 절반시점에, 여전히 UART 가 0이어야 DATA 로 진입
                         rx_state <= DATA;
@@ -73,7 +73,7 @@ module fp32_uart_rx
         DATA :
             begin
                 RX_VALID_O <= 1'b0;
-                if (clk_cnt < 443) begin
+                if (clk_cnt < 434) begin
                     clk_cnt     <= clk_cnt + 1;
                     rx_state    <= DATA;
                 end
@@ -103,7 +103,7 @@ module fp32_uart_rx
         STOP :
             begin
             RX_VALID_O <= 1'b0;
-            if (clk_cnt < 443)
+            if (clk_cnt < 434)
             begin
                 clk_cnt      <= clk_cnt + 1;
                 rx_state     <= STOP;
@@ -212,7 +212,7 @@ module fp32_uart_tx
                     end
                 end
                 START0_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D0_ST;
                     end
@@ -222,7 +222,7 @@ module fp32_uart_tx
                     end
                 end
                 D0_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D1_ST;
                     end
@@ -232,7 +232,7 @@ module fp32_uart_tx
                     end
                 end
                 D1_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D2_ST;
                     end
@@ -242,7 +242,7 @@ module fp32_uart_tx
                     end
                 end
                 D2_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D3_ST;
                     end
@@ -252,7 +252,7 @@ module fp32_uart_tx
                     end
                 end
                 D3_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D4_ST;
                     end
@@ -262,7 +262,7 @@ module fp32_uart_tx
                     end
                 end
                 D4_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D5_ST;
                     end
@@ -272,7 +272,7 @@ module fp32_uart_tx
                     end
                 end
                 D5_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D6_ST;
                     end
@@ -282,7 +282,7 @@ module fp32_uart_tx
                     end
                 end
                 D6_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D7_ST;
                     end
@@ -292,7 +292,7 @@ module fp32_uart_tx
                     end
                 end
                 D7_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = STOP0_ST;
                     end
@@ -302,7 +302,7 @@ module fp32_uart_tx
                     end
                 end
                 STOP0_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = IDLE1_ST;
                     end
@@ -312,7 +312,7 @@ module fp32_uart_tx
                     end
                 end
                 IDLE1_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = START1_ST;
                     end
@@ -322,7 +322,7 @@ module fp32_uart_tx
                     end
                 end
                 START1_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D8_ST;
                     end
@@ -332,7 +332,7 @@ module fp32_uart_tx
                     end
                 end
                 D8_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D9_ST;
                     end
@@ -342,7 +342,7 @@ module fp32_uart_tx
                     end
                 end
                 D9_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D10_ST;
                     end
@@ -352,7 +352,7 @@ module fp32_uart_tx
                     end
                 end
                 D10_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D11_ST;
                     end
@@ -362,7 +362,7 @@ module fp32_uart_tx
                     end
                 end
                 D11_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D12_ST;
                     end
@@ -372,7 +372,7 @@ module fp32_uart_tx
                     end
                 end
                 D12_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D13_ST;
                     end
@@ -382,7 +382,7 @@ module fp32_uart_tx
                     end
                 end
                 D13_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D14_ST;
                     end
@@ -392,7 +392,7 @@ module fp32_uart_tx
                     end
                 end
                 D14_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D15_ST;
                     end
@@ -402,7 +402,7 @@ module fp32_uart_tx
                     end
                 end
                 D15_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = STOP1_ST;
                     end
@@ -412,7 +412,7 @@ module fp32_uart_tx
                     end
                 end
                 STOP1_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = IDLE2_ST;
                     end
@@ -422,7 +422,7 @@ module fp32_uart_tx
                     end
                 end
                 IDLE2_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = START2_ST;
                     end
@@ -432,7 +432,7 @@ module fp32_uart_tx
                     end
                 end
                 START2_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D16_ST;
                     end
@@ -442,7 +442,7 @@ module fp32_uart_tx
                     end
                 end
                 D16_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D17_ST;
                     end
@@ -452,7 +452,7 @@ module fp32_uart_tx
                     end
                 end
                 D17_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D18_ST;
                     end
@@ -462,7 +462,7 @@ module fp32_uart_tx
                     end
                 end
                 D18_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D19_ST;
                     end
@@ -472,7 +472,7 @@ module fp32_uart_tx
                     end
                 end
                 D19_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D20_ST;
                     end
@@ -482,7 +482,7 @@ module fp32_uart_tx
                     end
                 end
                 D20_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D21_ST;
                     end
@@ -492,7 +492,7 @@ module fp32_uart_tx
                     end
                 end
                 D21_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D22_ST;
                     end
@@ -502,7 +502,7 @@ module fp32_uart_tx
                     end
                 end
                 D22_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D23_ST;
                     end
@@ -512,7 +512,7 @@ module fp32_uart_tx
                     end
                 end
                 D23_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = STOP2_ST;
                     end
@@ -522,7 +522,7 @@ module fp32_uart_tx
                     end
                 end
                 STOP2_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = IDLE3_ST;
                     end
@@ -532,7 +532,7 @@ module fp32_uart_tx
                     end
                 end
                 IDLE3_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = START3_ST;
                     end
@@ -542,7 +542,7 @@ module fp32_uart_tx
                     end
                 end
                 START3_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D24_ST;
                     end
@@ -552,7 +552,7 @@ module fp32_uart_tx
                     end
                 end
                 D24_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D25_ST;
                     end
@@ -562,7 +562,7 @@ module fp32_uart_tx
                     end
                 end
                 D25_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D26_ST;
                     end
@@ -572,7 +572,7 @@ module fp32_uart_tx
                     end
                 end
                 D26_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D27_ST;
                     end
@@ -582,7 +582,7 @@ module fp32_uart_tx
                     end
                 end
                 D27_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D28_ST;
                     end
@@ -592,7 +592,7 @@ module fp32_uart_tx
                     end
                 end
                 D28_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D29_ST;
                     end
@@ -602,7 +602,7 @@ module fp32_uart_tx
                     end
                 end
                 D29_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D30_ST;
                     end
@@ -612,7 +612,7 @@ module fp32_uart_tx
                     end
                 end
                 D30_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = D31_ST;
                     end
@@ -622,7 +622,7 @@ module fp32_uart_tx
                     end
                 end
                 D31_ST   :   begin
-                    if(clk_cnt == 443) begin
+                    if(clk_cnt == 434) begin
                         clk_cnt = 0;
                         tx_state = STOP3_ST;
                     end

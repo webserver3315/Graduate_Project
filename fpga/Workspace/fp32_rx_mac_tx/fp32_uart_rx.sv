@@ -10,7 +10,9 @@ module fp32_uart_rx
     output reg       RX_VALID_O,
     output reg [95:0] RX_DATA_O // TYPE "AAAA BBBB CCCC"
     );
-    
+
+    localparam MAX_CLK_CNT = 5208;
+
     localparam IDLE         = 0;
     localparam START        = 1;
     localparam DATA         = 2;
@@ -66,7 +68,7 @@ module fp32_uart_rx
         START :
             begin
                 RX_VALID_O = 0;
-                if (clk_cnt == (443 / 2)) begin
+                if (clk_cnt == (MAX_CLK_CNT / 2)) begin
                     if (UART_RX_I == 1'b0) begin
                         clk_cnt  = 0;  // START 진입 후 절반시점에, 여전히 UART 가 0이어야 DATA 로 진입
                         rx_state = DATA;
@@ -86,7 +88,7 @@ module fp32_uart_rx
         DATA :
             begin
                 RX_VALID_O = 0;
-                if (clk_cnt < 443) begin
+                if (clk_cnt < MAX_CLK_CNT) begin
                     clk_cnt     = clk_cnt + 1;
                     rx_state    = DATA;
                 end
@@ -122,7 +124,7 @@ module fp32_uart_rx
             `ifdef DEBUG_RX
             DEBUG_CLK = 0;
             `endif
-            if (clk_cnt < 443)
+            if (clk_cnt < MAX_CLK_CNT)
             begin
                 clk_cnt      = clk_cnt + 1;
                 rx_state     = STOP;
@@ -138,7 +140,7 @@ module fp32_uart_rx
         MORE :
             begin
                 RX_VALID_O = 0;
-                if (clk_cnt < 443)
+                if (clk_cnt < MAX_CLK_CNT)
                 begin
                     clk_cnt      = clk_cnt + 1;
                     rx_state     = MORE;
@@ -157,7 +159,7 @@ module fp32_uart_rx
             `ifdef DEBUG_RX
             DEBUG_CLK = 0;
             `endif
-            if (clk_cnt < 443)
+            if (clk_cnt < MAX_CLK_CNT)
             begin
                 clk_cnt      = clk_cnt + 1;
                 rx_state     = ZZIN_STOP;
@@ -173,7 +175,7 @@ module fp32_uart_rx
         ZZIN_MORE :
             begin
             RX_VALID_O = 1;
-                if (clk_cnt < 443)
+                if (clk_cnt < MAX_CLK_CNT)
                 begin
                     clk_cnt      = clk_cnt + 1;
                     rx_state     = ZZIN_MORE;

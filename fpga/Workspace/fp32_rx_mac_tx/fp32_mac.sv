@@ -6,6 +6,8 @@
     FP32_MAC
 */
 
+// made delta reg
+
 module FP32_MAC_Combinatorial
     (
         input   wire            RSTL_I,
@@ -15,14 +17,16 @@ module FP32_MAC_Combinatorial
         input   reg     [31:0]  acc,
         input   wire            MAC_VALID_I,
         input   wire            MAC_READY_I,
-        output  wire     [31:0]  delta,
+        output  reg     [31:0]  delta,
         output  reg             MAC_READY_O,
         output  reg             MAC_VALID_O
     );
+    localparam MAX_CLK_CNT = 5208;
 
     localparam RST = 0;
     localparam CALC = 1;
     localparam IDLE = 2;
+    localparam SHOW = 3; // RST => CALC => SHOW => IDLE => CALC => SHOW => IDLE
 
     reg     [31:0]  alpha_internal;
     reg     [31:0]  bravo_internal;
@@ -54,7 +58,10 @@ module FP32_MAC_Combinatorial
 
             `ifdef DEBUG_MAC
             delta <= 0;
+            `else
+            delta <= delta_internal;
             `endif
+
         end
         else begin
             case(mac_state)
@@ -62,6 +69,11 @@ module FP32_MAC_Combinatorial
                     MAC_VALID_O <= 0;
                     clk_cnt <= 0;              
                     if(mac_valid_i_posedge) begin
+                        `ifdef DEBUG_MAC
+                        alpha_internal <= 32'hBF00_0000;
+                        bravo_internal <= 32'h3F40_0000;
+                        acc_internal <= 32'd0;
+                        `endif
                         mac_state <= CALC;
                     end
                     else begin
@@ -69,35 +81,51 @@ module FP32_MAC_Combinatorial
                     end
                 end
                 CALC: begin
-                    // alpha_internal <= alpha;
-                    // bravo_internal <= bravo;
-                    // acc_internal <= acc;
-
                     `ifdef DEBUG_MAC
-                    alpha_internal <= 32'd0;
-                    bravo_internal <= 32'd0;
-                    acc_internal <= 32'd0;
+                    `else
+                    alpha_internal <= alpha;
+                    bravo_internal <= bravo;
+                    acc_internal <= acc;
                     `endif
 
                     MAC_VALID_O <= 0;
-                    if(clk_cnt < 433) begin                        
+                    if(clk_cnt < MAX_CLK_CNT * 100) begin                        
                         clk_cnt <= clk_cnt + 1;
                         mac_state <= CALC;
                     end
                     else begin
                         clk_cnt <= 0;
-                        `ifdef DEBUG_MAC
-                        delta <= delta + 1;
-                        `endif
+                        mac_state <= SHOW;
+                    end
+                end
+                SHOW: begin
+                    MAC_VALID_O <= 0;
+                    delta <= delta_internal;
+                    if(clk_cnt < MAX_CLK_CNT) begin                        
+                        clk_cnt <= clk_cnt + 1;
+                        mac_state <= SHOW;
+                    end
+                    else begin
+                        clk_cnt <= 0;
                         mac_state <= IDLE;
                     end
                 end
-                IDLE: begin         
-                    // delta <= delta_internal;
-
+                IDLE: begin
                     MAC_VALID_O <= 1;
                     clk_cnt <= 0;
                     if(mac_valid_i_posedge) begin
+                        `ifdef DEBUG_MAC
+                        if(alpha_internal == 32'h3F00_0000) begin
+                            alpha_internal <= 32'hBF00_0000;
+                            bravo_internal <= 32'h3F40_0000;
+                            acc_internal <= 32'd0;
+                        end
+                        else begin
+                            alpha_internal <= 32'h3F00_0000;
+                            bravo_internal <= 32'h3EE0_0000;
+                            acc_internal <= 32'd0;
+                        end
+                        `endif
                         mac_state <= CALC;
                     end
                     else begin
