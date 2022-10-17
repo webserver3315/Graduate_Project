@@ -15,9 +15,9 @@ def TryWrite(ser, byte_string):
     time.sleep(0.5)
     print("Sleep .5sec Completed")
 
-def TryRead(ser):
+def TryRead(ser, bytelen):
     list = []
-    for i in range(0,4,1):
+    for i in range(0,bytelen,1):
         result = ser.read(size=1)
         result_hex = result.hex()
         list.append(result_hex)
@@ -55,7 +55,7 @@ def test_05_75_00():
                 alpha = "00000000"
                 bravo = "00000000"
                 acc = "00000000"                
-                TryRead(ser)
+                TryRead(ser,12)
             elif arg == 'z':
                 alpha = "00000000"
                 bravo = "00000000"
@@ -63,7 +63,7 @@ def test_05_75_00():
                 hexstring = alpha_bravo_acc(alpha, bravo, acc)
                 bstring = bytes.fromhex(hexstring)
                 TryWrite(ser, bstring)
-                TryRead(ser)
+                TryRead(ser,12)
             elif arg == 'p':            
                 alpha = "00000000"
                 bravo = "00000000"
@@ -71,7 +71,7 @@ def test_05_75_00():
                 hexstring = alpha_bravo_acc(alpha, bravo, acc)
                 bstring = bytes.fromhex(hexstring)
                 TryWrite(ser, bstring)
-                TryRead(ser)
+                TryRead(ser,12)
             elif arg == 'a':
                 alpha = "BF000000"
                 bravo = "3F400000"
@@ -79,7 +79,7 @@ def test_05_75_00():
                 hexstring = alpha_bravo_acc(alpha, bravo, acc)
                 bstring = bytes.fromhex(hexstring)
                 TryWrite(ser, bstring)
-                TryRead(ser)
+                TryRead(ser,12)
                 #0xbec00000
             elif arg == 'b':
                 alpha = "3F000000"
@@ -88,7 +88,7 @@ def test_05_75_00():
                 hexstring = alpha_bravo_acc(alpha, bravo, acc)
                 bstring = bytes.fromhex(hexstring)
                 TryWrite(ser, bstring)
-                TryRead(ser)
+                TryRead(ser,12)
                 # 0x3e600000
             elif arg == 'get':
                 get(ser,'ByteOrder')
@@ -120,19 +120,19 @@ def test_RXTX():
             # result = ser.readline()
 
             input()
-            TryRead(ser)
+            TryRead(ser,12)
 
             input()
             TryWrite(ser, b'C')
-            TryRead(ser)
+            TryRead(ser,12)
 
             input()
             TryWrite(ser, b'BBBB')
-            TryRead(ser)
+            TryRead(ser,12)
 
             input()
             TryWrite(ser, b'AAAA')
-            TryRead(ser)
+            TryRead(ser,12)
 
             result = ser.read(size=4)
             result_hex = result.hex()

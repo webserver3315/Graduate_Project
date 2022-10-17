@@ -89,7 +89,7 @@ module FP32_MAC_Combinatorial
                     `endif
 
                     MAC_VALID_O <= 0;
-                    if(clk_cnt < MAX_CLK_CNT * 100) begin                        
+                    if(clk_cnt < MAX_CLK_CNT) begin                        
                         clk_cnt <= clk_cnt + 1;
                         mac_state <= CALC;
                     end
