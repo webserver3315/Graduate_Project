@@ -8,12 +8,25 @@ ser = Serial('COM5', 9600, timeout = 0)
 newfile = open("output.bin", "wb")
 # ser = Serial('dev/ttyS5', 115200)
 
-def TryWrite(ser, byte_string):
-    # print("byte_string type : ", type(byte_string))
-    print("Sent ", byte_string)
-    ser.write(byte_string)
-    time.sleep(0.5)
-    print("Sleep .5sec Completed")
+def TryWrite_Bytewise(ser, one_byte_hex_string):
+    assert(len(one_byte_hex_string) == 2)
+    one_byte = bytes.fromhex(one_byte_hex_string)
+    print("Sent one_byte_hex_string(%s)" % one_byte_hex_string)
+    print("One_byte: ",one_byte)
+    ser.write(one_byte)
+
+def TryWrite(ser, four_byte_hex_string):
+    # print("four_byte_hex_string type : ", type(four_byte_hex_string))
+    assert(len(four_byte_hex_string) == 8)
+    TryWrite_Bytewise(ser, four_byte_hex_string[6:8])
+    time.sleep(0.1)
+    TryWrite_Bytewise(ser, four_byte_hex_string[4:6])
+    time.sleep(0.1)
+    TryWrite_Bytewise(ser, four_byte_hex_string[2:4])
+    time.sleep(0.1)
+    TryWrite_Bytewise(ser, four_byte_hex_string[0:2])
+    time.sleep(0.1)
+    print("Sent ", four_byte_hex_string)
 
 def TryRead(ser, bytelen):
     list = []
@@ -55,41 +68,61 @@ def test_05_75_00():
                 alpha = "00000000"
                 bravo = "00000000"
                 acc = "00000000"                
+                TryWrite(ser, alpha)
+                TryWrite(ser, bravo)
+                TryWrite(ser, acc)
                 TryRead(ser,12)
             elif arg == 'z':
                 alpha = "00000000"
                 bravo = "00000000"
                 acc = "00000000"
-                hexstring = alpha_bravo_acc(alpha, bravo, acc)
-                bstring = bytes.fromhex(hexstring)
-                TryWrite(ser, bstring)
+                TryWrite(ser, alpha)
+                TryWrite(ser, bravo)
+                TryWrite(ser, acc)
                 TryRead(ser,12)
             elif arg == 'p':            
                 alpha = "00000000"
                 bravo = "00000000"
                 acc = "00100000"
-                hexstring = alpha_bravo_acc(alpha, bravo, acc)
-                bstring = bytes.fromhex(hexstring)
-                TryWrite(ser, bstring)
+                TryWrite(ser, alpha)
+                TryWrite(ser, bravo)
+                TryWrite(ser, acc)
                 TryRead(ser,12)
-            elif arg == 'a':
+            elif arg == 'b':
+                tmp = input()
+                # b_tmp = bytes.fromhex(tmp)
+                # print("b_tmp: ", b_tmp)
+                for i in range (0,12,1):
+                    TryWrite_Bytewise(ser, tmp)
+                    time.sleep(0.1)
+                    TryRead(ser, 12)
+            elif arg == 'aa':
                 alpha = "BF000000"
                 bravo = "3F400000"
                 acc = "00000000"
-                hexstring = alpha_bravo_acc(alpha, bravo, acc)
-                bstring = bytes.fromhex(hexstring)
-                TryWrite(ser, bstring)
+                TryWrite(ser, alpha)
+                TryWrite(ser, bravo)
+                TryWrite(ser, acc)
                 TryRead(ser,12)
                 #0xbec00000
-            elif arg == 'b':
+            elif arg == 'bb':
                 alpha = "3F000000"
                 bravo = "3EE00000"
                 acc = "00000000"
-                hexstring = alpha_bravo_acc(alpha, bravo, acc)
-                bstring = bytes.fromhex(hexstring)
-                TryWrite(ser, bstring)
+                TryWrite(ser, alpha)
+                TryWrite(ser, bravo)
+                TryWrite(ser, acc)
                 TryRead(ser,12)
                 # 0x3e600000
+            elif arg == 'bytewise':
+                print("'Bytewise Selected")
+                alpha = "3F000000"
+                bravo = "3EE00000"
+                acc = "00000000"
+                TryWrite(ser, alpha)
+                TryWrite(ser, bravo)
+                TryWrite(ser, acc)
+                TryRead(ser,12)
             elif arg == 'get':
                 get(ser,'ByteOrder')
             elif arg == 'little':
