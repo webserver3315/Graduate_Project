@@ -546,72 +546,51 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__0(Vtop___024root* vlSelf) {
                                        >> 0x1fU)) & 
          (vlSelf->FP32_Adder_Combinatorial__DOT__added_Mantissa 
           >> 0x18U))) {
-        vlSelf->FP32_Adder_Combinatorial__DOT__final_R 
-            = (1U & vlSelf->FP32_Adder_Combinatorial__DOT__added_Mantissa);
-        vlSelf->FP32_Adder_Combinatorial__DOT__final_S 
-            = ((IData)(vlSelf->FP32_Adder_Combinatorial__DOT__R) 
-               | (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__S));
         vlSelf->FP32_Adder_Combinatorial__DOT__DEBUG_FINAL_EXP = 1U;
         vlSelf->FP32_Adder_Combinatorial__DOT__final_exponent 
             = (0xffU & ((IData)(1U) + (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__Larger_E)));
+    } else if ((0x800000U & vlSelf->FP32_Adder_Combinatorial__DOT__added_Mantissa)) {
+        vlSelf->FP32_Adder_Combinatorial__DOT__DEBUG_FINAL_EXP = 2U;
+        vlSelf->FP32_Adder_Combinatorial__DOT__final_exponent 
+            = (0xffU & ((0U == (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__Larger_E))
+                         ? 1U : (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__Larger_E)));
+    } else if (((IData)(vlSelf->FP32_Adder_Combinatorial__DOT__Larger_E) 
+                == (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__leading_1_position))) {
+        vlSelf->FP32_Adder_Combinatorial__DOT__DEBUG_FINAL_EXP = 3U;
+        vlSelf->FP32_Adder_Combinatorial__DOT__final_exponent 
+            = (0xffU & 1U);
+    } else if (((IData)(vlSelf->FP32_Adder_Combinatorial__DOT__Larger_E) 
+                > (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__leading_1_position))) {
+        vlSelf->FP32_Adder_Combinatorial__DOT__DEBUG_FINAL_EXP = 4U;
+        vlSelf->FP32_Adder_Combinatorial__DOT__final_exponent 
+            = (0xffU & ((IData)(vlSelf->FP32_Adder_Combinatorial__DOT__Larger_E) 
+                        - (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__leading_1_position)));
+    } else {
+        vlSelf->FP32_Adder_Combinatorial__DOT__DEBUG_FINAL_EXP = 5U;
+        vlSelf->FP32_Adder_Combinatorial__DOT__final_exponent 
+            = (0xffU & 0U);
+    }
+    if (((((vlSelf->alpha >> 0x1fU) == (vlSelf->bravo 
+                                        >> 0x1fU)) 
+          & (0U != (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__final_exponent))) 
+         & (vlSelf->FP32_Adder_Combinatorial__DOT__added_Mantissa 
+            >> 0x18U))) {
         vlSelf->FP32_Adder_Combinatorial__DOT__DEBUG_FINAL_MAN = 1U;
+        vlSelf->FP32_Adder_Combinatorial__DOT__final_R 
+            = (1U & vlSelf->FP32_Adder_Combinatorial__DOT__added_Mantissa);
         vlSelf->FP32_Adder_Combinatorial__DOT__final_mantissa 
             = (0x7fffffU & (vlSelf->FP32_Adder_Combinatorial__DOT__added_Mantissa 
                             >> 1U));
-    } else {
-        vlSelf->FP32_Adder_Combinatorial__DOT__final_R 
-            = (1U & (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__R));
         vlSelf->FP32_Adder_Combinatorial__DOT__final_S 
-            = vlSelf->FP32_Adder_Combinatorial__DOT__S;
+            = ((IData)(vlSelf->FP32_Adder_Combinatorial__DOT__R) 
+               | (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__S));
+    } else {
         if ((0x800000U & vlSelf->FP32_Adder_Combinatorial__DOT__added_Mantissa)) {
-            vlSelf->FP32_Adder_Combinatorial__DOT__DEBUG_FINAL_EXP = 2U;
-            vlSelf->FP32_Adder_Combinatorial__DOT__final_exponent 
-                = (0xffU & ((0U == (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__Larger_E))
-                             ? 1U : (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__Larger_E)));
-        } else if (((IData)(vlSelf->FP32_Adder_Combinatorial__DOT__Larger_E) 
-                    == (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__leading_1_position))) {
-            vlSelf->FP32_Adder_Combinatorial__DOT__DEBUG_FINAL_EXP = 3U;
-            vlSelf->FP32_Adder_Combinatorial__DOT__final_exponent 
-                = (0xffU & 1U);
-        } else if (((IData)(vlSelf->FP32_Adder_Combinatorial__DOT__Larger_E) 
-                    > (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__leading_1_position))) {
-            vlSelf->FP32_Adder_Combinatorial__DOT__DEBUG_FINAL_EXP = 4U;
-            vlSelf->FP32_Adder_Combinatorial__DOT__final_exponent 
-                = (0xffU & ((IData)(vlSelf->FP32_Adder_Combinatorial__DOT__Larger_E) 
-                            - (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__leading_1_position)));
-        } else {
-            vlSelf->FP32_Adder_Combinatorial__DOT__DEBUG_FINAL_EXP = 5U;
-            vlSelf->FP32_Adder_Combinatorial__DOT__final_exponent 
-                = (0xffU & 0U);
-        }
-        if ((((vlSelf->alpha >> 0x1fU) == (vlSelf->bravo 
-                                           >> 0x1fU)) 
-             & (vlSelf->FP32_Adder_Combinatorial__DOT__added_Mantissa 
-                >> 0x17U))) {
             vlSelf->FP32_Adder_Combinatorial__DOT__DEBUG_FINAL_MAN = 2U;
             vlSelf->FP32_Adder_Combinatorial__DOT__final_mantissa 
                 = (0x7fffffU & vlSelf->FP32_Adder_Combinatorial__DOT__added_Mantissa);
-        } else if ((0x800000U & vlSelf->FP32_Adder_Combinatorial__DOT__added_Mantissa)) {
-            if ((0U == (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__final_exponent))) {
-                vlSelf->FP32_Adder_Combinatorial__DOT__DEBUG_FINAL_MAN = 4U;
-                vlSelf->FP32_Adder_Combinatorial__DOT__final_mantissa 
-                    = (0x7fffffU & ((0x18U >= (((IData)(vlSelf->FP32_Adder_Combinatorial__DOT__Larger_E) 
-                                                < (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__leading_1_position))
-                                                ? (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__Larger_E)
-                                                : (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__leading_1_position)))
-                                     ? (0x1ffffffU 
-                                        & (vlSelf->FP32_Adder_Combinatorial__DOT__added_Mantissa 
-                                           << (((IData)(vlSelf->FP32_Adder_Combinatorial__DOT__Larger_E) 
-                                                < (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__leading_1_position))
-                                                ? (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__Larger_E)
-                                                : (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__leading_1_position))))
-                                     : 0U));
-            } else {
-                vlSelf->FP32_Adder_Combinatorial__DOT__DEBUG_FINAL_MAN = 5U;
-                vlSelf->FP32_Adder_Combinatorial__DOT__final_mantissa 
-                    = (0x7fffffU & 0U);
-            }
-        } else {
+        } else if (((IData)((0U == (0x1800000U & vlSelf->FP32_Adder_Combinatorial__DOT__added_Mantissa))) 
+                    & (0U == (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__final_exponent)))) {
             vlSelf->FP32_Adder_Combinatorial__DOT__DEBUG_FINAL_MAN = 3U;
             vlSelf->FP32_Adder_Combinatorial__DOT__final_mantissa 
                 = (0x7fffffU & ((0x18U >= (((IData)(vlSelf->FP32_Adder_Combinatorial__DOT__Larger_E) 
@@ -625,7 +604,30 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__0(Vtop___024root* vlSelf) {
                                                     ? (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__Larger_E)
                                                     : (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__leading_1_position))))
                                  : 0U));
+        } else if (((IData)((0U == (0x1800000U & vlSelf->FP32_Adder_Combinatorial__DOT__added_Mantissa))) 
+                    & (0U != (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__final_exponent)))) {
+            vlSelf->FP32_Adder_Combinatorial__DOT__DEBUG_FINAL_MAN = 4U;
+            vlSelf->FP32_Adder_Combinatorial__DOT__final_mantissa 
+                = (0x7fffffU & ((0x18U >= (((IData)(vlSelf->FP32_Adder_Combinatorial__DOT__Larger_E) 
+                                            < (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__leading_1_position))
+                                            ? (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__Larger_E)
+                                            : (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__leading_1_position)))
+                                 ? (0x1ffffffU & (vlSelf->FP32_Adder_Combinatorial__DOT__added_Mantissa 
+                                                  << 
+                                                  (((IData)(vlSelf->FP32_Adder_Combinatorial__DOT__Larger_E) 
+                                                    < (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__leading_1_position))
+                                                    ? (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__Larger_E)
+                                                    : (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__leading_1_position))))
+                                 : 0U));
+        } else {
+            vlSelf->FP32_Adder_Combinatorial__DOT__DEBUG_FINAL_MAN = 5U;
+            vlSelf->FP32_Adder_Combinatorial__DOT__final_mantissa 
+                = (0x7fffffU & 0U);
         }
+        vlSelf->FP32_Adder_Combinatorial__DOT__final_R 
+            = (1U & (IData)(vlSelf->FP32_Adder_Combinatorial__DOT__R));
+        vlSelf->FP32_Adder_Combinatorial__DOT__final_S 
+            = vlSelf->FP32_Adder_Combinatorial__DOT__S;
     }
     vlSelf->delta = ((0x7fffffffU & vlSelf->delta) 
                      | ((((IData)(vlSelf->FP32_Adder_Combinatorial__DOT__E_LeftBig) 

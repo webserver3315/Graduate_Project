@@ -5,7 +5,7 @@
 #include <time.h>
 #include <cstdlib>
 
-#define VERBOSE 0
+#define VERBOSE 2
 #define RANDOM
 #define ULL unsigned long long
 
@@ -328,6 +328,7 @@ float32 my_adder(struct float32 alpha, struct float32 bravo)
 
     unsigned int small_E_Mantissa4 = ((SA ^ SB) ? ((~small_E_Mantissa3) & 0x00FFFFFF) : small_E_Mantissa3);
     unsigned int added_Mantissa = (unsigned)(SA ^ SB) + (unsigned)small_E_Mantissa4 + (unsigned)large_E_Mantissa;
+    // if(SA ^ SB) added_Mantissa = added_Mantissa & 0x00FFFFFF;
     
     #if VERBOSE >= 2
     printf("large_E_Mantissa: "); print_binary(large_E_Mantissa); printf("\n");
@@ -386,26 +387,35 @@ float32 my_adder(struct float32 alpha, struct float32 bravo)
         printf("EXP MUX 1\n");
         printf("final_exponent: "); print_binary(final_exponent); printf("\n");
         #endif
-    }else if((SA==SB) && mantissa_23rd){ // 같은 부호 더했는데 24째는 0, 23째는 1이면 그대로
+    }else if(mantissa_23rd){ // 같은 부호 더했는데 24째는 0, 23째는 1이면 그대로
         final_exponent = Larger_E;
         #if VERBOSE >= 2
         printf("EXP MUX 2\n");
         printf("final_exponent: "); print_binary(final_exponent); printf("\n");
         #endif
     }
-    else if((mantissa_23rd == 0) && (Larger_E > leading_1_position)){ // 23th 24th 모두 0이면, leading 1을 23째까지 좌시프트해야함.
+    else if((Larger_E == leading_1_position)){ // 23th 24th 모두 0이면, leading 1을 23째까지 좌시프트해야함.
+        // 뺄셈 수행시 오버플로우 주의(e.g. 0x00 - 0d10). Larger_E에서 지불할 비용이 없는데 leading 1 을 만드는건 무리임.
+        // 해당 경우는 EXP MUX 4로 옮김
+        final_exponent = 1;
+        #if VERBOSE >= 2
+        printf("EXP MUX 3\n");
+        printf("final_exponent: "); print_binary(final_exponent); printf("\n");
+        #endif
+    }
+    else if((Larger_E > leading_1_position)){ // 23th 24th 모두 0이면, leading 1을 23째까지 좌시프트해야함.
         // 뺄셈 수행시 오버플로우 주의(e.g. 0x00 - 0d10). Larger_E에서 지불할 비용이 없는데 leading 1 을 만드는건 무리임.
         // 해당 경우는 EXP MUX 4로 옮김
         final_exponent = (unsigned int)(Larger_E - leading_1_position);
         #if VERBOSE >= 2
-        printf("EXP MUX 3\n");
+        printf("EXP MUX 4\n");
         printf("final_exponent: "); print_binary(final_exponent); printf("\n");
         #endif
     }
     else{ // Larger_E에서 leading_1_position 을 위해 지불할 비용이 없을 때, 될때까지 Mantissa 좌shift 한 뒤, exp는 0으로
         final_exponent = 0;
         #if VERBOSE >= 2
-        printf("EXP MUX 4\n");
+        printf("EXP MUX 5\n");
         printf("final_exponent: "); print_binary(final_exponent); printf("\n");
         #endif
     }
