@@ -1,5 +1,4 @@
 `define DEBUG
-
 module leading_1_detector_23bit
     (
         input   wire    [24:0]  tmp,
@@ -79,7 +78,7 @@ module leading_1_detector_23bit
             ret = 8'd23;
         end
         else begin
-            ret = 8'd0;
+            ret = 8'd23;
         end
     end
 endmodule
@@ -153,7 +152,7 @@ module FP32_Adder_Combinatorial
 
     /*********************** Add Mantissa ******************************/
     reg     [23:0]      small_E_Mantissa, large_E_Mantissa;
-    wire    [23:0]      small_E_Mantissa2, small_E_Mantissa3, small_E_Mantissa4;
+    wire    [23:0]      small_E_Mantissa2, small_E_Mantissa3, small_E_Mantissa4, small_E_mantissa5;
     wire    [24:0]      added_Mantissa;
 
     always_comb begin
@@ -171,7 +170,8 @@ module FP32_Adder_Combinatorial
     assign small_E_Mantissa3 = small_E_Mantissa2 >> Right_Shift;
 
     assign small_E_Mantissa4 = ((SA ^ SB) ? (~small_E_Mantissa3) : small_E_Mantissa3);
-    assign added_Mantissa = {23'd0,(SA ^ SB)} + small_E_Mantissa4 + large_E_Mantissa;
+    assign small_E_mantissa5 = {22'd0,(SA ^ SB)} + small_E_Mantissa4;
+    assign added_Mantissa =  small_E_mantissa5 + large_E_Mantissa;
 
     /***************************************** Renormalization *****************************************/
 
@@ -181,35 +181,137 @@ module FP32_Adder_Combinatorial
         .ret(leading_1_position)
     );
     
-    wire    [24:0]  adder_output, right_frac_tmp;
     wire        mantissa_24th, mantissa_23rd, mantissa_22nd;
+    wire    [24:0]  adder_output, right_frac_tmp;
+    wire    [24:0]  lefted_frac, lefted_frac_righted;
 
     wire    [22:0]  frac, righted_frac;
-    wire    [23:0]  lefted_frac, lefted_frac_righted;
     wire    [22:0]  lefted_frac_truncated, lefted_frac_righted_truncated;
     wire    [7:0]   left_shifting;
 
     assign mantissa_24th    = added_Mantissa[24];
     assign mantissa_23rd    = added_Mantissa[23];
     assign mantissa_22nd    = added_Mantissa[22];
-    assign adder_output     = added_Mantissa;
 
-    assign frac             = adder_output[22:0];
+    assign adder_output     = added_Mantissa;
     assign right_frac_tmp   = adder_output>>25'd1;
     assign righted_frac     = right_frac_tmp[22:0];
 
+    assign frac             = adder_output[22:0];
 
     assign left_shifting    = (Larger_E < leading_1_position) ? Larger_E : leading_1_position;
-    assign lefted_frac                          = {1'b0,frac} << left_shifting;
+    assign lefted_frac                          = adder_output << left_shifting;
     assign lefted_frac_righted                  = lefted_frac>>1;
 
     assign lefted_frac_truncated                = lefted_frac[22:0];
     assign lefted_frac_righted_truncated        = lefted_frac_righted[22:0];
     
-    wire        G, R, S;
-    reg     [23:0]      R_mask;
+    reg        R, S;
     always_comb begin
-        R_mask = 24'd1<<(Right_Shift-8'd1);
+        if(Right_Shift == 0) begin
+            R = 0;
+            S = 0;
+        end
+        if(Right_Shift == 1) begin
+            R = small_E_Mantissa2[0];
+            S = 0;
+        end
+        else if(Right_Shift == 2) begin
+            R = small_E_Mantissa2[1];
+            S = ((small_E_Mantissa2[0:0] == 0) ? 0 : 1);
+        end
+        else if(Right_Shift == 3) begin
+            R = small_E_Mantissa2[2];
+            S = ((small_E_Mantissa2[1:0] == 0) ? 0 : 1);
+        end
+        else if(Right_Shift == 4) begin
+            R = small_E_Mantissa2[3];
+            S = ((small_E_Mantissa2[2:0] == 0) ? 0 : 1);
+        end
+        else if(Right_Shift == 5) begin
+            R = small_E_Mantissa2[4];
+            S = ((small_E_Mantissa2[3:0] == 0) ? 0 : 1);
+        end
+        else if(Right_Shift == 6) begin
+            R = small_E_Mantissa2[5];
+            S = ((small_E_Mantissa2[4:0] == 0) ? 0 : 1);
+        end
+        else if(Right_Shift == 7) begin
+            R = small_E_Mantissa2[6];
+            S = ((small_E_Mantissa2[5:0] == 0) ? 0 : 1);
+        end
+        else if(Right_Shift == 8) begin
+            R = small_E_Mantissa2[7];
+            S = ((small_E_Mantissa2[6:0] == 0) ? 0 : 1);
+        end
+        else if(Right_Shift == 9) begin
+            R = small_E_Mantissa2[8];
+            S = ((small_E_Mantissa2[7:0] == 0) ? 0 : 1);
+        end
+        else if(Right_Shift == 10) begin
+            R = small_E_Mantissa2[9];
+            S = ((small_E_Mantissa2[8:0] == 0) ? 0 : 1);
+        end
+        else if(Right_Shift == 11) begin
+            R = small_E_Mantissa2[10];
+            S = ((small_E_Mantissa2[9:0] == 0) ? 0 : 1);
+        end
+        else if(Right_Shift == 12) begin
+            R = small_E_Mantissa2[11];
+            S = ((small_E_Mantissa2[10:0] == 0) ? 0 : 1);
+        end
+        else if(Right_Shift == 13) begin
+            R = small_E_Mantissa2[12];
+            S = ((small_E_Mantissa2[11:0] == 0) ? 0 : 1);
+        end
+        else if(Right_Shift == 14) begin
+            R = small_E_Mantissa2[13];
+            S = ((small_E_Mantissa2[12:0] == 0) ? 0 : 1);
+        end
+        else if(Right_Shift == 15) begin
+            R = small_E_Mantissa2[14];
+            S = ((small_E_Mantissa2[13:0] == 0) ? 0 : 1);
+        end
+        else if(Right_Shift == 16) begin
+            R = small_E_Mantissa2[15];
+            S = ((small_E_Mantissa2[14:0] == 0) ? 0 : 1);
+        end
+        else if(Right_Shift == 17) begin
+            R = small_E_Mantissa2[16];
+            S = ((small_E_Mantissa2[15:0] == 0) ? 0 : 1);
+        end
+        else if(Right_Shift == 18) begin
+            R = small_E_Mantissa2[17];
+            S = ((small_E_Mantissa2[16:0] == 0) ? 0 : 1);
+        end
+        else if(Right_Shift == 19) begin
+            R = small_E_Mantissa2[18];
+            S = ((small_E_Mantissa2[17:0] == 0) ? 0 : 1);
+        end
+        else if(Right_Shift == 20) begin
+            R = small_E_Mantissa2[19];
+            S = ((small_E_Mantissa2[18:0] == 0) ? 0 : 1);
+        end
+        else if(Right_Shift == 21) begin
+            R = small_E_Mantissa2[20];
+            S = ((small_E_Mantissa2[19:0] == 0) ? 0 : 1);
+        end
+        else if(Right_Shift == 22) begin
+            R = small_E_Mantissa2[21];
+            S = ((small_E_Mantissa2[20:0] == 0) ? 0 : 1);
+        end
+        else if(Right_Shift == 23) begin
+            R = small_E_Mantissa2[22];
+            S = ((small_E_Mantissa2[21:0] == 0) ? 0 : 1);
+        end
+        else if(Right_Shift == 24) begin
+            R = small_E_Mantissa2[23];
+            S = ((small_E_Mantissa2[22:0] == 0) ? 0 : 1);
+        end
+        else begin
+            R = 0;
+            S = 0; // 0 아닐수도 있지만, 어차피 R이 0이라 알바아님.
+        end
     end
     // assign R = ((small_E_Mantissa2 & R_mask) ? 0 : 1);
     // assign S = 
@@ -227,58 +329,72 @@ module FP32_Adder_Combinatorial
 
     always_comb begin
         if((SA==SB) & mantissa_24th) begin // 같은 부호 더했는데 24째에 1이면, mantissa 우시프트
+            final_exponent = Larger_E + 8'd1;
             `ifdef DEBUG
             DEBUG_FINAL_EXP = 8'd1;
             `endif
-            final_exponent = Larger_E + 8'd1;
         end
-        else if((SA==SB) & mantissa_23rd) begin // 같은 부호 더했는데 24째는 0, 23째는 1이면 그대로
+        else if(mantissa_23rd) begin // 같은 부호 더했는데 24째는 0, 23째는 1이면 그대로
+            if(Larger_E == 0) final_exponent = 8'd1;
+            else final_exponent = Larger_E;
             `ifdef DEBUG
             DEBUG_FINAL_EXP = 8'd2;
             `endif
-            final_exponent = Larger_E;
         end
-        else if(~mantissa_23rd & (Larger_E > leading_1_position)) begin // 23th 24th 모두 0이면, leading 1을 23째까지 좌시프트해야함.
+        else if(Larger_E == leading_1_position) begin // 23th 24th 모두 0이면, leading 1을 23째까지 좌시프트해야함.
+            final_exponent = 8'd1; // OVERFLOW 예방. e.g. final_exp = (0x00 - 0d10)
             `ifdef DEBUG
             DEBUG_FINAL_EXP = 8'd3;
             `endif
-            final_exponent = (Larger_E - leading_1_position); // OVERFLOW 예방. e.g. final_exp = (0x00 - 0d10)
         end
-        else begin // 조건 몰?루
-            final_exponent = 8'd0;
+        else if(Larger_E > leading_1_position) begin
+            final_exponent = (Larger_E - leading_1_position);
             `ifdef DEBUG
             DEBUG_FINAL_EXP = 8'd4;
             `endif
         end
+        else begin // 조건 몰?루
+            final_exponent = 8'd0;
+            `ifdef DEBUG
+            DEBUG_FINAL_EXP = 8'd5;
+            `endif
+        end
     end
+
+    reg final_R, final_S;
+    wire G;
     always_comb begin
-        if((SA==SB) & mantissa_24th) begin // 덧셈에 24th 살아있으면, mantissa 우측으로 제껴야 함
-            // assign S = R || S;
-            // assign R = frac & 0b01;
+        if((SA == SB) & mantissa_24th) begin // 덧셈에 24th 살아있으면, mantissa 우측으로 제껴야 함
+            final_S = R | S;
+            final_R = frac[0];
             final_mantissa = righted_frac;
             `ifdef DEBUG
             DEBUG_FINAL_MAN = 8'd1;
             `endif
         end
-        else if((SA==SB) && mantissa_23rd) begin // 덧셈에 24번 없고, 23번만 살아있으면 frac 그대로
+        else if((SA==SB) & mantissa_23rd) begin // 24번 없고, 23번만 살아있으면 frac 그대로
+            {final_R, final_S} = {R, S};
             final_mantissa = frac;
             `ifdef DEBUG
             DEBUG_FINAL_MAN = 8'd2;
             `endif
         end
-        else if((final_exponent == 8'd0) & (~mantissa_23rd)) begin // subnorm이면
-            final_mantissa = lefted_frac_righted_truncated;
-            `ifdef DEBUG
-            DEBUG_FINAL_MAN = 8'd4;
-            `endif
-        end
-        else if(~mantissa_23rd) begin // 덧셈뺄셈 불문하고 23th 없으면 23번 만들어준 뒤 없애기
+        else if(mantissa_23rd == 0) begin
+            {final_R, final_S} = {R, S};
             final_mantissa = lefted_frac_truncated;
             `ifdef DEBUG
             DEBUG_FINAL_MAN = 8'd3;
             `endif
         end
+        else if(final_exponent == 0) begin // subnorm이면, hidden 1 필요없다.
+            {final_R, final_S} = {R, S};
+            final_mantissa = lefted_frac_truncated;
+            `ifdef DEBUG
+            DEBUG_FINAL_MAN = 8'd4;
+            `endif
+        end
         else begin
+            {final_R, final_S} = {R, S};
             final_mantissa = 23'd0;
             `ifdef DEBUG
             DEBUG_FINAL_MAN = 8'd5;
@@ -286,10 +402,36 @@ module FP32_Adder_Combinatorial
         end
     end
 
+    assign G = final_mantissa[0];
+
+    wire            NAN, OVFL;
+    assign  NAN     = ((EA == 8'hFF && MA != 23'd0) || (EB == 8'hFF && MB != 23'd0)) ? 1'b1 : 1'b0;
+    assign OVFL = ((SA == SB) && final_exponent == 8'hFF) ? 1'b1 : 1'b0;
+
+    reg [22:0] final_final_mantissa;
+    always_comb begin
+        if((final_R==1 && final_S==1) || (G==1 && final_R==1 && final_S==0)) begin
+            final_final_mantissa = final_mantissa + 1;
+        end
+        else begin
+            final_final_mantissa = final_mantissa;
+        end
+    end
+
     always_comb begin
         delta[31] = final_sign;
-        delta[30:23] = final_exponent;
-        delta[22:0] = final_mantissa;
+        if(NAN) begin
+            delta[30:23]    =   8'hFF;
+            delta[22:0]     =   23'h7FFFFF;
+        end
+        else if(OVFL) begin
+            delta[30:23]    =   8'hFF;
+            delta[22:0]     =   23'd0;
+        end
+        else begin
+            delta[30:23] = final_exponent;
+            delta[22:0] = final_final_mantissa;
+        end
     end
 
 endmodule

@@ -6,25 +6,10 @@
 
 #include "Vtop___024root.h"
 
-VL_ATTR_COLD void Vtop___024root___initial__TOP__0(Vtop___024root* vlSelf) {
-    if (false && vlSelf) {}  // Prevent unused
-    Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___initial__TOP__0\n"); );
-    // Body
-    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_FINAL_MAN = 0U;
-    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_FINAL_EXP = 0U;
-    vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__DEBUG_FINAL_MAN = 0U;
-    vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__DEBUG_FINAL_EXP = 0U;
-}
-
 VL_ATTR_COLD void Vtop___024root___eval_initial(Vtop___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___eval_initial\n"); );
-    // Body
-    Vtop___024root___initial__TOP__0(vlSelf);
-    vlSelf->__Vm_traceActivity[1U] = 1U;
-    vlSelf->__Vm_traceActivity[0U] = 1U;
 }
 
 void Vtop___024root___combo__TOP__0(Vtop___024root* vlSelf);
@@ -64,15 +49,12 @@ VL_ATTR_COLD void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__leading_1_position = VL_RAND_RESET_I(8);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__E = VL_RAND_RESET_I(9);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__Exp = VL_RAND_RESET_I(9);
-    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__Man3 = VL_RAND_RESET_Q(48);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__Man5_tmp = VL_RAND_RESET_Q(48);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__final_Man = VL_RAND_RESET_Q(48);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__final_Exp = VL_RAND_RESET_I(8);
-    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_FINAL_MAN = VL_RAND_RESET_I(8);
-    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_FINAL_EXP = VL_RAND_RESET_I(8);
-    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_ELB = VL_RAND_RESET_I(1);
-    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_ERB = VL_RAND_RESET_I(1);
-    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__DEBUG_EEQ = VL_RAND_RESET_I(1);
+    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__FINAL_ELB = VL_RAND_RESET_I(1);
+    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__FINAL_ERB = VL_RAND_RESET_I(1);
+    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__FINAL_EEQ = VL_RAND_RESET_I(1);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__Larger_E = VL_RAND_RESET_I(8);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__EA_minus_EB_Carry = VL_RAND_RESET_I(1);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__EB_minus_EA_Carry = VL_RAND_RESET_I(1);
@@ -92,8 +74,6 @@ VL_ATTR_COLD void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__R = VL_RAND_RESET_I(1);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__S = VL_RAND_RESET_I(1);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_exponent = VL_RAND_RESET_I(8);
-    vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__DEBUG_FINAL_MAN = VL_RAND_RESET_I(8);
-    vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__DEBUG_FINAL_EXP = VL_RAND_RESET_I(8);
     for (int __Vi0=0; __Vi0<2; ++__Vi0) {
         vlSelf->__Vm_traceActivity[__Vi0] = VL_RAND_RESET_I(1);
     }

@@ -5,7 +5,7 @@
 #include <time.h>
 #include <cstdlib>
 
-#define VERBOSE 2
+#define VERBOSE 0
 #define RANDOM
 #define ULL unsigned long long
 
@@ -318,13 +318,6 @@ float32 my_adder(struct float32 alpha, struct float32 bravo)
     /* Right_Shift가 32bit 초과면, 그 동작은 undefined이다. 따라서 수동으로 0처리해줘야한다.*/
     unsigned int small_E_Mantissa3 = ((Right_Shift>=32) ? 0 : small_E_Mantissa2 >> Right_Shift);
 
-    unsigned int RS_mask=0;
-    for(int i=0;i<(Right_Shift>=32 ? 32 : Right_Shift);i++){
-        RS_mask = RS_mask * 2 + 1;
-    }
-    unsigned int RS = small_E_Mantissa2 & RS_mask;
-
-    unsigned int rtmp = (1<<(Right_Shift>=32 ? 31 : Right_Shift-1));
     unsigned int R = (((small_E_Mantissa2 & (1<<(Right_Shift>=32 ? 31 : Right_Shift-1))) == 0) ? 0 : 1);
 
     unsigned int RS_mask2=0;
@@ -340,10 +333,7 @@ float32 my_adder(struct float32 alpha, struct float32 bravo)
     printf("large_E_Mantissa: "); print_binary(large_E_Mantissa); printf("\n");
     printf("small_E_Mantissa: "); print_binary(small_E_Mantissa); printf("\n");
     printf("small_E_Mantissa2: "); print_binary(small_E_Mantissa2); printf("\n");
-    printf("RS_mask: "); print_binary(RS_mask); printf("\n");
     printf("RS_mask2: "); print_binary(RS_mask2); printf("\n");
-    printf("rtmp: "); print_binary(rtmp); printf("\n");
-    printf("RS: "); print_binary(RS); printf("\n");
     printf("R: %d\n", R);
     printf("S: %d\n", S);
     printf("small_E_Mantissa3: "); print_binary(small_E_Mantissa3); printf("\n");

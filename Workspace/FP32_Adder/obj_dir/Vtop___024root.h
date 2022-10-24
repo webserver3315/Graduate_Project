@@ -14,18 +14,20 @@ class Vtop___024root final : public VerilatedModule {
 
     // DESIGN SPECIFIC STATE
     CData/*7:0*/ FP32_Adder_Combinatorial__DOT__Larger_E;
+    CData/*7:0*/ FP32_Adder_Combinatorial__DOT__Right_Shift;
     CData/*0:0*/ FP32_Adder_Combinatorial__DOT__EA_minus_EB_Carry;
     CData/*0:0*/ FP32_Adder_Combinatorial__DOT__EB_minus_EA_Carry;
     CData/*0:0*/ FP32_Adder_Combinatorial__DOT__E_LeftBig;
     CData/*0:0*/ FP32_Adder_Combinatorial__DOT__E_Equal;
     CData/*0:0*/ FP32_Adder_Combinatorial__DOT__M_LeftBig;
     CData/*7:0*/ FP32_Adder_Combinatorial__DOT__leading_1_position;
-    CData/*0:0*/ FP32_Adder_Combinatorial__DOT__G;
     CData/*0:0*/ FP32_Adder_Combinatorial__DOT__R;
     CData/*0:0*/ FP32_Adder_Combinatorial__DOT__S;
     CData/*7:0*/ FP32_Adder_Combinatorial__DOT__final_exponent;
     CData/*7:0*/ FP32_Adder_Combinatorial__DOT__DEBUG_FINAL_MAN;
     CData/*7:0*/ FP32_Adder_Combinatorial__DOT__DEBUG_FINAL_EXP;
+    CData/*0:0*/ FP32_Adder_Combinatorial__DOT__final_R;
+    CData/*0:0*/ FP32_Adder_Combinatorial__DOT__final_S;
     SData/*8:0*/ FP32_Adder_Combinatorial__DOT__EA_plus_EB;
     SData/*8:0*/ FP32_Adder_Combinatorial__DOT__EA_plus_EB_minus_254;
     VL_IN(alpha,31,0);
@@ -35,9 +37,10 @@ class Vtop___024root final : public VerilatedModule {
     IData/*23:0*/ FP32_Adder_Combinatorial__DOT__Denorm2;
     IData/*23:0*/ FP32_Adder_Combinatorial__DOT__small_E_Mantissa;
     IData/*23:0*/ FP32_Adder_Combinatorial__DOT__large_E_Mantissa;
+    IData/*23:0*/ FP32_Adder_Combinatorial__DOT__small_E_Mantissa2;
     IData/*23:0*/ FP32_Adder_Combinatorial__DOT__small_E_Mantissa3;
     IData/*24:0*/ FP32_Adder_Combinatorial__DOT__added_Mantissa;
-    IData/*23:0*/ FP32_Adder_Combinatorial__DOT__lefted_frac;
+    IData/*22:0*/ FP32_Adder_Combinatorial__DOT__final_mantissa;
     VlUnpacked<CData/*0:0*/, 2> __Vm_traceActivity;
 
     // INTERNAL VARIABLES

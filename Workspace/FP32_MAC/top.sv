@@ -513,6 +513,7 @@ module FP32_Multiplier_Combinatorial
         end
     end
 endmodule
+
 module leading_1_detector_23bit
     (
         input   wire    [24:0]  tmp,

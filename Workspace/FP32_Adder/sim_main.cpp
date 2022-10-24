@@ -14,6 +14,12 @@
 
 #include "fpu_adder_test_final.hpp"
 
+
+bool is_nan(float32 tmp){
+    if(tmp.exponent == 0xFF && tmp.mantissa != 0x00) return true;
+    else return false;
+}
+
 void test_case(Vtop* top, VerilatedVcdC* wave_fp, float32 alpha, float32 bravo, int kazu){
     float32 delta, charlie, delta_sim;
     top->alpha = alpha.total_int;
@@ -23,20 +29,30 @@ void test_case(Vtop* top, VerilatedVcdC* wave_fp, float32 alpha, float32 bravo, 
     delta_sim = my_adder(alpha, bravo);
     charlie.total = alpha.total + bravo.total;
     wave_fp->dump(kazu);
-    printf("Input:Alpha\t\t(0x%08llx %f) is ",(ULL)alpha.total_int, alpha.total); print_binary((ULL)alpha.total_int); printf("\n");
-    printf("Input:Bravo\t\t(0x%08llx %f) is ",(ULL)bravo.total_int, bravo.total); print_binary((ULL)bravo.total_int); printf("\n");
-    printf("Result:Verilog\t(0x%08llx %f) is ",(ULL)delta.total_int, delta.total); print_binary((ULL)delta.total_int); printf("\n");
-    printf("Result:CPP_Sim\t(0x%08llx %f) is ",(ULL)delta_sim.total_int, delta_sim.total); print_binary((ULL)delta_sim.total_int); printf("\n");
-    printf("Wanted_Result\t(0x%08llx %f) is ",(ULL)charlie.total_int, charlie.total); print_binary((ULL)charlie.total_int); printf("\n");
     if(delta.total_int != charlie.total_int){
-        if(charlie.total_int - delta.total_int == 1){
+        if(is_nan(charlie) && is_nan(delta)){
+            // printf("%d: SAME BOTH NaN\n", kazu);
+        }
+        else if(charlie.total_int - delta.total_int == 1){
+            printf("Input:Alpha\t\t(0x%08llx %f) is ",(ULL)alpha.total_int, alpha.total); print_binary((ULL)alpha.total_int); printf("\n");
+            printf("Input:Bravo\t\t(0x%08llx %f) is ",(ULL)bravo.total_int, bravo.total); print_binary((ULL)bravo.total_int); printf("\n");
+            printf("Result:Verilog\t(0x%08llx %f) is ",(ULL)delta.total_int, delta.total); print_binary((ULL)delta.total_int); printf("\n");
+            printf("Result:CPP_Sim\t(0x%08llx %f) is ",(ULL)delta_sim.total_int, delta_sim.total); print_binary((ULL)delta_sim.total_int); printf("\n");
+            printf("Wanted_Result\t(0x%08llx %f) is ",(ULL)charlie.total_int, charlie.total); print_binary((ULL)charlie.total_int); printf("\n");
             printf("%d: SAME BUT NOT ROUNDED\n", kazu);    
         }
         else{
+            printf("Input:Alpha\t\t(0x%08llx %f) is ",(ULL)alpha.total_int, alpha.total); print_binary((ULL)alpha.total_int); printf("\n");
+            printf("Input:Bravo\t\t(0x%08llx %f) is ",(ULL)bravo.total_int, bravo.total); print_binary((ULL)bravo.total_int); printf("\n");
+            printf("Result:Verilog\t(0x%08llx %f) is ",(ULL)delta.total_int, delta.total); print_binary((ULL)delta.total_int); printf("\n");
+            printf("Result:CPP_Sim\t(0x%08llx %f) is ",(ULL)delta_sim.total_int, delta_sim.total); print_binary((ULL)delta_sim.total_int); printf("\n");
+            printf("Wanted_Result\t(0x%08llx %f) is ",(ULL)charlie.total_int, charlie.total); print_binary((ULL)charlie.total_int); printf("\n");
+
             printf("%d: ERROR\n", kazu);
+            exit(0);
         }
     }else{
-        printf("%d: SAME\n", kazu);
+        // printf("%d: SAME\n", kazu);
     }
     printf("\n");
 }
@@ -68,6 +84,15 @@ int main(int argc, char** argv, char** env) {
     /*
         MAC에서 발생한 예외테케
     */
+
+    aa.total_int = 0x36f0d8be; bb.total_int = 0x42826980;
+    test_case(top, wave_fp, aa, bb, kazu); kazu++;
+
+    aa.total_int = 0x0c9541d3; bb.total_int = 0x0ef72226;
+    test_case(top, wave_fp, aa, bb, kazu); kazu++;
+
+    aa.total_int = 0x73a8e4; bb.total_int = 0x0bad206c;
+    test_case(top, wave_fp, aa, bb, kazu); kazu++;
 
     aa.total_int = 0x3761; bb.total_int = 0;
     test_case(top, wave_fp, aa, bb, kazu); kazu++;
@@ -111,7 +136,7 @@ int main(int argc, char** argv, char** env) {
 
     #ifdef RANDOM
     srand(time(NULL));
-    for(int i=0;i<1000;i++){
+    for(int i=0;i<100000;i++){
         aa.total_int = rand();
         bb.total_int = rand();
         test_case(top, wave_fp, aa, bb, kazu); kazu++;
