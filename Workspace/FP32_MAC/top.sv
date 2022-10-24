@@ -668,13 +668,16 @@ module FP32_Adder_Combinatorial
     reg     [23:0]      small_E_Mantissa, large_E_Mantissa;
     wire    [23:0]      small_E_Mantissa2, small_E_Mantissa3, small_E_Mantissa4, small_E_mantissa5;
     wire    [24:0]      added_Mantissa;
+    reg                small_E_sign;
 
     always_comb begin
         if(E_LeftBig | (E_Equal & M_LeftBig)) begin
+            small_E_sign = SB;
             small_E_Mantissa = Denorm2;
             large_E_Mantissa = Denorm1;
         end
         else begin
+            small_E_sign = SA;
             small_E_Mantissa = Denorm1;
             large_E_Mantissa = Denorm2;
         end
@@ -703,11 +706,12 @@ module FP32_Adder_Combinatorial
     wire    [22:0]  lefted_frac_truncated, lefted_frac_righted_truncated;
     wire    [7:0]   left_shifting;
 
-    assign mantissa_24th    = added_Mantissa[24];
-    assign mantissa_23rd    = added_Mantissa[23];
-    assign mantissa_22nd    = added_Mantissa[22];
 
-    assign adder_output     = added_Mantissa;
+    assign adder_output     = ((SA^SB) ? (added_Mantissa & 25'h0FFFFFF) : (added_Mantissa));
+    assign mantissa_24th    = adder_output[24];
+    assign mantissa_23rd    = adder_output[23];
+    assign mantissa_22nd    = adder_output[22];
+
     assign right_frac_tmp   = adder_output>>25'd1;
     assign righted_frac     = right_frac_tmp[22:0];
 
@@ -723,106 +727,132 @@ module FP32_Adder_Combinatorial
     reg        R, S;
     always_comb begin
         if(Right_Shift == 0) begin
+            G = small_E_Mantissa2[0];
             R = 0;
             S = 0;
         end
         if(Right_Shift == 1) begin
+            G = small_E_Mantissa2[1];
             R = small_E_Mantissa2[0];
             S = 0;
         end
         else if(Right_Shift == 2) begin
+            G = small_E_Mantissa2[2];
             R = small_E_Mantissa2[1];
-            S = ((small_E_Mantissa2[0:0] == 0) ? 0 : 1);
+            S = ((small_E_Mantissa2[0] == 0) ? 0 : 1);
         end
         else if(Right_Shift == 3) begin
+            G = small_E_Mantissa2[3];
             R = small_E_Mantissa2[2];
             S = ((small_E_Mantissa2[1:0] == 0) ? 0 : 1);
         end
         else if(Right_Shift == 4) begin
+            G = small_E_Mantissa2[4];
             R = small_E_Mantissa2[3];
             S = ((small_E_Mantissa2[2:0] == 0) ? 0 : 1);
         end
         else if(Right_Shift == 5) begin
+            G = small_E_Mantissa2[5];
             R = small_E_Mantissa2[4];
             S = ((small_E_Mantissa2[3:0] == 0) ? 0 : 1);
         end
         else if(Right_Shift == 6) begin
+            G = small_E_Mantissa2[6];
             R = small_E_Mantissa2[5];
             S = ((small_E_Mantissa2[4:0] == 0) ? 0 : 1);
         end
         else if(Right_Shift == 7) begin
+            G = small_E_Mantissa2[7];
             R = small_E_Mantissa2[6];
             S = ((small_E_Mantissa2[5:0] == 0) ? 0 : 1);
         end
         else if(Right_Shift == 8) begin
+            G = small_E_Mantissa2[8];
             R = small_E_Mantissa2[7];
             S = ((small_E_Mantissa2[6:0] == 0) ? 0 : 1);
         end
         else if(Right_Shift == 9) begin
+            G = small_E_Mantissa2[9];
             R = small_E_Mantissa2[8];
             S = ((small_E_Mantissa2[7:0] == 0) ? 0 : 1);
         end
         else if(Right_Shift == 10) begin
+            G = small_E_Mantissa2[10];
             R = small_E_Mantissa2[9];
             S = ((small_E_Mantissa2[8:0] == 0) ? 0 : 1);
         end
         else if(Right_Shift == 11) begin
+            G = small_E_Mantissa2[11];
             R = small_E_Mantissa2[10];
             S = ((small_E_Mantissa2[9:0] == 0) ? 0 : 1);
         end
         else if(Right_Shift == 12) begin
+            G = small_E_Mantissa2[12];
             R = small_E_Mantissa2[11];
             S = ((small_E_Mantissa2[10:0] == 0) ? 0 : 1);
         end
         else if(Right_Shift == 13) begin
+            G = small_E_Mantissa2[13];
             R = small_E_Mantissa2[12];
             S = ((small_E_Mantissa2[11:0] == 0) ? 0 : 1);
         end
         else if(Right_Shift == 14) begin
+            G = small_E_Mantissa2[14];
             R = small_E_Mantissa2[13];
             S = ((small_E_Mantissa2[12:0] == 0) ? 0 : 1);
         end
         else if(Right_Shift == 15) begin
+            G = small_E_Mantissa2[15];
             R = small_E_Mantissa2[14];
             S = ((small_E_Mantissa2[13:0] == 0) ? 0 : 1);
         end
         else if(Right_Shift == 16) begin
+            G = small_E_Mantissa2[16];
             R = small_E_Mantissa2[15];
             S = ((small_E_Mantissa2[14:0] == 0) ? 0 : 1);
         end
         else if(Right_Shift == 17) begin
+            G = small_E_Mantissa2[17];
             R = small_E_Mantissa2[16];
             S = ((small_E_Mantissa2[15:0] == 0) ? 0 : 1);
         end
         else if(Right_Shift == 18) begin
+            G = small_E_Mantissa2[18];
             R = small_E_Mantissa2[17];
             S = ((small_E_Mantissa2[16:0] == 0) ? 0 : 1);
         end
         else if(Right_Shift == 19) begin
+            G = small_E_Mantissa2[19];
             R = small_E_Mantissa2[18];
             S = ((small_E_Mantissa2[17:0] == 0) ? 0 : 1);
         end
         else if(Right_Shift == 20) begin
+            G = small_E_Mantissa2[20];
             R = small_E_Mantissa2[19];
             S = ((small_E_Mantissa2[18:0] == 0) ? 0 : 1);
         end
         else if(Right_Shift == 21) begin
+            G = small_E_Mantissa2[21];
             R = small_E_Mantissa2[20];
             S = ((small_E_Mantissa2[19:0] == 0) ? 0 : 1);
         end
         else if(Right_Shift == 22) begin
+            G = small_E_Mantissa2[22];
             R = small_E_Mantissa2[21];
             S = ((small_E_Mantissa2[20:0] == 0) ? 0 : 1);
         end
         else if(Right_Shift == 23) begin
+            G = small_E_Mantissa2[23];
             R = small_E_Mantissa2[22];
             S = ((small_E_Mantissa2[21:0] == 0) ? 0 : 1);
         end
         else if(Right_Shift == 24) begin
+            G = 0;
             R = small_E_Mantissa2[23];
             S = ((small_E_Mantissa2[22:0] == 0) ? 0 : 1);
         end
         else begin
+            G = 0;
             R = 0;
             S = 0; // 0 아닐수도 있지만, 어차피 R이 0이라 알바아님.
         end
@@ -876,7 +906,7 @@ module FP32_Adder_Combinatorial
     end
 
     reg final_R, final_S;
-    wire G;
+    reg G;
     always_comb begin
         if((SA == SB) & (final_exponent != 8'd0) & mantissa_24th) begin // 덧셈에 24th 살아있으면, mantissa 우측으로 제껴야 함
             final_S = R | S;
@@ -916,8 +946,6 @@ module FP32_Adder_Combinatorial
         end
     end
 
-    assign G = final_mantissa[0];
-
     wire            NAN, OVFL;
     assign  NAN     = ((EA == 8'hFF && MA != 23'd0) || (EB == 8'hFF && MB != 23'd0)) ? 1'b1 : 1'b0;
     assign OVFL = ((SA == SB) && final_exponent == 8'hFF) ? 1'b1 : 1'b0;
@@ -925,7 +953,12 @@ module FP32_Adder_Combinatorial
     reg [22:0] final_final_mantissa;
     always_comb begin
         if((final_R==1 && final_S==1) || (G==1 && final_R==1 && final_S==0)) begin
-            final_final_mantissa = final_mantissa + 1;
+            if(SA^SB) begin
+                final_final_mantissa = final_mantissa - 1;
+            end
+            else begin
+                final_final_mantissa = final_mantissa + 1;
+            end
         end
         else begin
             final_final_mantissa = final_mantissa;

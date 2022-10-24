@@ -7,6 +7,7 @@ import sys
 # end
 for i in range(2,25,1):
     print("else if(Right_Shift == %d) begin" % i)
+    print("\tG = small_E_Mantissa2[%d];" % (i))
     print("\tR = small_E_Mantissa2[%d];" % (i-1))
     print("\tS = ((small_E_Mantissa2[%d:0] == 0) ? 0 : 1);" % (i-2))
     print("end")

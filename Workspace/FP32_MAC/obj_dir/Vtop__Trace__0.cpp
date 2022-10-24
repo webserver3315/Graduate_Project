@@ -53,26 +53,27 @@ void Vtop___024root__trace_chg_sub_0(Vtop___024root* vlSelf, VerilatedVcd::Buffe
         bufp->chgIData(oldp+19,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__small_E_Mantissa3),24);
         bufp->chgIData(oldp+20,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__added_Mantissa),25);
         bufp->chgCData(oldp+21,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__leading_1_position),8);
-        bufp->chgBit(oldp+22,((1U & (vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__added_Mantissa 
+        bufp->chgBit(oldp+22,((1U & (vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__adder_output 
                                      >> 0x18U))));
-        bufp->chgBit(oldp+23,((1U & (vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__added_Mantissa 
+        bufp->chgBit(oldp+23,((1U & (vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__adder_output 
                                      >> 0x17U))));
-        bufp->chgBit(oldp+24,((1U & (vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__added_Mantissa 
+        bufp->chgBit(oldp+24,((1U & (vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__adder_output 
                                      >> 0x16U))));
-        bufp->chgIData(oldp+25,((0x1ffffffU & (vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__added_Mantissa 
+        bufp->chgIData(oldp+25,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__adder_output),25);
+        bufp->chgIData(oldp+26,((0x1ffffffU & (vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__adder_output 
                                                >> 1U))),25);
-        bufp->chgIData(oldp+26,(((0x18U >= (((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__Larger_E) 
+        bufp->chgIData(oldp+27,(((0x18U >= (((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__Larger_E) 
                                              < (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__leading_1_position))
                                              ? (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__Larger_E)
                                              : (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__leading_1_position)))
-                                  ? (0x1ffffffU & (vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__added_Mantissa 
+                                  ? (0x1ffffffU & (vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__adder_output 
                                                    << 
                                                    (((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__Larger_E) 
                                                      < (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__leading_1_position))
                                                      ? (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__Larger_E)
                                                      : (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__leading_1_position))))
                                   : 0U)),25);
-        bufp->chgIData(oldp+27,((0x1ffffffU & (((0x18U 
+        bufp->chgIData(oldp+28,((0x1ffffffU & (((0x18U 
                                                  >= 
                                                  (((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__Larger_E) 
                                                    < (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__leading_1_position))
@@ -80,7 +81,7 @@ void Vtop___024root__trace_chg_sub_0(Vtop___024root* vlSelf, VerilatedVcd::Buffe
                                                    : (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__leading_1_position)))
                                                  ? 
                                                 (0x1ffffffU 
-                                                 & (vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__added_Mantissa 
+                                                 & (vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__adder_output 
                                                     << 
                                                     (((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__Larger_E) 
                                                       < (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__leading_1_position))
@@ -88,28 +89,28 @@ void Vtop___024root__trace_chg_sub_0(Vtop___024root* vlSelf, VerilatedVcd::Buffe
                                                       : (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__leading_1_position))))
                                                  : 0U) 
                                                >> 1U))),25);
-        bufp->chgIData(oldp+28,((0x7fffffU & vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__added_Mantissa)),23);
-        bufp->chgIData(oldp+29,((0x7fffffU & (vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__added_Mantissa 
+        bufp->chgIData(oldp+29,((0x7fffffU & vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__adder_output)),23);
+        bufp->chgIData(oldp+30,((0x7fffffU & (vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__adder_output 
                                               >> 1U))),23);
-        bufp->chgIData(oldp+30,(((0x18U >= (((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__Larger_E) 
+        bufp->chgIData(oldp+31,(((0x18U >= (((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__Larger_E) 
                                              < (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__leading_1_position))
                                              ? (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__Larger_E)
                                              : (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__leading_1_position)))
-                                  ? (0x7fffffU & (vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__added_Mantissa 
+                                  ? (0x7fffffU & (vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__adder_output 
                                                   << 
                                                   (((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__Larger_E) 
                                                     < (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__leading_1_position))
                                                     ? (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__Larger_E)
                                                     : (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__leading_1_position))))
                                   : 0U)),23);
-        bufp->chgIData(oldp+31,((0x7fffffU & (((0x18U 
+        bufp->chgIData(oldp+32,((0x7fffffU & (((0x18U 
                                                 >= 
                                                 (((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__Larger_E) 
                                                   < (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__leading_1_position))
                                                   ? (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__Larger_E)
                                                   : (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__leading_1_position)))
                                                 ? (0x1ffffffU 
-                                                   & (vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__added_Mantissa 
+                                                   & (vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__adder_output 
                                                       << 
                                                       (((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__Larger_E) 
                                                         < (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__leading_1_position))
@@ -117,25 +118,17 @@ void Vtop___024root__trace_chg_sub_0(Vtop___024root* vlSelf, VerilatedVcd::Buffe
                                                         : (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__leading_1_position))))
                                                 : 0U) 
                                               >> 1U))),23);
-        bufp->chgCData(oldp+32,((((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__Larger_E) 
+        bufp->chgCData(oldp+33,((((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__Larger_E) 
                                   < (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__leading_1_position))
                                   ? (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__Larger_E)
                                   : (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__leading_1_position))),8);
-        bufp->chgBit(oldp+33,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__R));
-        bufp->chgBit(oldp+34,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__S));
-        bufp->chgCData(oldp+35,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_exponent),8);
-        bufp->chgIData(oldp+36,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_mantissa),23);
-        bufp->chgBit(oldp+37,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_R));
-        bufp->chgBit(oldp+38,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_S));
-        bufp->chgBit(oldp+39,((1U & vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_mantissa)));
-        bufp->chgIData(oldp+40,((0x7fffffU & ((((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_R) 
-                                                & (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_S)) 
-                                               | ((vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_mantissa 
-                                                   & (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_R)) 
-                                                  & (~ (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_S))))
-                                               ? ((IData)(1U) 
-                                                  + vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_mantissa)
-                                               : vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_mantissa))),23);
+        bufp->chgBit(oldp+34,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__R));
+        bufp->chgBit(oldp+35,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__S));
+        bufp->chgCData(oldp+36,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_exponent),8);
+        bufp->chgIData(oldp+37,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_mantissa),23);
+        bufp->chgBit(oldp+38,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_R));
+        bufp->chgBit(oldp+39,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_S));
+        bufp->chgBit(oldp+40,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__G));
         bufp->chgCData(oldp+41,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EA),8);
         bufp->chgCData(oldp+42,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EB),8);
         bufp->chgSData(oldp+43,(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EA_plus_EB),9);
@@ -555,10 +548,16 @@ void Vtop___024root__trace_chg_sub_0(Vtop___024root* vlSelf, VerilatedVcd::Buffe
     bufp->chgBit(oldp+117,((1U & (((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__E_LeftBig) 
                                    | ((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__E_Equal) 
                                       & (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__M_LeftBig)))
+                                   ? (vlSelf->acc >> 0x1fU)
+                                   : (vlSelf->FP32_MAC_Combinatorial__DOT__middle_output 
+                                      >> 0x1fU)))));
+    bufp->chgBit(oldp+118,((1U & (((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__E_LeftBig) 
+                                   | ((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__E_Equal) 
+                                      & (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__M_LeftBig)))
                                    ? (vlSelf->FP32_MAC_Combinatorial__DOT__middle_output 
                                       >> 0x1fU) : (vlSelf->acc 
                                                    >> 0x1fU)))));
-    bufp->chgBit(oldp+118,(((IData)(((0x7f800000U == 
+    bufp->chgBit(oldp+119,(((IData)(((0x7f800000U == 
                                       (0x7f800000U 
                                        & vlSelf->FP32_MAC_Combinatorial__DOT__middle_output)) 
                                      & (0U != (0x7fffffU 
@@ -568,28 +567,41 @@ void Vtop___024root__trace_chg_sub_0(Vtop___024root* vlSelf, VerilatedVcd::Buffe
                                             & vlSelf->acc)) 
                                        & (0U != (0x7fffffU 
                                                  & vlSelf->acc)))))));
-    bufp->chgBit(oldp+119,((((vlSelf->FP32_MAC_Combinatorial__DOT__middle_output 
+    bufp->chgBit(oldp+120,((((vlSelf->FP32_MAC_Combinatorial__DOT__middle_output 
                               >> 0x1fU) == (vlSelf->acc 
                                             >> 0x1fU)) 
                             & (0xffU == (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_exponent)))));
-    bufp->chgCData(oldp+120,((0xffU & (vlSelf->alpha 
+    bufp->chgIData(oldp+121,((0x7fffffU & ((((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_R) 
+                                             & (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_S)) 
+                                            | (((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__G) 
+                                                & (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_R)) 
+                                               & (~ (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_S))))
+                                            ? (((vlSelf->FP32_MAC_Combinatorial__DOT__middle_output 
+                                                 ^ vlSelf->acc) 
+                                                >> 0x1fU)
+                                                ? (vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_mantissa 
+                                                   - (IData)(1U))
+                                                : ((IData)(1U) 
+                                                   + vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_mantissa))
+                                            : vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_mantissa))),23);
+    bufp->chgCData(oldp+122,((0xffU & (vlSelf->alpha 
                                        >> 0x17U))),8);
-    bufp->chgCData(oldp+121,((0xffU & (vlSelf->bravo 
+    bufp->chgCData(oldp+123,((0xffU & (vlSelf->bravo 
                                        >> 0x17U))),8);
-    bufp->chgCData(oldp+122,((0xffU & ((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__E_LeftBig)
+    bufp->chgCData(oldp+124,((0xffU & ((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__E_LeftBig)
                                         ? (vlSelf->alpha 
                                            >> 0x17U)
                                         : (vlSelf->bravo 
                                            >> 0x17U)))),8);
-    bufp->chgCData(oldp+123,((0xffU & ((vlSelf->alpha 
+    bufp->chgCData(oldp+125,((0xffU & ((vlSelf->alpha 
                                         >> 0x17U) - 
                                        (vlSelf->bravo 
                                         >> 0x17U)))),8);
-    bufp->chgCData(oldp+124,((0xffU & ((vlSelf->bravo 
+    bufp->chgCData(oldp+126,((0xffU & ((vlSelf->bravo 
                                         >> 0x17U) - 
                                        (vlSelf->alpha 
                                         >> 0x17U)))),8);
-    bufp->chgCData(oldp+125,((0xffU & (((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__E_LeftBig)
+    bufp->chgCData(oldp+127,((0xffU & (((IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__E_LeftBig)
                                          ? ((vlSelf->alpha 
                                              >> 0x17U) 
                                             - (vlSelf->bravo 
@@ -605,40 +617,40 @@ void Vtop___024root__trace_chg_sub_0(Vtop___024root* vlSelf, VerilatedVcd::Buffe
                                              (0xffU 
                                               & (vlSelf->bravo 
                                                  >> 0x17U))))))),8);
-    bufp->chgBit(oldp+126,((0U == (0xffU & (vlSelf->alpha 
+    bufp->chgBit(oldp+128,((0U == (0xffU & (vlSelf->alpha 
                                             >> 0x17U)))));
-    bufp->chgBit(oldp+127,((0U == (0xffU & (vlSelf->bravo 
+    bufp->chgBit(oldp+129,((0U == (0xffU & (vlSelf->bravo 
                                             >> 0x17U)))));
-    bufp->chgBit(oldp+128,((0xffU == (0xffU & (vlSelf->alpha 
+    bufp->chgBit(oldp+130,((0xffU == (0xffU & (vlSelf->alpha 
                                                >> 0x17U)))));
-    bufp->chgBit(oldp+129,((0xffU == (0xffU & (vlSelf->bravo 
+    bufp->chgBit(oldp+131,((0xffU == (0xffU & (vlSelf->bravo 
                                                >> 0x17U)))));
-    bufp->chgBit(oldp+130,(((0xffU & (vlSelf->alpha 
+    bufp->chgBit(oldp+132,(((0xffU & (vlSelf->alpha 
                                       >> 0x17U)) < 
                             (0xffU & (vlSelf->bravo 
                                       >> 0x17U)))));
-    bufp->chgBit(oldp+131,((1U & (~ (((0xffU & (vlSelf->alpha 
+    bufp->chgBit(oldp+133,((1U & (~ (((0xffU & (vlSelf->alpha 
                                                 >> 0x17U)) 
                                       < (0xffU & (vlSelf->bravo 
                                                   >> 0x17U))) 
                                      | (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__E_LeftBig))))));
-    bufp->chgBit(oldp+132,((vlSelf->alpha >> 0x1fU)));
-    bufp->chgBit(oldp+133,((vlSelf->bravo >> 0x1fU)));
-    bufp->chgBit(oldp+134,(((vlSelf->alpha ^ vlSelf->bravo) 
+    bufp->chgBit(oldp+134,((vlSelf->alpha >> 0x1fU)));
+    bufp->chgBit(oldp+135,((vlSelf->bravo >> 0x1fU)));
+    bufp->chgBit(oldp+136,(((vlSelf->alpha ^ vlSelf->bravo) 
                             >> 0x1fU)));
-    bufp->chgIData(oldp+135,((0x7fffffU & vlSelf->alpha)),23);
-    bufp->chgIData(oldp+136,((0x7fffffU & vlSelf->bravo)),23);
-    bufp->chgIData(oldp+137,((((0U != (0xffU & (vlSelf->alpha 
+    bufp->chgIData(oldp+137,((0x7fffffU & vlSelf->alpha)),23);
+    bufp->chgIData(oldp+138,((0x7fffffU & vlSelf->bravo)),23);
+    bufp->chgIData(oldp+139,((((0U != (0xffU & (vlSelf->alpha 
                                                 >> 0x17U))) 
                                << 0x17U) | (0x7fffffU 
                                             & vlSelf->alpha))),24);
-    bufp->chgIData(oldp+138,((0x7fffffU & vlSelf->alpha)),24);
-    bufp->chgIData(oldp+139,((((0U != (0xffU & (vlSelf->bravo 
+    bufp->chgIData(oldp+140,((0x7fffffU & vlSelf->alpha)),24);
+    bufp->chgIData(oldp+141,((((0U != (0xffU & (vlSelf->bravo 
                                                 >> 0x17U))) 
                                << 0x17U) | (0x7fffffU 
                                             & vlSelf->bravo))),24);
-    bufp->chgIData(oldp+140,((0x7fffffU & vlSelf->bravo)),24);
-    bufp->chgIData(oldp+141,(((IData)(((0U == (0x7f800000U 
+    bufp->chgIData(oldp+142,((0x7fffffU & vlSelf->bravo)),24);
+    bufp->chgIData(oldp+143,(((IData)(((0U == (0x7f800000U 
                                                & vlSelf->alpha)) 
                                        & (0U != (0x7fffffU 
                                                  & vlSelf->alpha))))
@@ -648,7 +660,7 @@ void Vtop___024root__trace_chg_sub_0(Vtop___024root* vlSelf, VerilatedVcd::Buffe
                                             >> 0x17U))) 
                                    << 0x17U) | (0x7fffffU 
                                                 & vlSelf->alpha)))),24);
-    bufp->chgIData(oldp+142,(((IData)(((0U == (0x7f800000U 
+    bufp->chgIData(oldp+144,(((IData)(((0U == (0x7f800000U 
                                                & vlSelf->bravo)) 
                                        & (0U != (0x7fffffU 
                                                  & vlSelf->bravo))))
@@ -658,15 +670,15 @@ void Vtop___024root__trace_chg_sub_0(Vtop___024root* vlSelf, VerilatedVcd::Buffe
                                             >> 0x17U))) 
                                    << 0x17U) | (0x7fffffU 
                                                 & vlSelf->bravo)))),24);
-    bufp->chgBit(oldp+143,(((0x7fffffU & vlSelf->alpha) 
-                            < (0x7fffffU & vlSelf->bravo))));
-    bufp->chgBit(oldp+144,(((0x7fffffU & vlSelf->alpha) 
-                            > (0x7fffffU & vlSelf->bravo))));
     bufp->chgBit(oldp+145,(((0x7fffffU & vlSelf->alpha) 
+                            < (0x7fffffU & vlSelf->bravo))));
+    bufp->chgBit(oldp+146,(((0x7fffffU & vlSelf->alpha) 
+                            > (0x7fffffU & vlSelf->bravo))));
+    bufp->chgBit(oldp+147,(((0x7fffffU & vlSelf->alpha) 
                             == (0x7fffffU & vlSelf->bravo))));
-    bufp->chgBit(oldp+146,((0U == (0x7fffffU & vlSelf->alpha))));
-    bufp->chgBit(oldp+147,((0U == (0x7fffffU & vlSelf->bravo))));
-    bufp->chgBit(oldp+148,((((0xffU == (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EA)) 
+    bufp->chgBit(oldp+148,((0U == (0x7fffffU & vlSelf->alpha))));
+    bufp->chgBit(oldp+149,((0U == (0x7fffffU & vlSelf->bravo))));
+    bufp->chgBit(oldp+150,((((0xffU == (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EA)) 
                              & (0U != (0x7fffffU & vlSelf->alpha))) 
                             | ((0xffU == (IData)(vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EB)) 
                                & (0U != (0x7fffffU 

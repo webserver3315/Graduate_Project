@@ -34,6 +34,7 @@ class Vtop___024root final : public VerilatedModule {
     CData/*7:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_exponent;
     CData/*0:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_R;
     CData/*0:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_S;
+    CData/*0:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__G;
     SData/*8:0*/ FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EA_plus_EB;
     SData/*8:0*/ FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__EA_plus_EB_minus_254;
     SData/*8:0*/ FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__E;
@@ -52,6 +53,7 @@ class Vtop___024root final : public VerilatedModule {
     IData/*23:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__small_E_Mantissa2;
     IData/*23:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__small_E_Mantissa3;
     IData/*24:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__added_Mantissa;
+    IData/*24:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__adder_output;
     IData/*22:0*/ FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_mantissa;
     QData/*47:0*/ FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__M_48_Original;
     QData/*47:0*/ FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__Man5_tmp;

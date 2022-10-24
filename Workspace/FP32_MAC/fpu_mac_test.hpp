@@ -5,7 +5,7 @@
 #include <time.h>
 #include <stdlib.h>
 
-#define VERBOSE 1
+#define VERBOSE 5
 #define RANDOM
 #define ULL unsigned long long
 
@@ -826,10 +826,15 @@ float32 my_adder(struct float32 alpha, struct float32 bravo)
 
     /*********************** Add Mantissa ******************************/
     int small_E_Mantissa, large_E_Mantissa;
+    int small_E_Sign, large_E_Sign;
     if(E_LeftBig || (E_Equal && M_LeftBig)){
+        small_E_Sign = SB;
+        large_E_Sign = SA;
         small_E_Mantissa = Denorm2;
         large_E_Mantissa = Denorm1;
     }else{
+        small_E_Sign = SA;
+        large_E_Sign = SB;
         small_E_Mantissa = Denorm1;
         large_E_Mantissa = Denorm2;
     }
@@ -856,19 +861,21 @@ float32 my_adder(struct float32 alpha, struct float32 bravo)
     unsigned int small_E_Mantissa4 = ((SA ^ SB) ? ((~small_E_Mantissa3) & 0x00FFFFFF) : small_E_Mantissa3);
     unsigned int small_E_Mantissa5 = ((unsigned)(SA ^ SB) + (unsigned)small_E_Mantissa4) & 0x00FFFFFF;
 
+    unsigned int G = (((small_E_Mantissa2 & (1<<(Right_Shift>=32 ? 31 : Right_Shift))) == 0) ? 0 : 1);
+
     unsigned int added_Mantissa = small_E_Mantissa5 + (unsigned)large_E_Mantissa;
     
     #if VERBOSE >= 3
-    printf("large_E_Mantissa: "); print_binary(large_E_Mantissa); printf("\n");
-    printf("small_E_Mantissa: "); print_binary(small_E_Mantissa); printf("\n");
-    printf("small_E_Mantissa2: "); print_binary(small_E_Mantissa2); printf("\n");
+    printf("large_E_Mantissa(0x%x): ",large_E_Mantissa); print_binary(large_E_Mantissa); printf("\n");
+    printf("small_E_Mantissa(0x%x): ",small_E_Mantissa); print_binary(small_E_Mantissa); printf("\n");
+    printf("small_E_Mantissa2(0x%x): ",small_E_Mantissa2); print_binary(small_E_Mantissa2); printf("\n");
     printf("RS_mask: "); print_binary(RS_mask); printf("\n");
     printf("RS_mask2: "); print_binary(RS_mask2); printf("\n");
     printf("rtmp: "); print_binary(rtmp); printf("\n");
     printf("RS: "); print_binary(RS); printf("\n");
     printf("R: %d\n", R);
     printf("S: %d\n", S);
-    printf("small_E_Mantissa3: "); print_binary(small_E_Mantissa3); printf("\n");
+    printf("small_E_Mantissa3(0x%x): ",small_E_Mantissa3); print_binary(small_E_Mantissa3); printf("\n");
     printf("small_E_Mantissa4(0x%x): ", small_E_Mantissa4); print_binary(small_E_Mantissa4); printf("\n");
     printf("small_E_Mantissa5(0x%x): ", small_E_Mantissa5); print_binary(small_E_Mantissa5); printf("\n");
     printf("added_Mantissa(0x%x): ", added_Mantissa); print_binary(added_Mantissa); printf("\n");
@@ -876,10 +883,11 @@ float32 my_adder(struct float32 alpha, struct float32 bravo)
 
     /***************************************** Renormalization *****************************************/
     int mantissa_24th, mantissa_23rd, mantissa_22nd, leading_1_position, adder_output;
-    adder_output = added_Mantissa & (int)(0x01FFFFFF);
-    mantissa_24th = ((added_Mantissa & (1<<24)) == 0 ? 0 : 1);
-    mantissa_23rd = ((added_Mantissa & (1<<23)) == 0 ? 0 : 1);
-    mantissa_22nd = ((added_Mantissa & (1<<22)) == 0 ? 0 : 1);
+    if(SA ^ SB) adder_output = added_Mantissa & (int)(0x00FFFFFF);
+    else adder_output = added_Mantissa & (int)(0x01FFFFFF);
+    mantissa_24th = ((adder_output & (1<<24)) == 0 ? 0 : 1);
+    mantissa_23rd = ((adder_output & (1<<23)) == 0 ? 0 : 1);
+    mantissa_22nd = ((adder_output & (1<<22)) == 0 ? 0 : 1);
 
     leading_1_position = leading_1_detector(added_Mantissa);
     int left_shifting = (Larger_E < leading_1_position) ? Larger_E : leading_1_position; // Exp가 대가를 지불할 수 있을만큼만 Man<< 한다.
@@ -901,12 +909,12 @@ float32 my_adder(struct float32 alpha, struct float32 bravo)
     printf("leading_1_position: %d\n",leading_1_position);
     printf("left_shifting: %d\n",left_shifting);
     printf("\n");
-    printf("added_Mantissa: "); print_binary(added_Mantissa); printf("\n");
-    printf("adder_output: "); print_binary(adder_output); printf("\n");
-    printf("righted_frac: "); print_binary(righted_frac); printf("\n");
-    printf("frac: "); print_binary(frac); printf("\n");
-    printf("lefted_frac: "); print_binary(lefted_frac); printf("\n");
-    printf("lefted_frac_truncated: "); print_binary(lefted_frac_truncated); printf("\n");
+    printf("added_Mantissa(0x%x): ",added_Mantissa); print_binary(added_Mantissa); printf("\n");
+    printf("adder_output(0x%x): ",adder_output); print_binary(adder_output); printf("\n");
+    printf("righted_frac(0x%x): ",righted_frac); print_binary(righted_frac); printf("\n");
+    printf("frac(0x%x): ",frac); print_binary(frac); printf("\n");
+    printf("lefted_frac(0x%x): ",lefted_frac); print_binary(lefted_frac); printf("\n");
+    printf("lefted_frac_truncated(0x%x): ",lefted_frac_truncated); print_binary(lefted_frac_truncated); printf("\n");
     // printf("lefted_frac_righted: "); print_binary(lefted_frac_righted); printf("\n");
     // printf("lefted_frac_righted_truncated: "); print_binary(lefted_frac_righted_truncated); printf("\n");
     #endif
@@ -999,15 +1007,22 @@ float32 my_adder(struct float32 alpha, struct float32 bravo)
         printf("final_mantissa: "); print_binary(final_mantissa); printf("\n");
         #endif
     }
-
-    unsigned int G = ((final_mantissa & 0b01) == 0 ? 0 : 1);
-    #if VERBOSE >= 3
-    printf("G: %d\n", G);
-    printf("R: %d\n", R);
-    printf("S: %d\n", S);
-    #endif
-    if((R==1 && S==1) || (G==1 && R==1 && S==0))
-        final_mantissa++;
+    
+    
+    if((R==1 && S==1) || (G==1 && R==1 && S==0)){  
+        if(SA^SB) {
+            final_mantissa--;
+            #if VERBOSE >= 3
+            printf("final_mantissa--\n");
+            #endif
+        }
+        else {
+            final_mantissa++;
+            #if VERBOSE >= 3
+            printf("final_mantissa++\n");
+            #endif
+        }
+    }
     // if(final_mantissa & 0x1000000) goto RENORM;
 
     int NAN_FLAG = 0;
@@ -1029,6 +1044,14 @@ float32 my_adder(struct float32 alpha, struct float32 bravo)
         delta_adder.exponent = final_exponent;
         delta_adder.mantissa = final_mantissa;
     }    
+
+    #if VERBOSE >= 3
+    printf("small_E_Sign: %d\n", small_E_Sign);
+    printf("large_E_Sign: %d\n", large_E_Sign);
+    printf("G: %d\n", G);
+    printf("R: %d\n", R);
+    printf("S: %d\n", S);
+    #endif
     
     #if VERBOSE >= 3
         printf("delta_adder.total(%f) : 0b", delta_adder.total); print_binary(delta_adder.total_uint); printf("\n");

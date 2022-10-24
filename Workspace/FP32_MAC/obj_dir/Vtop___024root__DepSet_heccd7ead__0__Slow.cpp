@@ -72,12 +72,14 @@ VL_ATTR_COLD void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__small_E_Mantissa3 = VL_RAND_RESET_I(24);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__added_Mantissa = VL_RAND_RESET_I(25);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__leading_1_position = VL_RAND_RESET_I(8);
+    vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__adder_output = VL_RAND_RESET_I(25);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__R = VL_RAND_RESET_I(1);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__S = VL_RAND_RESET_I(1);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_exponent = VL_RAND_RESET_I(8);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_mantissa = VL_RAND_RESET_I(23);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_R = VL_RAND_RESET_I(1);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__final_S = VL_RAND_RESET_I(1);
+    vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__G = VL_RAND_RESET_I(1);
     for (int __Vi0=0; __Vi0<2; ++__Vi0) {
         vlSelf->__Vm_traceActivity[__Vi0] = VL_RAND_RESET_I(1);
     }
