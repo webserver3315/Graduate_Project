@@ -1,7 +1,3 @@
-`define DEBUG
-/*
-    FP32_MAC
-*/
 module leading_1_detector_48bit
     (
         input wire  [47:0]  tmp,
@@ -284,15 +280,15 @@ module FP32_Multiplier_Combinatorial
     `endif
 
     // EA_plus_EB 가 아니라 EA+EB 를 넣으면 부등호가 안맞다. 왜 이럴까...? 아무튼 EA_plus_EB로 바꿈.
-    reg DEBUG_ELB, DEBUG_ERB, DEBUG_EEQ;
+    reg FINAL_ELB, FINAL_ERB, FINAL_EEQ;
     always_comb begin
-        DEBUG_ELB       =   (EA_plus_EB > 9'd128);
-        DEBUG_ERB       =   (EA_plus_EB < 9'd128); // EA + EB - 9'd128 < 0
-        DEBUG_EEQ       =   ~(DEBUG_ELB ^ DEBUG_ERB); // E == -126, ELB ^ EEQ 해도 됨.
+        FINAL_ELB       =   (EA_plus_EB > 9'd128);
+        FINAL_ERB       =   (EA_plus_EB < 9'd128); // EA + EB - 9'd128 < 0
+        FINAL_EEQ       =   ~(FINAL_ELB ^ FINAL_ERB); // E == -126, ELB ^ EEQ 해도 됨.
     end
     // ******************************************** final_Man Setter *****************************/
     always_comb begin
-        if(DEBUG_ELB) begin
+        if(FINAL_ELB) begin
             if(leading_1_position == 8'd47) begin // a
                 final_Man = Man2;
                 `ifdef DEBUG
@@ -320,7 +316,7 @@ module FP32_Multiplier_Combinatorial
                 end
             end
         end
-        else if(DEBUG_ERB) begin
+        else if(FINAL_ERB) begin
             if(leading_1_position == 8'd47) begin // d
                 final_Man = Man3;
                 `ifdef DEBUG
@@ -364,7 +360,7 @@ module FP32_Multiplier_Combinatorial
 
     // ******************************************** final_Exp Setter *****************************/
     always_comb begin
-        if(DEBUG_ELB) begin
+        if(FINAL_ELB) begin
             if(leading_1_position == 8'd47) begin // a
                 final_Exp = Exp2;
                 final_Exp_Carry = Exp2_C;
@@ -403,7 +399,7 @@ module FP32_Multiplier_Combinatorial
                 end
             end
         end
-        else if(DEBUG_ERB) begin
+        else if(FINAL_ERB) begin
             if(leading_1_position == 8'd47) begin // d
                 if(Until_126 == 1) begin // d-h
                     final_Exp = Exp4;
@@ -517,7 +513,6 @@ module FP32_Multiplier_Combinatorial
         end
     end
 endmodule
-
 module leading_1_detector_23bit
     (
         input   wire    [24:0]  tmp,
@@ -832,6 +827,7 @@ module FP32_Adder_Combinatorial
     end
 
 endmodule
+
 
 module FP32_MAC_Combinatorial
     (

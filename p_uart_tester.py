@@ -4,8 +4,9 @@ import weakref
 from serial import Serial
 import time
 
-ser = Serial('COM5', 9600, timeout = 0)
+ser = Serial('COM5', 115200, timeout = 0)
 newfile = open("output.bin", "wb")
+waitsec = 0.000001
 # ser = Serial('dev/ttyS5', 115200)
 
 def TryWrite_Bytewise(ser, one_byte_hex_string):
@@ -19,13 +20,13 @@ def TryWrite(ser, four_byte_hex_string):
     # print("four_byte_hex_string type : ", type(four_byte_hex_string))
     assert(len(four_byte_hex_string) == 8)
     TryWrite_Bytewise(ser, four_byte_hex_string[6:8])
-    time.sleep(0.1)
+    time.sleep(waitsec)
     TryWrite_Bytewise(ser, four_byte_hex_string[4:6])
-    time.sleep(0.1)
+    time.sleep(waitsec)
     TryWrite_Bytewise(ser, four_byte_hex_string[2:4])
-    time.sleep(0.1)
+    time.sleep(waitsec)
     TryWrite_Bytewise(ser, four_byte_hex_string[0:2])
-    time.sleep(0.1)
+    time.sleep(waitsec)
     print("Sent ", four_byte_hex_string)
 
 def TryRead(ser, bytelen):
@@ -34,7 +35,7 @@ def TryRead(ser, bytelen):
         result = ser.read(size=1)
         result_hex = result.hex()
         list.append(result_hex)
-    time.sleep(0.5)
+    time.sleep(waitsec)
     list.reverse()
     print("Read list is ", list)
     # print("Read : 0x", result)
@@ -49,6 +50,7 @@ def alpha_bravo_acc(alpha, bravo, acc):
     return hexstring
 
 def test_05_75_00():
+    read_byte_length = 8
     while True:
         if(ser.readable()):
             arg = input()        
@@ -71,7 +73,7 @@ def test_05_75_00():
                 TryWrite(ser, alpha)
                 TryWrite(ser, bravo)
                 TryWrite(ser, acc)
-                TryRead(ser,12)
+                TryRead(ser,read_byte_length)
             elif arg == 'z':
                 alpha = "00000000"
                 bravo = "00000000"
@@ -79,7 +81,7 @@ def test_05_75_00():
                 TryWrite(ser, alpha)
                 TryWrite(ser, bravo)
                 TryWrite(ser, acc)
-                TryRead(ser,12)
+                TryRead(ser,read_byte_length)
             elif arg == 'p':            
                 alpha = "00000000"
                 bravo = "00000000"
@@ -87,15 +89,15 @@ def test_05_75_00():
                 TryWrite(ser, alpha)
                 TryWrite(ser, bravo)
                 TryWrite(ser, acc)
-                TryRead(ser,12)
+                TryRead(ser,read_byte_length)
             elif arg == 'b':
                 tmp = input()
                 # b_tmp = bytes.fromhex(tmp)
                 # print("b_tmp: ", b_tmp)
-                for i in range (0,12,1):
+                for i in range (0,read_byte_length,1):
                     TryWrite_Bytewise(ser, tmp)
-                    time.sleep(0.1)
-                    TryRead(ser, 12)
+                    time.sleep(waitsec)
+                    TryRead(ser, read_byte_length)
             elif arg == 'aa':
                 alpha = "BF000000"
                 bravo = "3F400000"
@@ -103,7 +105,8 @@ def test_05_75_00():
                 TryWrite(ser, alpha)
                 TryWrite(ser, bravo)
                 TryWrite(ser, acc)
-                TryRead(ser,12)
+                time.sleep(waitsec)
+                TryRead(ser,read_byte_length)
                 #0xbec00000
             elif arg == 'bb':
                 alpha = "3F000000"
@@ -112,7 +115,8 @@ def test_05_75_00():
                 TryWrite(ser, alpha)
                 TryWrite(ser, bravo)
                 TryWrite(ser, acc)
-                TryRead(ser,12)
+                time.sleep(waitsec)
+                TryRead(ser,read_byte_length)
                 # 0x3e600000
             elif arg == 'bytewise':
                 print("'Bytewise Selected")
@@ -122,7 +126,7 @@ def test_05_75_00():
                 TryWrite(ser, alpha)
                 TryWrite(ser, bravo)
                 TryWrite(ser, acc)
-                TryRead(ser,12)
+                TryRead(ser,read_byte_length)
             elif arg == 'get':
                 get(ser,'ByteOrder')
             elif arg == 'little':
@@ -153,19 +157,19 @@ def test_RXTX():
             # result = ser.readline()
 
             input()
-            TryRead(ser,12)
+            TryRead(ser,read_byte_length)
 
             input()
             TryWrite(ser, b'C')
-            TryRead(ser,12)
+            TryRead(ser,read_byte_length)
 
             input()
             TryWrite(ser, b'BBBB')
-            TryRead(ser,12)
+            TryRead(ser,read_byte_length)
 
             input()
             TryWrite(ser, b'AAAA')
-            TryRead(ser,12)
+            TryRead(ser,read_byte_length)
 
             result = ser.read(size=4)
             result_hex = result.hex()

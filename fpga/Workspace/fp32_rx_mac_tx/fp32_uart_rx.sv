@@ -11,7 +11,7 @@ module fp32_uart_rx
     output reg [95:0] RX_DATA_O // TYPE "AAAA BBBB CCCC"
     );
 
-    localparam MAX_CLK_CNT = 5208;
+    localparam MAX_CLK_CNT = 434 - 1;
 
     localparam IDLE         = 0;
     localparam START        = 1;
@@ -38,7 +38,9 @@ module fp32_uart_rx
     reg DEBUG_CLK;    
     `endif
 
-    // Purpose: Control RX state machine
+    // 문제
+    // 1. RSTN 이후, 1회는 반드시 응답을 안함
+    // 2. 응답 5회 이후, 1회는 반드시 응답을 안함.
     always @(posedge CLK_I or negedge RSTL_I) begin
     if (~RSTL_I) begin
         rx_state       = IDLE;
@@ -87,32 +89,32 @@ module fp32_uart_rx
         DATA :
             begin
                 RX_VALID_O = 0;
-                if (clk_cnt < MAX_CLK_CNT) begin
-                    clk_cnt     <= clk_cnt + 1;
-                    rx_state    <= DATA;
-                end
-                else begin
+                if (clk_cnt == MAX_CLK_CNT) begin
                     `ifdef DEBUG_RX
                     DEBUG_CLK = ~DEBUG_CLK;
                     `endif
                     clk_cnt                 <= 0;
                     RX_DATA_O[total_index]  <= UART_RX_I;
                     // Check if we have received all bits
-                    if (received_bit < 7) begin // bit FULL
-                        received_bit    <= received_bit + 1;
-                        rx_state   <= DATA;
-                    end
-                    else begin // 자릿수 올리기
-                        received_bit = 0;
-                        if(received_byte < 11) begin
-                            received_byte <= received_byte + 1;
-                            rx_state   <= STOP;
-                        end
-                        else begin
+                    if (received_bit == 7) begin // bit FULL
+                        received_bit <= 0;
+                        if(received_byte == 11) begin
                             received_byte <= 0;
                             rx_state   <= ZZIN_STOP;
                         end
+                        else begin
+                            received_byte <= received_byte + 1;
+                            rx_state   <= STOP;
+                        end
                     end
+                    else begin // 자릿수 올리기
+                        received_bit    <= received_bit + 1;
+                        rx_state   <= DATA;
+                    end
+                end
+                else begin
+                    clk_cnt     <= clk_cnt + 1;
+                    rx_state    <= DATA;
                 end
             end // case: DATA
 
@@ -123,15 +125,15 @@ module fp32_uart_rx
             `ifdef DEBUG_RX
             DEBUG_CLK <= 0;
             `endif
-            if (clk_cnt < MAX_CLK_CNT)
-            begin
-                clk_cnt      <= clk_cnt + 1;
-                rx_state     <= STOP;
-            end
-            else
+            if (clk_cnt == MAX_CLK_CNT)
             begin
                 clk_cnt          <= 0;
                 rx_state         <= MORE;
+            end
+            else
+            begin
+                clk_cnt      <= clk_cnt + 1;
+                rx_state     <= STOP;
             end
             end // case: STOP
 
@@ -139,17 +141,18 @@ module fp32_uart_rx
         MORE :
             begin
                 RX_VALID_O <= 0;
-                if (clk_cnt < MAX_CLK_CNT)
-                begin
-                    clk_cnt      <= clk_cnt + 1;
-                    rx_state     <= MORE;
-                end
-                else
+                if (clk_cnt == MAX_CLK_CNT)
                 begin
                     clk_cnt          <= 0;
                     rx_state         <= IDLE;
                 end
+                else
+                begin
+                    clk_cnt      <= clk_cnt + 1;
+                    rx_state     <= MORE;
+                end
             end
+
 
         // Receive Stop bit.  Stop bit <= 1
         ZZIN_STOP :
@@ -158,15 +161,15 @@ module fp32_uart_rx
             `ifdef DEBUG_RX
             DEBUG_CLK <= 0;
             `endif
-            if (clk_cnt < MAX_CLK_CNT)
-            begin
-                clk_cnt      <= clk_cnt + 1;
-                rx_state     <= ZZIN_STOP;
-            end
-            else
+            if (clk_cnt == MAX_CLK_CNT)
             begin
                 clk_cnt          <= 0;
                 rx_state         <= ZZIN_MORE;
+            end
+            else
+            begin
+                clk_cnt      <= clk_cnt + 1;
+                rx_state     <= ZZIN_STOP;
             end
             end // case: STOP
 
@@ -174,31 +177,31 @@ module fp32_uart_rx
         ZZIN_MORE :
             begin
             RX_VALID_O <= 1;
-                if (clk_cnt < MAX_CLK_CNT)
-                begin
-                    clk_cnt      <= clk_cnt + 1;
-                    rx_state     <= ZZIN_MORE;
-                end
-                else
+                if (clk_cnt == MAX_CLK_CNT)
                 begin
                     clk_cnt          <= 0;
                     rx_state         <= ZZIN_IDLE;
+                end
+                else
+                begin
+                    clk_cnt      <= clk_cnt + 1;
+                    rx_state     <= ZZIN_MORE;
                 end
             end
 
         ZZIN_IDLE :
             begin
-            RX_VALID_O <= 1;
+                RX_VALID_O <= 1;
                 clk_cnt     <= 0;
                 received_bit     <= 0;
                 if (UART_RX_I == 1'b0) begin // UART 가 0이면 즉시 START 로 이동
-                    RX_VALID_O <= 0;
                     rx_state    <= START;
                 end
                 else begin
                     rx_state <= ZZIN_IDLE;
                 end
             end
+
 
         default :
             begin

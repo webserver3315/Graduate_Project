@@ -1,4 +1,4 @@
-`define DEBUG_MAC
+// `define DEBUG_MAC
 // `include "fp32_posedge_detector.sv"
 // `include "fp32_adder.sv"
 // `include "fp32_multiplier.sv"

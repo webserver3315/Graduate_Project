@@ -13,7 +13,7 @@ module fp32_rx_mac_tx
         input UART_RX_I,
         output TX_DATA_O
     );
-    localparam MAX_CLK_CNT = 434;
+    localparam MAX_CLK_CNT = 434 - 1;
 
 
     wire rx_valid_o_mac_valid_i;
