@@ -11,7 +11,7 @@ module fp32_uart_rx
     output reg [95:0] RX_DATA_O // TYPE "AAAA BBBB CCCC"
     );
 
-    localparam MAX_CLK_CNT = 434 - 1;
+    localparam MAX_CLK_CNT = 5208 - 1;
 
     localparam IDLE         = 0;
     localparam START        = 1;

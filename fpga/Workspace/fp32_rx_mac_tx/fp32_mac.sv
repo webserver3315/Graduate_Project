@@ -21,7 +21,7 @@ module FP32_MAC_Combinatorial
         output  reg             MAC_READY_O,
         output  reg             MAC_VALID_O
     );
-    localparam MAX_CLK_CNT = 5208;
+    localparam MAX_CLK_CNT = 5208 - 1;
 
     localparam RST = 0;
     localparam CALC = 1;

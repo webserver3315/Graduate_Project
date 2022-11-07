@@ -226,9 +226,11 @@ module FP32_Multiplier_Combinatorial
     /******************************** Multiply Mantissa ******************************/
     wire            [47:0]  M_48_Original;
     wire            [7:0]   leading_1_position;
-    wire            [7:0]   Until_46th, Until_126, Maximum_Exp_Cost;
+    wire            [7:0]   Until_46th;
     wire            [8:0]   E, Exp;
-    wire                    Until_126_Carry, Maximum_Exp_Cost_Carry;
+
+    reg             [7:0]   Until_126;
+    reg                     Until_126_Carry, Not_Used;
 
     assign M_48_Original = Denorm1 * Denorm2; // reg, wire는 기본적으로 unsigned이다.
     leading_1_detector_48bit leading_1_detector_48bit_1(
@@ -236,56 +238,49 @@ module FP32_Multiplier_Combinatorial
         .ret(leading_1_position)
     );
 
-    // assign E    = EA_plus_EB - 9'd254; // SIGNED 관련 오류 뜰 가능성 농후
-    // assign Exp  = EA_plus_EB - 9'd127;
-
     assign Until_46th = 8'd46 - leading_1_position;
     assign {Until_126_Carry, Until_126} = -(EA_plus_EB) + 9'd128; // -9'd126 - (EA + EB - 9'd254);
+    reg FINAL_ELB, FINAL_ERB, FINAL_EEQ;
+    always_comb begin
+        FINAL_ELB       =   (EA_plus_EB > 9'd128);
+        FINAL_ERB       =   (EA_plus_EB < 9'd128); // EA + EB - 9'd128 < 0
+        FINAL_EEQ       =   ~(FINAL_ELB ^ FINAL_ERB); 
+        
+        // E == -126, ELB ^ EEQ 해도 됨.
+    end
 
-    wire        [47:0]  Man1, Man2, Man3, Man4, Man5_tmp, Man5_cei, Man5_ce, Man5, Man3_tmp;
-    wire        [7:0]   Exp1, Exp2, Exp3, Exp4, Exp5;
-    reg         [47:0]  final_Man;
-    reg         [7:0]   final_Exp;
-    reg                 final_Exp_Carry;
-    wire                Exp1_C, Exp2_C, Exp3_C, Exp4_C, Exp5_C;
+    reg        [47:0]  Man1, Man2, Man3, Man4, Man5, Man6;
+    reg        [7:0]   Exp1, Exp2, Exp3, Exp4, Exp5;
+    reg        [47:0]  final_Man;
+    reg        [7:0]   final_Exp;
+    reg                final_Exp_Carry;
+    reg                Exp1_C, Exp2_C, Exp3_C, Exp4_C, Exp5_C;
 
-    assign Man1 = M_48_Original;
-
-    assign Man2 = M_48_Original>>1;
-    assign Man3_tmp = M_48_Original>>Until_126; // Until 126, Until 46은 모두 음수가 가능한 수다!!!
-    /*
+    reg             [7:0]   Maximum_Exp_Cost;
+    always_comb begin
+        Man1 = M_48_Original;
+        Man2 = M_48_Original>>1;
         Man3 = M_48_Original>>Until_126;
-        if(Until_126 > 48) Man3 = 0x00;
-    */
-    assign Man3 = (Until_126_Carry ? M_48_Original : Man3_tmp);
-        // if(Until_126 > 48) Man3 = 0x00;
-    assign Man4 = M_48_Original<<Until_46th;
-    assign Man5_tmp = M_48_Original<<Until_46th;
-        // int Maximum_Exp_Cost = leading_1_detector_48bit(Man5);
-    // assign Maximum_Exp_Cost = -126 - (Exp - Until_46th);
-    assign {Maximum_Exp_Cost_Carry, Maximum_Exp_Cost} = (EA_plus_EB) - 9'd128;
-    assign Man5_cei = (Until_46th >= (Maximum_Exp_Cost + 8'd48)) ? 48'd0 : (Man5_tmp >> (Until_46th - Maximum_Exp_Cost));
-    assign Man5_ce = Man5_tmp >> (EA_plus_EB - 9'd127);
-    assign Man5 = (Until_46th >= Maximum_Exp_Cost) ? Man5_cei : Man5_ce;
-    
-    assign {Exp1_C,Exp1} = (EA_plus_EB - 9'd127);
-    assign {Exp2_C,Exp2} = EA_plus_EB - 9'd127 + 9'd1;
-    assign {Exp3_C,Exp3} = 0;
-    assign {Exp4_C,Exp4} = 1;
-    assign {Exp5_C,Exp5} = EA_plus_EB - 9'd127 - Until_46th;
+        Man4 = M_48_Original<<Until_46th;
+
+        Maximum_Exp_Cost = EA_plus_EB[7:0] - 8'd128; // (EA + EB - 254) - 126 => 양수임이 보장됨. 아니면 애초에 Man5가 골라지지 않음
+        
+        Man5 = (M_48_Original << (~Until_126 + 8'd1));
+        Man6 = (Man4 >> (EA_plus_EB - 9'd127));
+        Man6 = (M_48_Original << (Until_46th - (EA_plus_EB - 9'd127)));
+        
+        {Exp1_C,Exp1} = (EA_plus_EB - 9'd127);
+        {Exp2_C,Exp2} = EA_plus_EB - 9'd127 + 9'd1;
+        {Exp3_C,Exp3} = 0;
+        {Exp4_C,Exp4} = 1;
+        {Exp5_C,Exp5} = EA_plus_EB - 9'd127 - Until_46th;
+    end
 
     `ifdef DEBUG
     reg [7:0]   DEBUG_FINAL_MAN = 8'd0;
     reg [7:0]   DEBUG_FINAL_EXP = 8'd0;
     `endif
 
-    // EA_plus_EB 가 아니라 EA+EB 를 넣으면 부등호가 안맞다. 왜 이럴까...? 아무튼 EA_plus_EB로 바꿈.
-    reg FINAL_ELB, FINAL_ERB, FINAL_EEQ;
-    always_comb begin
-        FINAL_ELB       =   (EA_plus_EB > 9'd128);
-        FINAL_ERB       =   (EA_plus_EB < 9'd128); // EA + EB - 9'd128 < 0
-        FINAL_EEQ       =   ~(FINAL_ELB ^ FINAL_ERB); // E == -126, ELB ^ EEQ 해도 됨.
-    end
     // ******************************************** final_Man Setter *****************************/
     always_comb begin
         if(FINAL_ELB) begin
@@ -302,8 +297,14 @@ module FP32_Multiplier_Combinatorial
                 `endif
             end 
             else begin // c
-                if(EA_plus_EB < Until_46th + 9'd128) begin // c-e-i
+                if(EA_plus_EB == Until_46th + 9'd128) begin
                     final_Man = Man5;
+                    `ifdef DEBUG
+                    DEBUG_FINAL_MAN = 8'd3;
+                    `endif
+                end
+                else if(EA_plus_EB < Until_46th + 9'd128) begin // c-e-i
+                    final_Man = Man6;
                     `ifdef DEBUG
                     DEBUG_FINAL_MAN = 8'd3;
                     `endif
@@ -317,22 +318,16 @@ module FP32_Multiplier_Combinatorial
             end
         end
         else if(FINAL_ERB) begin
-            if(leading_1_position == 8'd47) begin // d
-                final_Man = Man3;
+            if(Until_126_Carry) begin
+                final_Man = Man1;
                 `ifdef DEBUG
                 DEBUG_FINAL_MAN = 8'd5;
                 `endif
             end
-            else if(leading_1_position == 8'd46) begin // e
+            else begin // d, e, f
                 final_Man = Man3;
                 `ifdef DEBUG
                 DEBUG_FINAL_MAN = 8'd6;
-                `endif
-            end
-            else begin // f
-                final_Man = Man3;
-                `ifdef DEBUG
-                DEBUG_FINAL_MAN = 8'd7;
                 `endif
             end
         end

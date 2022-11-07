@@ -1,5 +1,5 @@
 Analysis & Synthesis report for fp32_rx_mac_tx
-Tue Oct 25 01:58:07 2022
+Tue Oct 25 22:54:56 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -52,13 +52,13 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Oct 25 01:58:07 2022       ;
+; Analysis & Synthesis Status        ; Successful - Tue Oct 25 22:54:56 2022       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; fp32_rx_mac_tx                              ;
 ; Top-level Entity Name              ; fp32_rx_mac_tx                              ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 3,188                                       ;
-;     Total combinational functions  ; 3,045                                       ;
+; Total logic elements               ; 3,260                                       ;
+;     Total combinational functions  ; 3,117                                       ;
 ;     Dedicated logic registers      ; 426                                         ;
 ; Total registers                    ; 426                                         ;
 ; Total pins                         ; 4                                           ;
@@ -168,15 +168,14 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.2%      ;
-;     Processor 3            ;   0.2%      ;
-;     Processor 4            ;   0.2%      ;
-;     Processor 5            ;   0.2%      ;
+;     Processor 2            ;   0.1%      ;
+;     Processor 3            ;   0.1%      ;
+;     Processor 4            ;   0.1%      ;
+;     Processor 5            ;   0.1%      ;
 ;     Processor 6            ;   0.1%      ;
 ;     Processor 7            ;   0.1%      ;
 ;     Processor 8            ;   0.1%      ;
-;     Processor 9            ;   0.1%      ;
-;     Processors 10-12       ;   0.1%      ;
+;     Processors 9-12        ;   0.1%      ;
 +----------------------------+-------------+
 
 
@@ -207,16 +206,16 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-------------+
 ; Resource                                    ; Usage       ;
 +---------------------------------------------+-------------+
-; Estimated Total logic elements              ; 3,188       ;
+; Estimated Total logic elements              ; 3,260       ;
 ;                                             ;             ;
-; Total combinational functions               ; 3045        ;
+; Total combinational functions               ; 3117        ;
 ; Logic element usage by number of LUT inputs ;             ;
-;     -- 4 input functions                    ; 1760        ;
-;     -- 3 input functions                    ; 873         ;
-;     -- <=2 input functions                  ; 412         ;
+;     -- 4 input functions                    ; 1852        ;
+;     -- 3 input functions                    ; 841         ;
+;     -- <=2 input functions                  ; 424         ;
 ;                                             ;             ;
 ; Logic elements by mode                      ;             ;
-;     -- normal mode                          ; 2653        ;
+;     -- normal mode                          ; 2725        ;
 ;     -- arithmetic mode                      ; 392         ;
 ;                                             ;             ;
 ; Total registers                             ; 426         ;
@@ -229,8 +228,8 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;             ;
 ; Maximum fan-out node                        ; CLK_I~input ;
 ; Maximum fan-out                             ; 426         ;
-; Total fan-out                               ; 12062       ;
-; Average fan-out                             ; 3.46        ;
+; Total fan-out                               ; 12345       ;
+; Average fan-out                             ; 3.47        ;
 +---------------------------------------------+-------------+
 
 
@@ -239,12 +238,12 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------+--------------+
 ; Compilation Hierarchy Node                                     ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                           ; Entity Name                   ; Library Name ;
 +----------------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------+--------------+
-; |fp32_rx_mac_tx                                                ; 3045 (1)            ; 426 (0)                   ; 0           ; 7            ; 1       ; 3         ; 4    ; 0            ; |fp32_rx_mac_tx                                                                                                                               ; fp32_rx_mac_tx                ; work         ;
-;    |FP32_MAC_Combinatorial:My_MAC|                             ; 2728 (143)          ; 166 (165)                 ; 0           ; 7            ; 1       ; 3         ; 0    ; 0            ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC                                                                                                 ; FP32_MAC_Combinatorial        ; work         ;
-;       |FP32_Adder_Combinatorial:My_Adder|                      ; 770 (741)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder                                                               ; FP32_Adder_Combinatorial      ; work         ;
+; |fp32_rx_mac_tx                                                ; 3117 (1)            ; 426 (0)                   ; 0           ; 7            ; 1       ; 3         ; 4    ; 0            ; |fp32_rx_mac_tx                                                                                                                               ; fp32_rx_mac_tx                ; work         ;
+;    |FP32_MAC_Combinatorial:My_MAC|                             ; 2800 (144)          ; 166 (165)                 ; 0           ; 7            ; 1       ; 3         ; 0    ; 0            ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC                                                                                                 ; FP32_MAC_Combinatorial        ; work         ;
+;       |FP32_Adder_Combinatorial:My_Adder|                      ; 803 (774)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder                                                               ; FP32_Adder_Combinatorial      ; work         ;
 ;          |leading_1_detector_23bit:leading_1_detector_23bit_1| ; 29 (29)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|leading_1_detector_23bit:leading_1_detector_23bit_1           ; leading_1_detector_23bit      ; work         ;
-;       |FP32_Multiplier_Combinatorial:My_Multiplier|            ; 1814 (1692)         ; 0 (0)                     ; 0           ; 7            ; 1       ; 3         ; 0    ; 0            ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier                                                     ; FP32_Multiplier_Combinatorial ; work         ;
-;          |leading_1_detector_48bit:leading_1_detector_48bit_1| ; 67 (67)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|leading_1_detector_48bit:leading_1_detector_48bit_1 ; leading_1_detector_48bit      ; work         ;
+;       |FP32_Multiplier_Combinatorial:My_Multiplier|            ; 1852 (1727)         ; 0 (0)                     ; 0           ; 7            ; 1       ; 3         ; 0    ; 0            ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier                                                     ; FP32_Multiplier_Combinatorial ; work         ;
+;          |leading_1_detector_48bit:leading_1_detector_48bit_1| ; 70 (70)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|leading_1_detector_48bit:leading_1_detector_48bit_1 ; leading_1_detector_48bit      ; work         ;
 ;          |lpm_mult:Mult0|                                      ; 55 (0)              ; 0 (0)                     ; 0           ; 7            ; 1       ; 3         ; 0    ; 0            ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0                                      ; lpm_mult                      ; work         ;
 ;             |mult_bdt:auto_generated|                          ; 55 (55)             ; 0 (0)                     ; 0           ; 7            ; 1       ; 3         ; 0    ; 0            ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated              ; mult_bdt                      ; work         ;
 ;       |posedge_detector:My_posedge_detector|                   ; 1 (1)               ; 1 (1)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|posedge_detector:My_posedge_detector                                                            ; posedge_detector              ; work         ;
@@ -399,40 +398,41 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                                                 ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------------------------------------------------------------+
-; 4:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |fp32_rx_mac_tx|fp32_uart_tx:My_UART_Tx|clk_cnt[16]                                                                                        ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |fp32_rx_mac_tx|fp32_uart_tx:My_UART_Tx|clk_cnt[15]                                                                                        ;
 ; 6:1                ; 32 bits   ; 128 LEs       ; 32 LEs               ; 96 LEs                 ; Yes        ; |fp32_rx_mac_tx|fp32_uart_rx:My_UART_Rx|clk_cnt[13]                                                                                        ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |fp32_rx_mac_tx|fp32_uart_rx:My_UART_Rx|rx_state                                                                                           ;
 ; 3:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|fp32_uart_rx:My_UART_Rx|received_bit                                                                                       ;
 ; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|ShiftLeft0                                       ;
-; 3:1                ; 24 bits   ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|small_E_Mantissa2[10]                                      ;
+; 3:1                ; 24 bits   ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|small_E_Mantissa2[20]                                      ;
 ; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|ShiftRight0                                                ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|delta[24]                                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|delta[29]                                                  ;
 ; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|ShiftLeft0                                       ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|delta[24]                                        ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|delta[27]                                        ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|R                                                          ;
 ; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|ShiftRight0                                                ;
-; 4:1                ; 23 bits   ; 46 LEs        ; 46 LEs               ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|delta[14]                                                  ;
+; 4:1                ; 23 bits   ; 46 LEs        ; 46 LEs               ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|delta[16]                                                  ;
 ; 5:1                ; 8 bits    ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|ShiftLeft0                                       ;
-; 5:1                ; 22 bits   ; 66 LEs        ; 66 LEs               ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|delta[8]                                         ;
+; 5:1                ; 22 bits   ; 66 LEs        ; 66 LEs               ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|delta[20]                                        ;
 ; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|ShiftRight0                                                ;
 ; 6:1                ; 4 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|ShiftLeft0                                       ;
 ; 6:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|ShiftRight0                                                ;
-; 6:1                ; 7 bits    ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|final_mantissa[5]                                          ;
-; 6:1                ; 8 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|final_exponent[6]                                          ;
+; 6:1                ; 7 bits    ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|final_mantissa[1]                                          ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|final_exponent[3]                                          ;
 ; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|ShiftLeft0                                       ;
 ; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|ShiftRight0                                                ;
 ; 7:1                ; 7 bits    ; 28 LEs        ; 21 LEs               ; 7 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|final_mantissa[10]                                         ;
-; 8:1                ; 8 bits    ; 40 LEs        ; 16 LEs               ; 24 LEs                 ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|final_Exp_Carry                                  ;
+; 8:1                ; 8 bits    ; 40 LEs        ; 16 LEs               ; 24 LEs                 ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|final_Exp[2]                                     ;
 ; 8:1                ; 2 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|ShiftLeft0                                       ;
-; 8:1                ; 3 bits    ; 15 LEs        ; 12 LEs               ; 3 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|final_mantissa[18]                                         ;
-; 9:1                ; 2 bits    ; 12 LEs        ; 10 LEs               ; 2 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|final_mantissa[20]                                         ;
+; 8:1                ; 3 bits    ; 15 LEs        ; 12 LEs               ; 3 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|final_mantissa[16]                                         ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 10 LEs               ; 2 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|final_mantissa[19]                                         ;
 ; 10:1               ; 2 bits    ; 12 LEs        ; 10 LEs               ; 2 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|final_mantissa[22]                                         ;
-; 15:1               ; 14 bits   ; 140 LEs       ; 70 LEs               ; 70 LEs                 ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|final_Man[39]                                    ;
+; 15:1               ; 14 bits   ; 140 LEs       ; 70 LEs               ; 70 LEs                 ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|final_Man[37]                                    ;
 ; 16:1               ; 2 bits    ; 20 LEs        ; 12 LEs               ; 8 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|leading_1_detector_23bit:leading_1_detector_23bit_1|ret[4] ;
-; 18:1               ; 16 bits   ; 192 LEs       ; 96 LEs               ; 96 LEs                 ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|final_Man[24]                                    ;
-; 21:1               ; 6 bits    ; 84 LEs        ; 66 LEs               ; 18 LEs                 ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|final_Man[8]                                     ;
-; 24:1               ; 4 bits    ; 64 LEs        ; 48 LEs               ; 16 LEs                 ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|final_Man[5]                                     ;
-; 24:1               ; 2 bits    ; 32 LEs        ; 22 LEs               ; 10 LEs                 ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|final_Man[14]                                    ;
-; 27:1               ; 2 bits    ; 36 LEs        ; 28 LEs               ; 8 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|final_Man[3]                                     ;
+; 18:1               ; 16 bits   ; 192 LEs       ; 96 LEs               ; 96 LEs                 ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|final_Man[19]                                    ;
+; 21:1               ; 6 bits    ; 84 LEs        ; 66 LEs               ; 18 LEs                 ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|final_Man[12]                                    ;
+; 24:1               ; 4 bits    ; 64 LEs        ; 48 LEs               ; 16 LEs                 ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|final_Man[6]                                     ;
+; 24:1               ; 2 bits    ; 32 LEs        ; 22 LEs               ; 10 LEs                 ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|final_Man[15]                                    ;
+; 27:1               ; 2 bits    ; 36 LEs        ; 28 LEs               ; 8 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|final_Man[2]                                     ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------------------------------------------------------------+
 
 
@@ -504,21 +504,21 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     ENA CLR SCLR      ; 32                          ;
 ;     ENA SCLR          ; 32                          ;
 ;     plain             ; 98                          ;
-; cycloneiii_lcell_comb ; 3045                        ;
+; cycloneiii_lcell_comb ; 3117                        ;
 ;     arith             ; 392                         ;
-;         2 data inputs ; 222                         ;
-;         3 data inputs ; 170                         ;
-;     normal            ; 2653                        ;
+;         2 data inputs ; 212                         ;
+;         3 data inputs ; 180                         ;
+;     normal            ; 2725                        ;
 ;         0 data inputs ; 5                           ;
 ;         1 data inputs ; 17                          ;
-;         2 data inputs ; 168                         ;
-;         3 data inputs ; 703                         ;
-;         4 data inputs ; 1760                        ;
+;         2 data inputs ; 190                         ;
+;         3 data inputs ; 661                         ;
+;         4 data inputs ; 1852                        ;
 ; cycloneiii_mac_mult   ; 4                           ;
 ; cycloneiii_mac_out    ; 4                           ;
 ;                       ;                             ;
-; Max LUT depth         ; 63.00                       ;
-; Average LUT depth     ; 45.33                       ;
+; Max LUT depth         ; 65.10                       ;
+; Average LUT depth     ; 47.04                       ;
 +-----------------------+-----------------------------+
 
 
@@ -537,7 +537,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Tue Oct 25 01:57:49 2022
+    Info: Processing started: Tue Oct 25 22:54:35 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off fp32_rx_mac_tx -c fp32_rx_mac_tx
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
@@ -581,33 +581,35 @@ Info (12128): Elaborating entity "leading_1_detector_48bit" for hierarchy "FP32_
 Info (12128): Elaborating entity "FP32_Adder_Combinatorial" for hierarchy "FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_mac.sv Line: 154
 Warning (10036): Verilog HDL or VHDL warning at fp32_adder.sv(136): object "M_RightBig" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 136
 Warning (10036): Verilog HDL or VHDL warning at fp32_adder.sv(136): object "M_Equal" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 136
-Warning (10036): Verilog HDL or VHDL warning at fp32_adder.sv(184): object "mantissa_22nd" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 184
-Warning (10036): Verilog HDL or VHDL warning at fp32_adder.sv(189): object "lefted_frac_righted_truncated" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 189
-Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(221): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 221
-Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(225): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 225
-Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(229): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 229
+Warning (10036): Verilog HDL or VHDL warning at fp32_adder.sv(157): object "small_E_sign" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 157
+Warning (10036): Verilog HDL or VHDL warning at fp32_adder.sv(187): object "mantissa_22nd" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 187
+Warning (10036): Verilog HDL or VHDL warning at fp32_adder.sv(192): object "lefted_frac_righted_truncated" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 192
+Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(228): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 228
 Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(233): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 233
-Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(237): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 237
-Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(241): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 241
-Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(245): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 245
-Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(249): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 249
+Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(238): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 238
+Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(243): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 243
+Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(248): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 248
 Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(253): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 253
-Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(257): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 257
-Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(261): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 261
-Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(265): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 265
-Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(269): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 269
+Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(258): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 258
+Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(263): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 263
+Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(268): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 268
 Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(273): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 273
-Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(277): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 277
-Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(281): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 281
-Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(285): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 285
-Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(289): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 289
+Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(278): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 278
+Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(283): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 283
+Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(288): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 288
 Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(293): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 293
-Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(297): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 297
-Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(301): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 301
-Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(305): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 305
-Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(309): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 309
-Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(414): truncated value with size 32 to match size of target (23) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 414
-Info (12128): Elaborating entity "leading_1_detector_23bit" for hierarchy "FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|leading_1_detector_23bit:leading_1_detector_23bit_1" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 182
+Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(298): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 298
+Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(303): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 303
+Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(308): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 308
+Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(313): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 313
+Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(318): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 318
+Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(323): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 323
+Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(328): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 328
+Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(333): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 333
+Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(338): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 338
+Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(443): truncated value with size 32 to match size of target (23) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 443
+Warning (10230): Verilog HDL assignment warning at fp32_adder.sv(446): truncated value with size 32 to match size of target (23) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 446
+Info (12128): Elaborating entity "leading_1_detector_23bit" for hierarchy "FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|leading_1_detector_23bit:leading_1_detector_23bit_1" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_adder.sv Line: 185
 Info (12128): Elaborating entity "fp32_uart_tx" for hierarchy "fp32_uart_tx:My_UART_Tx" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/top.sv Line: 58
 Warning (10034): Output port "TX_READY_O" at fp32_uart_tx.sv(11) has no driver File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/fp32_uart_tx.sv Line: 11
 Info (278001): Inferred 1 megafunctions from design logic
@@ -665,16 +667,16 @@ Info (17049): 14 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx/output_files/fp32_rx_mac_tx.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 3199 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 3271 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
     Info (21059): Implemented 1 output pins
-    Info (21061): Implemented 3188 logic cells
+    Info (21061): Implemented 3260 logic cells
     Info (21062): Implemented 7 DSP elements
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 78 warnings
-    Info: Peak virtual memory: 4841 megabytes
-    Info: Processing ended: Tue Oct 25 01:58:07 2022
-    Info: Elapsed time: 00:00:18
-    Info: Total CPU time (on all processors): 00:00:25
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 80 warnings
+    Info: Peak virtual memory: 4845 megabytes
+    Info: Processing ended: Tue Oct 25 22:54:56 2022
+    Info: Elapsed time: 00:00:21
+    Info: Total CPU time (on all processors): 00:00:24
 
 
 +------------------------------------------+

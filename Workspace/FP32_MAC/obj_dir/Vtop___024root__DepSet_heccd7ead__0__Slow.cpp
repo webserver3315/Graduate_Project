@@ -49,12 +49,12 @@ VL_ATTR_COLD void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__leading_1_position = VL_RAND_RESET_I(8);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__E = VL_RAND_RESET_I(9);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__Exp = VL_RAND_RESET_I(9);
-    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__Man5_tmp = VL_RAND_RESET_Q(48);
-    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__final_Man = VL_RAND_RESET_Q(48);
-    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__final_Exp = VL_RAND_RESET_I(8);
+    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__Not_Used = VL_RAND_RESET_I(1);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__FINAL_ELB = VL_RAND_RESET_I(1);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__FINAL_ERB = VL_RAND_RESET_I(1);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__FINAL_EEQ = VL_RAND_RESET_I(1);
+    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__final_Man = VL_RAND_RESET_Q(48);
+    vlSelf->FP32_MAC_Combinatorial__DOT__My_Multiplier__DOT__final_Exp = VL_RAND_RESET_I(8);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__Larger_E = VL_RAND_RESET_I(8);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__Right_Shift = VL_RAND_RESET_I(8);
     vlSelf->FP32_MAC_Combinatorial__DOT__My_Adder__DOT__EA_minus_EB_Carry = VL_RAND_RESET_I(1);

@@ -13,7 +13,7 @@ module fp32_uart_tx
     /*
         원하는 것: TX_VALID가 HIGH 일 때 출력, TX_VALID는 LED로 확인
     */
-    localparam MAX_CLK_CNT = 434;
+    localparam MAX_CLK_CNT = 5208 - 1;
 
     localparam   BAUD_RATE = 32'd115_200;
     localparam    IDLE0_ST   =   0;

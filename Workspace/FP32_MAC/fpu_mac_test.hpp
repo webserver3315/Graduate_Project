@@ -500,7 +500,7 @@ float32 my_multiplier(struct float32 alpha, struct float32 bravo)
     long long Until_46th = 46 - leading_1_position;
     long long Until_126 = -126 - EA_plus_EB_minus_254;
     long long Maximum_Exp_Cost = 126 + EA_plus_EB_minus_254;
-    ULL Man1, Man2, Man3, Man4, Man5, final_Man;
+    ULL Man1, Man2, Man3, Man4, Man5, Man6, final_Man;
     int Exp1, Exp2, Exp3, Exp4, Exp5, final_Exp;
     int Until_126_2 = 99999999;
 
@@ -509,17 +509,8 @@ float32 my_multiplier(struct float32 alpha, struct float32 bravo)
     Man3 = M_48_Original>>Until_126;
     if(Until_126 > 48) Man3 = 0x00;
     Man4 = M_48_Original<<Until_46th;
-    Man5 = M_48_Original<<Until_46th;
-        // int Until_126_2 = leading_1_detector_48bit(Man5);
-        if(Until_46th >= Maximum_Exp_Cost){ // c-e-i // 보상가능
-            Until_126_2 = (Until_46th - Maximum_Exp_Cost);
-            Man5 = Man5 >> Until_126_2; // 
-            if(Until_126_2 > 48) Man5 = 0x00;
-        }else{ // Exp 전부소진해도 denorm
-            //c-e
-            Man5 = Man5 >> Exp;
-        }
-    
+    Man5 = Man4 >> (Until_46th - Maximum_Exp_Cost); // // c-e-i // 보상가능
+    Man6 = Man4 >> Exp; // Exp 전부소진해도 denorm: c-e    
 
     Exp1 = Exp;
     Exp2 = Exp + 1;
@@ -557,37 +548,41 @@ float32 my_multiplier(struct float32 alpha, struct float32 bravo)
             final_Man = Man1;
             DEBUG_FINAL_MAN = 0x2;
         }else{ // c
-            if(E - Until_46th < -126){ // c-e-i
-            final_Man = Man5;
-            DEBUG_FINAL_MAN = 0x3;
+            if(E - Until_46th == -126){
+                final_Man = Man5;
+                DEBUG_FINAL_MAN = 0x3;
+            }
+            else if(E - Until_46th < -126){ // c-e-i
+                final_Man = Man6;
+                DEBUG_FINAL_MAN = 0x4;
             }else{ // c-b or c-h
             final_Man = Man4;
-            DEBUG_FINAL_MAN = 0x4;
+            DEBUG_FINAL_MAN = 0x5;
             }
         }
     }
     else if(E < -126){
         if(leading_1_position == 47){ // d
             final_Man = Man3;
-            DEBUG_FINAL_MAN = 0x5;
+            DEBUG_FINAL_MAN = 0x6;
         }else if(leading_1_position == 46){ // e
             final_Man = Man3;
-            DEBUG_FINAL_MAN = 0x6;
+            DEBUG_FINAL_MAN = 0x7;
         }else{ // f
             final_Man = Man3;
-            DEBUG_FINAL_MAN = 0x7;
+            DEBUG_FINAL_MAN = 0x8;
         }
     }
     else{// Equal
         if(leading_1_position == 47){ // g
             final_Man = Man2;
-            DEBUG_FINAL_MAN = 0x8;
+            DEBUG_FINAL_MAN = 0x9;
         }else if(leading_1_position == 46){ // h
             final_Man = Man1;
-            DEBUG_FINAL_MAN = 0x9;
+            DEBUG_FINAL_MAN = 0xA;
         }else{ // i
             final_Man = Man1;
-            DEBUG_FINAL_MAN = 0xA;
+            DEBUG_FINAL_MAN = 0xB;
         }
     }
 
@@ -1072,7 +1067,7 @@ float32 my_mac(struct float32 alpha, struct float32 bravo, struct float32 acc){
     expected_middle_result.total = alpha.total * bravo.total;
     expected_final_result.total = expected_middle_result.total + acc.total;
 
-    #if VERBOSE >= 1
+    #if VERBOSE >= 2
         printf("alpha(0x%08llx %f) is ",(ULL)alpha.total_uint, alpha.total); print_binary((ULL)alpha.total_uint); printf("\n");
         printf("bravo(0x%08llx %f) is ",(ULL)bravo.total_uint, bravo.total); print_binary((ULL)bravo.total_uint); printf("\n");
         printf("acc(0x%08llx %f) is ",(ULL)acc.total_uint, acc.total); print_binary((ULL)acc.total_uint); printf("\n");
@@ -1087,6 +1082,25 @@ float32 my_mac(struct float32 alpha, struct float32 bravo, struct float32 acc){
         else printf("middle result ERROR!!!\n");
         if(gotten_final_result.total == expected_final_result.total) printf("final result SAME\n");
         else printf("final result ERROR!!!\n");
+    #endif
+
+    #if VERBOSE >= 1
+
+    if(gotten_middle_result.total == expected_middle_result.total) printf("middle result SAME\n");
+    else {
+        printf("alpha(0x%08llx %f) is ",(ULL)alpha.total_uint, alpha.total); print_binary((ULL)alpha.total_uint); printf("\n");
+        printf("bravo(0x%08llx %f) is ",(ULL)bravo.total_uint, bravo.total); print_binary((ULL)bravo.total_uint); printf("\n");
+        printf("acc(0x%08llx %f) is ",(ULL)acc.total_uint, acc.total); print_binary((ULL)acc.total_uint); printf("\n");
+        printf("GOTTEN_middle_result.total(0x%x == %f) : 0b", gotten_middle_result.total_uint, gotten_middle_result.total); print_binary(gotten_middle_result.total_uint); printf("\n");
+        printf("EXPECTED_middle_result.total(0x%x == %f) : 0b", expected_middle_result.total_uint, expected_middle_result.total); print_binary(expected_middle_result.total_uint); printf("\n");
+        printf("middle result ERROR!!!\n");
+    }
+    if(gotten_final_result.total == expected_final_result.total) printf("final result SAME\n");
+    else{
+        printf("GOTTEN_final_result.total(0x%x == %f) : 0b", gotten_final_result.total_uint, gotten_final_result.total); print_binary(gotten_final_result.total_uint); printf("\n");
+        printf("EXPECTED_final_result.total(0x%x == %f) : 0b", expected_final_result.total_uint, expected_final_result.total); print_binary(expected_final_result.total_uint); printf("\n");
+        printf("final result ERROR!!!\n");
+    } 
     #endif
 
     return gotten_final_result;

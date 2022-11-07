@@ -496,7 +496,6 @@ module FP32_Multiplier_Combinatorial
         end
     end
 
-
     always_comb begin
         delta[31] = final_sign;
         if(NAN) begin

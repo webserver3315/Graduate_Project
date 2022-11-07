@@ -12,8 +12,8 @@ waitsec = 0.000001
 def TryWrite_Bytewise(ser, one_byte_hex_string):
     assert(len(one_byte_hex_string) == 2)
     one_byte = bytes.fromhex(one_byte_hex_string)
-    print("Sent one_byte_hex_string(%s)" % one_byte_hex_string)
-    print("One_byte: ",one_byte)
+    # print("Sent one_byte_hex_string(%s)" % one_byte_hex_string)
+    # print("One_byte: ",one_byte)
     ser.write(one_byte)
 
 def TryWrite(ser, four_byte_hex_string):
@@ -50,7 +50,7 @@ def alpha_bravo_acc(alpha, bravo, acc):
     return hexstring
 
 def test_05_75_00():
-    read_byte_length = 8
+    read_byte_length = 4
     while True:
         if(ser.readable()):
             arg = input()        
@@ -102,6 +102,7 @@ def test_05_75_00():
                 alpha = "BF000000"
                 bravo = "3F400000"
                 acc = "00000000"
+                print("inputted a*b+c: ", alpha, bravo, acc)
                 TryWrite(ser, alpha)
                 TryWrite(ser, bravo)
                 TryWrite(ser, acc)

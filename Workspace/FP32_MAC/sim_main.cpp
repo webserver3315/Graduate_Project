@@ -17,6 +17,8 @@
 #include "bits/stdc++.h"
 // #include <string>
 // #include <fstream>
+
+#define SAVE
 using namespace std;
 // return (a*b)+acc = delta
 
@@ -49,22 +51,23 @@ void Setting(){ // https://blockdmask.tistory.com/322
     readFile.open("channel.txt");
     tmp.total_int = 0;
     if (readFile.is_open()){
-        while (!readFile.eof() && i<1){
+        while (!readFile.eof() && i<3025){
             string line;
             getline(readFile, line);
             // cout << line << endl;
             tmp.total_uint = strtol(line.c_str(), NULL, 16);
             // printf("tmp:(0x%08x %f) is ",(ULL)tmp.total_int, tmp.total); print_binary((ULL)tmp.total_int); printf("\n");
-            if(j == 121){
+            // printf("Channel_arr[%d][%d] = %08X;\n",i,j, tmp.total_int);
+            Channel_arr[i][j] = tmp;
+            if(j == 120){
                 i++;
                 j = 0;
             }else{
                 j++;
             }
-            // printf("Channel_arr[%d][%d] = tmp;\n",i,j);
-            Channel_arr[i][j] = tmp;
         }
-        assert(i<3025);
+        // printf("Final: [%d][%d] = tmp;\n",i,j);
+        assert(i==3025);
         assert(j==0);
         readFile.close();
     }
@@ -84,9 +87,18 @@ float32 test_case(Vtop* top, VerilatedVcdC* wave_fp, float32 alpha, float32 brav
     delta.total_int = top->delta;
     delta_sim = my_mac(alpha, bravo, acc);
     charlie.total = (alpha.total * bravo.total) + acc.total;
-    wave_fp->dump(kazu);
+    wave_fp->dump(kazu);    
 
 
+    #if VERBOSE >= 1
+    printf("Input:Alpha\t\t(0x%08llx %f) is ",(ULL)alpha.total_int, alpha.total); print_binary((ULL)alpha.total_int); printf("\n");
+    printf("Input:Bravo\t\t(0x%08llx %f) is ",(ULL)bravo.total_int, bravo.total); print_binary((ULL)bravo.total_int); printf("\n");
+    printf("Input:ACC\t\t(0x%08llx %f) is ",(ULL)acc.total_int, acc.total); print_binary((ULL)acc.total_int); printf("\n");
+    printf("Result:Verilog\t(0x%08llx %f) is ",(ULL)delta.total_int, delta.total); print_binary((ULL)delta.total_int); printf("\n");
+    printf("Result:CPP_Sim\t(0x%08llx %f) is ",(ULL)delta_sim.total_int, delta_sim.total); print_binary((ULL)delta_sim.total_int); printf("\n");
+    printf("Wanted_Result\t(0x%08llx %f) is ",(ULL)charlie.total_int, charlie.total); print_binary((ULL)charlie.total_int); printf("\n");
+    #endif
+    
     if(delta.total_int != charlie.total_int){
         if(is_nan(charlie) && is_nan(delta)){
             printf("%d: SAME BOTH NaN\n", kazu);
@@ -97,15 +109,13 @@ float32 test_case(Vtop* top, VerilatedVcdC* wave_fp, float32 alpha, float32 brav
         else if(charlie.total_int - delta.total_int == -1){
             printf("%d: SAME BUT NOT ROUNDED 2\n", kazu);
         }
+        else if(charlie.total_int - delta.total_int == 2){
+            printf("%d: SAME BUT NOT ROUNDED 3\n", kazu);
+        }
+        else if(charlie.total_int - delta.total_int == -2){
+            printf("%d: SAME BUT NOT ROUNDED 4\n", kazu);
+        }
         else {
-            #if VERBOSE >= 1
-            printf("Input:Alpha\t\t(0x%08llx %f) is ",(ULL)alpha.total_int, alpha.total); print_binary((ULL)alpha.total_int); printf("\n");
-            printf("Input:Bravo\t\t(0x%08llx %f) is ",(ULL)bravo.total_int, bravo.total); print_binary((ULL)bravo.total_int); printf("\n");
-            printf("Input:ACC\t\t(0x%08llx %f) is ",(ULL)acc.total_int, acc.total); print_binary((ULL)acc.total_int); printf("\n");
-            printf("Result:Verilog\t(0x%08llx %f) is ",(ULL)delta.total_int, delta.total); print_binary((ULL)delta.total_int); printf("\n");
-            printf("Result:CPP_Sim\t(0x%08llx %f) is ",(ULL)delta_sim.total_int, delta_sim.total); print_binary((ULL)delta_sim.total_int); printf("\n");
-            printf("Wanted_Result\t(0x%08llx %f) is ",(ULL)charlie.total_int, charlie.total); print_binary((ULL)charlie.total_int); printf("\n");
-            #endif
             printf("%d: ERROR\n", kazu);
         }
     }else{
@@ -140,6 +150,10 @@ int main(int argc, char** argv, char** env) {
     wave_fp->open("./top.vcd");
 
     float32 aa, bb, acc;
+
+    aa.total_int = 0x3dc1a5d6; bb.total_int = 0x3d97af32; acc.total_int = 0xbea06b3c;
+    test_case(top, wave_fp, aa, bb, acc, kazu);
+    kazu++;
 
     aa.total_int = 0x3dc1a5d6; bb.total_int = 0x3d97af32; acc.total_int = 0xbea06b3c;
     test_case(top, wave_fp, aa, bb, acc, kazu);
@@ -239,16 +253,24 @@ int main(int argc, char** argv, char** env) {
     kazu++;
 
 
-
-
-    srand(time(NULL));
-    acc.total_int = 0;
-    for(int i=0;i<121 ;i++){
-        aa = Filter_arr[i];
-        bb = Channel_arr[0][i];        
-        acc = test_case(top, wave_fp, aa, bb, acc, kazu);
+    srand(0);
+    for(int i=0;i<1000;i++){
+        aa.total_int = rand(); bb.total_int = rand(); acc.total_int = rand();
+        test_case(top, wave_fp, aa, bb, acc, kazu);
         kazu++;
     }
+
+    // srand(time(NULL));
+    // for(int t=0; t<3025; t++){
+    //     acc.total_int = 0;
+    //     for(int i=0;i<121 ;i++){
+    //         aa = Filter_arr[i];
+    //         bb = Channel_arr[t][i];        
+    //         acc = test_case(top, wave_fp, aa, bb, acc, kazu);
+    //         kazu++;
+    //     }
+    //     printf("%d/3025 Convolution Completed: Result %08X\n", t+1, acc.total_int);
+    // }
 
     // Final model cleanup
     top->final();
