@@ -1,0 +1,675 @@
+Analysis & Synthesis report for fp32_rx_mac_tx
+Thu Nov 10 14:53:45 2022
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis DSP Block Usage Summary
+  9. State Machine - |fp32_rx_mac_tx|fp32_uart_tx:My_UART_Tx|tx_state
+ 10. State Machine - |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|mac_state
+ 11. State Machine - |fp32_rx_mac_tx|fp32_uart_rx:My_UART_Rx|rx_state
+ 12. Registers Removed During Synthesis
+ 13. General Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Parameter Settings for Inferred Entity Instance: FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0
+ 16. lpm_mult Parameter Settings by Entity Instance
+ 17. Post-Synthesis Netlist Statistics for Top Partition
+ 18. Elapsed Time Per Partition
+ 19. Analysis & Synthesis Messages
+ 20. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Thu Nov 10 14:53:45 2022       ;
+; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Revision Name                      ; fp32_rx_mac_tx                              ;
+; Top-level Entity Name              ; fp32_rx_mac_tx                              ;
+; Family                             ; Cyclone IV E                                ;
+; Total logic elements               ; 3,260                                       ;
+;     Total combinational functions  ; 3,117                                       ;
+;     Dedicated logic registers      ; 426                                         ;
+; Total registers                    ; 426                                         ;
+; Total pins                         ; 4                                           ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 7                                           ;
+; Total PLLs                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; EP4CE6E22C8        ;                    ;
+; Top-level entity name                                            ; fp32_rx_mac_tx     ; fp32_rx_mac_tx     ;
+; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 12          ;
+;                            ;             ;
+; Average used               ; 1.01        ;
+; Maximum used               ; 12          ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.2%      ;
+;     Processor 3            ;   0.1%      ;
+;     Processor 4            ;   0.1%      ;
+;     Processor 5            ;   0.1%      ;
+;     Processor 6            ;   0.1%      ;
+;     Processor 7            ;   0.1%      ;
+;     Processor 8            ;   0.1%      ;
+;     Processors 9-12        ;   0.1%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                       ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                   ; Library ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------+---------+
+; top.sv                           ; yes             ; User SystemVerilog HDL File  ; D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv          ;         ;
+; lpm_mult.tdf                     ; yes             ; Megafunction                 ; d:/intelfpga_lite/quartus/libraries/megafunctions/lpm_mult.tdf                                 ;         ;
+; aglobal201.inc                   ; yes             ; Megafunction                 ; d:/intelfpga_lite/quartus/libraries/megafunctions/aglobal201.inc                               ;         ;
+; lpm_add_sub.inc                  ; yes             ; Megafunction                 ; d:/intelfpga_lite/quartus/libraries/megafunctions/lpm_add_sub.inc                              ;         ;
+; multcore.inc                     ; yes             ; Megafunction                 ; d:/intelfpga_lite/quartus/libraries/megafunctions/multcore.inc                                 ;         ;
+; bypassff.inc                     ; yes             ; Megafunction                 ; d:/intelfpga_lite/quartus/libraries/megafunctions/bypassff.inc                                 ;         ;
+; altshift.inc                     ; yes             ; Megafunction                 ; d:/intelfpga_lite/quartus/libraries/megafunctions/altshift.inc                                 ;         ;
+; db/mult_bdt.tdf                  ; yes             ; Auto-Generated Megafunction  ; D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/db/mult_bdt.tdf ;         ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary               ;
++---------------------------------------------+-------------+
+; Resource                                    ; Usage       ;
++---------------------------------------------+-------------+
+; Estimated Total logic elements              ; 3,260       ;
+;                                             ;             ;
+; Total combinational functions               ; 3117        ;
+; Logic element usage by number of LUT inputs ;             ;
+;     -- 4 input functions                    ; 1852        ;
+;     -- 3 input functions                    ; 841         ;
+;     -- <=2 input functions                  ; 424         ;
+;                                             ;             ;
+; Logic elements by mode                      ;             ;
+;     -- normal mode                          ; 2725        ;
+;     -- arithmetic mode                      ; 392         ;
+;                                             ;             ;
+; Total registers                             ; 426         ;
+;     -- Dedicated logic registers            ; 426         ;
+;     -- I/O registers                        ; 0           ;
+;                                             ;             ;
+; I/O pins                                    ; 4           ;
+;                                             ;             ;
+; Embedded Multiplier 9-bit elements          ; 7           ;
+;                                             ;             ;
+; Maximum fan-out node                        ; CLK_I~input ;
+; Maximum fan-out                             ; 426         ;
+; Total fan-out                               ; 12345       ;
+; Average fan-out                             ; 3.47        ;
++---------------------------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                                                      ;
++----------------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------+--------------+
+; Compilation Hierarchy Node                                     ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                           ; Entity Name                   ; Library Name ;
++----------------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------+--------------+
+; |fp32_rx_mac_tx                                                ; 3117 (1)            ; 426 (0)                   ; 0           ; 7            ; 1       ; 3         ; 4    ; 0            ; |fp32_rx_mac_tx                                                                                                                               ; fp32_rx_mac_tx                ; work         ;
+;    |FP32_MAC_Combinatorial:My_MAC|                             ; 2800 (144)          ; 166 (165)                 ; 0           ; 7            ; 1       ; 3         ; 0    ; 0            ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC                                                                                                 ; FP32_MAC_Combinatorial        ; work         ;
+;       |FP32_Adder_Combinatorial:My_Adder|                      ; 803 (774)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder                                                               ; FP32_Adder_Combinatorial      ; work         ;
+;          |leading_1_detector_23bit:leading_1_detector_23bit_1| ; 29 (29)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|leading_1_detector_23bit:leading_1_detector_23bit_1           ; leading_1_detector_23bit      ; work         ;
+;       |FP32_Multiplier_Combinatorial:My_Multiplier|            ; 1852 (1727)         ; 0 (0)                     ; 0           ; 7            ; 1       ; 3         ; 0    ; 0            ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier                                                     ; FP32_Multiplier_Combinatorial ; work         ;
+;          |leading_1_detector_48bit:leading_1_detector_48bit_1| ; 70 (70)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|leading_1_detector_48bit:leading_1_detector_48bit_1 ; leading_1_detector_48bit      ; work         ;
+;          |lpm_mult:Mult0|                                      ; 55 (0)              ; 0 (0)                     ; 0           ; 7            ; 1       ; 3         ; 0    ; 0            ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0                                      ; lpm_mult                      ; work         ;
+;             |mult_bdt:auto_generated|                          ; 55 (55)             ; 0 (0)                     ; 0           ; 7            ; 1       ; 3         ; 0    ; 0            ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0|mult_bdt:auto_generated              ; mult_bdt                      ; work         ;
+;       |posedge_detector:My_posedge_detector|                   ; 1 (1)               ; 1 (1)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|posedge_detector:My_posedge_detector                                                            ; posedge_detector              ; work         ;
+;    |fp32_uart_rx:My_UART_Rx|                                   ; 244 (244)           ; 151 (151)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |fp32_rx_mac_tx|fp32_uart_rx:My_UART_Rx                                                                                                       ; fp32_uart_rx                  ; work         ;
+;    |fp32_uart_tx:My_UART_Tx|                                   ; 72 (72)             ; 109 (108)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |fp32_rx_mac_tx|fp32_uart_tx:My_UART_Tx                                                                                                       ; fp32_uart_tx                  ; work         ;
+;       |posedge_detector:My_posedge_detector|                   ; 0 (0)               ; 1 (1)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |fp32_rx_mac_tx|fp32_uart_tx:My_UART_Tx|posedge_detector:My_posedge_detector                                                                  ; posedge_detector              ; work         ;
++----------------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary        ;
++---------------------------------------+-------------+
+; Statistic                             ; Number Used ;
++---------------------------------------+-------------+
+; Simple Multipliers (9-bit)            ; 1           ;
+; Simple Multipliers (18-bit)           ; 3           ;
+; Embedded Multiplier Blocks            ; --          ;
+; Embedded Multiplier 9-bit elements    ; 7           ;
+; Signed Embedded Multipliers           ; 0           ;
+; Unsigned Embedded Multipliers         ; 4           ;
+; Mixed Sign Embedded Multipliers       ; 0           ;
+; Variable Sign Embedded Multipliers    ; 0           ;
+; Dedicated Input Shift Register Chains ; 0           ;
++---------------------------------------+-------------+
+Note: number of Embedded Multiplier Blocks used is only available after a successful fit.
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |fp32_rx_mac_tx|fp32_uart_tx:My_UART_Tx|tx_state                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ;
++--------------------+-------------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+--------------------+-------------------+-------------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+--------------------+-------------------+-------------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+----------------+----------------+--------------------+-------------------+-------------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+--------------------+-------------------+
+; Name               ; tx_state.STOP3_ST ; tx_state.D31_ST ; tx_state.D30_ST ; tx_state.D29_ST ; tx_state.D28_ST ; tx_state.D27_ST ; tx_state.D26_ST ; tx_state.D25_ST ; tx_state.D24_ST ; tx_state.START3_ST ; tx_state.IDLE3_ST ; tx_state.STOP2_ST ; tx_state.D23_ST ; tx_state.D22_ST ; tx_state.D21_ST ; tx_state.D20_ST ; tx_state.D19_ST ; tx_state.D18_ST ; tx_state.D17_ST ; tx_state.D16_ST ; tx_state.START2_ST ; tx_state.IDLE2_ST ; tx_state.STOP1_ST ; tx_state.D15_ST ; tx_state.D14_ST ; tx_state.D13_ST ; tx_state.D12_ST ; tx_state.D11_ST ; tx_state.D10_ST ; tx_state.D9_ST ; tx_state.D8_ST ; tx_state.START1_ST ; tx_state.IDLE1_ST ; tx_state.STOP0_ST ; tx_state.D7_ST ; tx_state.D6_ST ; tx_state.D5_ST ; tx_state.D4_ST ; tx_state.D3_ST ; tx_state.D2_ST ; tx_state.D1_ST ; tx_state.D0_ST ; tx_state.START0_ST ; tx_state.IDLE0_ST ;
++--------------------+-------------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+--------------------+-------------------+-------------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+--------------------+-------------------+-------------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+----------------+----------------+--------------------+-------------------+-------------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+--------------------+-------------------+
+; tx_state.IDLE0_ST  ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 0                 ;
+; tx_state.START0_ST ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1                  ; 1                 ;
+; tx_state.D0_ST     ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0                  ; 1                 ;
+; tx_state.D1_ST     ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0                  ; 1                 ;
+; tx_state.D2_ST     ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.D3_ST     ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.D4_ST     ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.D5_ST     ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.D6_ST     ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.D7_ST     ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.STOP0_ST  ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 1                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.IDLE1_ST  ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 1                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.START1_ST ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 1                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.D8_ST     ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 1              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.D9_ST     ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.D10_ST    ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.D11_ST    ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 1               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.D12_ST    ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 1               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.D13_ST    ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 1               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.D14_ST    ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 1               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.D15_ST    ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 1               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.STOP1_ST  ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 1                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.IDLE2_ST  ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 1                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.START2_ST ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.D16_ST    ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.D17_ST    ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.D18_ST    ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.D19_ST    ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 1               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.D20_ST    ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 1               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.D21_ST    ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 1               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.D22_ST    ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 1               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.D23_ST    ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 1               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.STOP2_ST  ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 1                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.IDLE3_ST  ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 1                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.START3_ST ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.D24_ST    ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.D25_ST    ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.D26_ST    ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.D27_ST    ; 0                 ; 0               ; 0               ; 0               ; 0               ; 1               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.D28_ST    ; 0                 ; 0               ; 0               ; 0               ; 1               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.D29_ST    ; 0                 ; 0               ; 0               ; 1               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.D30_ST    ; 0                 ; 0               ; 1               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.D31_ST    ; 0                 ; 1               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
+; tx_state.STOP3_ST  ; 1                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0                  ; 0                 ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0              ; 0              ; 0                  ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                  ; 1                 ;
++--------------------+-------------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+--------------------+-------------------+-------------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+--------------------+-------------------+-------------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+----------------+----------------+--------------------+-------------------+-------------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+--------------------+-------------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------+
+; State Machine - |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|mac_state           ;
++----------------+----------------+----------------+----------------+---------------+
+; Name           ; mac_state.SHOW ; mac_state.IDLE ; mac_state.CALC ; mac_state.RST ;
++----------------+----------------+----------------+----------------+---------------+
+; mac_state.RST  ; 0              ; 0              ; 0              ; 0             ;
+; mac_state.CALC ; 0              ; 0              ; 1              ; 1             ;
+; mac_state.IDLE ; 0              ; 1              ; 0              ; 1             ;
+; mac_state.SHOW ; 1              ; 0              ; 0              ; 1             ;
++----------------+----------------+----------------+----------------+---------------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |fp32_rx_mac_tx|fp32_uart_rx:My_UART_Rx|rx_state                                                                                                   ;
++--------------------+--------------------+--------------------+--------------------+---------------+---------------+---------------+----------------+---------------+
+; Name               ; rx_state.ZZIN_IDLE ; rx_state.ZZIN_MORE ; rx_state.ZZIN_STOP ; rx_state.MORE ; rx_state.STOP ; rx_state.DATA ; rx_state.START ; rx_state.IDLE ;
++--------------------+--------------------+--------------------+--------------------+---------------+---------------+---------------+----------------+---------------+
+; rx_state.IDLE      ; 0                  ; 0                  ; 0                  ; 0             ; 0             ; 0             ; 0              ; 0             ;
+; rx_state.START     ; 0                  ; 0                  ; 0                  ; 0             ; 0             ; 0             ; 1              ; 1             ;
+; rx_state.DATA      ; 0                  ; 0                  ; 0                  ; 0             ; 0             ; 1             ; 0              ; 1             ;
+; rx_state.STOP      ; 0                  ; 0                  ; 0                  ; 0             ; 1             ; 0             ; 0              ; 1             ;
+; rx_state.MORE      ; 0                  ; 0                  ; 0                  ; 1             ; 0             ; 0             ; 0              ; 1             ;
+; rx_state.ZZIN_STOP ; 0                  ; 0                  ; 1                  ; 0             ; 0             ; 0             ; 0              ; 1             ;
+; rx_state.ZZIN_MORE ; 0                  ; 1                  ; 0                  ; 0             ; 0             ; 0             ; 0              ; 1             ;
+; rx_state.ZZIN_IDLE ; 1                  ; 0                  ; 0                  ; 0             ; 0             ; 0             ; 0              ; 1             ;
++--------------------+--------------------+--------------------+--------------------+---------------+---------------+---------------+----------------+---------------+
+
+
++----------------------------------------------------------------+
+; Registers Removed During Synthesis                             ;
++-------------------------------------------+--------------------+
+; Register name                             ; Reason for Removal ;
++-------------------------------------------+--------------------+
+; fp32_uart_tx:My_UART_Tx|tx_state~4        ; Lost fanout        ;
+; fp32_uart_tx:My_UART_Tx|tx_state~5        ; Lost fanout        ;
+; fp32_uart_tx:My_UART_Tx|tx_state~6        ; Lost fanout        ;
+; fp32_uart_tx:My_UART_Tx|tx_state~7        ; Lost fanout        ;
+; fp32_uart_tx:My_UART_Tx|tx_state~8        ; Lost fanout        ;
+; fp32_uart_tx:My_UART_Tx|tx_state~9        ; Lost fanout        ;
+; fp32_uart_tx:My_UART_Tx|tx_state~10       ; Lost fanout        ;
+; fp32_uart_tx:My_UART_Tx|tx_state~11       ; Lost fanout        ;
+; FP32_MAC_Combinatorial:My_MAC|mac_state~4 ; Lost fanout        ;
+; FP32_MAC_Combinatorial:My_MAC|mac_state~5 ; Lost fanout        ;
+; fp32_uart_rx:My_UART_Rx|rx_state~4        ; Lost fanout        ;
+; fp32_uart_rx:My_UART_Rx|rx_state~5        ; Lost fanout        ;
+; fp32_uart_rx:My_UART_Rx|rx_state~6        ; Lost fanout        ;
+; fp32_uart_rx:My_UART_Rx|rx_state~7        ; Lost fanout        ;
+; Total Number of Removed Registers = 14    ;                    ;
++-------------------------------------------+--------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 426   ;
+; Number of registers using Synchronous Clear  ; 96    ;
+; Number of registers using Synchronous Load   ; 32    ;
+; Number of registers using Asynchronous Clear ; 296   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 275   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+; 4:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |fp32_rx_mac_tx|fp32_uart_tx:My_UART_Tx|clk_cnt[15]                                                                                        ;
+; 6:1                ; 32 bits   ; 128 LEs       ; 32 LEs               ; 96 LEs                 ; Yes        ; |fp32_rx_mac_tx|fp32_uart_rx:My_UART_Rx|clk_cnt[13]                                                                                        ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |fp32_rx_mac_tx|fp32_uart_rx:My_UART_Rx|rx_state                                                                                           ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|fp32_uart_rx:My_UART_Rx|received_bit                                                                                       ;
+; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|ShiftLeft0                                       ;
+; 3:1                ; 24 bits   ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|small_E_Mantissa2[20]                                      ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|ShiftRight0                                                ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|delta[29]                                                  ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|ShiftLeft0                                       ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|delta[27]                                        ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|R                                                          ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|ShiftRight0                                                ;
+; 4:1                ; 23 bits   ; 46 LEs        ; 46 LEs               ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|delta[16]                                                  ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|ShiftLeft0                                       ;
+; 5:1                ; 22 bits   ; 66 LEs        ; 66 LEs               ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|delta[20]                                        ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|ShiftRight0                                                ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|ShiftLeft0                                       ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|ShiftRight0                                                ;
+; 6:1                ; 7 bits    ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|final_mantissa[1]                                          ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|final_exponent[3]                                          ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|ShiftLeft0                                       ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|ShiftRight0                                                ;
+; 7:1                ; 7 bits    ; 28 LEs        ; 21 LEs               ; 7 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|final_mantissa[10]                                         ;
+; 8:1                ; 8 bits    ; 40 LEs        ; 16 LEs               ; 24 LEs                 ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|final_Exp[2]                                     ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|ShiftLeft0                                       ;
+; 8:1                ; 3 bits    ; 15 LEs        ; 12 LEs               ; 3 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|final_mantissa[16]                                         ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 10 LEs               ; 2 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|final_mantissa[19]                                         ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 10 LEs               ; 2 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|final_mantissa[22]                                         ;
+; 15:1               ; 14 bits   ; 140 LEs       ; 70 LEs               ; 70 LEs                 ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|final_Man[37]                                    ;
+; 16:1               ; 2 bits    ; 20 LEs        ; 12 LEs               ; 8 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|leading_1_detector_23bit:leading_1_detector_23bit_1|ret[4] ;
+; 18:1               ; 16 bits   ; 192 LEs       ; 96 LEs               ; 96 LEs                 ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|final_Man[19]                                    ;
+; 21:1               ; 6 bits    ; 84 LEs        ; 66 LEs               ; 18 LEs                 ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|final_Man[12]                                    ;
+; 24:1               ; 4 bits    ; 64 LEs        ; 48 LEs               ; 16 LEs                 ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|final_Man[6]                                     ;
+; 24:1               ; 2 bits    ; 32 LEs        ; 22 LEs               ; 10 LEs                 ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|final_Man[15]                                    ;
+; 27:1               ; 2 bits    ; 36 LEs        ; 28 LEs               ; 8 LEs                  ; No         ; |fp32_rx_mac_tx|FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|final_Man[2]                                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0 ;
++------------------------------------------------+--------------+---------------------------------------------------------------------------+
+; Parameter Name                                 ; Value        ; Type                                                                      ;
++------------------------------------------------+--------------+---------------------------------------------------------------------------+
+; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY                                                                ;
+; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY                                                              ;
+; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE                                                              ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE                                                            ;
+; LPM_WIDTHA                                     ; 24           ; Untyped                                                                   ;
+; LPM_WIDTHB                                     ; 24           ; Untyped                                                                   ;
+; LPM_WIDTHP                                     ; 48           ; Untyped                                                                   ;
+; LPM_WIDTHR                                     ; 48           ; Untyped                                                                   ;
+; LPM_WIDTHS                                     ; 1            ; Untyped                                                                   ;
+; LPM_REPRESENTATION                             ; UNSIGNED     ; Untyped                                                                   ;
+; LPM_PIPELINE                                   ; 0            ; Untyped                                                                   ;
+; LATENCY                                        ; 0            ; Untyped                                                                   ;
+; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped                                                                   ;
+; INPUT_B_IS_CONSTANT                            ; NO           ; Untyped                                                                   ;
+; USE_EAB                                        ; OFF          ; Untyped                                                                   ;
+; MAXIMIZE_SPEED                                 ; 5            ; Untyped                                                                   ;
+; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped                                                                   ;
+; CARRY_CHAIN                                    ; MANUAL       ; Untyped                                                                   ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K                                                       ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped                                                                   ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped                                                                   ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped                                                                   ;
+; CBXI_PARAMETER                                 ; mult_bdt     ; Untyped                                                                   ;
+; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped                                                                   ;
+; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped                                                                   ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped                                                                   ;
++------------------------------------------------+--------------+---------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------------------------+
+; lpm_mult Parameter Settings by Entity Instance                                                                                   ;
++---------------------------------------+------------------------------------------------------------------------------------------+
+; Name                                  ; Value                                                                                    ;
++---------------------------------------+------------------------------------------------------------------------------------------+
+; Number of entity instances            ; 1                                                                                        ;
+; Entity Instance                       ; FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 24                                                                                       ;
+;     -- LPM_WIDTHB                     ; 24                                                                                       ;
+;     -- LPM_WIDTHP                     ; 48                                                                                       ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED                                                                                 ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                                                                       ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                                                                                       ;
+;     -- USE_EAB                        ; OFF                                                                                      ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                                                                     ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                                                                       ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                                                                       ;
++---------------------------------------+------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 4                           ;
+; cycloneiii_ff         ; 426                         ;
+;     CLR               ; 21                          ;
+;     CLR SCLR SLD      ; 32                          ;
+;     ENA CLR           ; 211                         ;
+;     ENA CLR SCLR      ; 32                          ;
+;     ENA SCLR          ; 32                          ;
+;     plain             ; 98                          ;
+; cycloneiii_lcell_comb ; 3117                        ;
+;     arith             ; 392                         ;
+;         2 data inputs ; 212                         ;
+;         3 data inputs ; 180                         ;
+;     normal            ; 2725                        ;
+;         0 data inputs ; 5                           ;
+;         1 data inputs ; 17                          ;
+;         2 data inputs ; 190                         ;
+;         3 data inputs ; 661                         ;
+;         4 data inputs ; 1852                        ;
+; cycloneiii_mac_mult   ; 4                           ;
+; cycloneiii_mac_out    ; 4                           ;
+;                       ;                             ;
+; Max LUT depth         ; 65.10                       ;
+; Average LUT depth     ; 47.04                       ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:10     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Processing started: Thu Nov 10 14:53:28 2022
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off fp32_rx_mac_tx_onefile -c fp32_rx_mac_tx
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
+Info (12021): Found 9 design units, including 9 entities, in source file top.sv
+    Info (12023): Found entity 1: leading_1_detector_23bit File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 2
+    Info (12023): Found entity 2: FP32_Adder_Combinatorial File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 86
+    Info (12023): Found entity 3: leading_1_detector_48bit File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 472
+    Info (12023): Found entity 4: FP32_Multiplier_Combinatorial File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 628
+    Info (12023): Found entity 5: posedge_detector File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 988
+    Info (12023): Found entity 6: fp32_uart_rx File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1007
+    Info (12023): Found entity 7: FP32_MAC_Combinatorial File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1219
+    Info (12023): Found entity 8: fp32_uart_tx File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1367
+    Info (12023): Found entity 9: fp32_rx_mac_tx File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1947
+Info (12127): Elaborating entity "fp32_rx_mac_tx" for the top level hierarchy
+Info (12128): Elaborating entity "fp32_uart_rx" for hierarchy "fp32_uart_rx:My_UART_Rx" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1972
+Warning (10230): Verilog HDL assignment warning at top.sv(1038): truncated value with size 32 to match size of target (7) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1038
+Warning (10230): Verilog HDL assignment warning at top.sv(1109): truncated value with size 32 to match size of target (7) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1109
+Warning (10230): Verilog HDL assignment warning at top.sv(1114): truncated value with size 32 to match size of target (7) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1114
+Info (12128): Elaborating entity "FP32_MAC_Combinatorial" for hierarchy "FP32_MAC_Combinatorial:My_MAC" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1986
+Warning (10034): Output port "MAC_READY_O" at top.sv(1229) has no driver File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1229
+Info (12128): Elaborating entity "posedge_detector" for hierarchy "FP32_MAC_Combinatorial:My_MAC|posedge_detector:My_posedge_detector" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1254
+Info (12128): Elaborating entity "FP32_Multiplier_Combinatorial" for hierarchy "FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1355
+Warning (10036): Verilog HDL or VHDL warning at top.sv(643): object "Larger_E" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 643
+Warning (10036): Verilog HDL or VHDL warning at top.sv(644): object "Right_Shift" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 644
+Warning (10036): Verilog HDL or VHDL warning at top.sv(646): object "EA1" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 646
+Warning (10036): Verilog HDL or VHDL warning at top.sv(646): object "EB1" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 646
+Warning (10036): Verilog HDL or VHDL warning at top.sv(646): object "E_Equal" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 646
+Warning (10036): Verilog HDL or VHDL warning at top.sv(680): object "M_RightBig" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 680
+Warning (10036): Verilog HDL or VHDL warning at top.sv(680): object "M_LeftBig" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 680
+Warning (10036): Verilog HDL or VHDL warning at top.sv(680): object "M_Equal" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 680
+Warning (10036): Verilog HDL or VHDL warning at top.sv(702): object "Maximum_Exp_Cost_Carry" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 702
+Warning (10036): Verilog HDL or VHDL warning at top.sv(754): object "FINAL_EEQ" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 754
+Warning (10230): Verilog HDL assignment warning at top.sv(951): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 951
+Info (12128): Elaborating entity "leading_1_detector_48bit" for hierarchy "FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|leading_1_detector_48bit:leading_1_detector_48bit_1" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 708
+Info (12128): Elaborating entity "FP32_Adder_Combinatorial" for hierarchy "FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1362
+Warning (10036): Verilog HDL or VHDL warning at top.sv(136): object "M_RightBig" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 136
+Warning (10036): Verilog HDL or VHDL warning at top.sv(136): object "M_Equal" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 136
+Warning (10036): Verilog HDL or VHDL warning at top.sv(157): object "small_E_sign" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 157
+Warning (10036): Verilog HDL or VHDL warning at top.sv(187): object "mantissa_22nd" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 187
+Warning (10036): Verilog HDL or VHDL warning at top.sv(192): object "lefted_frac_righted_truncated" assigned a value but never read File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 192
+Warning (10230): Verilog HDL assignment warning at top.sv(228): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 228
+Warning (10230): Verilog HDL assignment warning at top.sv(233): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 233
+Warning (10230): Verilog HDL assignment warning at top.sv(238): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 238
+Warning (10230): Verilog HDL assignment warning at top.sv(243): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 243
+Warning (10230): Verilog HDL assignment warning at top.sv(248): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 248
+Warning (10230): Verilog HDL assignment warning at top.sv(253): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 253
+Warning (10230): Verilog HDL assignment warning at top.sv(258): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 258
+Warning (10230): Verilog HDL assignment warning at top.sv(263): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 263
+Warning (10230): Verilog HDL assignment warning at top.sv(268): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 268
+Warning (10230): Verilog HDL assignment warning at top.sv(273): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 273
+Warning (10230): Verilog HDL assignment warning at top.sv(278): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 278
+Warning (10230): Verilog HDL assignment warning at top.sv(283): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 283
+Warning (10230): Verilog HDL assignment warning at top.sv(288): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 288
+Warning (10230): Verilog HDL assignment warning at top.sv(293): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 293
+Warning (10230): Verilog HDL assignment warning at top.sv(298): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 298
+Warning (10230): Verilog HDL assignment warning at top.sv(303): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 303
+Warning (10230): Verilog HDL assignment warning at top.sv(308): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 308
+Warning (10230): Verilog HDL assignment warning at top.sv(313): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 313
+Warning (10230): Verilog HDL assignment warning at top.sv(318): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 318
+Warning (10230): Verilog HDL assignment warning at top.sv(323): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 323
+Warning (10230): Verilog HDL assignment warning at top.sv(328): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 328
+Warning (10230): Verilog HDL assignment warning at top.sv(333): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 333
+Warning (10230): Verilog HDL assignment warning at top.sv(338): truncated value with size 32 to match size of target (1) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 338
+Warning (10230): Verilog HDL assignment warning at top.sv(443): truncated value with size 32 to match size of target (23) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 443
+Warning (10230): Verilog HDL assignment warning at top.sv(446): truncated value with size 32 to match size of target (23) File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 446
+Info (12128): Elaborating entity "leading_1_detector_23bit" for hierarchy "FP32_MAC_Combinatorial:My_MAC|FP32_Adder_Combinatorial:My_Adder|leading_1_detector_23bit:leading_1_detector_23bit_1" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 185
+Info (12128): Elaborating entity "fp32_uart_tx" for hierarchy "fp32_uart_tx:My_UART_Tx" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1996
+Warning (10034): Output port "TX_READY_O" at top.sv(1375) has no driver File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1375
+Info (278001): Inferred 1 megafunctions from design logic
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|Mult0" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 704
+Info (12130): Elaborated megafunction instantiation "FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 704
+Info (12133): Instantiated megafunction "FP32_MAC_Combinatorial:My_MAC|FP32_Multiplier_Combinatorial:My_Multiplier|lpm_mult:Mult0" with the following parameter: File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 704
+    Info (12134): Parameter "LPM_WIDTHA" = "24"
+    Info (12134): Parameter "LPM_WIDTHB" = "24"
+    Info (12134): Parameter "LPM_WIDTHP" = "48"
+    Info (12134): Parameter "LPM_WIDTHR" = "48"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_bdt.tdf
+    Info (12023): Found entity 1: mult_bdt File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/db/mult_bdt.tdf Line: 31
+Info (13014): Ignored 158 buffer(s)
+    Info (13019): Ignored 158 SOFT buffer(s)
+Warning (13004): Presettable and clearable registers converted to equivalent circuits with latches. Registers power-up to an undefined state, and DEVCLRn places the registers in an undefined state.
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[31]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[31]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[31]~1" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[30]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[30]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[30]~5" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[29]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[29]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[29]~9" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[28]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[28]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[28]~13" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[27]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[27]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[27]~17" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[26]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[26]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[26]~21" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[25]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[25]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[25]~25" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[24]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[24]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[24]~29" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[23]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[23]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[23]~33" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[22]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[22]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[22]~37" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[21]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[21]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[21]~41" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[20]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[20]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[20]~45" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[19]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[19]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[19]~49" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[18]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[18]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[18]~53" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[17]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[17]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[17]~57" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[16]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[16]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[16]~61" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[15]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[15]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[15]~65" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[14]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[14]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[14]~69" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[13]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[13]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[13]~73" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[12]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[12]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[12]~77" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[11]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[11]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[11]~81" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[10]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[10]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[10]~85" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[9]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[9]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[9]~89" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[8]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[8]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[8]~93" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[7]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[7]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[7]~97" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[6]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[6]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[6]~101" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[5]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[5]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[5]~105" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[4]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[4]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[4]~109" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[3]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[3]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[3]~113" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[2]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[2]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[2]~117" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[1]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[1]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[1]~121" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+    Warning (13310): Register "FP32_MAC_Combinatorial:My_MAC|delta[0]" is converted into an equivalent circuit using register "FP32_MAC_Combinatorial:My_MAC|delta[0]~_emulated" and latch "FP32_MAC_Combinatorial:My_MAC|delta[0]~125" File: D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/top.sv Line: 1275
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 14 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/output_files/fp32_rx_mac_tx.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 3271 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 3 input pins
+    Info (21059): Implemented 1 output pins
+    Info (21061): Implemented 3260 logic cells
+    Info (21062): Implemented 7 DSP elements
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 80 warnings
+    Info: Peak virtual memory: 4847 megabytes
+    Info: Processing ended: Thu Nov 10 14:53:45 2022
+    Info: Elapsed time: 00:00:17
+    Info: Total CPU time (on all processors): 00:00:25
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in D:/Quartus_Projects/RTL/Graduate_Project/fpga/Workspace/fp32_rx_mac_tx_onefile/output_files/fp32_rx_mac_tx.map.smsg.
+
+
