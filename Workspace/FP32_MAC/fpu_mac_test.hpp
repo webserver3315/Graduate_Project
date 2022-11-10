@@ -640,7 +640,7 @@ float32 my_multiplier(struct float32 alpha, struct float32 bravo)
         }
     }
     
-    if(final_Exp > 254) OVFL = 1;
+    if(((EA1 & (MA0)) | (EB1 & (MB0))) || (final_Exp > 254)) OVFL = 1;
     int NAN_FLAG = 0;
     if((EA == 0xFF && MA != 0) || (EB == 0xFF && MB != 0)) NAN_FLAG = 1;
 

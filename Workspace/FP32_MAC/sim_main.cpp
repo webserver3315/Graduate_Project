@@ -25,6 +25,9 @@ using namespace std;
 float32 Filter_arr[121];
 float32 Channel_arr[3025][121];
 
+int error_cnt = 0;
+int total_cnt = 0;
+
 void Setting(){ // https://blockdmask.tistory.com/322
     ifstream readFile;
     readFile.open("filter.txt");
@@ -99,6 +102,7 @@ float32 test_case(Vtop* top, VerilatedVcdC* wave_fp, float32 alpha, float32 brav
     printf("Wanted_Result\t(0x%08llx %f) is ",(ULL)charlie.total_int, charlie.total); print_binary((ULL)charlie.total_int); printf("\n");
     #endif
     
+    total_cnt++;
     if(delta.total_int != charlie.total_int){
         if(is_nan(charlie) && is_nan(delta)){
             printf("%d: SAME BOTH NaN\n", kazu);
@@ -116,6 +120,7 @@ float32 test_case(Vtop* top, VerilatedVcdC* wave_fp, float32 alpha, float32 brav
             printf("%d: SAME BUT NOT ROUNDED 4\n", kazu);
         }
         else {
+            error_cnt++;
             printf("%d: ERROR\n", kazu);
         }
     }else{
@@ -133,12 +138,14 @@ int main(int argc, char** argv, char** env) {
     // real project, it is better to start with a more complete example,
     // e.g. examples/c_tracing.
     Setting();
+    srand(0);
 
     // Prevent unused variable warnings
     if (false && argc && argv && env) {}
 
     // Construct the Verilated model, from Vtop.h generated from Verilating "top.v"
     Vtop* top = new Vtop;
+
 
     // FOR WAVEFORM
     Verilated::traceEverOn(true);
@@ -150,6 +157,23 @@ int main(int argc, char** argv, char** env) {
     wave_fp->open("./top.vcd");
 
     float32 aa, bb, acc;
+
+    aa.total_int = 0x7f800000; bb.total_int = 0x3d97af32; acc.total_int = 0xbea06b3c;
+    test_case(top, wave_fp, aa, bb, acc, kazu);
+    kazu++;
+
+    aa.total_int = 0x3dc1a5d6; bb.total_int = 0x3d97af32; acc.total_int = 0x7f800000;
+    test_case(top, wave_fp, aa, bb, acc, kazu);
+    kazu++;
+
+    aa.total_int = 0x7f000000; bb.total_int = 0x7f000000; acc.total_int = 0;
+    test_case(top, wave_fp, aa, bb, acc, kazu);
+    kazu++;
+
+    aa.total_int = 0x3f800000; bb.total_int = 0x7f000000; acc.total_int = 0x7f000000;
+    test_case(top, wave_fp, aa, bb, acc, kazu);
+    kazu++;
+    // all should inf
 
     aa.total_int = 0x3dc1a5d6; bb.total_int = 0x3d97af32; acc.total_int = 0xbea06b3c;
     test_case(top, wave_fp, aa, bb, acc, kazu);
@@ -253,12 +277,14 @@ int main(int argc, char** argv, char** env) {
     kazu++;
 
 
-    srand(0);
-    for(int i=0;i<1000;i++){
-        aa.total_int = rand(); bb.total_int = rand(); acc.total_int = rand();
-        test_case(top, wave_fp, aa, bb, acc, kazu);
-        kazu++;
-    }
+    
+    // for(int i=0;i<1000000;i++){
+    //     aa.total_int = rand(); bb.total_int = rand(); acc.total_int = rand();
+    //     test_case(top, wave_fp, aa, bb, acc, kazu);
+    //     kazu++;
+    // }
+
+    printf("SAME %d, ERROR %d\n", total_cnt - error_cnt, error_cnt);
 
     // srand(time(NULL));
     // for(int t=0; t<3025; t++){
