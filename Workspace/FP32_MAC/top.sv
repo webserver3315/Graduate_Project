@@ -749,7 +749,6 @@ module FP32_Multiplier_Combinatorial
     reg [7:0]   DEBUG_FINAL_EXP = 8'd0;
     `endif
 
-    // EA_plus_EB 가 아니라 EA+EB 를 넣으면 부등호가 안맞다. 왜 이럴까...? 아무튼 EA_plus_EB로 바꿈.
     reg FINAL_ELB, FINAL_ERB, FINAL_EEQ;
     always_comb begin
         FINAL_ELB       =   (EA_plus_EB > 9'd128);

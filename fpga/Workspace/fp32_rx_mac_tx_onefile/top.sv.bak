@@ -1,5 +1,4 @@
-parameter MAX_CLK_CNT = 5208 - 1;
-parameter CLK_DIVISOR = 8;
+`define MAX_CLK_CNT = 5208 - 1;
 
 module leading_1_detector_23bit
     (
@@ -949,8 +948,8 @@ module FP32_Multiplier_Combinatorial
     reg     [7:0]   delta_exp;
 
     wire            NAN, OVFL;
-    assign  NAN     = ((EA1 & (~MA0)) | (EB1 & (~MB0))) ? 1'b1 : 1'b0;
-    assign OVFL     = ((EA1 & (MA0)) | (EB1 & (MB0)) | ({final_Exp_Carry, final_Exp} > 9'd254) ? 1 : 0);
+    assign  NAN     = ((EA == 8'hFF && MA != 23'd0) || (EB == 8'hFF && MB != 23'd0)) ? 1'b1 : 1'b0;
+    assign OVFL     = ({final_Exp_Carry, final_Exp} > 9'd254) ? 1 : 0;
 
     always_comb begin
         if((R & S) | (G & R & (~S))) begin
@@ -1006,128 +1005,6 @@ module posedge_detector
     assign pulse = sig & (~delayed_sig);
 endmodule
 
-
-module FP32_MAC_Combinatorial
-    (
-        input   wire            RSTL_I,
-        input   wire            CLK_I,
-        input   wire    [31:0]  alpha,
-        input   wire    [31:0]  bravo,
-        input   reg     [31:0]  acc,
-        input   wire            MAC_VALID_I,
-        input   wire            MAC_READY_I,
-        output  reg     [31:0]  delta,
-        output  reg             MAC_READY_O,
-        output  reg             MAC_VALID_O
-    );
-    // localparam MAX_CLK_CNT = 5208 - 1;
-
-    localparam RST = 0;
-    localparam CALC = 1;
-    localparam IDLE = 2;
-    localparam SHOW = 3; // RST => CALC => SHOW => IDLE => CALC => SHOW => IDLE
-
-    reg     [31:0]  alpha_internal;
-    reg     [31:0]  bravo_internal;
-    reg     [31:0]  acc_internal;
-    reg    [31:0]  middle_internal;
-    reg     [31:0]  delta_internal;
-
-    reg     [1:0]  mac_state;
-    reg     [31:0]  clk_cnt;
-
-    wire mac_valid_i_posedge;
-    posedge_detector My_posedge_detector
-    (
-        .clk(CLK_I),
-        .sig(MAC_VALID_I),
-        .pulse(mac_valid_i_posedge)
-    );
-
-    always @(posedge CLK_I or negedge RSTL_I) begin
-        if(~RSTL_I) begin
-            clk_cnt <= 0;
-            mac_state <= RST;
-            MAC_VALID_O <= 0;
-            
-            alpha_internal <= 0;
-            bravo_internal <= 0;
-            acc_internal <= 0;
-
-            delta <= delta_internal;
-        end
-        else begin
-            case(mac_state)
-                RST: begin
-                    MAC_VALID_O <= 0;
-                    clk_cnt <= 0;              
-                    if(mac_valid_i_posedge) begin
-                        mac_state <= CALC;
-                    end
-                    else begin
-                        mac_state <= RST;
-                    end
-                end
-                CALC: begin
-                    alpha_internal <= alpha;
-                    bravo_internal <= bravo;
-                    acc_internal <= acc;
-                    delta <= delta_internal;
-                    MAC_VALID_O <= 0;
-                    if(clk_cnt < MAX_CLK_CNT*2) begin                        
-                        clk_cnt <= clk_cnt + 1;
-                        mac_state <= CALC;
-                    end
-                    else begin
-                        clk_cnt <= 0;
-                        mac_state <= SHOW;
-                    end
-                end
-                SHOW: begin
-                    MAC_VALID_O <= 1;
-                    if(clk_cnt < MAX_CLK_CNT*2) begin                        
-                        clk_cnt <= clk_cnt + 1;
-                        mac_state <= SHOW;
-                    end
-                    else begin
-                        clk_cnt <= 0;
-                        mac_state <= IDLE;
-                    end
-                end
-                IDLE: begin
-                    MAC_VALID_O <= 1;
-                    clk_cnt <= 0;
-                    if(mac_valid_i_posedge) begin
-                        mac_state <= CALC;
-                    end
-                    else begin
-                        mac_state <= IDLE;
-                    end
-                end
-                default: begin
-                end
-            endcase
-        end
-    end
-
-
-    FP32_Multiplier_Combinatorial My_Multiplier
-    (
-        .alpha(alpha_internal),
-        .bravo(bravo_internal),
-        .delta(middle_internal)
-    );
-
-    FP32_Adder_Combinatorial My_Adder
-    (
-        .alpha(middle_internal),
-        .bravo(acc_internal),
-        .delta(delta_internal)
-    );
-
-endmodule
-
-
 module fp32_uart_rx
     (
     input            RSTL_I,
@@ -1165,6 +1042,9 @@ module fp32_uart_rx
     reg DEBUG_CLK;    
     `endif
 
+    // 문제
+    // 1. RSTN 이후, 1회는 반드시 응답을 안함
+    // 2. 응답 5회 이후, 1회는 반드시 응답을 안함.
     always @(posedge CLK_I or negedge RSTL_I) begin
     if (~RSTL_I) begin
         rx_state       = IDLE;
@@ -1252,7 +1132,7 @@ module fp32_uart_rx
             if (clk_cnt == MAX_CLK_CNT)
             begin
                 clk_cnt          <= 0;
-                rx_state         <= IDLE;
+                rx_state         <= MORE;
             end
             else
             begin
@@ -1260,6 +1140,23 @@ module fp32_uart_rx
                 rx_state     <= STOP;
             end
             end // case: STOP
+
+        // Stay here 1 clock
+        MORE :
+            begin
+                RX_VALID_O <= 0;
+                if (clk_cnt == MAX_CLK_CNT)
+                begin
+                    clk_cnt          <= 0;
+                    rx_state         <= IDLE;
+                end
+                else
+                begin
+                    clk_cnt      <= clk_cnt + 1;
+                    rx_state     <= MORE;
+                end
+            end
+
 
         // Receive Stop bit.  Stop bit <= 1
         ZZIN_STOP :
@@ -1271,7 +1168,7 @@ module fp32_uart_rx
             if (clk_cnt == MAX_CLK_CNT)
             begin
                 clk_cnt          <= 0;
-                rx_state         <= ZZIN_IDLE;
+                rx_state         <= ZZIN_MORE;
             end
             else
             begin
@@ -1279,6 +1176,22 @@ module fp32_uart_rx
                 rx_state     <= ZZIN_STOP;
             end
             end // case: STOP
+
+        // Stay here 1 clock
+        ZZIN_MORE :
+            begin
+            RX_VALID_O <= 1;
+                if (clk_cnt == MAX_CLK_CNT)
+                begin
+                    clk_cnt          <= 0;
+                    rx_state         <= ZZIN_IDLE;
+                end
+                else
+                begin
+                    clk_cnt      <= clk_cnt + 1;
+                    rx_state     <= ZZIN_MORE;
+                end
+            end
 
         ZZIN_IDLE :
             begin
@@ -1303,6 +1216,154 @@ module fp32_uart_rx
 end
 endmodule
 
+
+module FP32_MAC_Combinatorial
+    (
+        input   wire            RSTL_I,
+        input   wire            CLK_I,
+        input   wire    [31:0]  alpha,
+        input   wire    [31:0]  bravo,
+        input   reg     [31:0]  acc,
+        input   wire            MAC_VALID_I,
+        input   wire            MAC_READY_I,
+        output  reg     [31:0]  delta,
+        output  reg             MAC_READY_O,
+        output  reg             MAC_VALID_O
+    );
+    // localparam MAX_CLK_CNT = 5208 - 1;
+
+    localparam RST = 0;
+    localparam CALC = 1;
+    localparam IDLE = 2;
+    localparam SHOW = 3; // RST => CALC => SHOW => IDLE => CALC => SHOW => IDLE
+
+    reg     [31:0]  alpha_internal;
+    reg     [31:0]  bravo_internal;
+    reg     [31:0]  acc_internal;
+    wire    [31:0]  middle_internal;
+    reg     [31:0]  delta_internal;
+
+    reg     [1:0]  mac_state;
+    reg     [31:0]  clk_cnt;
+
+    wire mac_valid_i_posedge;
+    posedge_detector My_posedge_detector
+    (
+        .clk(CLK_I),
+        .sig(MAC_VALID_I),
+        .pulse(mac_valid_i_posedge)
+    );
+
+
+    always @(posedge CLK_I or negedge RSTL_I) begin
+        if(~RSTL_I) begin
+            clk_cnt <= 0;
+            mac_state <= RST;
+            MAC_VALID_O <= 0;
+            
+            alpha_internal <= 0;
+            bravo_internal <= 0;
+            acc_internal <= 0;
+
+            `ifdef DEBUG_MAC
+            delta <= 0;
+            `else
+            delta <= delta_internal;
+            `endif
+
+        end
+        else begin
+            case(mac_state)
+                RST: begin
+                    MAC_VALID_O <= 0;
+                    clk_cnt <= 0;              
+                    if(mac_valid_i_posedge) begin
+                        `ifdef DEBUG_MAC
+                        alpha_internal <= 32'hBF00_0000;
+                        bravo_internal <= 32'h3F40_0000;
+                        acc_internal <= 32'd0;
+                        `endif
+                        mac_state <= CALC;
+                    end
+                    else begin
+                        mac_state <= RST;
+                    end
+                end
+                CALC: begin
+                    `ifdef DEBUG_MAC
+                    `else
+                    alpha_internal <= alpha;
+                    bravo_internal <= bravo;
+                    acc_internal <= acc;
+                    `endif
+
+                    MAC_VALID_O <= 0;
+                    if(clk_cnt < MAX_CLK_CNT) begin                        
+                        clk_cnt <= clk_cnt + 1;
+                        mac_state <= CALC;
+                    end
+                    else begin
+                        clk_cnt <= 0;
+                        mac_state <= SHOW;
+                    end
+                end
+                SHOW: begin
+                    MAC_VALID_O <= 0;
+                    delta <= delta_internal;
+                    if(clk_cnt < MAX_CLK_CNT) begin                        
+                        clk_cnt <= clk_cnt + 1;
+                        mac_state <= SHOW;
+                    end
+                    else begin
+                        clk_cnt <= 0;
+                        mac_state <= IDLE;
+                    end
+                end
+                IDLE: begin
+                    MAC_VALID_O <= 1;
+                    clk_cnt <= 0;
+                    if(mac_valid_i_posedge) begin
+                        `ifdef DEBUG_MAC
+                        if(alpha_internal == 32'h3F00_0000) begin
+                            alpha_internal <= 32'hBF00_0000;
+                            bravo_internal <= 32'h3F40_0000;
+                            acc_internal <= 32'd0;
+                        end
+                        else begin
+                            alpha_internal <= 32'h3F00_0000;
+                            bravo_internal <= 32'h3EE0_0000;
+                            acc_internal <= 32'd0;
+                        end
+                        `endif
+                        mac_state <= CALC;
+                    end
+                    else begin
+                        mac_state <= IDLE;
+                    end
+                end
+                default: begin
+                end
+            endcase
+        end
+    end
+
+
+    FP32_Multiplier_Combinatorial My_Multiplier
+    (
+        .alpha(alpha_internal),
+        .bravo(bravo_internal),
+        .delta(middle_internal)
+    );
+
+    FP32_Adder_Combinatorial My_Adder
+    (
+        .alpha(middle_internal),
+        .bravo(acc_internal),
+        .delta(delta_internal)
+    );
+
+
+endmodule
 
 module fp32_uart_tx
     (
@@ -1884,20 +1945,6 @@ module fp32_uart_tx
     end
 endmodule
 
-module clk_div
-    (
-        input CLK_I,
-        input RSTL_I,
-        output CLK_DIV
-    );
-	reg[31:0] counter=32'd0;
-    always @(posedge CLK_I) begin
-        counter <= counter + 32'd1;
-        if(counter >= (CLK_DIVISOR-1)) counter <= 32'd0;
-        CLK_DIV <= (counter<CLK_DIVISOR/2)?1'b1:1'b0;
-    end
-endmodule
-
 module fp32_rx_mac_tx
     (
         input CLK_I,
@@ -1915,18 +1962,10 @@ module fp32_rx_mac_tx
     reg [95:0] data;
     reg [31:0] result;
 
-    wire clk_div;
-    clk_div Clock_Divider
-    (
-        .CLK_I(CLK_I),
-        .RSTL_I(RSTL_I),
-        .CLK_DIV(clk_div)
-    );
-
     fp32_uart_rx My_UART_Rx
     (
         .RSTL_I(RSTL_I),
-        .CLK_I(clk_div),
+        .CLK_I(CLK_I),
         .UART_RX_I(UART_RX_I),
         .RX_READY_I(rx_ready_i_mac_ready_o),
         .RX_VALID_O(rx_valid_o_mac_valid_i),
@@ -1936,7 +1975,7 @@ module fp32_rx_mac_tx
     FP32_MAC_Combinatorial My_MAC
     (
         .RSTL_I(RSTL_I),
-        .CLK_I(clk_div),
+        .CLK_I(CLK_I),
         .alpha(data[31:0]),
         .bravo(data[63:32]),
         .acc(data[95:64]),
@@ -1950,7 +1989,7 @@ module fp32_rx_mac_tx
     fp32_uart_tx My_UART_Tx
     (
         .RSTL_I(RSTL_I),
-        .CLK_I(clk_div),
+        .CLK_I(CLK_I),
         .TX_VALID_I(mac_valid_o_tx_valid_i),
         .TX_DATA_I(result),
         .TX_DATA_O(TX_DATA_O),

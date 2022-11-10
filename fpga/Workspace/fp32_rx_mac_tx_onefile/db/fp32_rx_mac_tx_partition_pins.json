@@ -8,11 +8,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "CLK_I",
+					"name" : "RSTL_I",
 					"strict" : false
 				},
 				{
-					"name" : "RSTL_I",
+					"name" : "CLK_I",
 					"strict" : false
 				},
 				{

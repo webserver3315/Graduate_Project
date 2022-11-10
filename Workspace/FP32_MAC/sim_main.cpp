@@ -158,6 +158,10 @@ int main(int argc, char** argv, char** env) {
 
     float32 aa, bb, acc;
 
+    aa.total_int = 0x03f9e09c; bb.total_int = 0x68b5ff68; acc.total_int = 0x26329142;
+    test_case(top, wave_fp, aa, bb, acc, kazu);
+    kazu++;
+
     aa.total_int = 0x7f800000; bb.total_int = 0x3d97af32; acc.total_int = 0xbea06b3c;
     test_case(top, wave_fp, aa, bb, acc, kazu);
     kazu++;
@@ -278,11 +282,11 @@ int main(int argc, char** argv, char** env) {
 
 
     
-    // for(int i=0;i<1000000;i++){
-    //     aa.total_int = rand(); bb.total_int = rand(); acc.total_int = rand();
-    //     test_case(top, wave_fp, aa, bb, acc, kazu);
-    //     kazu++;
-    // }
+    for(int i=0;i<100000;i++){
+        aa.total_int = rand(); bb.total_int = rand(); acc.total_int = rand();
+        test_case(top, wave_fp, aa, bb, acc, kazu);
+        kazu++;
+    }
 
     printf("SAME %d, ERROR %d\n", total_cnt - error_cnt, error_cnt);
 

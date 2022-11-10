@@ -5,7 +5,7 @@
 #include <time.h>
 #include <stdlib.h>
 
-#define VERBOSE 5
+#define VERBOSE 1
 #define RANDOM
 #define ULL unsigned long long
 
