@@ -3,135 +3,111 @@ Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'RSTL_I'
-Slack : -68.046
-TNS   : -2082.262
+Slack : -63.811
+TNS   : -1960.982
 
-Type  : Slow 1200mV 85C Model Setup 'clk_div:Clock_Divider|CLK_DIV'
-Slack : -66.314
-TNS   : -6428.481
+Type  : Slow 1200mV 85C Model Setup 'my_pll|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -3.743
+TNS   : -513.735
 
-Type  : Slow 1200mV 85C Model Setup 'CLK_I'
-Slack : -3.958
-TNS   : -120.200
-
-Type  : Slow 1200mV 85C Model Hold 'clk_div:Clock_Divider|CLK_DIV'
-Slack : 0.309
-TNS   : 0.000
-
-Type  : Slow 1200mV 85C Model Hold 'CLK_I'
-Slack : 0.618
+Type  : Slow 1200mV 85C Model Hold 'my_pll|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.432
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'RSTL_I'
-Slack : 2.644
+Slack : 3.570
 TNS   : 0.000
 
-Type  : Slow 1200mV 85C Model Recovery 'clk_div:Clock_Divider|CLK_DIV'
-Slack : 0.293
+Type  : Slow 1200mV 85C Model Recovery 'my_pll|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -2.674
+TNS   : -864.005
+
+Type  : Slow 1200mV 85C Model Removal 'my_pll|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 1.476
 TNS   : 0.000
-
-Type  : Slow 1200mV 85C Model Removal 'clk_div:Clock_Divider|CLK_DIV'
-Slack : -0.883
-TNS   : -279.147
-
-Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk_div:Clock_Divider|CLK_DIV'
-Slack : -4.000
-TNS   : -918.488
-
-Type  : Slow 1200mV 85C Model Minimum Pulse Width 'CLK_I'
-Slack : -3.000
-TNS   : -52.071
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'RSTL_I'
 Slack : -3.000
 TNS   : -3.000
 
-Type  : Slow 1200mV 0C Model Setup 'RSTL_I'
-Slack : -63.703
-TNS   : -1946.953
-
-Type  : Slow 1200mV 0C Model Setup 'clk_div:Clock_Divider|CLK_DIV'
-Slack : -62.093
-TNS   : -6015.020
-
-Type  : Slow 1200mV 0C Model Setup 'CLK_I'
-Slack : -3.647
-TNS   : -110.409
-
-Type  : Slow 1200mV 0C Model Hold 'clk_div:Clock_Divider|CLK_DIV'
-Slack : 0.191
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'CLK_I'
+Slack : 9.934
 TNS   : 0.000
 
-Type  : Slow 1200mV 0C Model Hold 'CLK_I'
-Slack : 0.560
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'my_pll|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 499.580
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'RSTL_I'
+Slack : -60.195
+TNS   : -1847.528
+
+Type  : Slow 1200mV 0C Model Setup 'my_pll|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -3.309
+TNS   : -446.849
+
+Type  : Slow 1200mV 0C Model Hold 'my_pll|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.382
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'RSTL_I'
-Slack : 2.433
+Slack : 3.376
 TNS   : 0.000
 
-Type  : Slow 1200mV 0C Model Recovery 'clk_div:Clock_Divider|CLK_DIV'
-Slack : 0.359
+Type  : Slow 1200mV 0C Model Recovery 'my_pll|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -2.285
+TNS   : -722.059
+
+Type  : Slow 1200mV 0C Model Removal 'my_pll|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 1.219
 TNS   : 0.000
-
-Type  : Slow 1200mV 0C Model Removal 'clk_div:Clock_Divider|CLK_DIV'
-Slack : -0.861
-TNS   : -275.743
-
-Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk_div:Clock_Divider|CLK_DIV'
-Slack : -4.000
-TNS   : -918.488
-
-Type  : Slow 1200mV 0C Model Minimum Pulse Width 'CLK_I'
-Slack : -3.000
-TNS   : -52.071
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'RSTL_I'
 Slack : -3.000
 TNS   : -3.000
 
-Type  : Fast 1200mV 0C Model Setup 'RSTL_I'
-Slack : -29.388
-TNS   : -891.416
-
-Type  : Fast 1200mV 0C Model Setup 'clk_div:Clock_Divider|CLK_DIV'
-Slack : -28.667
-TNS   : -2560.354
-
-Type  : Fast 1200mV 0C Model Setup 'CLK_I'
-Slack : -1.056
-TNS   : -30.877
-
-Type  : Fast 1200mV 0C Model Hold 'clk_div:Clock_Divider|CLK_DIV'
-Slack : 0.130
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'CLK_I'
+Slack : 9.943
 TNS   : 0.000
 
-Type  : Fast 1200mV 0C Model Hold 'CLK_I'
-Slack : 0.252
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'my_pll|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 499.611
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'RSTL_I'
+Slack : -27.265
+TNS   : -835.576
+
+Type  : Fast 1200mV 0C Model Setup 'my_pll|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -1.919
+TNS   : -246.873
+
+Type  : Fast 1200mV 0C Model Hold 'my_pll|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.178
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'RSTL_I'
-Slack : 1.029
+Slack : 1.335
 TNS   : 0.000
 
-Type  : Fast 1200mV 0C Model Recovery 'clk_div:Clock_Divider|CLK_DIV'
-Slack : -0.011
-TNS   : -0.504
+Type  : Fast 1200mV 0C Model Recovery 'my_pll|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -1.459
+TNS   : -492.788
 
-Type  : Fast 1200mV 0C Model Removal 'clk_div:Clock_Divider|CLK_DIV'
-Slack : -0.358
-TNS   : -110.320
-
-Type  : Fast 1200mV 0C Model Minimum Pulse Width 'CLK_I'
-Slack : -3.000
-TNS   : -38.324
+Type  : Fast 1200mV 0C Model Removal 'my_pll|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.751
+TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'RSTL_I'
 Slack : -3.000
 TNS   : -3.000
 
-Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk_div:Clock_Divider|CLK_DIV'
-Slack : -1.000
-TNS   : -496.000
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'CLK_I'
+Slack : 9.594
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'my_pll|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 499.768
+TNS   : 0.000
 
 ------------------------------------------------------------

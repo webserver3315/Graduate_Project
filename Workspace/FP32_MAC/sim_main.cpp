@@ -94,12 +94,12 @@ float32 test_case(Vtop* top, VerilatedVcdC* wave_fp, float32 alpha, float32 brav
 
 
     #if VERBOSE >= 1
-    printf("Input:Alpha\t\t(0x%08llx %f) is ",(ULL)alpha.total_int, alpha.total); print_binary((ULL)alpha.total_int); printf("\n");
-    printf("Input:Bravo\t\t(0x%08llx %f) is ",(ULL)bravo.total_int, bravo.total); print_binary((ULL)bravo.total_int); printf("\n");
-    printf("Input:ACC\t\t(0x%08llx %f) is ",(ULL)acc.total_int, acc.total); print_binary((ULL)acc.total_int); printf("\n");
-    printf("Result:Verilog\t(0x%08llx %f) is ",(ULL)delta.total_int, delta.total); print_binary((ULL)delta.total_int); printf("\n");
-    printf("Result:CPP_Sim\t(0x%08llx %f) is ",(ULL)delta_sim.total_int, delta_sim.total); print_binary((ULL)delta_sim.total_int); printf("\n");
-    printf("Wanted_Result\t(0x%08llx %f) is ",(ULL)charlie.total_int, charlie.total); print_binary((ULL)charlie.total_int); printf("\n");
+    printf("Input:Alpha\t\t(0x%08x %f) is ",(ULL)alpha.total_int, alpha.total); print_binary((ULL)alpha.total_int); printf("\n");
+    printf("Input:Bravo\t\t(0x%08x %f) is ",(ULL)bravo.total_int, bravo.total); print_binary((ULL)bravo.total_int); printf("\n");
+    printf("Input:ACC\t\t(0x%08x %f) is ",(ULL)acc.total_int, acc.total); print_binary((ULL)acc.total_int); printf("\n");
+    printf("Result:Verilog\t(0x%08x %f) is ",(ULL)delta.total_int, delta.total); print_binary((ULL)delta.total_int); printf("\n");
+    printf("Result:CPP_Sim\t(0x%08x %f) is ",(ULL)delta_sim.total_int, delta_sim.total); print_binary((ULL)delta_sim.total_int); printf("\n");
+    printf("Wanted_Result\t(0x%08x %f) is ",(ULL)charlie.total_int, charlie.total); print_binary((ULL)charlie.total_int); printf("\n");
     #endif
     
     total_cnt++;
@@ -157,6 +157,10 @@ int main(int argc, char** argv, char** env) {
     wave_fp->open("./top.vcd");
 
     float32 aa, bb, acc;
+
+    aa.total_int = 0x73c6f89d; bb.total_int = 0x328cfdf9; acc.total_int = 0x4375779b;
+    test_case(top, wave_fp, aa, bb, acc, kazu);
+    kazu++;
 
     aa.total_int = 0x03f9e09c; bb.total_int = 0x68b5ff68; acc.total_int = 0x26329142;
     test_case(top, wave_fp, aa, bb, acc, kazu);

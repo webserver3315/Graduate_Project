@@ -1,5 +1,5 @@
-parameter MAX_CLK_CNT = 5208 - 1;
-parameter CLK_DIVISOR = 8;
+parameter MAX_CLK_CNT = 834 - 1;
+parameter CLK_DIVISOR = 1;
 
 module leading_1_detector_23bit
     (
@@ -1916,11 +1916,11 @@ module fp32_rx_mac_tx
     reg [31:0] result;
 
     wire clk_div;
-    clk_div Clock_Divider
+    
+	pll my_pll
     (
-        .CLK_I(CLK_I),
-        .RSTL_I(RSTL_I),
-        .CLK_DIV(clk_div)
+        .inclk0(CLK_I),
+        .c0(clk_div),
     );
 
     fp32_uart_rx My_UART_Rx

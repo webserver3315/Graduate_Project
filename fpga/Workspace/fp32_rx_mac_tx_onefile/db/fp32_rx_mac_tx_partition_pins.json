@@ -12,10 +12,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "CLK_I",
-					"strict" : false
-				},
-				{
 					"name" : "UART_RX_I",
 					"strict" : false
 				}

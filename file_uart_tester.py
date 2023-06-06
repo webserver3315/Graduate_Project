@@ -102,7 +102,11 @@ def Random_Test():
         bravo = secrets.token_hex(4)
         acc = secrets.token_hex(4)
         # acc = '7f9fffff'
-                
+
+
+        alpha = "0afa5af0"
+        bravo = "e2fd6cbc"
+        acc = "96015999"
         alpha_f = hex_to_float(alpha)
         bravo_f = hex_to_float(bravo)
         acc_f = hex_to_float(acc)
@@ -157,7 +161,7 @@ def Random_Test():
     delta_file.write("ERROR: " + str(err_cnt) + "\n")
     for i in range(err_cnt):
         print("ERROR %d : " %(i) )
-        error_line = "%s * %s + %s = %s != %s\n" %(alpha_error[i], bravo_error[i], acc_error[i], delta_error[i], charlie_error[i])
+        error_line = "0x%s * 0x%s + 0x%s = 0x%s != 0x%s\n" %(alpha_error[i], bravo_error[i], acc_error[i], delta_error[i], charlie_error[i])
         print(error_line)
         delta_file.write(error_line)
 
